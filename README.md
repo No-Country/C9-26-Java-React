@@ -59,7 +59,7 @@ Abrir [http://localhost:5173](http://localhost:5173) para verlo en navegador.
 
 ### Fernando De Laurentis : [LinkedIn](#) | [GitHub](#) | [Portfolio]()
 
-### Franco Buceta : [LinkedIn](https://www.linkedin.com/in/francobuceta) | [GitHub](#) | [Portfolio]()
+### Franco Buceta : [LinkedIn](https://www.linkedin.com/in/francobuceta) | [GitHub](https://github.com/francobuceta) | [Portfolio](https://francobuceta.netlify.app/)
 
 <br/>
 
