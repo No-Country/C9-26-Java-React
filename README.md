@@ -57,7 +57,7 @@ Abrir [http://localhost:5173](http://localhost:5173) para verlo en navegador.
 
 ### Cristian Montealegre : [LinkedIn](#) | [GitHub](#) | [Portfolio]()
 
-### Fernando De Laurentis : [LinkedIn](#) | [GitHub](#) | [Portfolio]()
+### Fernando De Laurentis : [LinkedIn](https://www.linkedin.com/in/fernando-de-laurentis/) | [GitHub](https://github.com/Fdlaurentis) | [Portfolio](https://fdlaurentis.netlify.app/)
 
 ### Franco Buceta : [LinkedIn](https://www.linkedin.com/in/francobuceta) | [GitHub](https://github.com/francobuceta) | [Portfolio](https://francobuceta.netlify.app/)
 
