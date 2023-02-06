@@ -1,3 +1,7 @@
 {
-  "conventionalCommits.scopes": ["backend", "frontend"]
+  "conventionalCommits.scopes": [
+    "backend",
+    "frontend"
+  ],
+  "java.compile.nullAnalysis.mode": "automatic"
 }
