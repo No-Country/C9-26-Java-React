@@ -240,4 +240,10 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.toptal.com/developers/gitignore/api/java,node,macos,windows,linux
+# End of https://www.toptal.com/developers/gitignore/api/java,node,macos,windows,linux!/.idea/
+.idea/C9-26-Java-React.iml
+.idea/jpa-buddy.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml
