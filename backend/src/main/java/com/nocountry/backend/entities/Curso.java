@@ -28,7 +28,7 @@ public class Curso {
     private int nivel;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "curso")
-    private List<Usuario> usuario;
+    private List<Student> usuario;
 
 
     public Curso() {

@@ -3,17 +3,14 @@ package com.nocountry.backend.entities;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 @Data
 @AllArgsConstructor
 @Table(name = "USER")
-public class Usuario {
+public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false, unique = true)
@@ -35,19 +32,14 @@ public class Usuario {
 
     private int curso_id;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "Role")
-    private Role role;
-
-
     @ManyToOne
     @JoinColumn(name = "curso_id" , insertable = false, updatable = false)
     private Curso curso;
 
-    public Usuario() {
+    public Student() {
     }
 
-    public Usuario(Integer id) {
+    public Student(Integer id) {
         this.id = id;
     }
 
