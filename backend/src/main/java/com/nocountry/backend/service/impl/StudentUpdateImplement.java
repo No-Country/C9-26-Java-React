@@ -1,7 +1,8 @@
-package com.nocountry.backend.services.Implements;
+package com.nocountry.backend.service.impl;
 
-import com.nocountry.backend.entities.Student;
-import com.nocountry.backend.services.StudentService;
+import com.nocountry.backend.model.Student;
+import com.nocountry.backend.service.StudentService;
+
 import org.springframework.stereotype.Component;
 
 @Component
@@ -12,7 +13,7 @@ public class StudentUpdateImplement {
         this.studentService = studentService;
     }
 
-    public Student update(Student nuevo, Integer id){
-        return studentService.update(nuevo,id);
+    public Student update(Student nuevo, Integer id) {
+        return studentService.update(nuevo, id);
     }
 }

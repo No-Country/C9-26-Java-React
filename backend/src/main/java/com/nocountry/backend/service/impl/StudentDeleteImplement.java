@@ -1,7 +1,8 @@
-package com.nocountry.backend.services.Implements;
+package com.nocountry.backend.service.impl;
 
-import com.nocountry.backend.services.StudentService;
 import org.springframework.stereotype.Component;
+
+import com.nocountry.backend.service.StudentService;
 
 @Component
 public class StudentDeleteImplement {
@@ -11,7 +12,7 @@ public class StudentDeleteImplement {
         this.studentService = studentService;
     }
 
-    public void delete(int id){
+    public void delete(int id) {
         studentService.delete(id);
     }
 }

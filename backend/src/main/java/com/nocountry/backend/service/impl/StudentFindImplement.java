@@ -1,7 +1,8 @@
-package com.nocountry.backend.services.Implements;
+package com.nocountry.backend.service.impl;
 
-import com.nocountry.backend.entities.Student;
-import com.nocountry.backend.services.StudentService;
+import com.nocountry.backend.model.Student;
+import com.nocountry.backend.service.StudentService;
+
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -15,12 +16,12 @@ public class StudentFindImplement {
         this.studentService = studentService;
     }
 
-    public List<Student> getAll(){
+    public List<Student> getAll() {
         return studentService.getAll();
     }
 
-    public Optional<Student> findById(int id){
-        return studentService.getForId(id);
+    public Optional<Student> findById(int id) {
+        return studentService.getById(id);
     }
 
 }
