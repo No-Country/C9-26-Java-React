@@ -11,7 +11,7 @@ import java.util.List;
 @Table(name = "COURSE")
 public class Curso {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
@@ -21,10 +21,12 @@ public class Curso {
 
     private String dia;
 
+    @Column(nullable = true)
     private int horario;
 
     private String modalidad;
 
+    @Column(nullable = true)
     private int nivel;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "curso")
