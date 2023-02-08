@@ -37,8 +37,8 @@ function Servicios() {
                     <Col className='d-flex flex-column justify-content-center'>
                         <h1 className="text-center text-light mb-5">Nuestros Servicios</h1>
                         <Stack direction="horizontal" gap={3} className='d-flex justify-content-center align-items-stretch flex-wrap'>
-                            {servicios.map((servicio) => (
-                                <ServiceCard data={servicio} />
+                            {servicios.map((servicio, index) => (
+                                <ServiceCard key={index} data={servicio} />
                             ))}
                         </Stack>
                     </Col>
