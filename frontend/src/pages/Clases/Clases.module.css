@@ -1,0 +1,44 @@
+.clases_container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.12rem;
+}
+
+.clases_text {
+    width: 500px;
+    text-align: center;
+    margin-top: 1.75rem;
+}
+
+.form_section {
+    margin-left: 7rem;
+}
+
+.form_container {
+    background-color: #D9D9D9;
+    border-radius: 20px;
+    padding: 25px;
+}
+
+.input_container input, select{
+    width: 27rem!important;
+    height: 2.62rem!important;
+    border-radius: 20px!important;
+    margin-bottom: 24px!important;
+    padding-left: 20px!important;
+    border: none;
+}
+
+.submit_container {
+    display: flex;
+    justify-content: center;
+}
+
+.submit_container input {
+    width: 9.87rem;
+    height: 2.25rem;
+    border-radius: 40px;
+    border: none;
+    color: #fff;
+    background-color: #222221;
+}

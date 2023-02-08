@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { HOME, LOGIN, PROFILE, SERVICES } from './config/routes/paths'
+import { HOME, LOGIN, PROFILE, CLASS, EXAMS, SERVICES } from './config/routes/paths'
 import { PrivateRoute, PublicRoute } from './components'
-import { Home, Login, Profile, Servicios } from './pages'
+import { Home, Login, Profile, Clases, Examenes, Servicios } from './pages'
 
 
 function App() {
@@ -11,6 +11,8 @@ function App() {
         <Route path='/' element={<PublicRoute />}>
           <Route path={HOME} element={<Home />} />
           <Route path={LOGIN} element={<Login />} />
+          <Route path={CLASS} element={<Clases />} />
+          <Route path={EXAMS} element={<Examenes />} />
           <Route path={SERVICES} element={<Servicios />} />
         </Route>
         <Route path={PROFILE} element={<PrivateRoute />}>
