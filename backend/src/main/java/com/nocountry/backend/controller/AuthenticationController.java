@@ -1,10 +1,7 @@
 package com.nocountry.backend.controller;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.nocountry.backend.dto.AuthenticationRequestDto;
 import com.nocountry.backend.dto.AuthenticationResponseDto;
@@ -25,7 +22,7 @@ public class AuthenticationController {
         return ResponseEntity.ok(service.register(request));
     }
 
-    @PostMapping("/login")
+    @GetMapping("/login")
     public ResponseEntity<AuthenticationResponseDto> login(
             @RequestBody AuthenticationRequestDto request) {
         return ResponseEntity.ok(service.authenticate(request));
