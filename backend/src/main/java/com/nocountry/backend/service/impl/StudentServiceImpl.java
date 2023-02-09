@@ -1,54 +1,44 @@
 package com.nocountry.backend.service.impl;
 
-import com.nocountry.backend.model.Student;
-import com.nocountry.backend.repository.StudentRepository;
-import com.nocountry.backend.service.StudentService;
-
+import com.nocountry.backend.dto.StudentDto;
+import com.nocountry.backend.mapper.StudentMapper;
+import com.nocountry.backend.repository.IStudentRepository;
+import com.nocountry.backend.service.IStudentService;
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class StudentServiceImpl implements StudentService {
+public class StudentServiceImpl implements IStudentService {
 
-    private final StudentRepository repository;
+    private final IStudentRepository repository;
+
+    private final StudentMapper mapper;
 
     @Override
-    public List<Student> getAll() {
-        return repository.findAll();
+    public List<StudentDto> getAll() {
+        return null;
     }
 
     @Override
-    public void delete(int id) {
+    public Optional<StudentDto> getById(Long id) {
+        return null;
+    }
+
+    @Override
+    public StudentDto create(StudentDto student) {
+        return null;
+    }
+
+    @Override
+    public StudentDto update(StudentDto student, Long id) {
+        return null;
+    }
+
+    @Override
+    public void delete(Long id) {
         repository.deleteById(id);
-    }
-
-    @Override
-    public Optional<Student> getById(int id) {
-        return repository.findById(id);
-    }
-
-    @Override
-    public Student create(Student nuevo) {
-        return repository.save(nuevo);
-    }
-
-    @Override
-    public Student update(Student newStudent, Integer id) {
-        return repository.findById(id)
-                .map(Student -> {
-                    Student.setFirstName(newStudent.getLastName());
-                    Student.setLastName(newStudent.getLastName());
-                    Student.setDni(newStudent.getDni());
-                    Student.setBirthdate(newStudent.getBirthdate());
-                    Student.setAddress(newStudent.getAddress());
-                    Student.setPhone(newStudent.getPhone());
-                    Student.setLevel(newStudent.getLevel());
-                    return repository.save(newStudent);
-                }).get();
     }
 }

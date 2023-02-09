@@ -1,12 +1,11 @@
 package com.nocountry.backend.controller;
 
-import com.nocountry.backend.model.Student;
-import com.nocountry.backend.service.StudentService;
-
+import com.nocountry.backend.dto.StudentDto;
+import com.nocountry.backend.service.IStudentService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -14,25 +13,26 @@ import java.util.List;
 @RequiredArgsConstructor
 public class StudentController {
 
-    private final StudentService service;
+    private final IStudentService service;
 
     @GetMapping("/")
-    List<Student> getAll() {
-        return service.getAll();
-    }
-
-    @PutMapping("/{id}")
-    Student update(@RequestBody Student nuevo, @PathVariable Integer id) {
-        return service.update(nuevo, id);
+    public ResponseEntity<List<StudentDto>> getAll() {
+        return new ResponseEntity<>(service.getAll(), HttpStatus.ACCEPTED);
     }
 
     @PostMapping("/create")
-    Student create(@RequestBody Student nuevo) {
-        return service.create(nuevo);
+    public ResponseEntity<StudentDto> create(@RequestBody StudentDto student) {
+        return new ResponseEntity<>(service.create(student), HttpStatus.CREATED);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<StudentDto> update(@RequestBody StudentDto student, @PathVariable Long id) {
+        return new ResponseEntity<>(service.update(student, id), HttpStatus.ACCEPTED);
     }
 
     @DeleteMapping("/{id}")
-    void delete(@PathVariable Integer id) {
+    public ResponseEntity<String> delete(@PathVariable Long id) {
         service.delete(id);
+        return new ResponseEntity<>("student deleted", HttpStatus.ACCEPTED);
     }
 }

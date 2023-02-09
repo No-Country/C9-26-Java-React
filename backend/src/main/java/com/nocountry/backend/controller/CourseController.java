@@ -1,11 +1,11 @@
 package com.nocountry.backend.controller;
 
-import com.nocountry.backend.model.Course;
-import com.nocountry.backend.service.CourseService;
+import com.nocountry.backend.dto.CourseDto;
+import com.nocountry.backend.service.ICourseService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -13,36 +13,26 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CourseController {
 
-    private CourseService courseService;
-
-    @Autowired
-    public CourseController(CourseService courseService) {
-        this.courseService = courseService;
-    }
+    private final ICourseService service;
 
     @GetMapping("/")
-    List<Course> getAll() {
-        return courseService.getAll();
-    }
-
-    @GetMapping("/{id}")
-    Course getCourse(@RequestBody Long id) {
-        return courseService.getById(id);
-    }
-
-
-    @PutMapping("/{id}")
-    Course update(@RequestBody Course nuevo, @PathVariable Long id) {
-        return courseService.update(nuevo, id);
+    public ResponseEntity<List<CourseDto>> getAll() {
+        return ResponseEntity.ok(service.getAll());
     }
 
     @PostMapping("/create")
-    Course create(@RequestBody Course nuevo) {
-        return courseService.create(nuevo);
+    public ResponseEntity<CourseDto> create(@RequestBody CourseDto course) {
+        return new ResponseEntity<>(service.create(course), HttpStatus.CREATED);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<CourseDto> update(@RequestBody CourseDto course, @PathVariable Long id) {
+        return new ResponseEntity<>(service.update(course, id), HttpStatus.ACCEPTED);
     }
 
     @DeleteMapping("/{id}")
-    void delete(@PathVariable Long id) {
-        courseService.delete(id);
+    public ResponseEntity<String> delete(@PathVariable Long id) {
+        service.delete(id);
+        return new ResponseEntity<>("course deleted", HttpStatus.ACCEPTED);
     }
 }
