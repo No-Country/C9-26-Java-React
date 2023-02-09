@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { HOME, LOGIN, PROFILE, SERVICES } from './config/routes/paths'
 import { PrivateRoute, PublicRoute } from './components'
@@ -19,19 +18,7 @@ function App() {
         </Route>
       </Routes>
     </BrowserRouter>
-=======
-import './App.css'
-import Home from './pages/Home/Home'
-import Servicios from './pages/Servicios/Servicios'
-
-function App() {
-  return (
-    <div className="App">      
-      <Home />
-      <Servicios />
-    </div>
->>>>>>> 73092d8 (Home)
   )
-}
+  }
 
 export default App
