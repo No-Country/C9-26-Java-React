@@ -44,8 +44,4 @@ public class Student {
 
     @Enumerated(EnumType.STRING)
     private Level level;
-
-    @ManyToOne
-    @JoinColumn(name = "course_id", insertable = false, updatable = false)
-    private Course course;
 }

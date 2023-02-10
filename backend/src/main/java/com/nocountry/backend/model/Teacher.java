@@ -28,7 +28,4 @@ public class Teacher {
 
     @Column(name = "last_name")
     private String lastName;
-
-    @OneToMany(mappedBy = "teacher")
-    private List<Course> courses;
 }

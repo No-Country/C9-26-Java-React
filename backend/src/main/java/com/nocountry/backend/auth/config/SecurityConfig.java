@@ -8,15 +8,15 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import com.nocountry.backend.auth.config.jwt.JwtAuthenticationFilter;
+import com.nocountry.backend.auth.config.jwt.JwtAuthFilter;
 import lombok.RequiredArgsConstructor;
 
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
-public class SecurityConfiguration {
+public class SecurityConfig {
 
-    private final JwtAuthenticationFilter JwtAuthenticationFilter;
+    private final JwtAuthFilter JwtAuthenticationFilter;
 
     private final AuthenticationProvider authenticationProvider;
 

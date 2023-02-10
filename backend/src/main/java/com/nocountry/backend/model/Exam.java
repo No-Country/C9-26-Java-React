@@ -38,8 +38,4 @@ public class Exam {
     private Integer listeningNote;
 
     private Boolean status;
-
-    // hacer las relaciones
-    private Course course;
-    private Student student;
 }

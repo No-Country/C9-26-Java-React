@@ -45,11 +45,4 @@ public class Course {
 
     @Column(name = "monthly_fee")
     private Double monthlyFee;
-
-    @ManyToOne
-    @JoinColumn(name = "teacher_id")
-    private Teacher teacher;
-
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "course")
-    private List<Student> students;
 }
