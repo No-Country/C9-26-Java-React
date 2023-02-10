@@ -41,7 +41,7 @@ const Clases = () => {
                                 <input type="text" name="" id="" placeholder="Tel. +54 9" />
                             </div>
                             <div className={styles.input_container}>
-                                <input type="text" name="" id="" placeholder="ingresa@tuemail.com" />
+                                <input type="email" name="" id="" placeholder="ingresa@tuemail.com" />
                             </div>
                             <div className={styles.input_container}>
                                 <Form.Select>

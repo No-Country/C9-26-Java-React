@@ -21,7 +21,8 @@
 }
 
 .input_container input, select{
-    width: 27rem!important;
+    width: 100%;
+    max-width: 27rem!important;
     height: 2.62rem!important;
     border-radius: 20px!important;
     margin-bottom: 24px!important;
@@ -35,7 +36,8 @@
 }
 
 .submit_container input {
-    width: 9.87rem;
+    width: 100%;
+    max-width: 9.87rem;
     height: 2.25rem;
     border-radius: 40px;
     border: none;
