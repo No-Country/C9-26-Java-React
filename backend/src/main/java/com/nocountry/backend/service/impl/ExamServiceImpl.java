@@ -3,7 +3,6 @@ package com.nocountry.backend.service.impl;
 import com.nocountry.backend.dto.ExamDto;
 import com.nocountry.backend.mapper.ExamMapper;
 import com.nocountry.backend.model.Exam;
-import com.nocountry.backend.model.Teacher;
 import com.nocountry.backend.repository.IExamRepository;
 import com.nocountry.backend.service.IExamService;
 import jakarta.persistence.EntityNotFoundException;
@@ -28,6 +27,11 @@ public class ExamServiceImpl implements IExamService {
     @Override
     public Optional<ExamDto> getById(Long id) {
         return Optional.ofNullable(mapper.convertToDto(repository.getReferenceById(id)));
+    }
+
+    @Override
+    public List<ExamDto> getExamsByStudent_id(Long studentId) {
+        return mapper.convertToDtoList(repository.getExamsByStudent_id(studentId));
     }
 
     @Override

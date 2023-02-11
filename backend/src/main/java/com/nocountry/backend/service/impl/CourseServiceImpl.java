@@ -9,6 +9,7 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -22,10 +23,9 @@ public class CourseServiceImpl implements ICourseService {
     public List<CourseDto> getAll() { return mapper.convertToDtoList(repository.findAll()); }
 
     @Override
-    public CourseDto getById(Long id) {
-        return mapper.convertToDto(repository.getReferenceById(id));
+    public Optional<CourseDto> getById(Long id) {
+        return Optional.ofNullable(mapper.convertToDto(repository.getReferenceById(id)));
     }
-
     @Override
     public CourseDto create(CourseDto course) {
         return mapper.convertToDto(repository.save(mapper.convertDtoToEntity(course)));
