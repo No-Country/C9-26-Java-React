@@ -1,0 +1,43 @@
+.examenes_bg {
+    position: relative;
+    isolation: isolate;
+}
+
+.examenes_bg::after {
+    content: "";
+    background-image: url("../../assets/images/background.png");
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    opacity: 97%;
+}
+
+.examenes_bg > div {
+    margin-top: 5.93rem;
+}
+
+.examenes_title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    text-align: center;
+    color: #ffffff;
+}
+
+.examenes_subtitle {
+    font-weight: 700;
+    font-size: 24px;
+    color: #ffffff;
+    margin-bottom: 32px;
+}
+
+.examenesCard_bgGreen {
+    background-color: #0ECECEB2!important;
+}
+
+.examenesCard_bgBlack {
+    background-color: #000000!important;
+}
+
+.examenesCard_bgPink {
+    background-color: #FA68D199!important;
+}
