@@ -6,13 +6,13 @@ import com.nocountry.backend.dto.StudentDto;
 
 public interface IStudentService {
 
-    public List<StudentDto> getAll();
+    List<StudentDto> getAll();
 
-    public Optional<StudentDto> getById(Long id);
+    Optional<StudentDto> getById(Long id);
 
-    public StudentDto create(StudentDto student);
+    StudentDto create(StudentDto student);
 
-    public StudentDto update(StudentDto student, Long id);
+    StudentDto update(StudentDto student, Long id);
 
-    public void delete(Long id);
+    void delete(Long id);
 }
