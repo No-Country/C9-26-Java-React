@@ -1,7 +1,6 @@
 package com.nocountry.backend.auth.dto;
 
 import com.nocountry.backend.enums.Level;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
