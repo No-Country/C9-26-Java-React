@@ -2,8 +2,10 @@ package com.nocountry.backend.service.impl;
 
 import com.nocountry.backend.dto.CourseDto;
 import com.nocountry.backend.mapper.CourseMapper;
+import com.nocountry.backend.model.Course;
 import com.nocountry.backend.repository.ICourseRepository;
 import com.nocountry.backend.service.ICourseService;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -18,22 +20,33 @@ public class CourseServiceImpl implements ICourseService {
 
     @Override
     public List<CourseDto> getAll() {
-        return null;
+        return mapper.convertToDtoList(repository.findAll());
     }
 
     @Override
     public CourseDto getById(Long id) {
-        return null;
+        return mapper.convertToDto(repository.getReferenceById(id));
     }
 
     @Override
     public CourseDto create(CourseDto course) {
-        return null;
+        return mapper.convertToDto(repository.save(mapper.convertDtoToEntity(course)));
+
     }
+
 
     @Override
     public CourseDto update(CourseDto course, Long id) {
-        return null;
+        Course updatedCourse= repository.findById(id).orElseThrow(()->new EntityNotFoundException());
+        updatedCourse.setName(course.getName());
+        updatedCourse.setSchedule(course.getSchedule());
+        updatedCourse.setMode(course.getMode());
+        updatedCourse.setMonthlyFee(course.getMonthlyFee());
+        updatedCourse.setTuitionFee(course.getTuitionFee());
+        updatedCourse.setLevel(course.getLevel());
+
+
+        return  mapper.convertToDto(repository.save(updatedCourse));
     }
 
     @Override
