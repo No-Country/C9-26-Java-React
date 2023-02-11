@@ -1,18 +1,8 @@
-.examenes_bg {
-    position: relative;
-    isolation: isolate;
-}
-
-.examenes_bg::after {
-    content: "";
-    background-image: url("../../assets/images/background.png");
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    opacity: 97%;
-}
-
-.examenes_bg > div {
+.examenes_container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     margin-top: 5.93rem;
 }
 

@@ -1,0 +1,125 @@
+/* Formulario */
+
+.consult_container {
+    max-width: 53.43rem;
+    background-color: #d9d9d9;
+    padding: 20px;
+    border-radius: 20px;
+    margin-top: 17px;
+    background-color: #0ECECE8F;
+}
+
+.consult_inputName input {
+    width: 100%;
+    max-width: 50.12rem;
+    max-height: 2.62rem;
+    border: none;
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 24px;
+}
+
+.consult_inputTel {
+    width: 100%;
+    max-width: 20.87rem;
+    max-height: 2.62rem;
+    border: none;
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 24px;
+    margin-right: 13px;
+}
+
+.consult_inputEmail {
+    width: 100%;
+    max-width: 28.37rem;
+    max-height: 2.62rem;
+    border: none;
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 24px;
+    margin-right: 13px;
+}
+
+.consult_checkboxText {
+    font-size: 1.27rem;
+}
+
+.consult_checkboxEmail {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 11px;
+    width: 100%;
+    max-width: 215px;
+    height: 42px;
+    border-radius: 20px;
+    background-color: #f5f5f5;
+}
+
+.consult_checkboxTel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 11px;
+    width: 100%;
+    max-width: 215px;
+    height: 42px;
+    border-radius: 20px;
+    background-color: #f5f5f5;
+}
+
+.consult_checkboxEmail input,
+.consult_checkboxTel input {
+    width: 1.62rem;
+    height: 1.62rem;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid black;
+    appearance: none;
+    -webkit-appearance: none;
+    font-size: 2rem;
+}
+
+.consult_checkboxEmail input:checked,
+.consult_checkboxTel input:checked {
+    background-color: black;
+}
+
+textarea {
+    width: 100%;
+    max-width: 50.12rem;
+    height: 19.12rem;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+
+/* Turnero */
+
+.consult_turnos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 25.62rem;
+    background-color: #D9D9D9;
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 17px;
+    background-color: #0ECECE8F;
+}
+
+.consult_turnosBox {
+    width: 100%;
+    max-width: 21.87rem;
+    height: 19.62rem;
+    background-color: #FFFFFF;
+    margin-top: 2.5rem;
+}
+
+.consult_turnosText {
+    width: 9.50rem;
+    color: #000000;
+}

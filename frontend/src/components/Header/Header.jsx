@@ -49,8 +49,10 @@ function Header() {
                             <NavLink to="/class" className='nav-link text-uppercase'>Clases</NavLink>
                             <NavLink to="/exams" className='nav-link text-uppercase'>Examenes</NavLink>
                             <NavLink to="/services" className='nav-link text-uppercase'>Servicios</NavLink>
-                            <Button variant="dark" style={{ width: '180px' }} className='text-uppercase rounded-5 text-light px-5 ms-5'>Consultas</Button>
-
+                            <NavLink to="/consultation">
+                                <Button variant="dark" style={{ width: '180px' }} className='text-uppercase rounded-5 text-light px-5 ms-5'>Consultas</Button>
+                            </NavLink>
+                            
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

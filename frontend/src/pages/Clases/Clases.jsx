@@ -5,8 +5,8 @@ import styles from './Clases.module.css';
 const Clases = () => {
     return (
         <>
-            <main className={styles.clases_bg}>
-                <div className='container d-flex'>
+            <main className="background">
+                <div className={`${styles.clases_margin} container`}>
                     
                     <section>
                         <h2 className='text-center text-white fw-bold'>Cursos para cada necesidad</h2>

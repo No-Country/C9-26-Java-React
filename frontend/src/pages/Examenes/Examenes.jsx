@@ -5,8 +5,8 @@ import styles from './Examenes.module.css';
 const Examenes = () => {
     return (
         <>
-            <main className={styles.examenes_bg}>
-                <div className="container d-flex flex-column justify-content-center align-items-center">
+            <main className="background">
+                <div className={`${styles.examenes_container} container`}>
                     <h2 className={styles.examenes_title}>Exámenes Internacionales</h2>
 
                     <section className="d-flex gap-5 mt-5">

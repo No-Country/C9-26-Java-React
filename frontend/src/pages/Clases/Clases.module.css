@@ -1,19 +1,6 @@
-.clases_bg {
-    position: relative;
-    isolation: isolate;
-}
-
-.clases_bg:after {
-    content: "";
-    background-image: url("../../assets/images/background.png");
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    opacity: 97%;
-}
-
-.clases_bg > div {
+.clases_margin {
     margin-top: 2.37rem;
+    display: flex;
 }
 
 .clases_container {
