@@ -11,5 +11,21 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ExamDto {
 
+    private Long id;
+
     private String name;
+
+    private String examDate;
+
+    private Double examFee;
+
+    private Integer grammarNote;
+
+    private Integer speakingNote;
+
+    private Integer writingNote;
+
+    private Integer listeningNote;
+
+    private Boolean status;
 }
