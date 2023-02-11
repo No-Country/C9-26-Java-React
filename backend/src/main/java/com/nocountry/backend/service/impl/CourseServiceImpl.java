@@ -19,9 +19,7 @@ public class CourseServiceImpl implements ICourseService {
     private final CourseMapper mapper;
 
     @Override
-    public List<CourseDto> getAll() {
-        return mapper.convertToDtoList(repository.findAll());
-    }
+    public List<CourseDto> getAll() { return mapper.convertToDtoList(repository.findAll()); }
 
     @Override
     public CourseDto getById(Long id) {
@@ -31,26 +29,21 @@ public class CourseServiceImpl implements ICourseService {
     @Override
     public CourseDto create(CourseDto course) {
         return mapper.convertToDto(repository.save(mapper.convertDtoToEntity(course)));
-
     }
 
 
     @Override
     public CourseDto update(CourseDto course, Long id) {
-        Course updatedCourse= repository.findById(id).orElseThrow(()->new EntityNotFoundException());
+        Course updatedCourse= repository.findById(id).orElseThrow(EntityNotFoundException::new);
         updatedCourse.setName(course.getName());
         updatedCourse.setSchedule(course.getSchedule());
         updatedCourse.setMode(course.getMode());
         updatedCourse.setMonthlyFee(course.getMonthlyFee());
         updatedCourse.setTuitionFee(course.getTuitionFee());
         updatedCourse.setLevel(course.getLevel());
-
-
         return  mapper.convertToDto(repository.save(updatedCourse));
     }
 
     @Override
-    public void delete(Long id) {
-        repository.deleteById(id);
-    }
+    public void delete(Long id) { repository.deleteById(id);  }
 }
