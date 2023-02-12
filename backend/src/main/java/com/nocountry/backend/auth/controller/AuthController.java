@@ -1,5 +1,6 @@
 package com.nocountry.backend.auth.controller;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.nocountry.backend.auth.dto.AuthRequestDto;
@@ -18,12 +19,12 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity<AuthResponseDto> register(
             @RequestBody RegisterRequestDto request) {
-        return ResponseEntity.ok(service.register(request));
+        return new ResponseEntity<>(service.register(request), HttpStatus.CREATED);
     }
 
     @PostMapping("/login")
     public ResponseEntity<AuthResponseDto> login(
             @RequestBody AuthRequestDto request) {
-        return ResponseEntity.ok(service.authenticate(request));
+        return new ResponseEntity<>(service.login(request), HttpStatus.ACCEPTED);
     }
 }

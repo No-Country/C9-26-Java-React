@@ -38,8 +38,6 @@ public class AuthenticationServiceImpl implements IAuthenticationService {
                                 .role(Role.USER)
                                 .build();
 
-                userRepository.save(user);
-
                 var student = Student.builder()
                                 .firstName(request.getFirstName())
                                 .lastName(request.getLastName())
@@ -50,6 +48,10 @@ public class AuthenticationServiceImpl implements IAuthenticationService {
                                 .level(request.getLevel())
                                 .build();
 
+                user.setStudent(student);
+                student.setUser(user);
+
+                userRepository.save(user);
                 studentRepository.save(student);
 
                 var jwt = jwtProvider.generateToken(user);
@@ -60,7 +62,7 @@ public class AuthenticationServiceImpl implements IAuthenticationService {
         }
 
         @Override
-        public AuthResponseDto authenticate(AuthRequestDto request) {
+        public AuthResponseDto login(AuthRequestDto request) {
                 authenticationManager
                                 .authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(),
                                                 request.getPassword()));

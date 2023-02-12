@@ -1,18 +1,15 @@
 package com.nocountry.backend.service;
 
 import java.util.List;
-import java.util.Optional;
-import com.nocountry.backend.dto.StudentDto;
+import com.nocountry.backend.model.Student;
 
 public interface IStudentService {
 
-    public List<StudentDto> getAll();
+    public List<Student> getAll();
 
-    public Optional<StudentDto> getById(Long id);
+    public Student getById(Long id);
 
-    public StudentDto create(StudentDto student);
-
-    public StudentDto update(StudentDto student, Long id);
+    public Student update(Student student, Long id);
 
     public void delete(Long id);
 }

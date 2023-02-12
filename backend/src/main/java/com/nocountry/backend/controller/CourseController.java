@@ -17,7 +17,12 @@ public class CourseController {
 
     @GetMapping("/")
     public ResponseEntity<List<CourseDto>> getAll() {
-        return ResponseEntity.ok(service.getAll());
+        return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<CourseDto> getById(@PathVariable Long id) {
+        return new ResponseEntity<>(service.getById(id), HttpStatus.OK);
     }
 
     @PostMapping("/create")

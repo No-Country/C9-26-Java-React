@@ -1,6 +1,6 @@
 package com.nocountry.backend.controller;
 
-import com.nocountry.backend.dto.StudentDto;
+import com.nocountry.backend.model.Student;
 import com.nocountry.backend.service.IStudentService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,17 +16,17 @@ public class StudentController {
     private final IStudentService service;
 
     @GetMapping("/")
-    public ResponseEntity<List<StudentDto>> getAll() {
-        return new ResponseEntity<>(service.getAll(), HttpStatus.ACCEPTED);
+    public ResponseEntity<List<Student>> getAll() {
+        return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
     }
 
-    @PostMapping("/create")
-    public ResponseEntity<StudentDto> create(@RequestBody StudentDto student) {
-        return new ResponseEntity<>(service.create(student), HttpStatus.CREATED);
+    @GetMapping("/{id}")
+    public ResponseEntity<Student> getById(@PathVariable Long id) {
+        return new ResponseEntity<>(service.getById(id), HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<StudentDto> update(@RequestBody StudentDto student, @PathVariable Long id) {
+    public ResponseEntity<Student> update(@RequestBody Student student, @PathVariable Long id) {
         return new ResponseEntity<>(service.update(student, id), HttpStatus.ACCEPTED);
     }
 

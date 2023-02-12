@@ -8,5 +8,5 @@ public interface IAuthenticationService {
 
     public AuthResponseDto register(RegisterRequestDto request);
 
-    public AuthResponseDto authenticate(AuthRequestDto request);
+    public AuthResponseDto login(AuthRequestDto request);
 }

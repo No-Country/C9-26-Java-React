@@ -23,8 +23,8 @@ public class DefaultAdminRunner implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         var admin = User.builder()
-                .email("admin@brightenglish.com")
-                .password(passwordEncoder.encode("bright2023"))
+                .email("admin@nocountry.com")
+                .password(passwordEncoder.encode("admin"))
                 .role(Role.ADMIN)
                 .build();
 
