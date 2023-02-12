@@ -1,12 +1,20 @@
 package com.nocountry.backend.controller;
 
-import com.nocountry.backend.dto.CourseDto;
+import com.nocountry.backend.model.Course;
 import com.nocountry.backend.service.ICourseService;
+import lombok.RequiredArgsConstructor;
+import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.*;
-import java.util.List;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/v1/courses")
@@ -15,27 +23,31 @@ public class CourseController {
 
     private final ICourseService service;
 
-    @GetMapping("/")
-    public ResponseEntity<List<CourseDto>> getAll() {
-        return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
-    }
-
     @GetMapping("/{id}")
-    public ResponseEntity<CourseDto> getById(@PathVariable Long id) {
+    public ResponseEntity<Course> getById(@PathVariable Long id) {
         return new ResponseEntity<>(service.getById(id), HttpStatus.OK);
     }
 
-    @PostMapping("/create")
-    public ResponseEntity<CourseDto> create(@RequestBody CourseDto course) {
+    @GetMapping("/all")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<List<Course>> getAll() {
+        return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
+    }
+
+    @PostMapping("/")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<Course> create(@RequestBody Course course) {
         return new ResponseEntity<>(service.create(course), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<CourseDto> update(@RequestBody CourseDto course, @PathVariable Long id) {
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<Course> update(@RequestBody Course course, @PathVariable Long id) {
         return new ResponseEntity<>(service.update(course, id), HttpStatus.ACCEPTED);
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> delete(@PathVariable Long id) {
         service.delete(id);
         return new ResponseEntity<>("course deleted", HttpStatus.ACCEPTED);

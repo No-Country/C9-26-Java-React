@@ -23,9 +23,9 @@ public class DefaultAdminRunner implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         var admin = User.builder()
-                .email("admin@nocountry.com")
+                .username("admin@nocountry.com")
                 .password(passwordEncoder.encode("admin"))
-                .role(Role.ADMIN)
+                .role(Role.ADMIN.name())
                 .build();
 
         repository.save(admin);

@@ -33,9 +33,9 @@ public class AuthenticationServiceImpl implements IAuthenticationService {
         @Override
         public AuthResponseDto register(RegisterRequestDto request) {
                 var user = User.builder()
-                                .email(request.getEmail())
+                                .username(request.getUsername())
                                 .password(passwordEncoder.encode(request.getPassword()))
-                                .role(Role.USER)
+                                .role(Role.USER.name())
                                 .build();
 
                 var student = Student.builder()
@@ -64,10 +64,10 @@ public class AuthenticationServiceImpl implements IAuthenticationService {
         @Override
         public AuthResponseDto login(AuthRequestDto request) {
                 authenticationManager
-                                .authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(),
+                                .authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(),
                                                 request.getPassword()));
 
-                var user = userRepository.findByEmail(request.getEmail()).orElseThrow();
+                var user = userRepository.findByUsername(request.getUsername()).orElseThrow();
                 var jwt = jwtProvider.generateToken(user);
 
                 return AuthResponseDto.builder()

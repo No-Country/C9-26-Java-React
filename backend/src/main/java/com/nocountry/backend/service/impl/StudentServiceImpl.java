@@ -14,13 +14,13 @@ public class StudentServiceImpl implements IStudentService {
     private final IStudentRepository repository;
 
     @Override
-    public List<Student> getAll() {
-        return repository.findAll();
+    public Student getById(Long id) {
+        return repository.findById(id).orElse(null);
     }
 
     @Override
-    public Student getById(Long id) {
-        return repository.findById(id).orElse(null);
+    public List<Student> getAll() {
+        return repository.findAll();
     }
 
     @Override

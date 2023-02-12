@@ -5,9 +5,9 @@ import com.nocountry.backend.model.Student;
 
 public interface IStudentService {
 
-    public List<Student> getAll();
-
     public Student getById(Long id);
+
+    public List<Student> getAll();
 
     public Student update(Student student, Long id);
 
