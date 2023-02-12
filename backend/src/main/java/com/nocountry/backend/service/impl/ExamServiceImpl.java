@@ -1,7 +1,6 @@
 package com.nocountry.backend.service.impl;
 
 import com.nocountry.backend.dto.ExamDto;
-import com.nocountry.backend.mapper.ExamMapper;
 import com.nocountry.backend.repository.IExamRepository;
 import com.nocountry.backend.service.IExamService;
 import lombok.RequiredArgsConstructor;
@@ -14,8 +13,6 @@ import java.util.Optional;
 public class ExamServiceImpl implements IExamService {
 
     private final IExamRepository repository;
-
-    private final ExamMapper mapper;
 
     @Override
     public List<ExamDto> getAll() {

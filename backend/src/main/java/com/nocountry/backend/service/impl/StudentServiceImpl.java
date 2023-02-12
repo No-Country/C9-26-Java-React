@@ -1,6 +1,5 @@
 package com.nocountry.backend.service.impl;
 
-import com.nocountry.backend.mapper.StudentMapper;
 import com.nocountry.backend.model.Student;
 import com.nocountry.backend.repository.IStudentRepository;
 import com.nocountry.backend.service.IStudentService;
@@ -13,8 +12,6 @@ import java.util.List;
 public class StudentServiceImpl implements IStudentService {
 
     private final IStudentRepository repository;
-
-    private final StudentMapper mapper;
 
     @Override
     public List<Student> getAll() {

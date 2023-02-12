@@ -1,7 +1,6 @@
 package com.nocountry.backend.service.impl;
 
 import com.nocountry.backend.dto.CourseDto;
-import com.nocountry.backend.mapper.CourseMapper;
 import com.nocountry.backend.repository.ICourseRepository;
 import com.nocountry.backend.service.ICourseService;
 import lombok.RequiredArgsConstructor;
@@ -13,8 +12,6 @@ import java.util.List;
 public class CourseServiceImpl implements ICourseService {
 
     private final ICourseRepository repository;
-
-    private final CourseMapper mapper;
 
     @Override
     public List<CourseDto> getAll() {
