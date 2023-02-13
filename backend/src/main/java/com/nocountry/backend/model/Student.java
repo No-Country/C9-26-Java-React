@@ -1,7 +1,8 @@
 package com.nocountry.backend.model;
 
+import com.nocountry.backend.auth.model.User;
 import com.nocountry.backend.enums.Level;
-import jakarta.persistence.Column;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -10,12 +11,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -26,10 +30,8 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "first_name")
     private String firstName;
 
-    @Column(name = "last_name")
     private String lastName;
 
     private String imageUrl;
@@ -44,4 +46,13 @@ public class Student {
 
     @Enumerated(EnumType.STRING)
     private Level level;
+
+    @OneToOne(mappedBy = "student", cascade = CascadeType.ALL)
+    private User user;
+
+    private Long courseId;
+
+    @ManyToOne
+    @JoinColumn(name = "courseId")
+    private Course course;
 }

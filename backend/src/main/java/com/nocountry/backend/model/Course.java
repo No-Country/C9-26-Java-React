@@ -40,9 +40,16 @@ public class Course {
 
     private String schedule;
 
-    @Column(name = "tuition_fee")
     private Double tuitionFee;
 
-    @Column(name = "monthly_fee")
     private Double monthlyFee;
+
+    private Long teacherId;
+
+    @ManyToOne
+    @JoinColumn(name = "teacherId")
+    private Teacher teacher;
+
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Student> students;
 }

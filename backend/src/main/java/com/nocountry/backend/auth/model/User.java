@@ -5,14 +5,16 @@ import java.util.List;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import com.nocountry.backend.auth.enums.Role;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.nocountry.backend.model.Student;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,7 +26,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "_users")
+@Table(name = "users")
 public class User implements UserDetails {
 
     @Id
@@ -32,16 +34,20 @@ public class User implements UserDetails {
     private Long id;
 
     @Column(unique = true)
-    private String email;
+    private String username;
 
     private String password;
 
-    @Enumerated(EnumType.STRING)
-    private Role role;
+    private String role;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "student_id")
+    @JsonIgnore
+    private Student student;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(role.name()));
+        return List.of(new SimpleGrantedAuthority("ROLE_" + role));
     }
 
     @Override
@@ -51,7 +57,7 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return email;
+        return username;
     }
 
     @Override

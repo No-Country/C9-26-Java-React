@@ -1,7 +1,6 @@
 package com.nocountry.backend.service.impl;
 
 import com.nocountry.backend.dto.TeacherDto;
-import com.nocountry.backend.mapper.TeacherMapper;
 import com.nocountry.backend.repository.ITeacherRepository;
 import com.nocountry.backend.service.ITeacherService;
 import lombok.RequiredArgsConstructor;
@@ -14,8 +13,6 @@ import java.util.Optional;
 public class TeacherServiceImpl implements ITeacherService {
 
     private final ITeacherRepository repository;
-
-    private final TeacherMapper mapper;
 
     @Override
     public List<TeacherDto> getAll() {

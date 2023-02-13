@@ -1,12 +1,19 @@
 package com.nocountry.backend.controller;
 
-import com.nocountry.backend.dto.StudentDto;
+import com.nocountry.backend.model.Student;
 import com.nocountry.backend.service.IStudentService;
+import lombok.RequiredArgsConstructor;
+import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.*;
-import java.util.List;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/v1/students")
@@ -15,22 +22,24 @@ public class StudentController {
 
     private final IStudentService service;
 
-    @GetMapping("/")
-    public ResponseEntity<List<StudentDto>> getAll() {
-        return new ResponseEntity<>(service.getAll(), HttpStatus.ACCEPTED);
+    @GetMapping("/{id}")
+    public ResponseEntity<Student> getById(@PathVariable Long id) {
+        return new ResponseEntity<>(service.getById(id), HttpStatus.OK);
     }
 
-    @PostMapping("/create")
-    public ResponseEntity<StudentDto> create(@RequestBody StudentDto student) {
-        return new ResponseEntity<>(service.create(student), HttpStatus.CREATED);
+    @GetMapping("/all")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<List<Student>> getAll() {
+        return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<StudentDto> update(@RequestBody StudentDto student, @PathVariable Long id) {
+    public ResponseEntity<Student> update(@RequestBody Student student, @PathVariable Long id) {
         return new ResponseEntity<>(service.update(student, id), HttpStatus.ACCEPTED);
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> delete(@PathVariable Long id) {
         service.delete(id);
         return new ResponseEntity<>("student deleted", HttpStatus.ACCEPTED);

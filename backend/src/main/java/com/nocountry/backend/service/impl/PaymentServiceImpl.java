@@ -1,7 +1,6 @@
 package com.nocountry.backend.service.impl;
 
 import com.nocountry.backend.dto.PaymentDto;
-import com.nocountry.backend.mapper.PaymentMapper;
 import com.nocountry.backend.repository.IPaymentRepository;
 import com.nocountry.backend.service.IPaymentService;
 import lombok.RequiredArgsConstructor;
@@ -14,8 +13,6 @@ import java.util.Optional;
 public class PaymentServiceImpl implements IPaymentService {
 
     private final IPaymentRepository repository;
-
-    private final PaymentMapper mapper;
 
     @Override
     public List<PaymentDto> getAll() {
