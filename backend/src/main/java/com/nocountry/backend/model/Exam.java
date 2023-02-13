@@ -1,5 +1,6 @@
 package com.nocountry.backend.model;
 
+import com.nocountry.backend.utils.enums.Rating;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -26,13 +27,13 @@ public class Exam {
 
     private String examDate;
 
-    private Integer grammarNote;
+    private Rating grammar;
 
-    private Integer speakingNote;
+    private Rating speaking;
 
-    private Integer writingNote;
+    private Rating writing;
 
-    private Integer listeningNote;
+    private Rating listening;
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Student student;

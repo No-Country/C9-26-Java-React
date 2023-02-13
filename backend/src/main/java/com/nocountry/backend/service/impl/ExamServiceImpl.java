@@ -39,10 +39,10 @@ public class ExamServiceImpl implements IExamService {
         Exam updatedExam = repository.findById(id).orElseThrow(EntityNotFoundException::new);
         updatedExam.setName(exam.getName());
         updatedExam.setExamDate(updatedExam.getExamDate());
-        updatedExam.setGrammarNote(updatedExam.getGrammarNote());
-        updatedExam.setListeningNote(updatedExam.getListeningNote());
-        updatedExam.setSpeakingNote(updatedExam.getSpeakingNote());
-        updatedExam.setWritingNote(updatedExam.getWritingNote());
+        updatedExam.setGrammar(updatedExam.getGrammar());
+        updatedExam.setListening(updatedExam.getListening());
+        updatedExam.setSpeaking(updatedExam.getSpeaking());
+        updatedExam.setWriting(updatedExam.getWriting());
         return mapper.convertToDto(repository.save(updatedExam));
 
     }
