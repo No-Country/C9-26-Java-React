@@ -4,9 +4,15 @@ import Nav from 'react-bootstrap/Nav';
 import Button from 'react-bootstrap/Button';
 import { NavLink } from 'react-router-dom';
 import { FaWhatsapp, FaGoogle, FaFacebook, FaInstagram, FaYoutube, FaHome, FaUser } from 'react-icons/fa';
+import { useState } from 'react';
+import { Login } from '../../pages';
 
 function Header() {
     const isAuthenticated = false;
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     return (
         <>
             <div className='bg-light d-flex align-items-center'>
@@ -32,7 +38,12 @@ function Header() {
                             <FaYoutube scale={2} className='m-0' />
                         </Button>
                     </div>
-                    <Button variant="dark" style={{ width: '180px' }} className='d-flex justify-content-center align-items-center ms-auto text-uppercase rounded-5 px-5 w-4'>
+                    <Button
+                        variant="dark"
+                        style={{ width: '180px' }}
+                        className='d-flex justify-content-center align-items-center ms-auto text-uppercase rounded-5 px-5 w-4'
+                        onClick={handleShow}
+                    >
                         {isAuthenticated ? (<><FaHome scale={2} className='m-0' /> <span className='ms-2'>Inicio</span></>) : (<span>Ingresar</span>)}
                     </Button>
                 </Container>
@@ -57,6 +68,10 @@ function Header() {
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
+            <Login 
+                show = { show }
+                handleClose = { handleClose }
+            />
         </>
     );
 }

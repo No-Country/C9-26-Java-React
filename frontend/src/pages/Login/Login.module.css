@@ -1,0 +1,31 @@
+.modal{
+    background: rgba(128, 128, 128, 0.801);
+}
+
+.body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-direction: column;
+}
+
+.button {
+    color: #000000;
+    background: #CB8DF1;
+    border: none;
+    font-weight: bold;
+    width: 158px;
+    height: 36px;
+    border-radius: 20px;
+}
+
+.input {
+    background: none;
+    border: none;
+    height: 42px;
+    width: 433px;
+    border-radius: 20px;
+    padding-left: 30px;
+    background: #F5F5F5;       
+}
