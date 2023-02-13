@@ -38,10 +38,10 @@ public class PaymentServiceImpl implements IPaymentService {
     @Override
     public PaymentDto update(PaymentDto payment, Long id) {
         Payment updatedPayment = repository.findById(id).orElseThrow(EntityNotFoundException::new);
-        updatedPayment.setName(payment.getName());
+        updatedPayment.setType(payment.getType());
         updatedPayment.setAmount(payment.getAmount());
         updatedPayment.setExpiration(payment.getExpiration());
-        updatedPayment.setState(payment.getState());
+        updatedPayment.setStatus(payment.getStatus());
         return mapper.convertToDto(repository.save(updatedPayment));
 
     }

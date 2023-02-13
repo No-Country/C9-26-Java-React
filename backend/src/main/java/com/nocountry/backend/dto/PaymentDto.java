@@ -1,11 +1,11 @@
 package com.nocountry.backend.dto;
 
+import com.nocountry.backend.utils.enums.PaymentType;
+import com.nocountry.backend.utils.enums.PaymentStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.Date;
 
 @Data
 @Builder
@@ -15,15 +15,11 @@ public class PaymentDto {
 
     private Long id;
 
-    private String name;
+    private PaymentType type;
 
     private Double amount;
 
-    private Date expiration;
+    private String expiration;
 
-    private boolean state;
-
-    public boolean getState() {
-    return state;
-    }
+    private PaymentStatus status;
 }

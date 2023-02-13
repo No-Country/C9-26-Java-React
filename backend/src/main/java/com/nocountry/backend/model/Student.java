@@ -1,7 +1,8 @@
 package com.nocountry.backend.model;
 
 import com.nocountry.backend.auth.model.User;
-import com.nocountry.backend.enums.Level;
+import com.nocountry.backend.utils.enums.Level;
+import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -9,8 +10,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -52,10 +52,16 @@ public class Student {
     @OneToOne(mappedBy = "student", cascade = CascadeType.ALL)
     private User user;
 
-    @OneToOne(mappedBy = "student", cascade = CascadeType.ALL)
-    private Exam exam;
+    // @ManyToOne
+    // @JoinColumn(name = "course_id")
+    // private Course course;
 
-    @ManyToOne
-    @JoinColumn(name = "course_id")
+    @OneToOne(cascade = CascadeType.ALL)
     private Course course;
+
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+    private List<Exam> exams;
+
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+    private List<Payment> payments;
 }

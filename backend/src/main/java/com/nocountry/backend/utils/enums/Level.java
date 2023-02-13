@@ -1,4 +1,4 @@
-package com.nocountry.backend.enums;
+package com.nocountry.backend.utils.enums;
 
 public enum Level {
     A1,
