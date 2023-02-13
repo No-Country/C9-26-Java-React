@@ -6,5 +6,6 @@ export const CLASS = '/class';
 export const EXAMS = '/exams';
 export const SERVICES = '/services';
 export const CONSULTATION = '/consultation';
+export const STUDENT = '/student';
 export const LOGOUT = '/logout';
 export const NOT_FOUND = '*';

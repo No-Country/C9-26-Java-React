@@ -6,3 +6,4 @@ export { default as Clases } from './Clases/Clases';
 export { default as Examenes } from './Examenes/Examenes';
 export { default as Servicios } from './Servicios/Servicios';
 export { default as Consultas } from './Consultas/Consultas';
+export { default as Alumno } from './Alumno/Alumno';
