@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest --run --environment happy-dom",
+    "test:ui": "vitest --ui --api 1337",
+    "coverage": "vitest run --coverage"
   },
   "dependencies": {
     "axios": "^1.3.1",
@@ -22,6 +25,10 @@
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.9",
     "@vitejs/plugin-react": "^3.0.0",
-    "vite": "^4.0.0"
+    "@vitest/coverage-c8": "^0.28.4",
+    "@vitest/ui": "^0.28.4",
+    "happy-dom": "^8.2.6",
+    "vite": "^4.0.0",
+    "vitest": "^0.28.4"
   }
 }
