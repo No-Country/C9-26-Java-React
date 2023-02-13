@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,8 +26,6 @@ public class Exam {
 
     private String examDate;
 
-    private Double examFee;
-
     private Integer grammarNote;
 
     private Integer speakingNote;
@@ -34,5 +34,7 @@ public class Exam {
 
     private Integer listeningNote;
 
-    private Boolean status;
+    @OneToOne
+    @JoinColumn(name = "student_id")
+    private Student student;
 }

@@ -15,10 +15,6 @@ public class ExamDto {
 
     private String name;
 
-    private String examDate;
-
-    private Double examFee;
-
     private Integer grammarNote;
 
     private Integer speakingNote;

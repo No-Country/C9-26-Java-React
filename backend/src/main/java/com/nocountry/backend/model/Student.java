@@ -40,6 +40,8 @@ public class Student {
 
     private String address;
 
+    private String email;
+
     private String phone;
 
     private String birthdate;
@@ -50,9 +52,10 @@ public class Student {
     @OneToOne(mappedBy = "student", cascade = CascadeType.ALL)
     private User user;
 
-    private Long courseId;
+    @OneToOne(mappedBy = "student", cascade = CascadeType.ALL)
+    private Exam exam;
 
     @ManyToOne
-    @JoinColumn(name = "courseId")
+    @JoinColumn(name = "course_id")
     private Course course;
 }

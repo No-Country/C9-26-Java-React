@@ -18,36 +18,36 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/courses")
+@RequestMapping("api")
 @RequiredArgsConstructor
 public class CourseController {
 
     private final ICourseService service;
 
-    @GetMapping("/{id}")
+    @GetMapping("/courses/{id}")
     public ResponseEntity<Optional<CourseDto>> getById(@PathVariable Long id) {
         return new ResponseEntity<>(service.getById(id), HttpStatus.OK);
     }
 
-    @GetMapping("/all")
+    @GetMapping("/admin/courses/all")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<List<CourseDto>> getAll() {
         return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
     }
 
-    @PostMapping("/")
+    @PostMapping("/admin/courses/create")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<CourseDto> create(@RequestBody CourseDto course) {
         return new ResponseEntity<>(service.create(course), HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/admin/courses/update/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<CourseDto> update(@RequestBody CourseDto course, @PathVariable Long id) {
         return new ResponseEntity<>(service.update(course, id), HttpStatus.ACCEPTED);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/admin/courses/delete/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> delete(@PathVariable Long id) {
         service.delete(id);

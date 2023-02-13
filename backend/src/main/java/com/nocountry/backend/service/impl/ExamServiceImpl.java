@@ -29,13 +29,6 @@ public class ExamServiceImpl implements IExamService {
         return mapper.convertToDtoList(repository.findAll());
     }
 
-    /*
-     * @Override
-     * public List<ExamDto> getExamsByStudent_id(Long studentId) {
-     * return mapper.convertToDtoList(repository.getExamsByStudent_id(studentId));
-     * }
-     */
-
     @Override
     public ExamDto create(ExamDto exam) {
         return mapper.convertToDto(repository.save(mapper.convertDtoToEntity(exam)));
@@ -46,8 +39,6 @@ public class ExamServiceImpl implements IExamService {
         Exam updatedExam = repository.findById(id).orElseThrow(EntityNotFoundException::new);
         updatedExam.setName(exam.getName());
         updatedExam.setExamDate(updatedExam.getExamDate());
-        updatedExam.setExamFee(updatedExam.getExamFee());
-        updatedExam.setStatus(updatedExam.getStatus());
         updatedExam.setGrammarNote(updatedExam.getGrammarNote());
         updatedExam.setListeningNote(updatedExam.getListeningNote());
         updatedExam.setSpeakingNote(updatedExam.getSpeakingNote());

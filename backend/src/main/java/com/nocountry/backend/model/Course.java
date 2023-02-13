@@ -38,16 +38,12 @@ public class Course {
 
     private String mode;
 
+    private String courseDays;
+
     private String schedule;
 
-    private Double tuitionFee;
-
-    private Double monthlyFee;
-
-    private Long teacherId;
-
     @ManyToOne
-    @JoinColumn(name = "teacherId")
+    @JoinColumn(name = "teacher_id")
     private Teacher teacher;
 
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, fetch = FetchType.EAGER)

@@ -20,9 +20,7 @@ public class CourseDto {
 
     private String mode;
 
+    private String courseDays;
+
     private String schedule;
-
-    private Double tuitionFee;
-
-    private Double monthlyFee;
 }

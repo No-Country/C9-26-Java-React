@@ -5,32 +5,28 @@ import com.nocountry.backend.service.IExamService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/v1/exams")
+@RequestMapping("api")
 @RequiredArgsConstructor
 public class ExamController {
     private final IExamService service;
 
-    @GetMapping("/")
+    @GetMapping("/admin/exams/all")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<List<ExamDto>> getAll() {
-        return new ResponseEntity<>(service.getAll(), HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Optional<ExamDto>> getExam(@PathVariable Long id) {
-        return ResponseEntity.ok(service.getById(id));
+    @GetMapping("/exams/{id}")
+    public ResponseEntity<Optional<ExamDto>> getById(@PathVariable Long id) {
+        return new ResponseEntity<>(service.getById(id), HttpStatus.OK);
     }
-/*
-    @GetMapping("/student/{id}")
-    public ResponseEntity<List<ExamDto>> getExamsByStudent(@PathVariable Long id) {
-        return new ResponseEntity<>(service.getExamsByStudent_id(id), HttpStatus.ACCEPTED);
-    }*/
 }

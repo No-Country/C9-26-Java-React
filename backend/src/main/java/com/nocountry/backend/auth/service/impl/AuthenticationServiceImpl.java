@@ -43,6 +43,7 @@ public class AuthenticationServiceImpl implements IAuthenticationService {
                                 .lastName(request.getLastName())
                                 .dni(Long.parseLong(request.getPassword()))
                                 .address(request.getAddress())
+                                .email(request.getUsername())
                                 .phone(request.getPhone())
                                 .birthdate(request.getBirthdate())
                                 .level(request.getLevel())

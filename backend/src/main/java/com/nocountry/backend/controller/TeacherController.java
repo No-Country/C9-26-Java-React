@@ -5,32 +5,37 @@ import com.nocountry.backend.service.ITeacherService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/teachers")
+@RequestMapping("api")
 @RequiredArgsConstructor
 public class TeacherController {
     private final ITeacherService service;
 
-    @GetMapping("/")
+    @GetMapping("/admin/teachers/all")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<List<TeacherDto>> getAll() {
         return new ResponseEntity<>(service.getAll(), HttpStatus.ACCEPTED);
     }
 
-    @PostMapping("/create")
+    @PostMapping("/admin/teachers/create")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<TeacherDto> create(@RequestBody TeacherDto teacher) {
         return new ResponseEntity<>(service.create(teacher), HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/admin/teachers/update/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<TeacherDto> update(@RequestBody TeacherDto teacher, @PathVariable Long id) {
         return new ResponseEntity<>(service.update(teacher, id), HttpStatus.ACCEPTED);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/admin/teachers/delete/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> delete(@PathVariable Long id) {
         service.delete(id);
         return new ResponseEntity<>("teacher deleted", HttpStatus.ACCEPTED);

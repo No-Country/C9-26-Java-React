@@ -17,29 +17,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/students")
+@RequestMapping("api")
 @RequiredArgsConstructor
 public class StudentController {
 
     private final IStudentService service;
 
-    @GetMapping("/{id}")
+    @GetMapping("/students/{id}")
     public ResponseEntity<Optional<StudentDto>> getById(@PathVariable Long id) {
         return new ResponseEntity<>(service.getById(id), HttpStatus.OK);
     }
 
-    @GetMapping("/all")
+    @GetMapping("/admin/students/all")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<List<StudentDto>> getAll() {
         return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/students/update/{id}")
     public ResponseEntity<StudentDto> update(@RequestBody StudentDto student, @PathVariable Long id) {
         return new ResponseEntity<>(service.update(student, id), HttpStatus.ACCEPTED);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/admin/students/delete/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> delete(@PathVariable Long id) {
         service.delete(id);

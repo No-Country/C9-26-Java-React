@@ -38,10 +38,9 @@ public class CourseServiceImpl implements ICourseService {
     public CourseDto update(CourseDto course, Long id) {
         Course updatedCourse = repository.findById(id).orElseThrow(EntityNotFoundException::new);
         updatedCourse.setName(course.getName());
-        updatedCourse.setSchedule(course.getSchedule());
         updatedCourse.setMode(course.getMode());
-        updatedCourse.setMonthlyFee(course.getMonthlyFee());
-        updatedCourse.setTuitionFee(course.getTuitionFee());
+        updatedCourse.setCourseDays(course.getCourseDays());
+        updatedCourse.setSchedule(course.getSchedule());
         updatedCourse.setLevel(course.getLevel());
         return mapper.convertToDto(repository.save(updatedCourse));
     }

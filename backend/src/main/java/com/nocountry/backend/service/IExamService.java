@@ -10,8 +10,6 @@ public interface IExamService {
 
     List<ExamDto> getAll();
 
-    /* List<ExamDto> getExamsByStudent_id(Long studentId); */
-
     ExamDto create(ExamDto exam);
 
     ExamDto update(ExamDto exam, Long id);

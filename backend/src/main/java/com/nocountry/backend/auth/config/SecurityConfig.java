@@ -2,7 +2,6 @@ package com.nocountry.backend.auth.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -28,13 +27,8 @@ public class SecurityConfig {
                 .csrf()
                 .disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/api/v1/auth/**").permitAll()
-                .requestMatchers(HttpMethod.GET, "/api/v1/students/all").hasRole(Role.ADMIN.name())
-                .requestMatchers(HttpMethod.DELETE, "/api/v1/students/**").hasRole(Role.ADMIN.name())
-                .requestMatchers(HttpMethod.GET, "/api/v1/courses/all").hasRole(Role.ADMIN.name())
-                .requestMatchers(HttpMethod.POST, "/api/v1/courses/**").hasRole(Role.ADMIN.name())
-                .requestMatchers(HttpMethod.PUT, "/api/v1/courses/**").hasRole(Role.ADMIN.name())
-                .requestMatchers(HttpMethod.DELETE, "/api/v1/courses/**").hasRole(Role.ADMIN.name())
+                .requestMatchers("/api/auth/**").permitAll()
+                .requestMatchers("/api/admin/**").hasRole(Role.ADMIN.name())
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -44,6 +38,5 @@ public class SecurityConfig {
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(JwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
-
     }
 }
