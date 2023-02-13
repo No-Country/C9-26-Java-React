@@ -1,5 +1,8 @@
 .modal{
     background: rgba(128, 128, 128, 0.801);
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
 }
 
 .body {
