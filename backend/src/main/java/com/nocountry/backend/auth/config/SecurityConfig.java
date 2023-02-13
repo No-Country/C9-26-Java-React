@@ -9,7 +9,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import com.nocountry.backend.auth.config.jwt.JwtAuthFilter;
-import com.nocountry.backend.auth.enums.Role;
+import com.nocountry.backend.auth.utils.enums.Role;
 import lombok.RequiredArgsConstructor;
 
 @Configuration

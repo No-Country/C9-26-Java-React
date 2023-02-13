@@ -11,9 +11,9 @@ import com.nocountry.backend.auth.dto.RegisterRequestDto;
 import com.nocountry.backend.auth.model.User;
 import com.nocountry.backend.auth.repository.IUserRepository;
 import com.nocountry.backend.auth.service.IAuthenticationService;
+import com.nocountry.backend.auth.utils.enums.Role;
 import com.nocountry.backend.model.Student;
 import com.nocountry.backend.repository.IStudentRepository;
-import com.nocountry.backend.auth.enums.Role;
 import lombok.RequiredArgsConstructor;
 
 @Service
