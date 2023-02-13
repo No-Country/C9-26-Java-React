@@ -10,7 +10,7 @@ function App() {
       <Routes>
         <Route path='/' element={<PublicRoute />}>
           <Route path={HOME} element={<Home />} />
-          <Route path={LOGIN} element={<Login />} />
+          {/* <Route path={LOGIN} element={<Login />} /> */}
           <Route path={CLASS} element={<Clases />} />
           <Route path={EXAMS} element={<Examenes />} />
           <Route path={SERVICES} element={<Servicios />} />
