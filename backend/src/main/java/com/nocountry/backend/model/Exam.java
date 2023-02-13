@@ -1,6 +1,5 @@
 package com.nocountry.backend.model;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,10 +22,8 @@ public class Exam {
 
     private String name;
 
-    @Column(name = "exam_date")
     private String examDate;
 
-    @Column(name = "exam_fee")
     private Double examFee;
 
     private Integer grammarNote;
