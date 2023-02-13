@@ -4,6 +4,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
 import com.nocountry.backend.auth.config.jwt.JwtProvider;
 import com.nocountry.backend.auth.dto.AuthRequestDto;
 import com.nocountry.backend.auth.dto.AuthResponseDto;
@@ -14,6 +15,7 @@ import com.nocountry.backend.auth.service.IAuthenticationService;
 import com.nocountry.backend.auth.utils.enums.Role;
 import com.nocountry.backend.model.Student;
 import com.nocountry.backend.repository.IStudentRepository;
+
 import lombok.RequiredArgsConstructor;
 
 @Service

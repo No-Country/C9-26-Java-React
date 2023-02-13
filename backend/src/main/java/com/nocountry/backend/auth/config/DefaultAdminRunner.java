@@ -6,9 +6,11 @@ import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+
 import com.nocountry.backend.auth.model.User;
 import com.nocountry.backend.auth.repository.IUserRepository;
 import com.nocountry.backend.auth.utils.enums.Role;
+
 import lombok.RequiredArgsConstructor;
 
 @Component

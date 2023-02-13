@@ -1,15 +1,18 @@
 package com.nocountry.backend.service.impl;
 
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
 import com.nocountry.backend.dto.ExamDto;
 import com.nocountry.backend.mapper.ExamMapper;
 import com.nocountry.backend.model.Exam;
 import com.nocountry.backend.repository.IExamRepository;
 import com.nocountry.backend.service.IExamService;
+
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -21,7 +24,7 @@ public class ExamServiceImpl implements IExamService {
 
     @Override
     public Optional<ExamDto> getById(Long id) {
-        return Optional.ofNullable(mapper.convertToDto(repository.getReferenceById(id)));
+        return Optional.ofNullable(mapper.convertEntityToDto(repository.getReferenceById(id)));
     }
 
     @Override
@@ -31,7 +34,7 @@ public class ExamServiceImpl implements IExamService {
 
     @Override
     public ExamDto create(ExamDto exam) {
-        return mapper.convertToDto(repository.save(mapper.convertDtoToEntity(exam)));
+        return mapper.convertEntityToDto(repository.save(mapper.convertDtoToEntity(exam)));
     }
 
     @Override
@@ -43,7 +46,7 @@ public class ExamServiceImpl implements IExamService {
         updatedExam.setListening(updatedExam.getListening());
         updatedExam.setSpeaking(updatedExam.getSpeaking());
         updatedExam.setWriting(updatedExam.getWriting());
-        return mapper.convertToDto(repository.save(updatedExam));
+        return mapper.convertEntityToDto(repository.save(updatedExam));
 
     }
 

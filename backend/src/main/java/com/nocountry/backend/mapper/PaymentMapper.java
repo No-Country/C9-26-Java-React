@@ -1,4 +1,5 @@
 package com.nocountry.backend.mapper;
+
 import com.nocountry.backend.dto.PaymentDto;
 import com.nocountry.backend.model.Payment;
 import com.nocountry.backend.utils.MapperUtil;
@@ -9,7 +10,7 @@ import java.util.List;
 @Component
 public class PaymentMapper {
 
-    public PaymentDto convertToDto(Payment payment) {
+    public PaymentDto convertEntityToDto(Payment payment) {
         return MapperUtil.map(payment, PaymentDto.class);
     }
 

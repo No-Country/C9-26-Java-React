@@ -1,7 +1,8 @@
 package com.nocountry.backend.dto;
 
-import com.nocountry.backend.utils.enums.PaymentType;
 import com.nocountry.backend.utils.enums.PaymentStatus;
+import com.nocountry.backend.utils.enums.PaymentType;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

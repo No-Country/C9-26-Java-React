@@ -1,6 +1,7 @@
 package com.nocountry.backend.model;
 
 import com.nocountry.backend.utils.enums.Rating;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

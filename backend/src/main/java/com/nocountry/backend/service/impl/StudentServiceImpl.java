@@ -1,15 +1,18 @@
 package com.nocountry.backend.service.impl;
 
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
 import com.nocountry.backend.dto.StudentDto;
 import com.nocountry.backend.mapper.StudentMapper;
 import com.nocountry.backend.model.Student;
 import com.nocountry.backend.repository.IStudentRepository;
 import com.nocountry.backend.service.IStudentService;
+
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -21,7 +24,7 @@ public class StudentServiceImpl implements IStudentService {
 
     @Override
     public Optional<StudentDto> getById(Long id) {
-        return Optional.ofNullable(mapper.convertToDto(repository.getReferenceById(id)));
+        return Optional.ofNullable(mapper.convertEntityToDto(repository.getReferenceById(id)));
     }
 
     @Override
@@ -40,7 +43,7 @@ public class StudentServiceImpl implements IStudentService {
         updatedStudent.setPhone(student.getPhone());
         updatedStudent.setLevel(student.getLevel());
         updatedStudent.setImageUrl(student.getImageUrl());
-        return mapper.convertToDto(repository.save(updatedStudent));
+        return mapper.convertEntityToDto(repository.save(updatedStudent));
 
     }
 

@@ -1,7 +1,8 @@
 package com.nocountry.backend.model;
 
-import com.nocountry.backend.utils.enums.PaymentType;
 import com.nocountry.backend.utils.enums.PaymentStatus;
+import com.nocountry.backend.utils.enums.PaymentType;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

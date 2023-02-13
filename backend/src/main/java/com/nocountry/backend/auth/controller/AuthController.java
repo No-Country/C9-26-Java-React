@@ -2,15 +2,20 @@ package com.nocountry.backend.auth.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.nocountry.backend.auth.dto.AuthRequestDto;
 import com.nocountry.backend.auth.dto.AuthResponseDto;
 import com.nocountry.backend.auth.dto.RegisterRequestDto;
 import com.nocountry.backend.auth.service.IAuthenticationService;
+
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("api/auth")
+@RequestMapping("api/v1/auth")
 @RequiredArgsConstructor
 public class AuthController {
 

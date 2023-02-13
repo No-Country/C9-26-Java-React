@@ -1,16 +1,17 @@
 package com.nocountry.backend.mapper;
 
+import java.util.List;
+
+import org.springframework.stereotype.Component;
+
 import com.nocountry.backend.dto.StudentDto;
 import com.nocountry.backend.model.Student;
 import com.nocountry.backend.utils.MapperUtil;
-import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 @Component
 public class StudentMapper {
 
-    public StudentDto convertToDto(Student student) {
+    public StudentDto convertEntityToDto(Student student) {
         return MapperUtil.map(student, StudentDto.class);
     }
 

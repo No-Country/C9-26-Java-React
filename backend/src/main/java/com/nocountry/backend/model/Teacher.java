@@ -1,6 +1,8 @@
 package com.nocountry.backend.model;
 
+import java.util.ArrayList;
 import java.util.List;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,5 +30,10 @@ public class Teacher {
     private String lastName;
 
     @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL)
-    private List<Course> courses;
+    private List<Course> courses = new ArrayList<>();
+
+    public void addCourse(Course course) {
+        this.courses.add(course);
+        course.setTeacher(this);
+    }
 }

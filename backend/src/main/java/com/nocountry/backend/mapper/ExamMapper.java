@@ -10,7 +10,7 @@ import java.util.List;
 @Component
 public class ExamMapper {
 
-    public ExamDto convertToDto(Exam exam) {
+    public ExamDto convertEntityToDto(Exam exam) {
         return MapperUtil.map(exam, ExamDto.class);
     }
 

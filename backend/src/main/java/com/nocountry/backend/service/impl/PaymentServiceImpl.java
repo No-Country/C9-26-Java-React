@@ -1,15 +1,18 @@
 package com.nocountry.backend.service.impl;
 
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
 import com.nocountry.backend.dto.PaymentDto;
 import com.nocountry.backend.mapper.PaymentMapper;
 import com.nocountry.backend.model.Payment;
 import com.nocountry.backend.repository.IPaymentRepository;
 import com.nocountry.backend.service.IPaymentService;
+
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -21,7 +24,7 @@ public class PaymentServiceImpl implements IPaymentService {
 
     @Override
     public Optional<PaymentDto> getById(Long id) {
-        return Optional.ofNullable(mapper.convertToDto(repository.getReferenceById(id)));
+        return Optional.ofNullable(mapper.convertEntityToDto(repository.getReferenceById(id)));
 
     }
 
@@ -32,7 +35,7 @@ public class PaymentServiceImpl implements IPaymentService {
 
     @Override
     public PaymentDto create(PaymentDto payment) {
-        return mapper.convertToDto(repository.save(mapper.convertDtoToEntity(payment)));
+        return mapper.convertEntityToDto(repository.save(mapper.convertDtoToEntity(payment)));
     }
 
     @Override
@@ -42,7 +45,7 @@ public class PaymentServiceImpl implements IPaymentService {
         updatedPayment.setAmount(payment.getAmount());
         updatedPayment.setExpiration(payment.getExpiration());
         updatedPayment.setStatus(payment.getStatus());
-        return mapper.convertToDto(repository.save(updatedPayment));
+        return mapper.convertEntityToDto(repository.save(updatedPayment));
 
     }
 

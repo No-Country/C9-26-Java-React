@@ -1,5 +1,6 @@
 package com.nocountry.backend.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.nocountry.backend.utils.enums.Level;
@@ -12,6 +13,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -42,9 +44,20 @@ public class Course {
 
     private String schedule;
 
-    @ManyToOne(cascade = CascadeType.ALL) // @JoinColumn(name = "teacher_id")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "teacher_id")
     private Teacher teacher;
 
-    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL) // fetch = FetchType.EAGER
-    private List<Student> students;
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
+    private List<Student> students = new ArrayList<>();
+
+    public void addTeacher(Teacher teacher) {
+        this.teacher = teacher;
+        teacher.getCourses().add(this);
+    }
+
+    public void addStudent(Student student) {
+        this.students.add(student);
+        student.setCourse(this);
+    }
 }

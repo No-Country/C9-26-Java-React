@@ -1,8 +1,9 @@
 package com.nocountry.backend.service;
 
-import com.nocountry.backend.dto.TeacherDto;
 import java.util.List;
 import java.util.Optional;
+
+import com.nocountry.backend.dto.TeacherDto;
 
 public interface ITeacherService {
 

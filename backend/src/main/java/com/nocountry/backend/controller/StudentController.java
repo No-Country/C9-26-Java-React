@@ -1,10 +1,8 @@
 package com.nocountry.backend.controller;
 
-import com.nocountry.backend.dto.StudentDto;
-import com.nocountry.backend.service.IStudentService;
-import lombok.RequiredArgsConstructor;
 import java.util.List;
 import java.util.Optional;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -16,8 +14,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.nocountry.backend.dto.StudentDto;
+import com.nocountry.backend.service.IStudentService;
+
+import lombok.RequiredArgsConstructor;
+
 @RestController
-@RequestMapping("api")
+@RequestMapping("api/v1")
 @RequiredArgsConstructor
 public class StudentController {
 

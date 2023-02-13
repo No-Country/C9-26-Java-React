@@ -1,15 +1,18 @@
 package com.nocountry.backend.service.impl;
 
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
 import com.nocountry.backend.dto.TeacherDto;
 import com.nocountry.backend.mapper.TeacherMapper;
 import com.nocountry.backend.model.Teacher;
 import com.nocountry.backend.repository.ITeacherRepository;
 import com.nocountry.backend.service.ITeacherService;
+
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -21,7 +24,7 @@ public class TeacherServiceImpl implements ITeacherService {
 
     @Override
     public Optional<TeacherDto> getById(Long id) {
-        return Optional.ofNullable(mapper.convertToDto(repository.getReferenceById(id)));
+        return Optional.ofNullable(mapper.convertEntityToDto(repository.getReferenceById(id)));
     }
 
     @Override
@@ -31,7 +34,7 @@ public class TeacherServiceImpl implements ITeacherService {
 
     @Override
     public TeacherDto create(TeacherDto teacher) {
-        return mapper.convertToDto(repository.save(mapper.convertDtoToEntity(teacher)));
+        return mapper.convertEntityToDto(repository.save(mapper.convertDtoToEntity(teacher)));
 
     }
 
@@ -40,7 +43,7 @@ public class TeacherServiceImpl implements ITeacherService {
         Teacher updatedTeacher = repository.findById(id).orElseThrow(EntityNotFoundException::new);
         updatedTeacher.setFirstName(teacher.getFirstName());
         updatedTeacher.setLastName(teacher.getLastName());
-        return mapper.convertToDto(repository.save(updatedTeacher));
+        return mapper.convertEntityToDto(repository.save(updatedTeacher));
     }
 
     @Override
