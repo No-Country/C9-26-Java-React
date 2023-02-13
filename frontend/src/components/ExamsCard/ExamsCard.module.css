@@ -1,14 +1,9 @@
 .exam_card {
     color: #fff;
-    background-color: #9C9999!important;
     width: 23.75rem!important;
     height: 8.12rem!important;
     justify-content: center;
 }
-
-/* .exam_card-row {
-    align-items: center;
-} */
 
 .exam_cardImage {
     width: 113px!important;
@@ -17,4 +12,5 @@
 
 .exam_cardText {
     text-align: center;
+    font-weight: 500;
 }

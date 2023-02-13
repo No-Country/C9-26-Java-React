@@ -8,6 +8,7 @@ import { useState } from 'react';
 import { Login } from '../../pages';
 import logo from '../../assets/images/Logo.png'
 
+
 function Header() {
     const isAuthenticated = false;
     const [show, setShow] = useState(false);
@@ -30,6 +31,7 @@ function Header() {
                     </div>                 
                     <Button                        
                         style={{ width: '180px', background: '#CB8DF1', color:'#FFFFFF', border:'none' }}
+
                         className='d-flex justify-content-center align-items-center ms-auto text-uppercase rounded-5 px-5 w-4'
                         onClick={handleShow}
                     >
@@ -43,7 +45,6 @@ function Header() {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="ms-auto ">
-
 
                             <NavLink to="/" className='nav-link text-uppercase text-white'>Inicio</NavLink>
                             <NavLink to="/class" className='nav-link text-uppercase text-white'>Clases</NavLink>

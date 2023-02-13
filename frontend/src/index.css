@@ -2,4 +2,20 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  font-family: 'Inter', sans-serif;;
+}
+
+/* Imagen de fondo para las distintas páginas */
+.background {
+  position: relative;
+  isolation: isolate;
+}
+
+.background:after {
+  content: "";
+  background-image: url("./assets/images/background.png");
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 97%;
 }

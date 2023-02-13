@@ -8,7 +8,7 @@ import styles from './ExamsCard.module.css';
 const ExamsCard = (props) => {
     return (
         <CardGroup className="mb-4">
-            <Card className={styles.exam_card}>
+            <Card className={`${styles.exam_card} ${props.bgstyle}`}>
                 <Row className="align-items-center">
                     <Col xs="4" className='p-5'>
                         <Card.Img src={props.img} className={styles.exam_cardImage}/>

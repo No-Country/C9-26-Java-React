@@ -10,6 +10,7 @@ const Login = ({ show, handleClose }) => {
         show={show}
         onHide={handleClose}
         className={style.modal}        
+
       >
         <Modal.Header style={{ background: '#000000', border: 'none', color: '#FFFFFF' }}>
           <h2>Por favor ingresa tus datos</h2>
