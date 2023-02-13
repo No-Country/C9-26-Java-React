@@ -10,7 +10,7 @@ public interface IExamService {
 
     Optional<ExamDto> getById(Long id);
 
-    List<ExamDto> getExamsByStudent_id(Long studentId);
+/*    List<ExamDto> getExamsByStudent_id(Long studentId);*/
 
     ExamDto create(ExamDto exam);
 

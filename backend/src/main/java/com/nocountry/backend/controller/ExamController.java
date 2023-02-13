@@ -28,9 +28,9 @@ public class ExamController {
     public ResponseEntity<Optional<ExamDto>> getExam(@PathVariable Long id) {
         return ResponseEntity.ok(service.getById(id));
     }
-
+/*
     @GetMapping("/student/{id}")
     public ResponseEntity<List<ExamDto>> getExamsByStudent(@PathVariable Long id) {
         return new ResponseEntity<>(service.getExamsByStudent_id(id), HttpStatus.ACCEPTED);
-    }
+    }*/
 }

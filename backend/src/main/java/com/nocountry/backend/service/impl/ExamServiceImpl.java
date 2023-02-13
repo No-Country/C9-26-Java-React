@@ -29,10 +29,10 @@ public class ExamServiceImpl implements IExamService {
         return Optional.ofNullable(mapper.convertToDto(repository.getReferenceById(id)));
     }
 
-    @Override
+/*    @Override
     public List<ExamDto> getExamsByStudent_id(Long studentId) {
         return mapper.convertToDtoList(repository.getExamsByStudent_id(studentId));
-    }
+    }*/
 
     @Override
     public ExamDto create(ExamDto exam) {

@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface IExamRepository extends JpaRepository<Exam, Long> {
 
-    List<Exam> getExamsByStudent_id(Long studentId);
+ /*   List<Exam> getExamsByStudent_id(Long studentId);*/
 }
