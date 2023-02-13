@@ -41,7 +41,7 @@ public class AuthenticationServiceImpl implements IAuthenticationService {
                 var student = Student.builder()
                                 .firstName(request.getFirstName())
                                 .lastName(request.getLastName())
-                                .dni(request.getDni())
+                                .dni(Long.parseLong(request.getPassword()))
                                 .address(request.getAddress())
                                 .phone(request.getPhone())
                                 .birthdate(request.getBirthdate())

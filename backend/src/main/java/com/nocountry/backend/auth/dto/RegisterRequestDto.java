@@ -20,8 +20,6 @@ public class RegisterRequestDto {
 
     private String lastName;
 
-    private Long dni;
-
     private String address;
 
     private String phone;
