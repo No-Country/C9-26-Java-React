@@ -1,18 +1,18 @@
 package com.nocountry.backend.service;
 
+import com.nocountry.backend.dto.TeacherDto;
 import java.util.List;
 import java.util.Optional;
-import com.nocountry.backend.dto.TeacherDto;
 
 public interface ITeacherService {
 
-    public List<TeacherDto> getAll();
+    Optional<TeacherDto> getById(Long id);
 
-    public Optional<TeacherDto> getById(Long id);
+    List<TeacherDto> getAll();
 
-    public TeacherDto create(TeacherDto teacher);
+    TeacherDto create(TeacherDto teacher);
 
-    public TeacherDto update(TeacherDto teacher, Long id);
+    TeacherDto update(TeacherDto teacher, Long id);
 
-    public void delete(Long id);
+    void delete(Long id);
 }

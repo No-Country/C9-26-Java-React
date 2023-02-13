@@ -1,8 +1,11 @@
 package com.nocountry.backend.service.impl;
 
 import com.nocountry.backend.dto.TeacherDto;
+import com.nocountry.backend.mapper.TeacherMapper;
+import com.nocountry.backend.model.Teacher;
 import com.nocountry.backend.repository.ITeacherRepository;
 import com.nocountry.backend.service.ITeacherService;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -14,24 +17,30 @@ public class TeacherServiceImpl implements ITeacherService {
 
     private final ITeacherRepository repository;
 
-    @Override
-    public List<TeacherDto> getAll() {
-        return null;
-    }
+    private final TeacherMapper mapper;
 
     @Override
     public Optional<TeacherDto> getById(Long id) {
-        return null;
+        return Optional.ofNullable(mapper.convertToDto(repository.getReferenceById(id)));
+    }
+
+    @Override
+    public List<TeacherDto> getAll() {
+        return mapper.convertToDtoList(repository.findAll());
     }
 
     @Override
     public TeacherDto create(TeacherDto teacher) {
-        return null;
+        return mapper.convertToDto(repository.save(mapper.convertDtoToEntity(teacher)));
+
     }
 
     @Override
     public TeacherDto update(TeacherDto teacher, Long id) {
-        return null;
+        Teacher updatedTeacher = repository.findById(id).orElseThrow(EntityNotFoundException::new);
+        updatedTeacher.setFirstName(teacher.getFirstName());
+        updatedTeacher.setLastName(teacher.getLastName());
+        return mapper.convertToDto(repository.save(updatedTeacher));
     }
 
     @Override

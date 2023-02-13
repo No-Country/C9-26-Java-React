@@ -6,9 +6,9 @@ import com.nocountry.backend.dto.PaymentDto;
 
 public interface IPaymentService {
 
-    public List<PaymentDto> getAll();
-
     public Optional<PaymentDto> getById(Long id);
+
+    public List<PaymentDto> getAll();
 
     public PaymentDto create(PaymentDto payment);
 

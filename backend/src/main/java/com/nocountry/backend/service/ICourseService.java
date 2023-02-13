@@ -1,17 +1,18 @@
 package com.nocountry.backend.service;
 
-import com.nocountry.backend.model.Course;
+import com.nocountry.backend.dto.CourseDto;
 import java.util.List;
+import java.util.Optional;
 
 public interface ICourseService {
 
-    public Course getById(Long id);
+    Optional<CourseDto> getById(Long id);
 
-    public List<Course> getAll();
+    List<CourseDto> getAll();
 
-    public Course create(Course course);
+    CourseDto create(CourseDto course);
 
-    public Course update(Course course, Long id);
+    CourseDto update(CourseDto course, Long id);
 
-    public void delete(Long id);
+    void delete(Long id);
 }

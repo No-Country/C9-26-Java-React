@@ -8,6 +8,7 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -19,4 +20,12 @@ public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    private String name;
+
+    private Double amount;
+
+    private Date expiration;
+
+    private boolean state;
 }

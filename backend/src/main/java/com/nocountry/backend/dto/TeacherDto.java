@@ -11,5 +11,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class TeacherDto {
 
-    private String name;
+    private Long id;
+
+    private String firstName;
+
+    private String lastName;
 }

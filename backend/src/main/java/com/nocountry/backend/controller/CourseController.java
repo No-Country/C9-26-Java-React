@@ -1,9 +1,10 @@
 package com.nocountry.backend.controller;
 
-import com.nocountry.backend.model.Course;
+import com.nocountry.backend.dto.CourseDto;
 import com.nocountry.backend.service.ICourseService;
 import lombok.RequiredArgsConstructor;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -24,25 +25,25 @@ public class CourseController {
     private final ICourseService service;
 
     @GetMapping("/{id}")
-    public ResponseEntity<Course> getById(@PathVariable Long id) {
+    public ResponseEntity<Optional<CourseDto>> getById(@PathVariable Long id) {
         return new ResponseEntity<>(service.getById(id), HttpStatus.OK);
     }
 
     @GetMapping("/all")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<List<Course>> getAll() {
+    public ResponseEntity<List<CourseDto>> getAll() {
         return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
     }
 
     @PostMapping("/")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<Course> create(@RequestBody Course course) {
+    public ResponseEntity<CourseDto> create(@RequestBody CourseDto course) {
         return new ResponseEntity<>(service.create(course), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<Course> update(@RequestBody Course course, @PathVariable Long id) {
+    public ResponseEntity<CourseDto> update(@RequestBody CourseDto course, @PathVariable Long id) {
         return new ResponseEntity<>(service.update(course, id), HttpStatus.ACCEPTED);
     }
 

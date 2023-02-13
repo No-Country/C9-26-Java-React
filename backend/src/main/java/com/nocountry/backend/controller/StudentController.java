@@ -1,9 +1,10 @@
 package com.nocountry.backend.controller;
 
-import com.nocountry.backend.model.Student;
+import com.nocountry.backend.dto.StudentDto;
 import com.nocountry.backend.service.IStudentService;
 import lombok.RequiredArgsConstructor;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -23,18 +24,18 @@ public class StudentController {
     private final IStudentService service;
 
     @GetMapping("/{id}")
-    public ResponseEntity<Student> getById(@PathVariable Long id) {
+    public ResponseEntity<Optional<StudentDto>> getById(@PathVariable Long id) {
         return new ResponseEntity<>(service.getById(id), HttpStatus.OK);
     }
 
     @GetMapping("/all")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<List<Student>> getAll() {
+    public ResponseEntity<List<StudentDto>> getAll() {
         return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Student> update(@RequestBody Student student, @PathVariable Long id) {
+    public ResponseEntity<StudentDto> update(@RequestBody StudentDto student, @PathVariable Long id) {
         return new ResponseEntity<>(service.update(student, id), HttpStatus.ACCEPTED);
     }
 

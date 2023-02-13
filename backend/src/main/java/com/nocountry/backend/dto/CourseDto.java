@@ -1,5 +1,6 @@
 package com.nocountry.backend.dto;
 
+import com.nocountry.backend.enums.Level;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,5 +12,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CourseDto {
 
+    private Long id;
+
     private String name;
+
+    private Level level;
+
+    private String mode;
+
+    private String schedule;
+
+    private Double tuitionFee;
+
+    private Double monthlyFee;
 }
