@@ -1,0 +1,39 @@
+.grades_bg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 21.75rem;
+    max-height: 44.68rem;
+    background-color: #0ECECEBF;
+    border-radius: 20px;
+}
+
+.grades_title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #000000;
+    display: inline-block;
+    align-self: self-start;
+    margin: 27px 0 15px 60px;
+}
+
+.grades_subtitle {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #000000;
+    display: inline-block;
+    align-self: self-start;
+    margin: 0px 0 9px 70px;
+}
+
+.grades_input {
+    width: 100%;
+    max-width: 16rem;
+    height: 1.87rem;
+    border: none;
+    border-radius: 20px;
+    margin-top: 7px;
+    margin-bottom: 11px;
+    text-align: center;
+}

@@ -143,6 +143,29 @@ label {
     margin-top: 15px;
 }
 
+.payment_subtitle {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #000000;
+    display: inline-block;
+}
+
+.payment_status {
+    display: flex;
+    justify-content: center;
+    gap: 6rem;
+}
+
+.payment_inputContainer {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.payment_inputContainer label {
+    width: 6.25rem;
+}
+
 .payment_input {
     width: 100%;
     max-width: 7.87rem;

@@ -1,0 +1,29 @@
+.myExam_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 20.18rem;
+    max-height: 13.37rem;
+    background-color: #0ECECEBF;
+    border-radius: 20px;
+}
+
+.myExam_title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #000000;
+    display: inline-block;
+    align-self: self-start;
+    margin: 15px 0 6px 60px;
+}
+
+.myExam_input {
+    width: 100%;
+    max-width: 16rem;
+    height: 1.68rem;
+    border: none;
+    border-radius: 20px;
+    margin-bottom: 11px;
+    text-align: center;
+}
