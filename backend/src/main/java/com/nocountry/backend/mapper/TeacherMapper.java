@@ -11,19 +11,19 @@ import com.nocountry.backend.utils.MapperUtil;
 @Component
 public class TeacherMapper {
 
-    public TeacherDto convertEntityToDto(Teacher teacher) {
+    public TeacherDto convertToDto(Teacher teacher) {
         return MapperUtil.map(teacher, TeacherDto.class);
     }
 
-    public Teacher convertDtoToEntity(TeacherDto teacherDTO) {
-        return MapperUtil.map(teacherDTO, Teacher.class);
+    public Teacher convertToEntity(TeacherDto teacherDto) {
+        return MapperUtil.map(teacherDto, Teacher.class);
     }
 
     public List<TeacherDto> convertToDtoList(List<Teacher> teacherList) {
         return MapperUtil.mapList(teacherList, TeacherDto.class);
     }
 
-    public List<Teacher> convertToEntityList(List<TeacherDto> teacherDto) {
-        return MapperUtil.mapList(teacherDto, Teacher.class);
+    public List<Teacher> convertToEntityList(List<TeacherDto> teacherDtoList) {
+        return MapperUtil.mapList(teacherDtoList, Teacher.class);
     }
 }

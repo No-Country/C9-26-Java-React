@@ -10,19 +10,19 @@ import java.util.List;
 @Component
 public class ExamMapper {
 
-    public ExamDto convertEntityToDto(Exam exam) {
+    public ExamDto convertToDto(Exam exam) {
         return MapperUtil.map(exam, ExamDto.class);
     }
 
-    public Exam convertDtoToEntity(ExamDto examDTO) {
-        return MapperUtil.map(examDTO, Exam.class);
+    public Exam convertToEntity(ExamDto examDto) {
+        return MapperUtil.map(examDto, Exam.class);
     }
 
     public List<ExamDto> convertToDtoList(List<Exam> examList) {
         return MapperUtil.mapList(examList, ExamDto.class);
     }
 
-    public List<Exam> convertToEntityList(List<ExamDto> examDto) {
-        return MapperUtil.mapList(examDto, Exam.class);
+    public List<Exam> convertToEntityList(List<ExamDto> examDtoList) {
+        return MapperUtil.mapList(examDtoList, Exam.class);
     }
 }

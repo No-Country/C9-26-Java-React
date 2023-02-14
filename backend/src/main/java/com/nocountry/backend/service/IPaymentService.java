@@ -7,13 +7,15 @@ import com.nocountry.backend.dto.PaymentDto;
 
 public interface IPaymentService {
 
-    public Optional<PaymentDto> getById(Long id);
+    Optional<PaymentDto> getPayment(Long paymentId);
 
-    public List<PaymentDto> getAll();
+    List<PaymentDto> getAllPayments();
 
-    public PaymentDto create(PaymentDto payment);
+    PaymentDto createPayment(PaymentDto paymentDto);
 
-    public PaymentDto update(PaymentDto payment, Long id);
+    PaymentDto updatePayment(PaymentDto paymentDto, Long paymentId);
 
-    public void delete(Long id);
+    void deletePayment(Long paymentId);
+
+    List<PaymentDto> getPaymentsByStudentId(Long studentId);
 }

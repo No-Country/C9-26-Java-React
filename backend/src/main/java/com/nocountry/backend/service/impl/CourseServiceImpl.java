@@ -6,13 +6,13 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.nocountry.backend.dto.CourseDto;
-import com.nocountry.backend.dto.StudentDto;
 import com.nocountry.backend.mapper.CourseMapper;
-import com.nocountry.backend.mapper.StudentMapper;
 import com.nocountry.backend.model.Course;
 import com.nocountry.backend.model.Student;
+import com.nocountry.backend.model.Teacher;
 import com.nocountry.backend.repository.ICourseRepository;
 import com.nocountry.backend.repository.IStudentRepository;
+import com.nocountry.backend.repository.ITeacherRepository;
 import com.nocountry.backend.service.ICourseService;
 
 import jakarta.persistence.EntityNotFoundException;
@@ -26,13 +26,18 @@ public class CourseServiceImpl implements ICourseService {
 
     private final IStudentRepository studentRepository;
 
+    private final ITeacherRepository teacherRepository;
+
     private final CourseMapper courseMapper;
 
-    private final StudentMapper studentMapper;
+    private Course findCourseById(Long courseId) {
+        return courseRepository.findById(courseId)
+                .orElseThrow(() -> new EntityNotFoundException("Course not found"));
+    }
 
     @Override
-    public Optional<CourseDto> getCourseById(Long courseId) {
-        return Optional.ofNullable(courseMapper.convertEntityToDto(courseRepository.getReferenceById(courseId)));
+    public Optional<CourseDto> getCourse(Long courseId) {
+        return Optional.ofNullable(courseMapper.convertToDto(this.findCourseById(courseId)));
     }
 
     @Override
@@ -42,19 +47,18 @@ public class CourseServiceImpl implements ICourseService {
 
     @Override
     public CourseDto createCourse(CourseDto courseDto) {
-        return courseMapper.convertEntityToDto(courseRepository.save(courseMapper.convertDtoToEntity(courseDto)));
+        return courseMapper.convertToDto(courseRepository.save(courseMapper.convertToEntity(courseDto)));
     }
 
     @Override
     public CourseDto updateCourse(CourseDto courseDto, Long courseId) {
-        Course updatedCourse = courseRepository.findById(courseId)
-                .orElseThrow(() -> new EntityNotFoundException("Course not found"));
-        updatedCourse.setName(courseDto.getName());
+        Course updatedCourse = this.findCourseById(courseId);
+        updatedCourse.setCategory(courseDto.getCategory());
         updatedCourse.setMode(courseDto.getMode());
         updatedCourse.setCourseDays(courseDto.getCourseDays());
         updatedCourse.setSchedule(courseDto.getSchedule());
         updatedCourse.setLevel(courseDto.getLevel());
-        return courseMapper.convertEntityToDto(courseRepository.save(updatedCourse));
+        return courseMapper.convertToDto(courseRepository.save(updatedCourse));
     }
 
     @Override
@@ -62,16 +66,25 @@ public class CourseServiceImpl implements ICourseService {
         courseRepository.deleteById(courseId);
     }
 
-    public List<StudentDto> getStudentsByCourseId(Long courseId) {
-        List<Student> allStudents = studentRepository.findAllByCourseId(courseId);
-        return studentMapper.convertToDtoList(allStudents);
+    @Override
+    public void addStudentToCourse(Long courseId, Long studentId) {
+        Course course = this.findCourseById(courseId);
+        Student student = studentRepository.findById(studentId)
+                .orElseThrow(() -> new EntityNotFoundException("Student not found"));
+        student.setCourse(course);
+        course.addStudent(student);
+        studentRepository.save(student);
+        courseRepository.save(course);
     }
 
-    public void addStudentToCourse(Long courseId, StudentDto studentDto) {
-        Course course = courseRepository.findById(courseId)
-                .orElseThrow(() -> new EntityNotFoundException("Course not found"));
-        Student student = studentMapper.convertDtoToEntity(studentDto);
-        student.setCourse(course);
-        studentRepository.save(student);
+    @Override
+    public void addTeacherToCourse(Long courseId, Long TeacherId) {
+        Course course = this.findCourseById(courseId);
+        Teacher teacher = teacherRepository.findById(TeacherId)
+                .orElseThrow(() -> new EntityNotFoundException("Teacher not found"));
+        teacher.addCourse(course);
+        course.setTeacher(teacher);
+        teacherRepository.save(teacher);
+        courseRepository.save(course);
     }
 }

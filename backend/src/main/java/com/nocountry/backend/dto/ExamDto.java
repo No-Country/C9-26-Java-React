@@ -17,6 +17,8 @@ public class ExamDto {
 
     private String name;
 
+    private String examDate;
+
     private Rating grammar;
 
     private Rating speaking;

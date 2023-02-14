@@ -22,6 +22,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.Builder.Default;
 
 @Data
 @Builder
@@ -61,23 +62,32 @@ public class Student {
     @JoinColumn(name = "course_id")
     private Course course;
 
+    @Default
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
     private List<Exam> exams = new ArrayList<>();
 
+    @Default
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
     private List<Payment> payments = new ArrayList<>();
 
     public void setCourse(Course course) {
+        if (this.course == course) {
+            return;
+        }
         this.course = course;
     }
 
     public void addExam(Exam exam) {
-        this.exams.add(exam);
-        exam.setStudent(this);
+        if (!this.exams.contains(exam)) {
+            this.exams.add(exam);
+            exam.setStudent(this);
+        }
     }
 
     public void addPayment(Payment payment) {
-        this.payments.add(payment);
-        payment.setStudent(this);
+        if (!this.payments.contains(payment)) {
+            this.payments.add(payment);
+            payment.setStudent(this);
+        }
     }
 }

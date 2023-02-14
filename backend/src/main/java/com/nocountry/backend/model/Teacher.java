@@ -33,7 +33,9 @@ public class Teacher {
     private List<Course> courses = new ArrayList<>();
 
     public void addCourse(Course course) {
-        this.courses.add(course);
-        course.setTeacher(this);
+        if (!this.courses.contains(course)) {
+            this.courses.add(course);
+            course.setTeacher(this);
+        }
     }
 }

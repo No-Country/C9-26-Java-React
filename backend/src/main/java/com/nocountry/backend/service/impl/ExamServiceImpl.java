@@ -22,36 +22,46 @@ public class ExamServiceImpl implements IExamService {
 
     private final ExamMapper mapper;
 
-    @Override
-    public Optional<ExamDto> getById(Long id) {
-        return Optional.ofNullable(mapper.convertEntityToDto(repository.getReferenceById(id)));
+    private Exam findExamById(Long examId) {
+        return repository.findById(examId)
+                .orElseThrow(() -> new EntityNotFoundException("Exam not found"));
     }
 
     @Override
-    public List<ExamDto> getAll() {
+    public Optional<ExamDto> getExam(Long examId) {
+        return Optional.ofNullable(mapper.convertToDto(this.findExamById(examId)));
+    }
+
+    @Override
+    public List<ExamDto> getAllExams() {
         return mapper.convertToDtoList(repository.findAll());
     }
 
     @Override
-    public ExamDto create(ExamDto exam) {
-        return mapper.convertEntityToDto(repository.save(mapper.convertDtoToEntity(exam)));
+    public ExamDto createExam(ExamDto examDto) {
+        return mapper.convertToDto(repository.save(mapper.convertToEntity(examDto)));
     }
 
     @Override
-    public ExamDto update(ExamDto exam, Long id) {
-        Exam updatedExam = repository.findById(id).orElseThrow(EntityNotFoundException::new);
-        updatedExam.setName(exam.getName());
-        updatedExam.setExamDate(updatedExam.getExamDate());
-        updatedExam.setGrammar(updatedExam.getGrammar());
-        updatedExam.setListening(updatedExam.getListening());
-        updatedExam.setSpeaking(updatedExam.getSpeaking());
-        updatedExam.setWriting(updatedExam.getWriting());
-        return mapper.convertEntityToDto(repository.save(updatedExam));
+    public ExamDto updateExam(ExamDto examDto, Long examId) {
+        Exam updatedExam = this.findExamById(examId);
+        updatedExam.setName(examDto.getName());
+        updatedExam.setExamDate(examDto.getExamDate());
+        updatedExam.setGrammar(examDto.getGrammar());
+        updatedExam.setListening(examDto.getListening());
+        updatedExam.setSpeaking(examDto.getSpeaking());
+        updatedExam.setWriting(examDto.getWriting());
+        return mapper.convertToDto(repository.save(updatedExam));
 
     }
 
     @Override
-    public void delete(Long id) {
+    public void deleteExam(Long id) {
         repository.deleteById(id);
+    }
+
+    @Override
+    public List<ExamDto> getExamsByStudentId(Long studentId) {
+        return mapper.convertToDtoList(repository.findAllByStudentId(studentId));
     }
 }

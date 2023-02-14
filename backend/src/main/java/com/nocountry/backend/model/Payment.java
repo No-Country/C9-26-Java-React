@@ -39,4 +39,12 @@ public class Payment {
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Student student;
+
+    public void setStudent(Student student) {
+        if (this.student == student) {
+            return;
+        }
+        this.student = student;
+        student.getPayments().add(this);
+    }
 }

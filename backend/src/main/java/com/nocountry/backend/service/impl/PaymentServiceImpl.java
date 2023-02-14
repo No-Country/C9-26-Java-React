@@ -22,35 +22,43 @@ public class PaymentServiceImpl implements IPaymentService {
 
     private final PaymentMapper mapper;
 
-    @Override
-    public Optional<PaymentDto> getById(Long id) {
-        return Optional.ofNullable(mapper.convertEntityToDto(repository.getReferenceById(id)));
-
+    private Payment findPaymentById(Long paymentId) {
+        return repository.findById(paymentId)
+                .orElseThrow(() -> new EntityNotFoundException("Payment not found"));
     }
 
     @Override
-    public List<PaymentDto> getAll() {
+    public Optional<PaymentDto> getPayment(Long paymentId) {
+        return Optional.ofNullable(mapper.convertToDto(this.findPaymentById(paymentId)));
+    }
+
+    @Override
+    public List<PaymentDto> getAllPayments() {
         return mapper.convertToDtoList(repository.findAll());
     }
 
     @Override
-    public PaymentDto create(PaymentDto payment) {
-        return mapper.convertEntityToDto(repository.save(mapper.convertDtoToEntity(payment)));
+    public PaymentDto createPayment(PaymentDto paymentDto) {
+        return mapper.convertToDto(repository.save(mapper.convertToEntity(paymentDto)));
     }
 
     @Override
-    public PaymentDto update(PaymentDto payment, Long id) {
-        Payment updatedPayment = repository.findById(id).orElseThrow(EntityNotFoundException::new);
-        updatedPayment.setType(payment.getType());
-        updatedPayment.setAmount(payment.getAmount());
-        updatedPayment.setExpiration(payment.getExpiration());
-        updatedPayment.setStatus(payment.getStatus());
-        return mapper.convertEntityToDto(repository.save(updatedPayment));
-
+    public PaymentDto updatePayment(PaymentDto paymentDto, Long paymentId) {
+        Payment updatedPayment = this.findPaymentById(paymentId);
+        updatedPayment.setType(paymentDto.getType());
+        updatedPayment.setAmount(paymentDto.getAmount());
+        updatedPayment.setExpiration(paymentDto.getExpiration());
+        updatedPayment.setStatus(paymentDto.getStatus());
+        return mapper.convertToDto(repository.save(updatedPayment));
     }
 
     @Override
-    public void delete(Long id) {
-        repository.deleteById(id);
+    public void deletePayment(Long paymentId) {
+        repository.deleteById(paymentId);
+    }
+
+    @Override
+    public List<PaymentDto> getPaymentsByStudentId(Long studentId) {
+        return mapper.convertToDtoList(repository.findAllByStudentId(studentId));
     }
 }

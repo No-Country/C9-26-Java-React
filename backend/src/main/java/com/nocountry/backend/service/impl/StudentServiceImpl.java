@@ -22,33 +22,43 @@ public class StudentServiceImpl implements IStudentService {
 
     private final StudentMapper mapper;
 
-    @Override
-    public Optional<StudentDto> getById(Long id) {
-        return Optional.ofNullable(mapper.convertEntityToDto(repository.getReferenceById(id)));
+    public Student findStudentById(Long studentId) {
+        return repository.findById(studentId)
+                .orElseThrow(() -> new EntityNotFoundException("Student not found"));
     }
 
     @Override
-    public List<StudentDto> getAll() {
+    public Optional<StudentDto> getStudent(Long StudentId) {
+        return Optional.ofNullable(mapper.convertToDto(this.findStudentById(StudentId)));
+    }
+
+    @Override
+    public List<StudentDto> getAllStudents() {
         return mapper.convertToDtoList(repository.findAll());
     }
 
     @Override
-    public StudentDto update(StudentDto student, Long id) {
-        Student updatedStudent = repository.findById(id).orElseThrow(EntityNotFoundException::new);
-        updatedStudent.setFirstName(student.getFirstName());
-        updatedStudent.setLastName(student.getLastName());
-        updatedStudent.setDni(student.getDni());
-        updatedStudent.setBirthdate(student.getBirthdate());
-        updatedStudent.setAddress(student.getAddress());
-        updatedStudent.setPhone(student.getPhone());
-        updatedStudent.setLevel(student.getLevel());
-        updatedStudent.setImageUrl(student.getImageUrl());
-        return mapper.convertEntityToDto(repository.save(updatedStudent));
+    public StudentDto updateStudent(StudentDto studentDto, Long studentId) {
+        Student updatedStudent = this.findStudentById(studentId);
+        updatedStudent.setFirstName(studentDto.getFirstName());
+        updatedStudent.setLastName(studentDto.getLastName());
+        updatedStudent.setDni(studentDto.getDni());
+        updatedStudent.setBirthdate(studentDto.getBirthdate());
+        updatedStudent.setAddress(studentDto.getAddress());
+        updatedStudent.setPhone(studentDto.getPhone());
+        updatedStudent.setLevel(studentDto.getLevel());
+        updatedStudent.setImageUrl(studentDto.getImageUrl());
+        return mapper.convertToDto(repository.save(updatedStudent));
 
     }
 
     @Override
-    public void delete(Long id) {
-        repository.deleteById(id);
+    public void deleteStudent(Long studentId) {
+        repository.deleteById(studentId);
+    }
+
+    @Override
+    public List<StudentDto> getStudentsByCourseId(Long courseId) {
+        return mapper.convertToDtoList(repository.findAllByCourseId(courseId));
     }
 }

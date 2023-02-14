@@ -20,32 +20,47 @@ import com.nocountry.backend.service.IStudentService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("api/v1")
+@RequestMapping("/api")
 @RequiredArgsConstructor
 public class StudentController {
 
     private final IStudentService service;
 
-    @GetMapping("/students/{id}")
-    public ResponseEntity<Optional<StudentDto>> getById(@PathVariable Long id) {
-        return new ResponseEntity<>(service.getById(id), HttpStatus.OK);
+    @GetMapping("/students/{studentId}")
+    public ResponseEntity<Optional<StudentDto>> getStudent(@PathVariable Long studentId) {
+        Optional<StudentDto> studentDto = service.getStudent(studentId);
+        if (studentDto.isPresent()) {
+            return new ResponseEntity<>(studentDto, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @GetMapping("/admin/students/all")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<List<StudentDto>> getAll() {
-        return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
+    public ResponseEntity<List<StudentDto>> getAllStudents() {
+        return new ResponseEntity<>(service.getAllStudents(), HttpStatus.OK);
     }
 
-    @PutMapping("/students/update/{id}")
-    public ResponseEntity<StudentDto> update(@RequestBody StudentDto student, @PathVariable Long id) {
-        return new ResponseEntity<>(service.update(student, id), HttpStatus.ACCEPTED);
+    @PutMapping("/students/update/{studentId}")
+    public ResponseEntity<StudentDto> updateStudent(@RequestBody StudentDto studentDto, @PathVariable Long studentId) {
+        return new ResponseEntity<>(service.updateStudent(studentDto, studentId), HttpStatus.ACCEPTED);
     }
 
-    @DeleteMapping("/admin/students/delete/{id}")
+    @DeleteMapping("/admin/students/delete/{StudentId}")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<String> delete(@PathVariable Long id) {
-        service.delete(id);
-        return new ResponseEntity<>("student deleted", HttpStatus.ACCEPTED);
+    public ResponseEntity<String> deleteStudent(@PathVariable Long studentId) {
+        if (service.getStudent(studentId).isPresent()) {
+            service.deleteStudent(studentId);
+            return new ResponseEntity<>("Student successfully deleted", HttpStatus.ACCEPTED);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/admin/students/courses/{courseId}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<List<StudentDto>> getStudentsByCourseId(@PathVariable Long courseId) {
+        return new ResponseEntity<>(service.getStudentsByCourseId(courseId), HttpStatus.OK);
     }
 }

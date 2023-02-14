@@ -6,7 +6,6 @@ import java.util.List;
 import com.nocountry.backend.utils.enums.Level;
 
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -32,8 +31,7 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true)
-    private String name;
+    private String category;
 
     @Enumerated(EnumType.STRING)
     private Level level;
@@ -51,13 +49,18 @@ public class Course {
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
     private List<Student> students = new ArrayList<>();
 
-    public void addTeacher(Teacher teacher) {
+    public void setTeacher(Teacher teacher) {
+        if (this.teacher == teacher) {
+            return;
+        }
         this.teacher = teacher;
         teacher.getCourses().add(this);
     }
 
     public void addStudent(Student student) {
-        this.students.add(student);
-        student.setCourse(this);
+        if (!this.students.contains(student)) {
+            this.students.add(student);
+            student.setCourse(this);
+        }
     }
 }

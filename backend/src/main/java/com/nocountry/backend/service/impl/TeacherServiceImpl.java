@@ -22,32 +22,36 @@ public class TeacherServiceImpl implements ITeacherService {
 
     private final TeacherMapper mapper;
 
-    @Override
-    public Optional<TeacherDto> getById(Long id) {
-        return Optional.ofNullable(mapper.convertEntityToDto(repository.getReferenceById(id)));
+    private Teacher findTeacherById(Long teacherId) {
+        return repository.findById(teacherId)
+                .orElseThrow(() -> new EntityNotFoundException("Teacher not found"));
     }
 
     @Override
-    public List<TeacherDto> getAll() {
+    public Optional<TeacherDto> getTeacher(Long teacherId) {
+        return Optional.ofNullable(mapper.convertToDto(this.findTeacherById(teacherId)));
+    }
+
+    @Override
+    public List<TeacherDto> getAllTeachers() {
         return mapper.convertToDtoList(repository.findAll());
     }
 
     @Override
-    public TeacherDto create(TeacherDto teacher) {
-        return mapper.convertEntityToDto(repository.save(mapper.convertDtoToEntity(teacher)));
-
+    public TeacherDto createTeacher(TeacherDto teacherDto) {
+        return mapper.convertToDto(repository.save(mapper.convertToEntity(teacherDto)));
     }
 
     @Override
-    public TeacherDto update(TeacherDto teacher, Long id) {
-        Teacher updatedTeacher = repository.findById(id).orElseThrow(EntityNotFoundException::new);
-        updatedTeacher.setFirstName(teacher.getFirstName());
-        updatedTeacher.setLastName(teacher.getLastName());
-        return mapper.convertEntityToDto(repository.save(updatedTeacher));
+    public TeacherDto updateTeacher(TeacherDto teacherDto, Long teacherId) {
+        Teacher updatedTeacher = this.findTeacherById(teacherId);
+        updatedTeacher.setFirstName(teacherDto.getFirstName());
+        updatedTeacher.setLastName(teacherDto.getLastName());
+        return mapper.convertToDto(repository.save(updatedTeacher));
     }
 
     @Override
-    public void delete(Long id) {
-        repository.deleteById(id);
+    public void deleteTeacher(Long teacherId) {
+        repository.deleteById(teacherId);
     }
 }
