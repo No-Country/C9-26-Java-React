@@ -1,7 +1,5 @@
 package com.nocountry.backend.model;
 
-import com.nocountry.backend.utils.enums.Rating;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,13 +27,13 @@ public class Exam {
 
     private String examDate;
 
-    private Rating grammar;
+    private String grammar;
 
-    private Rating speaking;
+    private String speaking;
 
-    private Rating writing;
+    private String writing;
 
-    private Rating listening;
+    private String listening;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "student_id")
