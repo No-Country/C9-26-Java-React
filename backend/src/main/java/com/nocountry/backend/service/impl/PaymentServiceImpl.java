@@ -46,8 +46,6 @@ public class PaymentServiceImpl implements IPaymentService {
     public PaymentDto updatePayment(PaymentDto paymentDto, Long paymentId) {
         Payment updatedPayment = this.findPaymentById(paymentId);
         updatedPayment.setType(paymentDto.getType());
-        updatedPayment.setAmount(paymentDto.getAmount());
-        updatedPayment.setExpiration(paymentDto.getExpiration());
         updatedPayment.setStatus(paymentDto.getStatus());
         return mapper.convertToDto(repository.save(updatedPayment));
     }

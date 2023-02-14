@@ -18,9 +18,5 @@ public class PaymentDto {
 
     private PaymentType type;
 
-    private Double amount;
-
-    private String expiration;
-
     private PaymentStatus status;
 }

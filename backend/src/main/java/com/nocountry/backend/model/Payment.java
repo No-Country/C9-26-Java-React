@@ -30,10 +30,6 @@ public class Payment {
     @Enumerated(EnumType.STRING)
     private PaymentType type;
 
-    private Double amount;
-
-    private String expiration;
-
     @Enumerated(EnumType.STRING)
     private PaymentStatus status;
 
