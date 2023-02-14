@@ -12,12 +12,14 @@
 }
 
 .payment_title {
+    display: flex;
+    align-items: center;
     font-size: 1.25rem;
     font-weight: 700;
     color: #000000;
-    display: inline-block;
     align-self: self-start;
     margin: 15px 0 6px 60px;
+    gap: 10px;
 }
 
 .payment_subtitle {
@@ -56,4 +58,8 @@
     border: none;
     border-radius: 20px;
     margin-bottom: 6px;
+}
+
+.payment_input:disabled {
+    background-color: #FFFFFF;
 }

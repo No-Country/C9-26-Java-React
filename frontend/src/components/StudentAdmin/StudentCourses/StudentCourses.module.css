@@ -10,12 +10,14 @@
 }
 
 .courses_title {
+    display: flex;
+    align-items: center;
     font-size: 1.25rem;
     font-weight: 700;
     color: #000000;
-    display: inline-block;
     align-self: self-start;
     margin: 27px 0 40px 60px;
+    gap: 10px;
 }
 
 .courses_input {
@@ -27,6 +29,10 @@
     margin-top: 7px;
     margin-bottom: 11px;
     text-align: center;
+}
+
+.courses_input:disabled {
+    background-color: #FFFFFF;
 }
 
 .courses_button {

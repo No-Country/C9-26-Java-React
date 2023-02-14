@@ -10,12 +10,14 @@
 }
 
 .grades_title {
+    display: flex;
+    align-items: center;
     font-size: 1.25rem;
     font-weight: 700;
     color: #000000;
-    display: inline-block;
     align-self: self-start;
     margin: 27px 0 15px 60px;
+    gap: 10px;
 }
 
 .grades_subtitle {
@@ -36,4 +38,8 @@
     margin-top: 7px;
     margin-bottom: 11px;
     text-align: center;
+}
+
+.grades_input:disabled {
+    background-color: #FFFFFF;
 }

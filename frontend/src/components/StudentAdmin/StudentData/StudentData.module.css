@@ -7,13 +7,24 @@ label {
     color: #FFFFFF;
 }
 
-.profile_picture {
+.profile_pictureContainter {
+    position: relative;
+}
+
+.profile_icon {
+    position: absolute;
+    bottom: 5%;
+    right: 25%;
+}
+
+.profile_title {
     display: flex;
     align-items: center;
     gap: 10px;
     margin: 17px 0 24px 16px;
     font-size: 20px;
     font-weight: 700;
+    color: #FFFFFF;
 }
 
 .profile_input {
@@ -25,4 +36,8 @@ label {
     margin-top: 7px;
     margin-bottom: 11px;
     text-align: center;
+}
+
+.profile_input:disabled {
+    background-color: #FFFFFF;
 }

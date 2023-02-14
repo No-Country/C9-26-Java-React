@@ -7,7 +7,6 @@ export const EXAMS = '/exams';
 export const SERVICES = '/services';
 export const CONSULTATION = '/consultation';
 export const STUDENT = '/student';
-export const STUDENT_UPDATE = '/update-student';
 export const ADD_STUDENT = '/add-student';
 export const LOGOUT = '/logout';
 export const NOT_FOUND = '*';

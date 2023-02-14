@@ -4,18 +4,23 @@ import StudentGrades from '../../components/StudentAdmin/StudentGrades/StudentGr
 import StudentExams from '../../components/StudentAdmin/StudentExams/StudentExams';
 import StudentPayment from '../../components/StudentAdmin/StudentPayment/StudentPayment';
 
+import { useLocation } from "react-router-dom"; 
+
 import styles from "./Alumno.module.css";
 
 const Alumno = () => {
+    const location = useLocation();
+    const path = location.pathname;
+
     return (
         <main className="background">
             <div className={styles.alumno_container}>
-                <StudentData />
-                <StudentCourses />
-                <StudentGrades />
+                <StudentData location={path} />
+                <StudentCourses location={path} />
+                <StudentGrades location={path} />
                 <section>
-                    <StudentExams />
-                    <StudentPayment />
+                    <StudentExams location={path} />
+                    <StudentPayment location={path} />
                 </section>
             </div>
         </main>
