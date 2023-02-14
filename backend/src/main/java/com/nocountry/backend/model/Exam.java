@@ -35,6 +35,8 @@ public class Exam {
 
     private String listening;
 
+    private Boolean status;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "student_id")
     private Student student;

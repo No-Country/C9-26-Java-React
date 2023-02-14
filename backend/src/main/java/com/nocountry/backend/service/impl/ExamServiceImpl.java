@@ -51,6 +51,7 @@ public class ExamServiceImpl implements IExamService {
         updatedExam.setListening(examDto.getListening());
         updatedExam.setSpeaking(examDto.getSpeaking());
         updatedExam.setWriting(examDto.getWriting());
+        updatedExam.setStatus(examDto.getStatus());
         return mapper.convertToDto(repository.save(updatedExam));
 
     }
