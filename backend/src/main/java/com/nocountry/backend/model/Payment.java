@@ -28,10 +28,10 @@ public class Payment {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    private PaymentType type;
+    private PaymentType paymentType;
 
     @Enumerated(EnumType.STRING)
-    private PaymentStatus status;
+    private PaymentStatus paymentStatus;
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Student student;

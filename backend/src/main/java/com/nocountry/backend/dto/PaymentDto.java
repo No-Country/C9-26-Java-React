@@ -16,7 +16,7 @@ public class PaymentDto {
 
     private Long id;
 
-    private PaymentType type;
+    private PaymentType paymentType;
 
-    private PaymentStatus status;
+    private PaymentStatus paymentStatus;
 }
