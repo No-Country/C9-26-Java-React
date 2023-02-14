@@ -2,7 +2,7 @@ import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Button from 'react-bootstrap/Button';
-import { NavLink } from 'react-router-dom';
+import { Navigate, NavLink } from 'react-router-dom';
 import { FaWhatsapp, FaGoogle, FaFacebook, FaInstagram, FaYoutube, FaHome, FaUser } from 'react-icons/fa';
 import { useState } from 'react';
 import { Login } from '../../pages';
@@ -14,8 +14,9 @@ function Header() {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
+    
     return (
+        
         <>
             <div className='bg-dark d-flex align-items-center'>
                 <Container className='d-flex gap-5 py-2' fluid>
@@ -41,7 +42,7 @@ function Header() {
             </div>
             <Navbar collapseOnSelect expand="lg" style={{ maxHeight:'80px', background:'#212121'}} className='sticky-top shadow-sm'>
                 <Container fluid>
-                    <Navbar.Brand href="#home"><img src={logo} className='img-fluid' style={{width:'150px'}}/></Navbar.Brand>
+                    <NavLink to="/"><Navbar.Brand href="#home"><img src={logo} className='img-fluid' style={{width:'150px'}}/></Navbar.Brand></NavLink>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="ms-auto ">

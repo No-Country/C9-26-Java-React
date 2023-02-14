@@ -5,12 +5,12 @@ import { BsFillXCircleFill } from 'react-icons/bs'
 
 const Login = ({ show, handleClose }) => {
   return (
-    <>
+    <div>
       <Modal
         show={show}
         onHide={handleClose}
-        className={style.modal}        
-
+        className={style.modal}
+        centered = 'true'
       >
         <Modal.Header style={{ background: '#000000', border: 'none', color: '#FFFFFF' }}>
           <h2>Por favor ingresa tus datos</h2>
@@ -18,8 +18,8 @@ const Login = ({ show, handleClose }) => {
         </Modal.Header>
         <Modal.Body style={{ background: '#000000', border: 'none' }}>
           <div className={style.body}>
-            <input type="email" placeholder='ingresa@tuemail.com' className={style.input}/>
-            <input type="text" placeholder='DNI' className={style.input}/>
+            <input type="email" placeholder='ingresa@tuemail.com' className={style.input} />
+            <input type="text" placeholder='DNI' className={style.input} />
           </div>
         </Modal.Body>
         <Modal.Footer style={{ background: '#000000', border: 'none', display: 'flex', justifyContent: 'center' }}>
@@ -28,7 +28,7 @@ const Login = ({ show, handleClose }) => {
           </button>
         </Modal.Footer>
       </Modal>
-    </>
+    </div>
   )
 }
 export default Login
