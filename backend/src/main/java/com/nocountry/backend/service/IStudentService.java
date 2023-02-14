@@ -16,4 +16,8 @@ public interface IStudentService {
     void deleteStudent(Long studentId);
 
     List<StudentDto> getStudentsByCourseId(Long courseId);
+
+    void addExamToStudent(Long studentId, Long examId);
+
+    void addPaymentToStudent(Long studentId, Long paymentId);
 }

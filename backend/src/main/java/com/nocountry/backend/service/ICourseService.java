@@ -19,5 +19,5 @@ public interface ICourseService {
 
     void addStudentToCourse(Long courseId, Long studentId);
 
-    void addTeacherToCourse(Long courseId, Long teacherId);
+    void setTeacherToCourse(Long courseId, Long teacherId);
 }

@@ -75,8 +75,8 @@ public class CourseController {
 
     @PutMapping("/admin/courses/{courseId}/teachers/add/{teacherId}")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<String> addTeacherToCourse(@PathVariable Long courseId, @PathVariable Long teacherId) {
-        service.addTeacherToCourse(courseId, teacherId);
+    public ResponseEntity<String> setTeacherToCourse(@PathVariable Long courseId, @PathVariable Long teacherId) {
+        service.setTeacherToCourse(courseId, teacherId);
         return new ResponseEntity<>("Teacher successfully added to course", HttpStatus.OK);
     }
 }

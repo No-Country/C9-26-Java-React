@@ -63,4 +63,18 @@ public class StudentController {
     public ResponseEntity<List<StudentDto>> getStudentsByCourseId(@PathVariable Long courseId) {
         return new ResponseEntity<>(service.getStudentsByCourseId(courseId), HttpStatus.OK);
     }
+
+    @PutMapping("/admin/students/{studentId}/exams/add/{examId}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<String> addExamToStudent(@PathVariable Long studentId, @PathVariable Long examId) {
+        service.addExamToStudent(studentId, examId);
+        return new ResponseEntity<>("Exam successfully added to student", HttpStatus.OK);
+    }
+
+    @PutMapping("/admin/students/{studentId}/payments/add/{paymentId}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<String> addPaymentToStudent(@PathVariable Long studentId, @PathVariable Long paymentId) {
+        service.addPaymentToStudent(studentId, paymentId);
+        return new ResponseEntity<>("Payment successfully added to student", HttpStatus.OK);
+    }
 }

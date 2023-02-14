@@ -78,7 +78,7 @@ public class CourseServiceImpl implements ICourseService {
     }
 
     @Override
-    public void addTeacherToCourse(Long courseId, Long TeacherId) {
+    public void setTeacherToCourse(Long courseId, Long TeacherId) {
         Course course = this.findCourseById(courseId);
         Teacher teacher = teacherRepository.findById(TeacherId)
                 .orElseThrow(() -> new EntityNotFoundException("Teacher not found"));
