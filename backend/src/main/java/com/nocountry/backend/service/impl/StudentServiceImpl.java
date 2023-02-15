@@ -15,7 +15,6 @@ import com.nocountry.backend.mapper.StudentMapper;
 import com.nocountry.backend.model.Exam;
 import com.nocountry.backend.model.Payment;
 import com.nocountry.backend.model.Student;
-import com.nocountry.backend.repository.ICourseRepository;
 import com.nocountry.backend.repository.IExamRepository;
 import com.nocountry.backend.repository.IPaymentRepository;
 import com.nocountry.backend.repository.IStudentRepository;
@@ -29,13 +28,17 @@ import lombok.RequiredArgsConstructor;
 public class StudentServiceImpl implements IStudentService {
 
     private final IStudentRepository studentRepository;
-    private final ICourseRepository courseRepository;
+
     private final IExamRepository examRepository;
+
     private final IPaymentRepository paymentRepository;
 
     private final StudentMapper studentMapper;
+
     private final CourseMapper courseMapper;
+
     private final ExamMapper examMapper;
+
     private final PaymentMapper paymentMapper;
 
     private Student findStudentById(Long studentId) {
@@ -75,17 +78,20 @@ public class StudentServiceImpl implements IStudentService {
 
     @Override
     public CourseDto getCourseByStudentId(Long studentId) {
-        return null;
+        Student student = this.findStudentById(studentId);
+        return courseMapper.convertToDto(student.getCourse());
     }
 
     @Override
     public List<ExamDto> getExamsByStudentId(Long studentId) {
-        return examMapper.convertToDtoList(examRepository.findAllByStudentId(studentId));
+        Student student = this.findStudentById(studentId);
+        return examMapper.convertToDtoList(student.getExams());
     }
 
     @Override
     public List<PaymentDto> getPaymentsByStudentId(Long studentId) {
-        return paymentMapper.convertToDtoList(paymentRepository.findAllByStudentId(studentId));
+        Student student = this.findStudentById(studentId);
+        return paymentMapper.convertToDtoList(student.getPayments());
     }
 
     @Override

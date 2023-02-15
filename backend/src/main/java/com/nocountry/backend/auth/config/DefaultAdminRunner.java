@@ -29,7 +29,6 @@ public class DefaultAdminRunner implements ApplicationRunner {
                 .password(passwordEncoder.encode("1234"))
                 .role(Role.ADMIN.name())
                 .build();
-
         repository.save(admin);
     }
 }

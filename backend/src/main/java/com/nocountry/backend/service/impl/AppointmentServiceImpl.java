@@ -48,7 +48,7 @@ public class AppointmentServiceImpl implements IAppointmentService {
         Appointment updatedAppointment = this.findAppointmentById(appointmentId);
         updatedAppointment.setEmail(scheduleDto.getEmail());
         updatedAppointment.setFullName(scheduleDto.getFullName());
-        updatedAppointment.setStatus(false);
+        updatedAppointment.setStatus(true);
     }
 
     @Override

@@ -71,7 +71,8 @@ public class CourseServiceImpl implements ICourseService {
 
     @Override
     public List<StudentDto> getStudentsByCourseId(Long courseId) {
-        return studentMapper.convertToDtoList(studentRepository.findAllByCourseId(courseId));
+        Course course = this.findCourseById(courseId);
+        return studentMapper.convertToDtoList(course.getStudents());
     }
 
     @Override
