@@ -3,3 +3,6 @@ spring:
     url: jdbc:${MYSQL_URL}?createDatabaseIfNotExist=true&useSSL=false&allowMultiQueries=true&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8
     username: root
     password: BlDXe2QsmGTg2aX7gukW
+  profiles:
+    active:
+      - ${SPRING_PROFILE_ACTIVE}
