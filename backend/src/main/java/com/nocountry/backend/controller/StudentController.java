@@ -60,7 +60,7 @@ public class StudentController {
         }
     }
 
-    @GetMapping("/{studentId}")
+    @GetMapping("/{studentId}/course")
     public ResponseEntity<CourseDto> getCourseByStudentId(@PathVariable Long studentId) {
         CourseDto courseDto = service.getCourseByStudentId(studentId);
         if (courseDto != null) {

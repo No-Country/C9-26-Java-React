@@ -75,7 +75,7 @@ public class StudentServiceImpl implements IStudentService {
 
     @Override
     public CourseDto getCourseByStudentId(Long studentId) {
-        return courseMapper.convertToDto(courseRepository.findByStudentId(studentId));
+        return null;
     }
 
     @Override

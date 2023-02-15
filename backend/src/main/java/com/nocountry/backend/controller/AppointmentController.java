@@ -57,7 +57,7 @@ public class AppointmentController {
             @PathVariable Long appointmentId) {
         if (service.getAppointment(appointmentId) != null) {
             service.scheduleAppointment(scheduleDto, appointmentId);
-            return new ResponseEntity<>("Appointment successfully deleted", HttpStatus.ACCEPTED);
+            return new ResponseEntity<>("Appointment successfully scheduled!", HttpStatus.ACCEPTED);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
