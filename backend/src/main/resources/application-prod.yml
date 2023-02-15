@@ -1,6 +1,3 @@
 spring:
   datasource:
     url: jdbc:${MYSQL_URL}?createDatabaseIfNotExist=true&useSSL=false&allowMultiQueries=true&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8
-  profiles:
-    active:
-      - ${SPRING_PROFILE_ACTIVE}
