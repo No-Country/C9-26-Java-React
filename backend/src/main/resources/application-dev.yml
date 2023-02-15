@@ -3,5 +3,7 @@ spring:
     url: jdbc:mysql://localhost:3306/nocountry?createDatabaseIfNotExist=true&useSSL=false&allowMultiQueries=true&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8
     username: root
     password:
+  profiles:
+    active: dev
 server:
   port: 8081
