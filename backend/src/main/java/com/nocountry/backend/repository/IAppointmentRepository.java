@@ -1,5 +1,9 @@
 package com.nocountry.backend.repository;
 
-public interface IAppointmentRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.nocountry.backend.model.Appointment;
+
+public interface IAppointmentRepository extends JpaRepository<Appointment, Long> {
 
 }

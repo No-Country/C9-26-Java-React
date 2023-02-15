@@ -57,8 +57,8 @@ public class ExamServiceImpl implements IExamService {
     }
 
     @Override
-    public void deleteExam(Long id) {
-        repository.deleteById(id);
+    public void deleteExam(Long examId) {
+        repository.deleteById(examId);
     }
 
     @Override
