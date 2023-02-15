@@ -9,9 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ScheduleDto {
-
-    private Long id;
+public class AppointmentScheduleDto {
 
     private String email;
 

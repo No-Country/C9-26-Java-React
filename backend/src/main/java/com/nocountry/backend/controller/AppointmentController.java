@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nocountry.backend.dto.AppointmentDto;
-import com.nocountry.backend.dto.ScheduleDto;
+import com.nocountry.backend.dto.AppointmentScheduleDto;
 import com.nocountry.backend.service.IAppointmentService;
 
 import lombok.RequiredArgsConstructor;
@@ -53,7 +53,7 @@ public class AppointmentController {
 
     @PatchMapping("/{appointmentId}/schedule")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<String> scheduleAppointment(@RequestBody ScheduleDto scheduleDto,
+    public ResponseEntity<String> scheduleAppointment(@RequestBody AppointmentScheduleDto scheduleDto,
             @PathVariable Long appointmentId) {
         if (service.getAppointment(appointmentId) != null) {
             service.scheduleAppointment(scheduleDto, appointmentId);

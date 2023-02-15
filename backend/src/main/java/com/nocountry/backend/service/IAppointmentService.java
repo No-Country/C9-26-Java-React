@@ -3,7 +3,7 @@ package com.nocountry.backend.service;
 import java.util.List;
 
 import com.nocountry.backend.dto.AppointmentDto;
-import com.nocountry.backend.dto.ScheduleDto;
+import com.nocountry.backend.dto.AppointmentScheduleDto;
 
 public interface IAppointmentService {
 
@@ -17,5 +17,5 @@ public interface IAppointmentService {
 
     void deleteAppointment(Long appointmentId);
 
-    void scheduleAppointment(ScheduleDto scheduleDto, Long appointmentId);
+    void scheduleAppointment(AppointmentScheduleDto scheduleDto, Long appointmentId);
 }

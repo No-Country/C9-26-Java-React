@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.nocountry.backend.dto.AppointmentDto;
-import com.nocountry.backend.dto.ScheduleDto;
+import com.nocountry.backend.dto.AppointmentScheduleDto;
 import com.nocountry.backend.mapper.AppointmentMapper;
 import com.nocountry.backend.model.Appointment;
 import com.nocountry.backend.repository.IAppointmentRepository;
@@ -44,7 +44,7 @@ public class AppointmentServiceImpl implements IAppointmentService {
     }
 
     @Override
-    public void scheduleAppointment(ScheduleDto scheduleDto, Long appointmentId) {
+    public void scheduleAppointment(AppointmentScheduleDto scheduleDto, Long appointmentId) {
         Appointment updatedAppointment = this.findAppointmentById(appointmentId);
         updatedAppointment.setEmail(scheduleDto.getEmail());
         updatedAppointment.setFullName(scheduleDto.getFullName());
@@ -56,8 +56,7 @@ public class AppointmentServiceImpl implements IAppointmentService {
         Appointment updatedAppointment = this.findAppointmentById(AppointmentId);
         updatedAppointment.setDate(AppointmentDto.getDate());
         updatedAppointment.setSchedule(AppointmentDto.getSchedule());
-        updatedAppointment.setEmail(AppointmentDto.getEmail());
-        updatedAppointment.setFullName(AppointmentDto.getFullName());
+        updatedAppointment.setStatus(false);
         return appointmentMapper.convertToDto(appointmentRepository.save(updatedAppointment));
     }
 
