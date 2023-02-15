@@ -1,15 +1,21 @@
 package com.nocountry.backend.service.impl;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.nocountry.backend.dto.CourseDto;
+import com.nocountry.backend.dto.ExamDto;
+import com.nocountry.backend.dto.PaymentDto;
 import com.nocountry.backend.dto.StudentDto;
+import com.nocountry.backend.mapper.CourseMapper;
+import com.nocountry.backend.mapper.ExamMapper;
+import com.nocountry.backend.mapper.PaymentMapper;
 import com.nocountry.backend.mapper.StudentMapper;
 import com.nocountry.backend.model.Exam;
 import com.nocountry.backend.model.Payment;
 import com.nocountry.backend.model.Student;
+import com.nocountry.backend.repository.ICourseRepository;
 import com.nocountry.backend.repository.IExamRepository;
 import com.nocountry.backend.repository.IPaymentRepository;
 import com.nocountry.backend.repository.IStudentRepository;
@@ -23,12 +29,14 @@ import lombok.RequiredArgsConstructor;
 public class StudentServiceImpl implements IStudentService {
 
     private final IStudentRepository studentRepository;
-
+    private final ICourseRepository courseRepository;
     private final IExamRepository examRepository;
-
     private final IPaymentRepository paymentRepository;
 
-    private final StudentMapper mapper;
+    private final StudentMapper studentMapper;
+    private final CourseMapper courseMapper;
+    private final ExamMapper examMapper;
+    private final PaymentMapper paymentMapper;
 
     private Student findStudentById(Long studentId) {
         return studentRepository.findById(studentId)
@@ -36,13 +44,13 @@ public class StudentServiceImpl implements IStudentService {
     }
 
     @Override
-    public Optional<StudentDto> getStudent(Long StudentId) {
-        return Optional.ofNullable(mapper.convertToDto(this.findStudentById(StudentId)));
+    public StudentDto getStudent(Long StudentId) {
+        return studentMapper.convertToDto(this.findStudentById(StudentId));
     }
 
     @Override
     public List<StudentDto> getAllStudents() {
-        return mapper.convertToDtoList(studentRepository.findAll());
+        return studentMapper.convertToDtoList(studentRepository.findAll());
     }
 
     @Override
@@ -56,7 +64,7 @@ public class StudentServiceImpl implements IStudentService {
         updatedStudent.setPhone(studentDto.getPhone());
         updatedStudent.setLevel(studentDto.getLevel());
         updatedStudent.setImageUrl(studentDto.getImageUrl());
-        return mapper.convertToDto(studentRepository.save(updatedStudent));
+        return studentMapper.convertToDto(studentRepository.save(updatedStudent));
 
     }
 
@@ -66,8 +74,18 @@ public class StudentServiceImpl implements IStudentService {
     }
 
     @Override
-    public List<StudentDto> getStudentsByCourseId(Long courseId) {
-        return mapper.convertToDtoList(studentRepository.findAllByCourseId(courseId));
+    public CourseDto getCourseByStudentId(Long studentId) {
+        return courseMapper.convertToDto(courseRepository.findByStudentId(studentId));
+    }
+
+    @Override
+    public List<ExamDto> getExamsByStudentId(Long studentId) {
+        return examMapper.convertToDtoList(examRepository.findAllByStudentId(studentId));
+    }
+
+    @Override
+    public List<PaymentDto> getPaymentsByStudentId(Long studentId) {
+        return paymentMapper.convertToDtoList(paymentRepository.findAllByStudentId(studentId));
     }
 
     @Override

@@ -1,7 +1,6 @@
 package com.nocountry.backend.service.impl;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -28,8 +27,8 @@ public class TeacherServiceImpl implements ITeacherService {
     }
 
     @Override
-    public Optional<TeacherDto> getTeacher(Long teacherId) {
-        return Optional.ofNullable(mapper.convertToDto(this.findTeacherById(teacherId)));
+    public TeacherDto getTeacher(Long teacherId) {
+        return mapper.convertToDto(this.findTeacherById(teacherId));
     }
 
     @Override

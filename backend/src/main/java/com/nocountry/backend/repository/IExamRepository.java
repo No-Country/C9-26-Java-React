@@ -8,5 +8,5 @@ import com.nocountry.backend.model.Exam;
 
 public interface IExamRepository extends JpaRepository<Exam, Long> {
 
-    List<Exam> findAllByStudentId(Long studentId);
+    public List<Exam> findAllByStudentId(Long studentId);
 }

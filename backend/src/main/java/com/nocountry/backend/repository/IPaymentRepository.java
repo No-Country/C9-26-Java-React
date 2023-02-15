@@ -8,5 +8,5 @@ import com.nocountry.backend.model.Payment;
 
 public interface IPaymentRepository extends JpaRepository<Payment, Long> {
 
-    List<Payment> findAllByStudentId(Long studentId);
+    public List<Payment> findAllByStudentId(Long studentId);
 }

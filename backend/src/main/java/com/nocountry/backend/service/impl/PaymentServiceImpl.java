@@ -1,7 +1,6 @@
 package com.nocountry.backend.service.impl;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -28,8 +27,8 @@ public class PaymentServiceImpl implements IPaymentService {
     }
 
     @Override
-    public Optional<PaymentDto> getPayment(Long paymentId) {
-        return Optional.ofNullable(mapper.convertToDto(this.findPaymentById(paymentId)));
+    public PaymentDto getPayment(Long paymentId) {
+        return mapper.convertToDto(this.findPaymentById(paymentId));
     }
 
     @Override
@@ -53,10 +52,5 @@ public class PaymentServiceImpl implements IPaymentService {
     @Override
     public void deletePayment(Long paymentId) {
         repository.deleteById(paymentId);
-    }
-
-    @Override
-    public List<PaymentDto> getPaymentsByStudentId(Long studentId) {
-        return mapper.convertToDtoList(repository.findAllByStudentId(studentId));
     }
 }

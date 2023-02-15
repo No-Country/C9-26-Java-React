@@ -1,7 +1,6 @@
 package com.nocountry.backend.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,54 +20,49 @@ import com.nocountry.backend.service.IExamService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("api/exams")
 @RequiredArgsConstructor
 public class ExamController {
 
     private final IExamService service;
 
-    @GetMapping("/admin/exams/{examId}")
+    @GetMapping("/{examId}")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<Optional<ExamDto>> getExam(@PathVariable Long examId) {
-        Optional<ExamDto> examDto = service.getExam(examId);
-        if (examDto.isPresent()) {
+    public ResponseEntity<ExamDto> getExam(@PathVariable Long examId) {
+        ExamDto examDto = service.getExam(examId);
+        if (examDto != null) {
             return new ResponseEntity<>(examDto, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
-    @GetMapping("/admin/exams/all")
+    @GetMapping("/")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<List<ExamDto>> getAllExams() {
         return new ResponseEntity<>(service.getAllExams(), HttpStatus.OK);
     }
 
-    @PostMapping("/admin/exams/create")
+    @PostMapping("/create")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<ExamDto> createExam(@RequestBody ExamDto examDto) {
         return new ResponseEntity<>(service.createExam(examDto), HttpStatus.CREATED);
     }
 
-    @PutMapping("/admin/exams/update/{examId}")
+    @PutMapping("/{examId}/update")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<ExamDto> updateExam(@RequestBody ExamDto examDto, @PathVariable Long examId) {
         return new ResponseEntity<>(service.updateExam(examDto, examId), HttpStatus.ACCEPTED);
     }
 
-    @DeleteMapping("/admin/exams/delete/{examId}")
+    @DeleteMapping("/{examId}/delete")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> deleteExam(@PathVariable Long examId) {
-        if (service.getExam(examId).isPresent()) {
+        if (service.getExam(examId) != null) {
             service.deleteExam(examId);
             return new ResponseEntity<>("Exam successfully deleted", HttpStatus.ACCEPTED);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-    }
-
-    @GetMapping("/exams/students/{studentId}")
-    public ResponseEntity<List<ExamDto>> getExamsByStudentId(@PathVariable Long studentId) {
-        return new ResponseEntity<>(service.getExamsByStudentId(studentId), HttpStatus.OK);
     }
 }

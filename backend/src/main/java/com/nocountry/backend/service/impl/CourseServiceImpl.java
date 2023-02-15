@@ -1,12 +1,13 @@
 package com.nocountry.backend.service.impl;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
 import com.nocountry.backend.dto.CourseDto;
+import com.nocountry.backend.dto.StudentDto;
 import com.nocountry.backend.mapper.CourseMapper;
+import com.nocountry.backend.mapper.StudentMapper;
 import com.nocountry.backend.model.Course;
 import com.nocountry.backend.model.Student;
 import com.nocountry.backend.model.Teacher;
@@ -30,14 +31,16 @@ public class CourseServiceImpl implements ICourseService {
 
     private final CourseMapper courseMapper;
 
+    private final StudentMapper studentMapper;
+
     private Course findCourseById(Long courseId) {
         return courseRepository.findById(courseId)
                 .orElseThrow(() -> new EntityNotFoundException("Course not found"));
     }
 
     @Override
-    public Optional<CourseDto> getCourse(Long courseId) {
-        return Optional.ofNullable(courseMapper.convertToDto(this.findCourseById(courseId)));
+    public CourseDto getCourse(Long courseId) {
+        return courseMapper.convertToDto(this.findCourseById(courseId));
     }
 
     @Override
@@ -64,6 +67,11 @@ public class CourseServiceImpl implements ICourseService {
     @Override
     public void deleteCourse(Long courseId) {
         courseRepository.deleteById(courseId);
+    }
+
+    @Override
+    public List<StudentDto> getStudentsByCourseId(Long courseId) {
+        return studentMapper.convertToDtoList(studentRepository.findAllByCourseId(courseId));
     }
 
     @Override

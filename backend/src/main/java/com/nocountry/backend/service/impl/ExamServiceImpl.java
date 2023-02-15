@@ -1,7 +1,6 @@
 package com.nocountry.backend.service.impl;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -28,8 +27,8 @@ public class ExamServiceImpl implements IExamService {
     }
 
     @Override
-    public Optional<ExamDto> getExam(Long examId) {
-        return Optional.ofNullable(mapper.convertToDto(this.findExamById(examId)));
+    public ExamDto getExam(Long examId) {
+        return mapper.convertToDto(this.findExamById(examId));
     }
 
     @Override
@@ -59,10 +58,5 @@ public class ExamServiceImpl implements IExamService {
     @Override
     public void deleteExam(Long examId) {
         repository.deleteById(examId);
-    }
-
-    @Override
-    public List<ExamDto> getExamsByStudentId(Long studentId) {
-        return mapper.convertToDtoList(repository.findAllByStudentId(studentId));
     }
 }

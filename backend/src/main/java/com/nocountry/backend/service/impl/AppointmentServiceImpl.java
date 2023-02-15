@@ -1,11 +1,11 @@
 package com.nocountry.backend.service.impl;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
 import com.nocountry.backend.dto.AppointmentDto;
+import com.nocountry.backend.dto.ScheduleDto;
 import com.nocountry.backend.mapper.AppointmentMapper;
 import com.nocountry.backend.model.Appointment;
 import com.nocountry.backend.repository.IAppointmentRepository;
@@ -18,28 +18,37 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class AppointmentServiceImpl implements IAppointmentService {
 
-    private final IAppointmentRepository repository;
+    private final IAppointmentRepository appointmentRepository;
 
-    private final AppointmentMapper mapper;
+    private final AppointmentMapper appointmentMapper;
 
     private Appointment findAppointmentById(Long AppointmentId) {
-        return repository.findById(AppointmentId)
+        return appointmentRepository.findById(AppointmentId)
                 .orElseThrow(() -> new EntityNotFoundException("Appointment not found"));
     }
 
     @Override
-    public Optional<AppointmentDto> getAppointment(Long AppointmentId) {
-        return Optional.ofNullable(mapper.convertToDto(this.findAppointmentById(AppointmentId)));
+    public AppointmentDto getAppointment(Long AppointmentId) {
+        return appointmentMapper.convertToDto(this.findAppointmentById(AppointmentId));
     }
 
     @Override
     public List<AppointmentDto> getAllAppointments() {
-        return mapper.convertToDtoList(repository.findAll());
+        return appointmentMapper.convertToDtoList(appointmentRepository.findAll());
     }
 
     @Override
     public AppointmentDto createAppointment(AppointmentDto AppointmentDto) {
-        return mapper.convertToDto(repository.save(mapper.convertToEntity(AppointmentDto)));
+        return appointmentMapper
+                .convertToDto(appointmentRepository.save(appointmentMapper.convertToEntity(AppointmentDto)));
+    }
+
+    @Override
+    public void scheduleAppointment(ScheduleDto scheduleDto, Long appointmentId) {
+        Appointment updatedAppointment = this.findAppointmentById(appointmentId);
+        updatedAppointment.setEmail(scheduleDto.getEmail());
+        updatedAppointment.setFullName(scheduleDto.getFullName());
+        updatedAppointment.setStatus(false);
     }
 
     @Override
@@ -49,13 +58,12 @@ public class AppointmentServiceImpl implements IAppointmentService {
         updatedAppointment.setSchedule(AppointmentDto.getSchedule());
         updatedAppointment.setEmail(AppointmentDto.getEmail());
         updatedAppointment.setFullName(AppointmentDto.getFullName());
-        updatedAppointment.setStatus(AppointmentDto.getStatus());
-        return mapper.convertToDto(repository.save(updatedAppointment));
-
+        return appointmentMapper.convertToDto(appointmentRepository.save(updatedAppointment));
     }
 
     @Override
     public void deleteAppointment(Long id) {
-        repository.deleteById(id);
+        appointmentRepository.deleteById(id);
     }
+
 }

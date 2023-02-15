@@ -1,13 +1,15 @@
 package com.nocountry.backend.service;
 
 import java.util.List;
-import java.util.Optional;
 
+import com.nocountry.backend.dto.CourseDto;
+import com.nocountry.backend.dto.ExamDto;
+import com.nocountry.backend.dto.PaymentDto;
 import com.nocountry.backend.dto.StudentDto;
 
 public interface IStudentService {
 
-    Optional<StudentDto> getStudent(Long studentId);
+    StudentDto getStudent(Long studentId);
 
     List<StudentDto> getAllStudents();
 
@@ -15,7 +17,11 @@ public interface IStudentService {
 
     void deleteStudent(Long studentId);
 
-    List<StudentDto> getStudentsByCourseId(Long courseId);
+    CourseDto getCourseByStudentId(Long studentId);
+
+    List<ExamDto> getExamsByStudentId(Long studentId);
+
+    List<PaymentDto> getPaymentsByStudentId(Long studentId);
 
     void addExamToStudent(Long studentId, Long examId);
 
