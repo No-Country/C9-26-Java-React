@@ -26,7 +26,7 @@
     background: rgba(14, 206, 206, 0.75);
 }
 
-.input_container input, select{
+.input_container input {
     width: 27rem!important;
     height: 2.62rem!important;
     border-radius: 20px!important;
@@ -35,8 +35,8 @@
     border: none;
 }
 
-.input_container select option{
-    border-radius: 20px!important;
+.input_container div {
+    margin-bottom: 24px!important;
 }
 
 .submit_container {

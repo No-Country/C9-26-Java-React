@@ -1,13 +1,17 @@
 import Form from 'react-bootstrap/Form';
+import Dropdown from '../../components/Dropdown/Dropdown';
 
 import styles from './Clases.module.css';
 
 const Clases = () => {
+    const level = ["A1 BEGINNER", "A2 ELEMENTARY", "B1 PREINTERMEDIATE ", "B2 INTERMEDIATE", "C1 UPPER INTERMEDIATE", "C2 ADVANCED", "No sé cuál es mi nivel actual"];
+    const course = ["Niños", "Adolescentes", "Adultos", "Corporativo", "Apoyo escolar", "Conversación"];
+
     return (
         <>
             <main className="background">
                 <div className={`${styles.clases_margin} container`}>
-                    
+
                     <section>
                         <h2 className='text-center text-white fw-bold'>Cursos para cada necesidad</h2>
 
@@ -38,44 +42,35 @@ const Clases = () => {
                                 <div className={styles.input_container}>
                                     <input type="text" name="" id="" placeholder="Nombre y apellido" />
                                 </div>
+
                                 <div className={styles.input_container}>
                                     <input type="text" name="" id="" placeholder="Tel. +54 9" />
                                 </div>
+
                                 <div className={styles.input_container}>
                                     <input type="text" name="" id="" placeholder="ingresa@tuemail.com" />
                                 </div>
+
                                 <div className={styles.input_container}>
-                                    <Form.Select>
-                                        <option>Provincia</option>
-                                    </Form.Select>
+                                    <Dropdown array={level} placeholder="Provincia"/>
                                 </div>
+
                                 <div className={styles.input_container}>
-                                    <Form.Select >
-                                        <option>Localidad</option>
-                                    </Form.Select>
+                                    <Dropdown array={level} placeholder="Localidad"/>
                                 </div>
+
                                 <div className={styles.input_container}>
-                                    <Form.Select >
-                                        <option>Nivel</option>
-                                        <option>A1 BEGINNER</option>
-                                        <option>A2 ELEMENTARY</option>
-                                        <option>B1 PRE INTERMEDIATE</option>
-                                        <option>B2 INTERMEDIATE</option>
-                                        <option>C1 UPPER INTERMEDIATE</option>
-                                        <option>C2 ADVANCED</option>
-                                        <option>No sé cuál es mi nivel actual</option>
-                                    </Form.Select>
+                                    <Dropdown array={level} placeholder="Nivel"/>
                                 </div>
+
                                 <div className={styles.input_container}>
-                                    <Form.Select>
-                                        <option>Fecha de nacimiento</option>
-                                    </Form.Select>
+                                    <Dropdown array={course} placeholder="Fecha de nacimiento"/>
                                 </div>
+
                                 <div className={styles.input_container}>
-                                    <Form.Select>
-                                        <option>Curso de mi interés</option>
-                                    </Form.Select>
+                                    <Dropdown array={course} placeholder="Curso de mi interés"/>
                                 </div>
+
                                 <div className={styles.submit_container}>
                                     <input type="submit" value="ENVIAR" />
                                 </div>
