@@ -1,5 +1,5 @@
-.modal{
-    background: rgba(128, 128, 128, 0.801);   
+.modal {
+    background: rgba(128, 128, 128, 0.801);
 }
 
 .body {
@@ -27,5 +27,12 @@
     width: 433px;
     border-radius: 20px;
     padding-left: 30px;
-    background: #F5F5F5;       
+    background: #F5F5F5;
+}
+
+.errors {
+    color: red;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: -10px;
 }
