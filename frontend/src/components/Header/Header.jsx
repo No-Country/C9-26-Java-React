@@ -9,10 +9,12 @@ import { Login } from '../../pages';
 import logo from '../../assets/images/Logo.png'
 import { useLocation } from 'react-router-dom';
 import SearchBar from "../SearchBar/SearchBar"
+import { selectUser } from '../../store/slices/userSlice';
+import { selectStatus } from '../../store/slices/userSlice';
 
 
 function Header() {
-    const isAuthenticated = false;
+    const isAuthenticated = selectStatus === 'success';
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -47,11 +49,11 @@ function Header() {
             </div>
             <Navbar collapseOnSelect expand="lg" style={{ maxHeight: '80px', background: '#212121' }} className='sticky-top shadow-sm'>
                 <Container fluid>
-                    <NavLink to="/"><Navbar.Brand href="#home"><img src={logo} className='img-fluid' style={{ width: '150px' }} /></Navbar.Brand></NavLink>
+                    <Navbar.Brand href="#home"><img src={logo} className='img-fluid' style={{ width: '150px' }} /></Navbar.Brand>
 
                     {
                         path === "/add-student"
-                            ? 
+                            ?
                             <>
                                 <SearchBar />
                                 <Button style={{ width: '256px', background: '#CB8DF1', color: '#FFFFFF', border: 'none' }} className='text-black fw-bolder rounded-5'>GUARDAR CAMBIOS</Button>
