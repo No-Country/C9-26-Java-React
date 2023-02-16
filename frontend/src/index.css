@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  font-family: 'Inter', sans-serif;;
+  font-family: 'Inter', sans-serif;
 }
 
 /* Imagen de fondo para las distintas páginas */
@@ -20,4 +20,8 @@
   inset: 0;
   z-index: -1;
   opacity: 97%;
+}
+
+main {
+  flex-grow: 1;
 }
