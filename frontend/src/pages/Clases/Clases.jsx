@@ -1,4 +1,8 @@
 import Form from 'react-bootstrap/Form';
+import imgClass1 from "../../assets/images/Clases/Clases1.png";
+import imgClass2 from "../../assets/images/Clases/Clases2.png";
+import imgClass3 from "../../assets/images/Clases/Clases3.png";
+import imgClass4 from "../../assets/images/Clases/Clases4.png";
 import Dropdown from '../../components/Dropdown/Dropdown';
 
 import styles from './Clases.module.css';
@@ -16,10 +20,10 @@ const Clases = () => {
                         <h2 className='text-center text-white fw-bold'>Cursos para cada necesidad</h2>
 
                         <div className={`${styles.clases_container} mt-3`}>
-                            <img src="../../src/assets/images/Clases/Clases1.png" alt="" />
-                            <img src="../../src/assets/images/Clases/Clases2.png" alt="" />
-                            <img src="../../src/assets/images/Clases/Clases3.png" alt="" />
-                            <img src="../../src/assets/images/Clases/Clases4.png" alt="" />
+                            <img src={imgClass1} alt="" />
+                            <img src={imgClass2} alt="" />
+                            <img src={imgClass3} alt="" />
+                            <img src={imgClass4} alt="" />
                         </div>
                         <p className={styles.clases_text}>
                             Nuestros cursos están destinados a quienes quieran comunicarse efectivamente

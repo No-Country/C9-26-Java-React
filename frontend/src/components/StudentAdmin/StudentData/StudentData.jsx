@@ -1,4 +1,5 @@
 import { RiPencilFill } from 'react-icons/ri';
+import profilePhoto from "../../../assets/images/PerfilAlumno/profile.png";
 
 import styles from "./StudentData.module.css";
 
@@ -11,7 +12,7 @@ const StudentData = ({ location }) => {
                 
                 <div className={styles.profile_pictureContainter}>
                     <picture>
-                        <img src="../src/assets/images/PerfilAlumno/profile.png" alt="" />
+                        <img src={profilePhoto} alt="" />
                         {
                             location === "/student" 
                             && <RiPencilFill fontSize="1.5rem" color='black' className={styles.profile_icon} />

@@ -27,7 +27,7 @@ const servicios = [
 
 function Servicios() {
     return (
-        <main className={styles.main}>
+        <main className={`${styles.main} background`} >
             <Container className='w-full'>
                 <Row>
                     <Col className='d-flex flex-column justify-content-center'>
@@ -40,7 +40,7 @@ function Servicios() {
                     </Col>
                 </Row>
             </Container>
-        </main>
+        </main >
     );
 }
 
