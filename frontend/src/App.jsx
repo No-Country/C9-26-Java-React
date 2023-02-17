@@ -1,7 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { HOME, LOGIN, PROFILE, CLASS, EXAMS, SERVICES, CONSULTATION, STUDENT, ADD_STUDENT } from './config/routes/paths'
+import { HOME, CAMPUS, PROFILE, CLASS, EXAMS, SERVICES, CONSULTATION, STUDENT, ADD_STUDENT } from './config/routes/paths'
 import { PrivateRoute, PublicRoute } from './components'
-import { Home, Login, Profile, Clases, Examenes, Servicios, Consultas, Alumno } from './pages'
+import { Home, Campus, Profile, Clases, Examenes, Servicios, Consultas, Alumno } from './pages'
+
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path={CONSULTATION} element={<Consultas />} />
           <Route path={STUDENT} element={<Alumno />} />
           <Route path={ADD_STUDENT} element={<Alumno />} />
+          <Route path={CAMPUS} element={<Campus />} />
         </Route>
         <Route path={PROFILE} element={<PrivateRoute />}>
           <Route index element={<Profile />} />
@@ -24,6 +26,6 @@ function App() {
       </Routes>
     </BrowserRouter>
   )
-  }
+}
 
 export default App
