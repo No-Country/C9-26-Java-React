@@ -5,6 +5,7 @@ import discount from '../../assets/images/slider/discount.svg'
 import pageOne from '../../assets/images/slider/pageOne.png'
 import pageTwo from '../../assets/images/slider/pageTwo.png'
 import pageThree from '../../assets/images/slider/pageThree.png'
+import { Link } from 'react-router-dom';
 
 
 const images = [
@@ -39,7 +40,7 @@ const Home = () => {
             < Carousel
                 activeIndex={index}
                 onSelect={handleSelect}
-                // interval={2000}
+                interval={2000}
                 className='d-flex grow overflow-hidden w-100'
             >
                 {images.map((image) => (
@@ -61,7 +62,7 @@ const Home = () => {
 
                             <h3 className='text-uppercase fs-1' style={{ fontWeight: 'bolder', textShadow: '0px 0px 10px black' }}>{image.title}</h3>
                             <p style={{ textShadow: '0px 0px 10px black' }}>{image.description}</p>
-                            <Button className='mb-4 fs-md-3 button_home rounded-4'>Inscripción Abierta <br /> 2023</Button>
+                            <Link to='/consultation' className='mb-4 fs-md-3 button_home rounded-4'>Inscripción Abierta <br /> 2023</Link>
                         </Carousel.Caption>
                     </Carousel.Item>
                 ))}

@@ -59,11 +59,19 @@ main {
 .button_home:hover {
   background-color: #CB8DF1;
   border: 1px solid #f5f5f5;
+  color: #fff;
 }
 
 .button_home:active {
   background-color: #CB8DF1;
   border: 1px solid #f5f5f5;
+  color: #fff;
+}
+
+.button_home:visited {
+  background-color: #CB8DF1;
+  border: 1px solid #f5f5f5;
+  color: #fff;
 }
 
 .discount {
