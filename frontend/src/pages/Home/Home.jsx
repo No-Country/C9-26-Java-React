@@ -6,31 +6,25 @@ import pageOne from '../../assets/images/slider/pageOne.png'
 import pageTwo from '../../assets/images/slider/pageTwo.png'
 import pageThree from '../../assets/images/slider/pageThree.png'
 
-import liberty from '../../assets/images/slider/liberty.svg'
-import bigben from '../../assets/images/slider/big-ben.svg'
-
 
 const images = [
     {
         id: 1,
         title: "Cursos de Inglés",
         description: "Para alumnos de todos los niveles y edades.",
-        imagen: pageOne,
-        backgrouds: [bigben, liberty]
+        imagen: pageOne
     },
     {
         id: 2,
         title: `Clases in-company`,
         description: "Llevamos las clases a tu empresa.",
         imagen: pageTwo,
-        backgrouds: []
     },
     {
         id: 3,
         title: "Clases personalizadas",
         description: "Clases de conversación con fines específicos, presenciales y online.",
         imagen: pageThree,
-        backgrouds: []
     }
 ]
 
@@ -58,8 +52,8 @@ const Home = () => {
                                     <img src={discount} alt={image.title} />
                                 </div>
                             </Col>
-                            <Col md={6} className='d-flex justify-content-center align-items-end px-2 w-70 position-relative'>
-                                <img className='w-xl-100 position-absolute bottom-0' src={image.imagen} alt={image.title} />
+                            <Col md={6} className='d-none d-md-flex justify-content-center align-items-end px-2 w-70 position-relative'>
+                                <img className='w-xl-100 d-block position-absolute bottom-0' src={image.imagen} alt={image.title} />
                             </Col>
 
                         </Row>
@@ -67,7 +61,7 @@ const Home = () => {
 
                             <h3 className='text-uppercase fs-1' style={{ fontWeight: 'bolder', textShadow: '0px 0px 10px black' }}>{image.title}</h3>
                             <p style={{ textShadow: '0px 0px 10px black' }}>{image.description}</p>
-                            <Button className='mb-4 fs-3 button_home rounded-4'>Inscripción Abierta <br /> 2023</Button>
+                            <Button className='mb-4 fs-md-3 button_home rounded-4'>Inscripción Abierta <br /> 2023</Button>
                         </Carousel.Caption>
                     </Carousel.Item>
                 ))}
