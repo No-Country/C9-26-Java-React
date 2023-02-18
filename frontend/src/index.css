@@ -25,3 +25,83 @@
 main {
   flex-grow: 1;
 }
+
+.carousel-inner {
+  width: 100%;
+  flex-grow: 1;
+}
+
+.carousel-item {
+  height: 100%;
+  flex-grow: 1;
+}
+
+.carousel-item img {
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.button_home {
+  background-color: #CB8DF1cc;
+  border: 1px solid #f5f5f5;
+  border-radius: 5px;
+  color: #fff;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 8rem 2px 4px;
+  cursor: pointer;
+}
+
+.button_home:hover {
+  background-color: #CB8DF1;
+  border: 1px solid #f5f5f5;
+  color: #fff;
+}
+
+.button_home:active {
+  background-color: #CB8DF1;
+  border: 1px solid #f5f5f5;
+  color: #fff;
+}
+
+.button_home:visited {
+  background-color: #CB8DF1;
+  border: 1px solid #f5f5f5;
+  color: #fff;
+}
+
+.discount {
+  width: 60%;
+  min-width: 200px;
+  height: 60%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.discount img {
+  animation: bounce 1s ease-in-out infinite;
+  animation-direction: alternate;
+}
+
+@keyframes bounce {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(0, 50px, 0);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .discount {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+  }
+
+}
