@@ -2,6 +2,7 @@ package com.nocountry.backend.auth.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -30,12 +31,8 @@ public class SecurityConfig {
                 .cors().disable()
                 .authorizeHttpRequests()
                 .requestMatchers("/api/auth/**").permitAll()
-                .requestMatchers("/api/students/**").hasAnyRole(Role.ADMIN.name(), Role.USER.name())
-                .requestMatchers("/api/appointments/**").hasRole(Role.ADMIN.name())
-                .requestMatchers("/api/courses/**").hasRole(Role.ADMIN.name())
-                .requestMatchers("/api/exams/**").hasRole(Role.ADMIN.name())
-                .requestMatchers("/api/payments/**").hasRole(Role.ADMIN.name())
-                .requestMatchers("/api/teachers/**").hasRole(Role.ADMIN.name())
+                .requestMatchers(HttpMethod.DELETE, "/api/**").hasRole(Role.ADMIN.name())
+                .requestMatchers("api/students/all").hasRole(Role.ADMIN.name())
                 .anyRequest()
                 .authenticated()
                 .and()

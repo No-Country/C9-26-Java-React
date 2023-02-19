@@ -7,16 +7,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.nocountry.backend.dto.CourseDto;
-import com.nocountry.backend.dto.ExamDto;
-import com.nocountry.backend.dto.PaymentDto;
-import com.nocountry.backend.dto.StudentDto;
+import com.nocountry.backend.auth.config.jwt.JwtProvider;
+import com.nocountry.backend.dto.StudentDetailsDto;
+import com.nocountry.backend.dto.StudentListDto;
 import com.nocountry.backend.service.IStudentService;
 
 import lombok.RequiredArgsConstructor;
@@ -26,71 +26,46 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class StudentController {
 
-    private final IStudentService service;
+    private final IStudentService studentService;
 
-    @GetMapping("/{studentId}")
-    public ResponseEntity<StudentDto> getStudent(@PathVariable Long studentId) {
-        StudentDto studentDto = service.getStudent(studentId);
-        if (studentDto != null) {
-            return new ResponseEntity<>(studentDto, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+    private final JwtProvider jwtProvider;
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping("/all")
+    public ResponseEntity<List<StudentListDto>> getAllStudents() {
+        return new ResponseEntity<>(studentService.getAllStudents(), HttpStatus.OK);
     }
 
     @GetMapping("/")
+    public ResponseEntity<StudentDetailsDto> getStudentByEmail(@RequestHeader String token) {
+        String email = jwtProvider.extractUsername(token);
+        return new ResponseEntity<>(studentService.getStudentByEmail(email), HttpStatus.OK);
+    }
+
+    @PatchMapping("/{studentId}/update")
+    public ResponseEntity<StudentDetailsDto> updateStudent(@PathVariable Long studentId,
+            @RequestBody StudentDetailsDto studentDto) {
+        return new ResponseEntity<>(studentService.updateStudent(studentId, studentDto), HttpStatus.ACCEPTED);
+    }
+
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<List<StudentDto>> getAllStudents() {
-        return new ResponseEntity<>(service.getAllStudents(), HttpStatus.OK);
-    }
-
-    @PutMapping("/{studentId}/update")
-    public ResponseEntity<StudentDto> updateStudent(@RequestBody StudentDto studentDto, @PathVariable Long studentId) {
-        return new ResponseEntity<>(service.updateStudent(studentDto, studentId), HttpStatus.ACCEPTED);
-    }
-
-    @DeleteMapping("/{studentId}/delete")
-    @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<String> deleteStudent(@PathVariable Long studentId) {
-        if (service.getStudent(studentId) != null) {
-            service.deleteStudent(studentId);
-            return new ResponseEntity<>("Student successfully deleted", HttpStatus.ACCEPTED);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-
-    @GetMapping("/{studentId}/course")
-    public ResponseEntity<CourseDto> getCourseByStudentId(@PathVariable Long studentId) {
-        CourseDto courseDto = service.getCourseByStudentId(studentId);
-        if (courseDto != null) {
-            return new ResponseEntity<>(courseDto, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-
-    @GetMapping("/{studentId}/exams")
-    public ResponseEntity<List<ExamDto>> getExamsByStudentId(@PathVariable Long studentId) {
-        return new ResponseEntity<>(service.getExamsByStudentId(studentId), HttpStatus.OK);
-    }
-
-    @GetMapping("/{studentId}/payments")
-    public ResponseEntity<List<PaymentDto>> getPaymentsByStudentId(@PathVariable Long studentId) {
-        return new ResponseEntity<>(service.getPaymentsByStudentId(studentId), HttpStatus.OK);
-    }
-
-    @PutMapping("/{studentId}/add/exams/{examId}")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PatchMapping("/{studentId}/add/exams/{examId}")
     public ResponseEntity<String> addExamToStudent(@PathVariable Long studentId, @PathVariable Long examId) {
-        service.addExamToStudent(studentId, examId);
+        studentService.addExamToStudent(studentId, examId);
         return new ResponseEntity<>("Exam successfully added to student", HttpStatus.OK);
     }
 
-    @PutMapping("/{studentId}/add/payments/{paymentId}")
     @PreAuthorize("hasRole('ADMIN')")
+    @PatchMapping("/{studentId}/add/payments/{paymentId}")
     public ResponseEntity<String> addPaymentToStudent(@PathVariable Long studentId, @PathVariable Long paymentId) {
-        service.addPaymentToStudent(studentId, paymentId);
+        studentService.addPaymentToStudent(studentId, paymentId);
         return new ResponseEntity<>("Payment successfully added to student", HttpStatus.OK);
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @DeleteMapping("/{studentId}/delete")
+    public ResponseEntity<String> deleteStudent(@PathVariable Long studentId) {
+        studentService.deleteStudent(studentId);
+        return new ResponseEntity<>("Student successfully deleted", HttpStatus.OK);
     }
 }

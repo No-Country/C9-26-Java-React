@@ -1,5 +1,7 @@
 package com.nocountry.backend.dto;
 
+import com.nocountry.backend.model.Student;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -26,4 +28,6 @@ public class ExamDto {
     private String listening;
 
     private Boolean status;
+
+    private Student student;
 }

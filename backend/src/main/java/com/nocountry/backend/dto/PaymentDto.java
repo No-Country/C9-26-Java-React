@@ -1,5 +1,6 @@
 package com.nocountry.backend.dto;
 
+import com.nocountry.backend.model.Student;
 import com.nocountry.backend.utils.enums.PaymentStatus;
 import com.nocountry.backend.utils.enums.PaymentType;
 
@@ -19,4 +20,6 @@ public class PaymentDto {
     private PaymentType paymentType;
 
     private PaymentStatus paymentStatus;
+
+    private Student student;
 }

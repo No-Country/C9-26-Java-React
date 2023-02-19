@@ -6,13 +6,13 @@ import com.nocountry.backend.dto.ExamDto;
 
 public interface IExamService {
 
-    ExamDto getExam(Long examId);
-
     List<ExamDto> getAllExams();
+
+    ExamDto getExamById(Long examId);
 
     ExamDto createExam(ExamDto examDto);
 
-    ExamDto updateExam(ExamDto examDto, Long examId);
+    ExamDto updateExam(Long examId, ExamDto examDto);
 
     void deleteExam(Long examId);
 }

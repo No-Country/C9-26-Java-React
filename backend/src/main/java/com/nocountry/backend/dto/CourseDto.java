@@ -1,5 +1,6 @@
 package com.nocountry.backend.dto;
 
+import com.nocountry.backend.model.Teacher;
 import com.nocountry.backend.utils.enums.Level;
 
 import lombok.AllArgsConstructor;
@@ -24,4 +25,6 @@ public class CourseDto {
     private String courseDays;
 
     private String schedule;
+
+    private Teacher teacher;
 }

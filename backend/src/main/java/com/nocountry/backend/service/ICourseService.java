@@ -3,24 +3,23 @@ package com.nocountry.backend.service;
 import java.util.List;
 
 import com.nocountry.backend.dto.CourseDto;
-import com.nocountry.backend.dto.StudentDto;
+import com.nocountry.backend.dto.StudentListDto;
 
 public interface ICourseService {
 
-    CourseDto getCourse(Long courseId);
-
     List<CourseDto> getAllCourses();
+
+    CourseDto getCourseById(Long courseId);
+
+    List<StudentListDto> getStudentsByCourseId(Long courseId);
 
     CourseDto createCourse(CourseDto courseDto);
 
-    CourseDto updateCourse(CourseDto courseDto, Long courseId);
-
-    void deleteCourse(Long courseId);
-
-    List<StudentDto> getStudentsByCourseId(Long courseId);
+    CourseDto updateCourse(Long courseId, CourseDto courseDto);
 
     void addStudentToCourse(Long courseId, Long studentId);
 
-    void setTeacherToCourse(Long courseId, Long teacherId);
+    void addTeacherToCourse(Long courseId, Long teacherId);
 
+    void deleteCourse(Long courseId);
 }
