@@ -1,6 +1,7 @@
 package com.nocountry.backend.dto;
 
-import java.util.List;
+import com.nocountry.backend.utils.enums.PaymentStatus;
+import com.nocountry.backend.utils.enums.PaymentType;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,13 +12,11 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class TeacherDto {
+public class PaymentListDto {
 
     private Long id;
 
-    private String firstName;
+    private PaymentType paymentType;
 
-    private String lastName;
-
-    private List<Long> courseId;
+    private PaymentStatus paymentStatus;
 }

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.nocountry.backend.dto.PaymentDto;
+import com.nocountry.backend.dto.PaymentDetailsDto;
 import com.nocountry.backend.service.IPaymentService;
 
 import lombok.RequiredArgsConstructor;
@@ -28,27 +28,27 @@ public class PaymentController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/all")
-    public ResponseEntity<List<PaymentDto>> getAllPayments() {
+    public ResponseEntity<List<PaymentDetailsDto>> getAllPayments() {
         return new ResponseEntity<>(paymentService.getAllPayments(), HttpStatus.OK);
     }
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/{paymentId}")
-    public ResponseEntity<PaymentDto> getPaymentById(@PathVariable Long paymentId) {
+    public ResponseEntity<PaymentDetailsDto> getPaymentById(@PathVariable Long paymentId) {
         return new ResponseEntity<>(paymentService.getPaymentById(paymentId), HttpStatus.OK);
     }
 
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/create")
-    public ResponseEntity<PaymentDto> createPayment(@RequestBody PaymentDto paymentDto) {
-        return new ResponseEntity<>(paymentService.createPayment(paymentDto), HttpStatus.CREATED);
+    public ResponseEntity<PaymentDetailsDto> createPayment(@RequestBody PaymentDetailsDto paymentDetailsDto) {
+        return new ResponseEntity<>(paymentService.createPayment(paymentDetailsDto), HttpStatus.CREATED);
     }
 
     @PreAuthorize("hasRole('ADMIN')")
     @PatchMapping("/{paymentId}/update")
-    public ResponseEntity<PaymentDto> updatePayment(@PathVariable Long paymentId,
-            @RequestBody PaymentDto paymentDto) {
-        return new ResponseEntity<>(paymentService.updatePayment(paymentId, paymentDto), HttpStatus.ACCEPTED);
+    public ResponseEntity<PaymentDetailsDto> updatePayment(@PathVariable Long paymentId,
+            @RequestBody PaymentDetailsDto paymentDetailsDto) {
+        return new ResponseEntity<>(paymentService.updatePayment(paymentId, paymentDetailsDto), HttpStatus.ACCEPTED);
     }
 
     @PreAuthorize("hasRole('ADMIN')")

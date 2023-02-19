@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.nocountry.backend.dto.PaymentDto;
+import com.nocountry.backend.dto.PaymentDetailsDto;
 import com.nocountry.backend.mapper.PaymentMapper;
 import com.nocountry.backend.repository.IPaymentRepository;
 import com.nocountry.backend.service.IPaymentService;
@@ -20,23 +20,23 @@ public class PaymentServiceImpl implements IPaymentService {
     private final PaymentMapper paymentMapper;
 
     @Override
-    public List<PaymentDto> getAllPayments() {
-        return paymentMapper.convertToDtoList(paymentRepository.findAll());
+    public List<PaymentDetailsDto> getAllPayments() {
+        return paymentMapper.convertToDetailsDtoList(paymentRepository.findAll());
     }
 
     @Override
-    public PaymentDto getPaymentById(Long paymentId) {
-        return paymentMapper.convertToDto(paymentRepository.findById(paymentId).orElseThrow());
+    public PaymentDetailsDto getPaymentById(Long paymentId) {
+        return paymentMapper.convertToDetailsDto(paymentRepository.findById(paymentId).orElseThrow());
     }
 
     @Override
-    public PaymentDto createPayment(PaymentDto paymentDto) {
-        var payment = paymentMapper.convertToEntity(paymentDto);
-        return paymentMapper.convertToDto(paymentRepository.save(payment));
+    public PaymentDetailsDto createPayment(PaymentDetailsDto paymentDetailsDto) {
+        var payment = paymentMapper.convertToEntity(paymentDetailsDto);
+        return paymentMapper.convertToDetailsDto(paymentRepository.save(payment));
     }
 
     @Override
-    public PaymentDto updatePayment(Long paymentId, PaymentDto paymentDto) {
+    public PaymentDetailsDto updatePayment(Long paymentId, PaymentDetailsDto paymentDetailsDto) {
         return null;
     }
 

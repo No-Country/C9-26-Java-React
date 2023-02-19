@@ -11,7 +11,7 @@ public interface IStudentService {
 
     StudentDetailsDto getStudentByEmail(String email);
 
-    StudentDetailsDto updateStudent(Long studentId, StudentDetailsDto studentDto);
+    StudentDetailsDto updateStudent(String email, StudentDetailsDto studentDetailsDto);
 
     void addExamToStudent(Long studentId, Long examId);
 

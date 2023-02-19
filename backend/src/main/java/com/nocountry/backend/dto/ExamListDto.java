@@ -1,7 +1,5 @@
 package com.nocountry.backend.dto;
 
-import java.util.List;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,13 +9,21 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class TeacherDto {
+public class ExamListDto {
 
     private Long id;
 
-    private String firstName;
+    private String name;
 
-    private String lastName;
+    private String examDate;
 
-    private List<Long> courseId;
+    private String grammar;
+
+    private String speaking;
+
+    private String writing;
+
+    private String listening;
+
+    private Boolean status;
 }

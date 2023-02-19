@@ -1,5 +1,7 @@
 package com.nocountry.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -37,6 +39,7 @@ public class Exam {
 
     private Boolean status;
 
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "student_id")
     private Student student;

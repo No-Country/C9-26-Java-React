@@ -37,15 +37,16 @@ public class StudentController {
     }
 
     @GetMapping("/")
-    public ResponseEntity<StudentDetailsDto> getStudentByEmail(@RequestHeader String token) {
-        String email = jwtProvider.extractUsername(token);
+    public ResponseEntity<StudentDetailsDto> getStudentByEmail(@RequestHeader("Authorization") String token) {
+        String email = jwtProvider.extractUsername(token.substring(7));
         return new ResponseEntity<>(studentService.getStudentByEmail(email), HttpStatus.OK);
     }
 
-    @PatchMapping("/{studentId}/update")
-    public ResponseEntity<StudentDetailsDto> updateStudent(@PathVariable Long studentId,
-            @RequestBody StudentDetailsDto studentDto) {
-        return new ResponseEntity<>(studentService.updateStudent(studentId, studentDto), HttpStatus.ACCEPTED);
+    @PatchMapping("/update")
+    public ResponseEntity<StudentDetailsDto> updateStudent(@RequestHeader("Authorization") String token,
+            @RequestBody StudentDetailsDto studentDetailsDto) {
+        String email = jwtProvider.extractUsername(token.substring(7));
+        return new ResponseEntity<>(studentService.updateStudent(email, studentDetailsDto), HttpStatus.ACCEPTED);
     }
 
     @PreAuthorize("hasRole('ADMIN')")

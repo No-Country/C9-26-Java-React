@@ -2,9 +2,6 @@ package com.nocountry.backend.dto;
 
 import java.util.List;
 
-import com.nocountry.backend.model.Course;
-import com.nocountry.backend.model.Exam;
-import com.nocountry.backend.model.Payment;
 import com.nocountry.backend.utils.enums.Level;
 
 import lombok.AllArgsConstructor;
@@ -38,9 +35,9 @@ public class StudentDetailsDto {
 
     private Level level;
 
-    private Course course;
+    private Long courseId;
 
-    private List<Exam> exams;
+    private List<ExamListDto> exams;
 
-    private List<Payment> payments;
+    private List<PaymentListDto> payments;
 }

@@ -1,5 +1,6 @@
 package com.nocountry.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.nocountry.backend.utils.enums.PaymentStatus;
 import com.nocountry.backend.utils.enums.PaymentType;
 
@@ -34,6 +35,7 @@ public class Payment {
     @Enumerated(EnumType.STRING)
     private PaymentStatus paymentStatus;
 
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "student_id")
     private Student student;

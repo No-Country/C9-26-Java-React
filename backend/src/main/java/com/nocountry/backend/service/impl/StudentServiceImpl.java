@@ -37,7 +37,8 @@ public class StudentServiceImpl implements IStudentService {
     }
 
     @Override
-    public StudentDetailsDto updateStudent(Long studentId, StudentDetailsDto studentDto) {
+    public StudentDetailsDto updateStudent(String email, StudentDetailsDto studentDetailsDto) {
+        var student = studentRepository.findByEmail(email).orElseThrow();
         return null;
     }
 

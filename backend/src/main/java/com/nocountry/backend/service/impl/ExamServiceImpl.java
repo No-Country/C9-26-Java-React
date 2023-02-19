@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.nocountry.backend.dto.ExamDto;
+import com.nocountry.backend.dto.ExamDetailsDto;
 import com.nocountry.backend.mapper.ExamMapper;
 import com.nocountry.backend.repository.IExamRepository;
 import com.nocountry.backend.service.IExamService;
@@ -20,23 +20,23 @@ public class ExamServiceImpl implements IExamService {
     private final ExamMapper examMapper;
 
     @Override
-    public List<ExamDto> getAllExams() {
-        return examMapper.convertToDtoList(examRepository.findAll());
+    public List<ExamDetailsDto> getAllExams() {
+        return examMapper.convertToDetailsDtoList(examRepository.findAll());
     }
 
     @Override
-    public ExamDto getExamById(Long examId) {
-        return examMapper.convertToDto(examRepository.findById(examId).orElseThrow());
+    public ExamDetailsDto getExamById(Long examId) {
+        return examMapper.convertToDetailsDto(examRepository.findById(examId).orElseThrow());
     }
 
     @Override
-    public ExamDto createExam(ExamDto examDto) {
-        var exam = examMapper.convertToEntity(examDto);
-        return examMapper.convertToDto(examRepository.save(exam));
+    public ExamDetailsDto createExam(ExamDetailsDto examDetailsDto) {
+        var exam = examMapper.convertToEntity(examDetailsDto);
+        return examMapper.convertToDetailsDto(examRepository.save(exam));
     }
 
     @Override
-    public ExamDto updateExam(Long examId, ExamDto examDto) {
+    public ExamDetailsDto updateExam(Long examId, ExamDetailsDto examDetailsDto) {
         return null;
     }
 

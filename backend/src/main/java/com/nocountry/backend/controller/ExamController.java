@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.nocountry.backend.dto.ExamDto;
+import com.nocountry.backend.dto.ExamDetailsDto;
 import com.nocountry.backend.service.IExamService;
 
 import lombok.RequiredArgsConstructor;
@@ -28,27 +28,27 @@ public class ExamController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/all")
-    public ResponseEntity<List<ExamDto>> getAllExams() {
+    public ResponseEntity<List<ExamDetailsDto>> getAllExams() {
         return new ResponseEntity<>(examService.getAllExams(), HttpStatus.OK);
     }
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/{examId}")
-    public ResponseEntity<ExamDto> getExamById(@PathVariable Long examId) {
+    public ResponseEntity<ExamDetailsDto> getExamById(@PathVariable Long examId) {
         return new ResponseEntity<>(examService.getExamById(examId), HttpStatus.OK);
     }
 
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/create")
-    public ResponseEntity<ExamDto> createExam(@RequestBody ExamDto examDto) {
-        return new ResponseEntity<>(examService.createExam(examDto), HttpStatus.CREATED);
+    public ResponseEntity<ExamDetailsDto> createExam(@RequestBody ExamDetailsDto examDetailsDto) {
+        return new ResponseEntity<>(examService.createExam(examDetailsDto), HttpStatus.CREATED);
     }
 
     @PreAuthorize("hasRole('ADMIN')")
     @PatchMapping("/{examId}/update")
-    public ResponseEntity<ExamDto> updateExam(@PathVariable Long examId,
-            @RequestBody ExamDto examDto) {
-        return new ResponseEntity<>(examService.updateExam(examId, examDto), HttpStatus.ACCEPTED);
+    public ResponseEntity<ExamDetailsDto> updateExam(@PathVariable Long examId,
+            @RequestBody ExamDetailsDto examDetailsDto) {
+        return new ResponseEntity<>(examService.updateExam(examId, examDetailsDto), HttpStatus.ACCEPTED);
     }
 
     @PreAuthorize("hasRole('ADMIN')")

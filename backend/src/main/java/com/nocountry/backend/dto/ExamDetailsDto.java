@@ -1,7 +1,5 @@
 package com.nocountry.backend.dto;
 
-import com.nocountry.backend.model.Student;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ExamDto {
+public class ExamDetailsDto {
 
     private Long id;
 
@@ -29,5 +27,9 @@ public class ExamDto {
 
     private Boolean status;
 
-    private Student student;
+    private Long studentId;
+
+    private String studentFirstName;
+
+    private String studentLastName;
 }

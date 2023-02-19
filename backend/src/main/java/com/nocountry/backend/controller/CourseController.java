@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nocountry.backend.dto.CourseDto;
-import com.nocountry.backend.dto.StudentListDto;
 import com.nocountry.backend.service.ICourseService;
 
 import lombok.RequiredArgsConstructor;
@@ -37,12 +36,6 @@ public class CourseController {
     @GetMapping("/{courseId}")
     public ResponseEntity<CourseDto> getCourseById(@PathVariable Long courseId) {
         return new ResponseEntity<>(courseService.getCourseById(courseId), HttpStatus.OK);
-    }
-
-    @PreAuthorize("hasRole('ADMIN')")
-    @GetMapping("/{courseId}/students/")
-    public ResponseEntity<List<StudentListDto>> getStudentsByCourseId(@PathVariable Long courseId) {
-        return new ResponseEntity<>(courseService.getStudentsByCourseId(courseId), HttpStatus.OK);
     }
 
     @PreAuthorize("hasRole('ADMIN')")

@@ -3,6 +3,8 @@ package com.nocountry.backend.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -30,6 +32,7 @@ public class Teacher {
 
     private String lastName;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Course> courses = new ArrayList<>();
 

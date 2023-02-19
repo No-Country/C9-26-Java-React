@@ -1,6 +1,5 @@
 package com.nocountry.backend.dto;
 
-import com.nocountry.backend.model.Student;
 import com.nocountry.backend.utils.enums.PaymentStatus;
 import com.nocountry.backend.utils.enums.PaymentType;
 
@@ -13,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class PaymentDto {
+public class PaymentDetailsDto {
 
     private Long id;
 
@@ -21,5 +20,9 @@ public class PaymentDto {
 
     private PaymentStatus paymentStatus;
 
-    private Student student;
+    private Long studentId;
+
+    private String studentFirstName;
+
+    private String studentLastName;
 }

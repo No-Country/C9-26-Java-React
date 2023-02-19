@@ -3,6 +3,8 @@ package com.nocountry.backend.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.nocountry.backend.auth.model.User;
 import com.nocountry.backend.utils.enums.Level;
 
@@ -59,14 +61,17 @@ public class Student {
     @OneToOne(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private User user;
 
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "course_id")
     private Course course;
 
+    @JsonManagedReference
     @Default
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Exam> exams = new ArrayList<>();
 
+    @JsonManagedReference
     @Default
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Payment> payments = new ArrayList<>();
