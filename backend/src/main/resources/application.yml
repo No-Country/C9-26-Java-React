@@ -1,4 +1,6 @@
 spring:
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE}
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
@@ -7,5 +9,3 @@ spring:
     show-sql: true
     database: mysql
     database-platform: org.hibernate.dialect.MySQLDialect
-  profiles:
-    active: ${SPRING_PROFILES_ACTIVE}
