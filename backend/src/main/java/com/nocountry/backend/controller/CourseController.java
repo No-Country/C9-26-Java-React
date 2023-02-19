@@ -67,7 +67,7 @@ public class CourseController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @PatchMapping("/{courseId}/add/teachers/{teacherId}")
-    public ResponseEntity<String> setTeacherToCourse(@PathVariable Long courseId, @PathVariable Long teacherId) {
+    public ResponseEntity<String> addTeacherToCourse(@PathVariable Long courseId, @PathVariable Long teacherId) {
         courseService.addTeacherToCourse(courseId, teacherId);
         return new ResponseEntity<>("Teacher successfully added to course", HttpStatus.OK);
     }

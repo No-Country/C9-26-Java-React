@@ -31,7 +31,7 @@ public class StudentController {
     private final JwtProvider jwtProvider;
 
     @PreAuthorize("hasRole('ADMIN')")
-    @GetMapping("/all")
+    @GetMapping("/admin/all")
     public ResponseEntity<List<StudentListDto>> getAllStudents() {
         return new ResponseEntity<>(studentService.getAllStudents(), HttpStatus.OK);
     }
@@ -49,21 +49,21 @@ public class StudentController {
     }
 
     @PreAuthorize("hasRole('ADMIN')")
-    @PatchMapping("/{studentId}/add/exams/{examId}")
+    @PatchMapping("/admin/{studentId}/add/exams/{examId}")
     public ResponseEntity<String> addExamToStudent(@PathVariable Long studentId, @PathVariable Long examId) {
         studentService.addExamToStudent(studentId, examId);
         return new ResponseEntity<>("Exam successfully added to student", HttpStatus.OK);
     }
 
     @PreAuthorize("hasRole('ADMIN')")
-    @PatchMapping("/{studentId}/add/payments/{paymentId}")
+    @PatchMapping("/admin/{studentId}/add/payments/{paymentId}")
     public ResponseEntity<String> addPaymentToStudent(@PathVariable Long studentId, @PathVariable Long paymentId) {
         studentService.addPaymentToStudent(studentId, paymentId);
         return new ResponseEntity<>("Payment successfully added to student", HttpStatus.OK);
     }
 
     @PreAuthorize("hasRole('ADMIN')")
-    @DeleteMapping("/{studentId}/delete")
+    @DeleteMapping("/admin/{studentId}/delete")
     public ResponseEntity<String> deleteStudent(@PathVariable Long studentId) {
         studentService.deleteStudent(studentId);
         return new ResponseEntity<>("Student successfully deleted", HttpStatus.OK);
