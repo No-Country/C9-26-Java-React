@@ -44,7 +44,7 @@ public class AppointmentController {
         return new ResponseEntity<>(appointmentService.createAppointment(appointmentDto), HttpStatus.CREATED);
     }
 
-    @PatchMapping("/{appointmentId}/update")
+    @PatchMapping("/{appointmentId}/schedule")
     public ResponseEntity<AppointmentDto> scheduleAppointment(@PathVariable Long appointmentId,
             @RequestBody AppointmentDto appointmentDto) {
         return new ResponseEntity<>(appointmentService.scheduleAppointment(appointmentId, appointmentDto),
