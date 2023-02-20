@@ -8,6 +8,7 @@
     display: flex;
     align-items: center;
     cursor: pointer;
+    gap: 10px;
 }
 
 .dropdown_selectBtn {
@@ -27,8 +28,8 @@
 .dropdown_content {
     display: none;
     padding: 8px 16px;
-    margin-top: 15px;
     border-radius: 10px;
+    margin-top: 6px;
     background-color: #222221;
     position: absolute;
     z-index: 1;
@@ -55,4 +56,20 @@
     background-color: #fff;
     color: #222221;
     width: 100%;
+}
+
+.dropdown_options li input {
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+}
+
+.dropdown_optionsSub {
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.dropdown_optionsSub:hover {
+    background-color: #222221!important;
+    color: #ffffff!important;
 }

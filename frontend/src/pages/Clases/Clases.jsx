@@ -1,4 +1,6 @@
-import Form from 'react-bootstrap/Form';
+import { useEffect, createRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getProvincias } from "../../store/actions/localidadActions";
 import imgClass1 from "../../assets/images/Clases/Clases1.png";
 import imgClass2 from "../../assets/images/Clases/Clases2.png";
 import imgClass3 from "../../assets/images/Clases/Clases3.png";
@@ -10,6 +12,52 @@ import styles from './Clases.module.css';
 const Clases = () => {
     const level = ["A1 BEGINNER", "A2 ELEMENTARY", "B1 PREINTERMEDIATE ", "B2 INTERMEDIATE", "C1 UPPER INTERMEDIATE", "C2 ADVANCED", "No sé cuál es mi nivel actual"];
     const course = ["Niños", "Adolescentes", "Adultos", "Corporativo", "Apoyo escolar", "Conversación"];
+    const states = [];
+    const cities = [];
+
+    const provincias = useSelector(state => state.localidad.provincias);
+    console.log(provincias);
+    const dispatch = useDispatch();
+    
+    const ref = createRef();
+    dispatch(getProvincias());
+    
+    /* const provincias = () => {
+        fetch("https://apis.datos.gob.ar/georef/api/provincias")
+        .then(res => res.ok ? res.json() : Promise.reject(res))
+        .then(json => {
+            json.provincias.map(elem => states.push(elem.nombre));
+            console.log(json);
+        })
+        .catch(() => {
+            states.push("Error al cargar las provincias");
+        })
+    }
+
+    const localidades = (provincia) => {
+        fetch(`https://apis.datos.gob.ar/georef/api/municipios?provincia=${provincia}`)
+        .then(res => res.ok ? res.json() : Promise.reject(res))
+        .then(json => {
+            json.municipios.map(elem => cities.push(elem.id));
+        })
+        .catch(() => {
+            cities.push("Error al cargar las provincias");
+        })
+    } */
+
+    useEffect(() => {
+        /*  ref.addEventListener("change", (e) => {
+            console.log(this.e);
+        }) */
+    
+        //return () => {
+            //provincias();
+            /* provincia.addEventListener("change", (e) => {
+                localidades(e.target.value);
+            }) */
+            
+        //}
+    }, []);
 
     return (
         <>
@@ -20,10 +68,10 @@ const Clases = () => {
                         <h2 className='text-center text-white fw-bold'>Cursos para cada necesidad</h2>
 
                         <div className={`${styles.clases_container} mt-3`}>
-                            <img src={imgClass1} alt="" />
-                            <img src={imgClass2} alt="" />
-                            <img src={imgClass3} alt="" />
-                            <img src={imgClass4} alt="" />
+                            <img src={imgClass1} alt="Teacher with students" />
+                            <img src={imgClass2} alt="Classmates" />
+                            <img src={imgClass3} alt="Professor with students" />
+                            <img src={imgClass4} alt="Exam" />
                         </div>
                         <p className={styles.clases_text}>
                             Nuestros cursos están destinados a quienes quieran comunicarse efectivamente
@@ -56,15 +104,15 @@ const Clases = () => {
                                 </div>
 
                                 <div className={styles.input_container}>
-                                    <Dropdown array={level} placeholder="Provincia"/>
+                                    <Dropdown array={states} placeholder="Provincia" />
                                 </div>
 
                                 <div className={styles.input_container}>
-                                    <Dropdown array={level} placeholder="Localidad"/>
+                                    <Dropdown array={level} placeholder="Localidad" />
                                 </div>
 
                                 <div className={styles.input_container}>
-                                    <Dropdown array={level} placeholder="Nivel"/>
+                                    <Dropdown array={level} placeholder="Nivel" ref={ref}/>
                                 </div>
 
                                 <div className={styles.input_container}>
