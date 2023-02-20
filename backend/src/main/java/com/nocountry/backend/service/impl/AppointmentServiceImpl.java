@@ -36,7 +36,7 @@ public class AppointmentServiceImpl implements IAppointmentService {
     }
 
     @Override
-    public AppointmentDto scheduleAppointment(Long appointmentId, AppointmentDto appointmentDto) {
+    public AppointmentDto updateAppointment(Long appointmentId, AppointmentDto appointmentDto) {
         return null;
     }
 

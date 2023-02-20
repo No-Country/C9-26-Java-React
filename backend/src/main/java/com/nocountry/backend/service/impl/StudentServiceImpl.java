@@ -27,19 +27,23 @@ public class StudentServiceImpl implements IStudentService {
     private final IPaymentRepository paymentRepository;
 
     @Override
-    public List<StudentListDto> getAllStudents() {
-        return studentMapper.convertToDtoList(studentRepository.findAll());
-    }
-
-    @Override
     public StudentDetailsDto getStudentByEmail(String email) {
         return studentMapper.convertToDto(studentRepository.findByEmail(email).orElseThrow());
     }
 
     @Override
     public StudentDetailsDto updateStudent(String email, StudentDetailsDto studentDetailsDto) {
-        var student = studentRepository.findByEmail(email).orElseThrow();
         return null;
+    }
+
+    @Override
+    public List<StudentListDto> getAllStudents() {
+        return studentMapper.convertToDtoList(studentRepository.findAll());
+    }
+
+    @Override
+    public StudentDetailsDto getStudentById(Long studentId) {
+        return studentMapper.convertToDto(studentRepository.findById(studentId).orElseThrow());
     }
 
     @Override

@@ -7,11 +7,13 @@ import com.nocountry.backend.dto.StudentListDto;
 
 public interface IStudentService {
 
-    List<StudentListDto> getAllStudents();
-
     StudentDetailsDto getStudentByEmail(String email);
 
     StudentDetailsDto updateStudent(String email, StudentDetailsDto studentDetailsDto);
+
+    List<StudentListDto> getAllStudents();
+
+    StudentDetailsDto getStudentById(Long studentId);
 
     void addExamToStudent(Long studentId, Long examId);
 

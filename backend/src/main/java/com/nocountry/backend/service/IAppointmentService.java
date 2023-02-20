@@ -12,7 +12,7 @@ public interface IAppointmentService {
 
     AppointmentDto createAppointment(AppointmentDto appointmentDto);
 
-    AppointmentDto scheduleAppointment(Long appointmentId, AppointmentDto appointmentDto);
+    AppointmentDto updateAppointment(Long appointmentId, AppointmentDto appointmentDto);
 
     void deleteAppointment(Long appointmentId);
 }

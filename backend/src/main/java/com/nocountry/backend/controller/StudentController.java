@@ -30,23 +30,35 @@ public class StudentController {
 
     private final JwtProvider jwtProvider;
 
+    // FOR STUDENTS:
+
+    @PreAuthorize("hasRole('USER')")
+    @GetMapping("/token/")
+    public ResponseEntity<StudentDetailsDto> getStudentByToken(@RequestHeader("Authorization") String token) {
+        String email = jwtProvider.extractUsername(token.substring(7));
+        return new ResponseEntity<>(studentService.getStudentByEmail(email), HttpStatus.OK);
+    }
+
+    @PreAuthorize("hasRole('USER')")
+    @PatchMapping("/token/update")
+    public ResponseEntity<StudentDetailsDto> updateStudent(@RequestHeader("Authorization") String token,
+            @RequestBody StudentDetailsDto studentDetailsDto) {
+        String email = jwtProvider.extractUsername(token.substring(7));
+        return new ResponseEntity<>(studentService.updateStudent(email, studentDetailsDto), HttpStatus.ACCEPTED);
+    }
+
+    // FOR ADMIN:
+
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin/all")
     public ResponseEntity<List<StudentListDto>> getAllStudents() {
         return new ResponseEntity<>(studentService.getAllStudents(), HttpStatus.OK);
     }
 
-    @GetMapping("/")
-    public ResponseEntity<StudentDetailsDto> getStudentByEmail(@RequestHeader("Authorization") String token) {
-        String email = jwtProvider.extractUsername(token.substring(7));
-        return new ResponseEntity<>(studentService.getStudentByEmail(email), HttpStatus.OK);
-    }
-
-    @PatchMapping("/update")
-    public ResponseEntity<StudentDetailsDto> updateStudent(@RequestHeader("Authorization") String token,
-            @RequestBody StudentDetailsDto studentDetailsDto) {
-        String email = jwtProvider.extractUsername(token.substring(7));
-        return new ResponseEntity<>(studentService.updateStudent(email, studentDetailsDto), HttpStatus.ACCEPTED);
+    @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping("/admin/{studentId}")
+    public ResponseEntity<StudentDetailsDto> getStudentById(@PathVariable Long studentId) {
+        return new ResponseEntity<>(studentService.getStudentById(studentId), HttpStatus.OK);
     }
 
     @PreAuthorize("hasRole('ADMIN')")

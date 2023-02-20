@@ -21,37 +21,33 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("api/payments")
+@PreAuthorize("hasRole('ADMIN')")
 @RequiredArgsConstructor
 public class PaymentController {
 
     private final IPaymentService paymentService;
 
-    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/all")
     public ResponseEntity<List<PaymentDetailsDto>> getAllPayments() {
         return new ResponseEntity<>(paymentService.getAllPayments(), HttpStatus.OK);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/{paymentId}")
     public ResponseEntity<PaymentDetailsDto> getPaymentById(@PathVariable Long paymentId) {
         return new ResponseEntity<>(paymentService.getPaymentById(paymentId), HttpStatus.OK);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/create")
     public ResponseEntity<PaymentDetailsDto> createPayment(@RequestBody PaymentDetailsDto paymentDetailsDto) {
         return new ResponseEntity<>(paymentService.createPayment(paymentDetailsDto), HttpStatus.CREATED);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
     @PatchMapping("/{paymentId}/update")
     public ResponseEntity<PaymentDetailsDto> updatePayment(@PathVariable Long paymentId,
             @RequestBody PaymentDetailsDto paymentDetailsDto) {
         return new ResponseEntity<>(paymentService.updatePayment(paymentId, paymentDetailsDto), HttpStatus.ACCEPTED);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{paymentId}/delete")
     public ResponseEntity<String> deletePayment(@PathVariable Long paymentId) {
         paymentService.deletePayment(paymentId);

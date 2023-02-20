@@ -21,37 +21,33 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("api/teachers")
+@PreAuthorize("hasRole('ADMIN')")
 @RequiredArgsConstructor
 public class TeacherController {
 
     private final ITeacherService teacherService;
 
-    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/all")
     public ResponseEntity<List<TeacherDto>> getAllTeachers() {
         return new ResponseEntity<>(teacherService.getAllTeachers(), HttpStatus.OK);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/{teacherId}")
     public ResponseEntity<TeacherDto> getTeacherById(@PathVariable Long teacherId) {
         return new ResponseEntity<>(teacherService.getTeacherById(teacherId), HttpStatus.OK);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/create")
     public ResponseEntity<TeacherDto> createTeacher(@RequestBody TeacherDto teacherDto) {
         return new ResponseEntity<>(teacherService.createTeacher(teacherDto), HttpStatus.CREATED);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
     @PatchMapping("/{teacherId}/update")
     public ResponseEntity<TeacherDto> updateTeacher(@PathVariable Long teacherId,
             @RequestBody TeacherDto teacherDto) {
         return new ResponseEntity<>(teacherService.updateTeacher(teacherId, teacherDto), HttpStatus.ACCEPTED);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{teacherId}/delete")
     public ResponseEntity<String> deleteTeacher(@PathVariable Long teacherId) {
         teacherService.deleteTeacher(teacherId);
