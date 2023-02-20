@@ -1,9 +1,10 @@
 package com.nocountry.backend;
 
-import com.nocountry.backend.config.CorsConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Import;
+
+import com.nocountry.backend.auth.config.CorsConfig;
 
 @SpringBootApplication
 @Import(CorsConfig.class)
