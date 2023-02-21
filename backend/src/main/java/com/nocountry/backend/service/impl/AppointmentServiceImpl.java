@@ -75,7 +75,8 @@ public class AppointmentServiceImpl implements IAppointmentService {
                 + "<p>Estimado/a " + scheduledAppointment.getFullName() + ",</p>"
                 + "<p>Le informamos que se ha programado un nuevo turno para el día " + scheduledAppointment.getDate()
                 + " a las " + scheduledAppointment.getSchedule() + ".</p>"
-                + "<p>Por favor, asegúrese de estar disponible en el día y horario indicados.</p>"
+                + "<p>Por favor, asegúrese de estar disponible en el día y horario indicados y tenga en cuenta que la entrevista se realizará de manera online.</p>"
+                + "<p>Para garantizar una buena experiencia de entrevista, es importante disponer de un dispositivo con conexión estable a internet, cámara y micrófono.</p>"
                 + "<p>Cualquier consulta, no dude en ponerse en contacto con nosotros.</p>"
                 + "<p>Atentamente,<br>Bright English</p>"
                 + "</body></html>";
