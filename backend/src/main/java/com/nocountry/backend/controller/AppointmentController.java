@@ -4,19 +4,16 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nocountry.backend.dto.AppointmentDto;
-import com.nocountry.backend.dto.ScheduleDto;
 import com.nocountry.backend.service.IAppointmentService;
 
 import lombok.RequiredArgsConstructor;
@@ -26,58 +23,33 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class AppointmentController {
 
-    private final IAppointmentService service;
+    private final IAppointmentService appointmentService;
 
-    @GetMapping("/{appointmentId}")
-    @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<AppointmentDto> getAppointment(@PathVariable Long appointmentId) {
-        AppointmentDto appointmentDto = service.getAppointment(appointmentId);
-        if (appointmentDto != null) {
-            return new ResponseEntity<>(appointmentDto, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+    @GetMapping("/all")
+    public ResponseEntity<List<AppointmentDto>> getAllAppointments() {
+        return new ResponseEntity<>(appointmentService.getAllAppointments(), HttpStatus.OK);
     }
 
-    @GetMapping("/")
-    @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<List<AppointmentDto>> getAllAppointments() {
-        return new ResponseEntity<>(service.getAllAppointments(), HttpStatus.OK);
+    @GetMapping("/{appointmentId}")
+    public ResponseEntity<AppointmentDto> getAppointmentById(@PathVariable Long appointmentId) {
+        return new ResponseEntity<>(appointmentService.getAppointmentById(appointmentId), HttpStatus.OK);
     }
 
     @PostMapping("/create")
-    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<AppointmentDto> createAppointment(@RequestBody AppointmentDto appointmentDto) {
-        return new ResponseEntity<>(service.createAppointment(appointmentDto), HttpStatus.CREATED);
+        return new ResponseEntity<>(appointmentService.createAppointment(appointmentDto), HttpStatus.CREATED);
     }
 
-    @PatchMapping("/{appointmentId}/schedule")
-    @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<String> scheduleAppointment(@RequestBody ScheduleDto scheduleDto,
-            @PathVariable Long appointmentId) {
-        if (service.getAppointment(appointmentId) != null) {
-            service.scheduleAppointment(scheduleDto, appointmentId);
-            return new ResponseEntity<>("Appointment successfully scheduled!", HttpStatus.ACCEPTED);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-
-    @PutMapping("/{appointmentId}/update")
-    @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<AppointmentDto> updateAppointment(@RequestBody AppointmentDto appointmentDto,
-            @PathVariable Long appointmentId) {
-        return new ResponseEntity<>(service.updateAppointment(appointmentDto, appointmentId), HttpStatus.ACCEPTED);
+    @PatchMapping("/{appointmentId}/update")
+    public ResponseEntity<AppointmentDto> updateAppointment(@PathVariable Long appointmentId,
+            @RequestBody AppointmentDto appointmentDto) {
+        return new ResponseEntity<>(appointmentService.updateAppointment(appointmentId, appointmentDto),
+                HttpStatus.ACCEPTED);
     }
 
     @DeleteMapping("/{appointmentId}/delete")
-    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> deleteAppointment(@PathVariable Long appointmentId) {
-        if (service.getAppointment(appointmentId) != null) {
-            service.deleteAppointment(appointmentId);
-            return new ResponseEntity<>("Appointment successfully deleted", HttpStatus.ACCEPTED);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        appointmentService.deleteAppointment(appointmentId);
+        return new ResponseEntity<>("Appointment successfully deleted", HttpStatus.ACCEPTED);
     }
 }

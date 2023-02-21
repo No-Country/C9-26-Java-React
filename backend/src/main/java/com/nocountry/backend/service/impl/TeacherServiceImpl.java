@@ -6,51 +6,41 @@ import org.springframework.stereotype.Service;
 
 import com.nocountry.backend.dto.TeacherDto;
 import com.nocountry.backend.mapper.TeacherMapper;
-import com.nocountry.backend.model.Teacher;
 import com.nocountry.backend.repository.ITeacherRepository;
 import com.nocountry.backend.service.ITeacherService;
 
-import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
 public class TeacherServiceImpl implements ITeacherService {
 
-    private final ITeacherRepository repository;
+    private final ITeacherRepository teacherRepository;
 
-    private final TeacherMapper mapper;
-
-    private Teacher findTeacherById(Long teacherId) {
-        return repository.findById(teacherId)
-                .orElseThrow(() -> new EntityNotFoundException("Teacher not found"));
-    }
-
-    @Override
-    public TeacherDto getTeacher(Long teacherId) {
-        return mapper.convertToDto(this.findTeacherById(teacherId));
-    }
+    private final TeacherMapper teacherMapper;
 
     @Override
     public List<TeacherDto> getAllTeachers() {
-        return mapper.convertToDtoList(repository.findAll());
+        return teacherMapper.convertToDtoList(teacherRepository.findAll());
+    }
+
+    @Override
+    public TeacherDto getTeacherById(Long teacherId) {
+        return teacherMapper.convertToDto(teacherRepository.findById(teacherId).orElseThrow());
     }
 
     @Override
     public TeacherDto createTeacher(TeacherDto teacherDto) {
-        return mapper.convertToDto(repository.save(mapper.convertToEntity(teacherDto)));
+        return teacherMapper.convertToDto(teacherRepository.save(teacherMapper.convertToEntity(teacherDto)));
     }
 
     @Override
-    public TeacherDto updateTeacher(TeacherDto teacherDto, Long teacherId) {
-        Teacher updatedTeacher = this.findTeacherById(teacherId);
-        updatedTeacher.setFirstName(teacherDto.getFirstName());
-        updatedTeacher.setLastName(teacherDto.getLastName());
-        return mapper.convertToDto(repository.save(updatedTeacher));
+    public TeacherDto updateTeacher(Long teacherId, TeacherDto teacherDto) {
+        return null;
     }
 
     @Override
     public void deleteTeacher(Long teacherId) {
-        repository.deleteById(teacherId);
+        teacherRepository.deleteById(teacherId);
     }
 }

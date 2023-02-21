@@ -2,17 +2,17 @@ package com.nocountry.backend.service;
 
 import java.util.List;
 
-import com.nocountry.backend.dto.ExamDto;
+import com.nocountry.backend.dto.ExamDetailsDto;
 
 public interface IExamService {
 
-    ExamDto getExam(Long examId);
+    List<ExamDetailsDto> getAllExams();
 
-    List<ExamDto> getAllExams();
+    ExamDetailsDto getExamById(Long examId);
 
-    ExamDto createExam(ExamDto examDto);
+    ExamDetailsDto createExam(ExamDetailsDto examDetailsDto);
 
-    ExamDto updateExam(ExamDto examDto, Long examId);
+    ExamDetailsDto updateExam(Long examId, ExamDetailsDto examDetailsDto);
 
     void deleteExam(Long examId);
 }

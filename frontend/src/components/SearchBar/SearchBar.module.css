@@ -1,0 +1,21 @@
+.searchBar {
+    width: 28.25rem!important;
+    height: 2.5rem!important;
+    
+    margin-bottom: 1rem;
+}
+
+.searchBar input{
+    border: none;
+    border-top-right-radius: 50px 50px;
+    border-bottom-right-radius: 50px 50px
+}
+
+.searchBar_button {
+    background-color: #ffffff !important;
+    border: none;
+    border-top-left-radius: 50px 50px!important;
+    border-bottom-left-radius: 50px 50px!important;
+    display: flex!important;
+    align-items: center!important;
+}

@@ -1,5 +1,7 @@
 package com.nocountry.backend.dto;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,4 +18,6 @@ public class TeacherDto {
     private String firstName;
 
     private String lastName;
+
+    private List<Long> courseId;
 }

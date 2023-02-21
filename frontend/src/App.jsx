@@ -1,34 +1,29 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { HOME, LOGIN, PROFILE, CLASS, EXAMS, SERVICES, CONSULTATION, STUDENT, ADD_STUDENT } from './config/routes/paths'
+import { PrivateRoute, PublicRoute } from './components'
+import { Home, Login, Profile, Clases, Examenes, Servicios, Consultas, Alumno } from './pages'
+
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<PublicRoute />}>
+          <Route path={HOME} element={<Home />} />
+          {/* <Route path={LOGIN} element={<Login />} /> */}
+          <Route path={CLASS} element={<Clases />} />
+          <Route path={EXAMS} element={<Examenes />} />
+          <Route path={SERVICES} element={<Servicios />} />
+          <Route path={CONSULTATION} element={<Consultas />} />
+          <Route path={STUDENT} element={<Alumno />} />
+          <Route path={ADD_STUDENT} element={<Alumno />} />
+        </Route>
+        <Route path={PROFILE} element={<PrivateRoute />}>
+          <Route index element={<Profile />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
-}
+  }
 
 export default App

@@ -1,5 +1,8 @@
 package com.nocountry.backend.dto;
 
+import com.nocountry.backend.utils.enums.PaymentStatus;
+import com.nocountry.backend.utils.enums.PaymentType;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,11 +12,11 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ScheduleDto {
+public class PaymentListDto {
 
     private Long id;
 
-    private String email;
+    private PaymentType paymentType;
 
-    private String fullName;
+    private PaymentStatus paymentStatus;
 }

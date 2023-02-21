@@ -26,15 +26,16 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
-                .csrf()
-                .disable()
+                .csrf().disable()
+                .cors().disable()
                 .authorizeHttpRequests()
+                .requestMatchers("/api/appointments/**").permitAll()
                 .requestMatchers("/api/auth/**").permitAll()
-                .requestMatchers("/api/appointments/**").hasRole(Role.ADMIN.name())
                 .requestMatchers("/api/courses/**").hasRole(Role.ADMIN.name())
                 .requestMatchers("/api/exams/**").hasRole(Role.ADMIN.name())
                 .requestMatchers("/api/payments/**").hasRole(Role.ADMIN.name())
-                .requestMatchers("/api/students/**").hasRole(Role.ADMIN.name())
+                .requestMatchers("/api/students/admin/**").hasRole(Role.ADMIN.name())
+                .requestMatchers("/api/students/token/**").hasRole(Role.USER.name())
                 .requestMatchers("/api/teachers/**").hasRole(Role.ADMIN.name())
                 .anyRequest()
                 .authenticated()
