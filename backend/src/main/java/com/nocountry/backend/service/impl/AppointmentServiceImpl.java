@@ -52,6 +52,7 @@ public class AppointmentServiceImpl implements IAppointmentService {
         if (appointmentDto.getSchedule() != null) {
             appointment.setSchedule(appointmentDto.getSchedule());
         }
+
         if (appointmentDto.getDescription() != null) {
             appointment.setDescription(appointmentDto.getDescription());
         }
@@ -68,12 +69,12 @@ public class AppointmentServiceImpl implements IAppointmentService {
 
         var scheduledAppointment = appointmentRepository.save(appointment);
 
-        String to = appointmentDto.getEmail();
-        String subject = "Nuevo turno programado";
+        String to = scheduledAppointment.getEmail();
+        String subject = "Información sobre " + scheduledAppointment.getDescription() + "";
         String text = "<html><body>"
-                + "<p>Estimado/a " + appointmentDto.getFullName() + ",</p>"
-                + "<p>Le informamos que se ha programado un nuevo turno para el día " + appointmentDto.getDate()
-                + " a las " + appointmentDto.getSchedule() + ".</p>"
+                + "<p>Estimado/a " + scheduledAppointment.getFullName() + ",</p>"
+                + "<p>Le informamos que se ha programado un nuevo turno para el día " + scheduledAppointment.getDate()
+                + " a las " + scheduledAppointment.getSchedule() + ".</p>"
                 + "<p>Por favor, asegúrese de estar disponible en el día y horario indicados.</p>"
                 + "<p>Cualquier consulta, no dude en ponerse en contacto con nosotros.</p>"
                 + "<p>Atentamente,<br>Bright English</p>"
