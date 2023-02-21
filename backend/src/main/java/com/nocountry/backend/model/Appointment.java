@@ -31,5 +31,5 @@ public class Appointment {
 
     private String fullName;
 
-    private Boolean status;
+    private Boolean available;
 }

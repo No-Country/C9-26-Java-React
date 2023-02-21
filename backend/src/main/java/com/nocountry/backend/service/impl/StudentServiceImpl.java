@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.nocountry.backend.dto.StudentDetailsDto;
 import com.nocountry.backend.dto.StudentListDto;
 import com.nocountry.backend.mapper.StudentMapper;
+import com.nocountry.backend.model.Student;
 import com.nocountry.backend.repository.IExamRepository;
 import com.nocountry.backend.repository.IPaymentRepository;
 import com.nocountry.backend.repository.IStudentRepository;
@@ -32,8 +33,48 @@ public class StudentServiceImpl implements IStudentService {
     }
 
     @Override
-    public StudentDetailsDto updateStudent(String email, StudentDetailsDto studentDetailsDto) {
-        return null;
+    public StudentDetailsDto updateStudent(String email, StudentDetailsDto StudentDetailsDto) {
+        Student student = studentRepository.findByEmail(email).orElse(null);
+
+        if (student != null) {
+            if (StudentDetailsDto.getFirstName() != null) {
+                student.setFirstName(StudentDetailsDto.getFirstName());
+            }
+
+            if (StudentDetailsDto.getLastName() != null) {
+                student.setLastName(StudentDetailsDto.getLastName());
+            }
+
+            if (StudentDetailsDto.getImageUrl() != null) {
+                student.setImageUrl(StudentDetailsDto.getImageUrl());
+            }
+
+            if (StudentDetailsDto.getDni() != null) {
+                student.setDni(StudentDetailsDto.getDni());
+            }
+
+            if (StudentDetailsDto.getAddress() != null) {
+                student.setAddress(StudentDetailsDto.getAddress());
+            }
+
+            if (StudentDetailsDto.getEmail() != null) {
+                student.setEmail(StudentDetailsDto.getEmail());
+            }
+
+            if (StudentDetailsDto.getPhone() != null) {
+                student.setPhone(StudentDetailsDto.getPhone());
+            }
+
+            if (StudentDetailsDto.getBirthdate() != null) {
+                student.setBirthdate(StudentDetailsDto.getBirthdate());
+            }
+
+            if (StudentDetailsDto.getLevel() != null) {
+                student.setLevel(StudentDetailsDto.getLevel());
+            }
+        }
+
+        return studentMapper.convertToDto(studentRepository.save(student));
     }
 
     @Override

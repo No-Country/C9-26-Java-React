@@ -21,5 +21,5 @@ public class AppointmentDto {
 
     private String fullName;
 
-    private Boolean status;
+    private Boolean available;
 }

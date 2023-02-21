@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.nocountry.backend.dto.AppointmentDto;
 import com.nocountry.backend.mapper.AppointmentMapper;
+import com.nocountry.backend.model.Appointment;
 import com.nocountry.backend.repository.IAppointmentRepository;
 import com.nocountry.backend.service.IAppointmentService;
 import com.nocountry.backend.service.IMailSenderService;
@@ -36,17 +37,44 @@ public class AppointmentServiceImpl implements IAppointmentService {
     @Override
     public AppointmentDto createAppointment(AppointmentDto appointmentDto) {
         var appointment = appointmentMapper.convertToEntity(appointmentDto);
+        appointment.setAvailable(true);
+        return appointmentMapper.convertToDto(appointmentRepository.save(appointment));
+    }
+
+    @Override
+    public AppointmentDto updateAppointment(Long appointmentId, AppointmentDto appointmentDto) {
+        Appointment appointment = appointmentRepository.findById(appointmentId).orElse(null);
+
+        if (appointmentDto.getDate() != null) {
+            appointment.setDate(appointmentDto.getDate());
+        }
+
+        if (appointmentDto.getSchedule() != null) {
+            appointment.setSchedule(appointmentDto.getSchedule());
+        }
+
+        if (appointmentDto.getEmail() != null) {
+            appointment.setEmail(appointmentDto.getEmail());
+        }
+
+        if (appointmentDto.getFullName() != null) {
+            appointment.setFullName(appointmentDto.getFullName());
+        }
+
+        appointment.setAvailable(false);
+
+        var scheduledAppointment = appointmentRepository.save(appointment);
 
         String to = appointmentDto.getEmail();
         String subject = "Nuevo turno programado";
-        String body = "Estimado/a " + appointmentDto.getFullName() + "," + "\n\n" +
-                "Le informamos que se ha programado un nuevo turno para el día " +
-                appointmentDto.getDate() + " a las " + appointmentDto.getSchedule() + "." + "\n\n" +
-                "Por favor, tenga en cuenta esta información para su planificación y asegúrese de estar disponible en el día y horario indicados."
-                + "\n\n" +
-                "Cualquier consulta, no dude en ponerse en contacto con nosotros." + "\n\n" +
-                "Atentamente," + "\n" +
-                "Bright English";
+        String body = "<html><body>"
+                + "<p>Estimado/a " + appointmentDto.getFullName() + ",</p>"
+                + "<p>Le informamos que se ha programado un nuevo turno para el día " + appointmentDto.getDate()
+                + " a las " + appointmentDto.getSchedule() + ".</p>"
+                + "<p>Por favor, asegúrese de estar disponible en el día y horario indicados.</p>"
+                + "<p>Cualquier consulta, no dude en ponerse en contacto con nosotros.</p>"
+                + "<p>Atentamente,<br>Bright English</p>"
+                + "</body></html>";
 
         try {
             mailSender.sendEmail(to, subject, body);
@@ -54,13 +82,7 @@ public class AppointmentServiceImpl implements IAppointmentService {
             e.printStackTrace();
         }
 
-        return appointmentMapper.convertToDto(appointmentRepository.save(appointment));
-    }
-
-    @Override
-    public AppointmentDto updateAppointment(Long appointmentId, AppointmentDto appointmentDto) {
-
-        return null;
+        return appointmentMapper.convertToDto(scheduledAppointment);
     }
 
     @Override

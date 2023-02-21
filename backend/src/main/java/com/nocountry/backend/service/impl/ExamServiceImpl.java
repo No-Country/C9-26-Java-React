@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.nocountry.backend.dto.ExamDetailsDto;
 import com.nocountry.backend.mapper.ExamMapper;
+import com.nocountry.backend.model.Exam;
 import com.nocountry.backend.repository.IExamRepository;
 import com.nocountry.backend.service.IExamService;
 
@@ -37,7 +38,33 @@ public class ExamServiceImpl implements IExamService {
 
     @Override
     public ExamDetailsDto updateExam(Long examId, ExamDetailsDto examDetailsDto) {
-        return null;
+        Exam exam = examRepository.findById(examId).orElseThrow();
+
+        if (examDetailsDto.getName() != null) {
+            exam.setName(examDetailsDto.getName());
+        }
+
+        if (examDetailsDto.getExamDate() != null) {
+            exam.setExamDate(examDetailsDto.getExamDate());
+        }
+
+        if (examDetailsDto.getGrammar() != null) {
+            exam.setGrammar(examDetailsDto.getGrammar());
+        }
+
+        if (examDetailsDto.getSpeaking() != null) {
+            exam.setSpeaking(examDetailsDto.getSpeaking());
+        }
+
+        if (examDetailsDto.getWriting() != null) {
+            exam.setWriting(examDetailsDto.getWriting());
+        }
+
+        if (examDetailsDto.getListening() != null) {
+            exam.setListening(examDetailsDto.getListening());
+        }
+
+        return examMapper.convertToDetailsDto(examRepository.save(exam));
     }
 
     @Override

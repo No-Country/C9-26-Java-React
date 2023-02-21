@@ -24,6 +24,4 @@ public class ExamListDto {
     private String writing;
 
     private String listening;
-
-    private Boolean status;
 }
