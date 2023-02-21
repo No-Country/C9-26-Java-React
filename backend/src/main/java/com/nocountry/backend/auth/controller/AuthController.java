@@ -1,5 +1,6 @@
 package com.nocountry.backend.auth.controller;
 
+import com.nocountry.backend.service.IEmailService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,17 +15,24 @@ import com.nocountry.backend.auth.service.IAuthenticationService;
 
 import lombok.RequiredArgsConstructor;
 
+import java.io.IOException;
+
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
 public class AuthController {
 
     private final IAuthenticationService service;
+    private final IEmailService emailService;
 
     @PostMapping("/register")
     public ResponseEntity<AuthResponseDto> register(
-            @RequestBody RegisterRequestDto request) {
-        return new ResponseEntity<>(service.register(request), HttpStatus.CREATED);
+            @RequestBody RegisterRequestDto request) throws IOException {
+        ResponseEntity<AuthResponseDto> response= new ResponseEntity<>(service.register(request),HttpStatus.CREATED);
+        if (response.getStatusCode() == HttpStatus.CREATED) {
+            emailService.confirmationMessage(request.getUsername(),request.getPassword());
+        }
+        return response;
     }
 
     @PostMapping("/login")
