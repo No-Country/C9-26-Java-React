@@ -1,5 +1,6 @@
 package com.nocountry.backend.auth.controller;
 
+import com.nocountry.backend.auth.service.IAuthService;
 import com.nocountry.backend.service.IEmailService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.nocountry.backend.auth.dto.AuthRequestDto;
 import com.nocountry.backend.auth.dto.AuthResponseDto;
 import com.nocountry.backend.auth.dto.RegisterRequestDto;
-import com.nocountry.backend.auth.service.IAuthenticationService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -22,7 +22,7 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class AuthController {
 
-    private final IAuthenticationService service;
+    private final IAuthService service;
     private final IEmailService emailService;
 
     @PostMapping("/register")
