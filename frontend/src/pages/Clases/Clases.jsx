@@ -12,16 +12,22 @@ const Clases = () => {
     const course = ["Niños", "Adolescentes", "Adultos", "Corporativo", "Apoyo escolar", "Conversación"];
     const states = [];
     const cities = [];
-    
-    const ref = createRef();
 
-    let idProvincia;
+    //Referencia del span en componente dropdown
+    const ref = createRef();
 
     const provincias = () => {
         fetch("https://apis.datos.gob.ar/georef/api/provincias")
             .then(res => res.ok ? res.json() : Promise.reject(res))
             .then(json => {
-                json.provincias.map(elem => states.push(elem.nombre));
+                let obj;
+                json.provincias.map(elem => {
+                    obj = {
+                        id: elem.id,
+                        nombre: elem.nombre
+                    }
+                    states.push(obj)
+                });
             })
             .catch(() => {
                 states.push("Error al cargar las provincias");
@@ -34,37 +40,32 @@ const Clases = () => {
             .then(json => {
                 cities.length = 0;
                 json.municipios.map(elem => {
-                    cities.push(elem.nombre)
-                    console.log(cities);
+                    cities.push(elem.nombre);
                 });
             })
             .catch(() => {
-                cities.push("Error al cargar las provincias");
+                cities.push("Error al cargar los municipios");
             })
     }
 
     useEffect(() => {
-        //provincias();
 
         const observer = new MutationObserver((mutations) => {
             mutations.forEach((mutation) => {
                 if (mutation.type === 'characterData') {
                     console.log('El contenido del span ha cambiado a:', mutation.target.textContent);
-                    localidades(mutation.target.textContent);
+                    /* console.log(parseInt(mutation.target.parentElement.id)); */
+                    console.log(mutation.target.parentElement);
+                    localidades(mutation.target.parentElement.id);
                 }
             });
-        });
+        }); 
 
         observer.observe(ref.current, { characterData: true, subtree: true });
 
-        /* ref.current.addEventListener("DOMCharacterDataModified", () => {
-            setValue(ref.current.textContent);
-            console.log(value);
-            localidades(value);
-        })  */
-
         return () => {
             provincias();
+            console.log(states);
         }
     }, []);
 
@@ -113,19 +114,19 @@ const Clases = () => {
                                 </div>
 
                                 <div className={styles.input_container}>
-                                    <Dropdown array={states} placeholder="Provincia" /* ref={ref} */ ref={ref} />
+                                    <input type="text" placeholder="Fecha de nacimiento" onFocus={(e) => (e.target.type = "date")}/>
                                 </div>
 
                                 <div className={styles.input_container}>
-                                    <Dropdown array={cities} placeholder="Localidad" />
+                                    <Dropdown array={states} placeholder="Provincia" provincia={true} ref={ref} />
+                                </div>
+
+                                <div className={styles.input_container}>
+                                    <Dropdown array={cities} placeholder="Localidad" localidad={true} />
                                 </div>
 
                                 <div className={styles.input_container}>
                                     <Dropdown array={level} placeholder="Nivel" />
-                                </div>
-
-                                <div className={styles.input_container}>
-                                    <Dropdown array={course} placeholder="Fecha de nacimiento" />
                                 </div>
 
                                 <div className={styles.input_container}>
@@ -135,6 +136,7 @@ const Clases = () => {
                                 <div className={styles.submit_container}>
                                     <input type="submit" value="ENVIAR" />
                                 </div>
+                                
                             </form>
                         </div>
                     </section>

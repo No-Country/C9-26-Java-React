@@ -6,6 +6,7 @@ import styles from "./Dropdown.module.css";
 const Dropdown = forwardRef((props, ref) => {
     const [toggle, setToggle] = useState(false);
     let [selectedOption, setSelectedOption] = useState(props.placeholder);
+    let [selectedId, setSelectedId] = useState("");
     const dropdown = useRef(null)
     const containerOptions = useRef(null);
 
@@ -36,11 +37,23 @@ const Dropdown = forwardRef((props, ref) => {
                             createElement("input", {
                                 type: "radio",
                                 name: "options",
-                                checked: elem === selectedOption,
+                                checked: elem=== selectedOption,
                                 onClick: () => updateOption(elem),
                             }),
                             elem,
                         ]
+                    )
+                } else if (props.localidad === true) {
+                    return createElement(
+                        "li",
+                        { key: elem, onClick: () => updateOption(elem) },
+                        elem
+                    )
+                } else if (props.provincia === true) {
+                    return createElement(
+                        "li",
+                        { key: elem.nombre, id: elem.id, onClick: () => updateOption(elem) },
+                        elem.nombre
                     )
                 } else {
                     return createElement(
@@ -56,13 +69,18 @@ const Dropdown = forwardRef((props, ref) => {
 
     //Actualizar a la opción elegida
     function updateOption(option) {
-        setSelectedOption(option);
+        if (props.provincia !== true) {
+            setSelectedOption(option);
+        } else {
+            setSelectedOption(option.nombre);
+            setSelectedId(option.id);
+        }
     }
 
     return (
         <div className={styles.dropdown_wrapper} onClick={() => setToggle(!toggle)} ref={dropdown}>
             <div className={styles.dropdown_selectBtn}>
-                <span ref={ref}>{selectedOption}</span>
+                <span ref={ref} id={props.provincia && selectedId}>{selectedOption}</span>
                 <IoIosArrowDown className={toggle && styles.dropdown_icon} />
             </div>
 

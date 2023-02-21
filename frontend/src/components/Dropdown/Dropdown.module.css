@@ -53,12 +53,12 @@
 }
 
 .dropdown_options::-webkit-scrollbar-track {
-    background-color: #ffffff;
+    background-color: #fff;
     border-radius: 25px;
 }
 
 .dropdown_options::-webkit-scrollbar-thumb {
-    background-color: #ccc;
+    background-color: #c2c1c1;
     border-radius: 25px;
 }
 
