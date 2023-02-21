@@ -70,7 +70,7 @@ public class AppointmentServiceImpl implements IAppointmentService {
         var scheduledAppointment = appointmentRepository.save(appointment);
 
         String to = scheduledAppointment.getEmail();
-        String subject = "Información sobre " + scheduledAppointment.getDescription() + "";
+        String subject = "Información sobre " + scheduledAppointment.getDescription();
         String text = "<html><body>"
                 + "<p>Estimado/a " + scheduledAppointment.getFullName() + ",</p>"
                 + "<p>Le informamos que se ha programado un nuevo turno para el día " + scheduledAppointment.getDate()
