@@ -15,7 +15,9 @@ import com.nocountry.backend.auth.service.IAuthService;
 import com.nocountry.backend.auth.utils.enums.Role;
 import com.nocountry.backend.model.Student;
 import com.nocountry.backend.repository.IStudentRepository;
+import com.nocountry.backend.service.IMailSenderService;
 
+import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -32,12 +34,14 @@ public class AuthServiceImpl implements IAuthService {
 
         private final AuthenticationManager authenticationManager;
 
+        private final IMailSenderService mailSender;
+
         @Override
         public AuthResponseDto register(RegisterRequestDto request) {
                 var user = User.builder()
                                 .username(request.getUsername())
                                 .password(passwordEncoder.encode(request.getPassword()))
-                                .role(Role.USER.name())
+                                .role(Role.STUDENT.name())
                                 .build();
 
                 var student = Student.builder()
@@ -59,7 +63,28 @@ public class AuthServiceImpl implements IAuthService {
 
                 var jwt = jwtProvider.generateToken(user);
 
+                String to = request.getUsername();
+                String subject = "Acceso al Campus Virtual";
+                String body = "<html><body>"
+                                + "<p>Estimado/a estudiante,</p>"
+                                + "<p>Le informamos que ya cuenta con acceso al Campus Virtual.</p>"
+                                + "<p>A continuación, encontrará los detalles de inicio de sesión:</p>"
+                                + "<ul>"
+                                + "<li>Nombre de usuario: " + request.getUsername() + "</li>"
+                                + "<li>Contraseña: " + request.getPassword() + "</li>"
+                                + "</ul>"
+                                + "<p>Para acceder a su cuenta, por favor visite nuestro sitio web en <a href=\"https://bright-english.vercel.app/\">bright-english.vercel.app</a>.</p>"
+                                + "<p>Atentamente,<br>Bright English</p>"
+                                + "</body></html>";
+
+                try {
+                        mailSender.sendEmail(to, subject, body);
+                } catch (MessagingException e) {
+                        e.printStackTrace();
+                }
+
                 return AuthResponseDto.builder()
+                                .role(user.getRole())
                                 .token(jwt)
                                 .build();
         }
@@ -74,6 +99,7 @@ public class AuthServiceImpl implements IAuthService {
                 var jwt = jwtProvider.generateToken(user);
 
                 return AuthResponseDto.builder()
+                                .role(user.getRole())
                                 .token(jwt)
                                 .build();
         }

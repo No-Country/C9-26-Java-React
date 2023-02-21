@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.nocountry.backend.dto.CourseDto;
 import com.nocountry.backend.mapper.CourseMapper;
+import com.nocountry.backend.model.Course;
 import com.nocountry.backend.repository.ICourseRepository;
 import com.nocountry.backend.repository.IStudentRepository;
 import com.nocountry.backend.repository.ITeacherRepository;
@@ -43,7 +44,29 @@ public class CourseServiceImpl implements ICourseService {
 
     @Override
     public CourseDto updateCourse(Long courseId, CourseDto courseDto) {
-        return null;
+        Course course = courseRepository.findById(courseId).orElseThrow();
+
+        if (courseDto.getCategory() != null) {
+            course.setCategory(courseDto.getCategory());
+        }
+
+        if (courseDto.getLevel() != null) {
+            course.setLevel(courseDto.getLevel());
+        }
+
+        if (courseDto.getMode() != null) {
+            course.setMode(courseDto.getMode());
+        }
+
+        if (courseDto.getCourseDays() != null) {
+            course.setCourseDays(courseDto.getCourseDays());
+        }
+
+        if (courseDto.getSchedule() != null) {
+            course.setSchedule(courseDto.getSchedule());
+        }
+
+        return courseMapper.convertToDto(courseRepository.save(course));
     }
 
     @Override

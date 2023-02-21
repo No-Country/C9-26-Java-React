@@ -32,19 +32,19 @@ public class StudentController {
 
     // FOR STUDENTS:
 
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasRole('STUDENT')")
     @GetMapping("/token/")
     public ResponseEntity<StudentDetailsDto> getStudentByToken(@RequestHeader("Authorization") String token) {
         String email = jwtProvider.extractUsername(token.substring(7));
         return new ResponseEntity<>(studentService.getStudentByEmail(email), HttpStatus.OK);
     }
 
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasRole('STUDENT')")
     @PatchMapping("/token/update")
-    public ResponseEntity<StudentDetailsDto> updateStudent(@RequestHeader("Authorization") String token,
+    public ResponseEntity<StudentDetailsDto> updateStudentByToken(@RequestHeader("Authorization") String token,
             @RequestBody StudentDetailsDto studentDetailsDto) {
         String email = jwtProvider.extractUsername(token.substring(7));
-        return new ResponseEntity<>(studentService.updateStudent(email, studentDetailsDto), HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(studentService.updateStudentByEmail(email, studentDetailsDto), HttpStatus.ACCEPTED);
     }
 
     // FOR ADMIN:
@@ -59,6 +59,13 @@ public class StudentController {
     @GetMapping("/admin/{studentId}")
     public ResponseEntity<StudentDetailsDto> getStudentById(@PathVariable Long studentId) {
         return new ResponseEntity<>(studentService.getStudentById(studentId), HttpStatus.OK);
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping("/admin/{studentId}/update")
+    public ResponseEntity<StudentDetailsDto> updateStudentById(@PathVariable Long studentId,
+            @RequestBody StudentDetailsDto studentDetailsDto) {
+        return new ResponseEntity<>(studentService.updateStudentById(studentId, studentDetailsDto), HttpStatus.OK);
     }
 
     @PreAuthorize("hasRole('ADMIN')")

@@ -25,8 +25,6 @@ public class ExamDetailsDto {
 
     private String listening;
 
-    private Boolean status;
-
     private Long studentId;
 
     private String studentFirstName;

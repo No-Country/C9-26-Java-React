@@ -37,8 +37,6 @@ public class Exam {
 
     private String listening;
 
-    private Boolean status;
-
     @JsonBackReference
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "student_id")
