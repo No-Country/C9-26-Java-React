@@ -33,8 +33,53 @@ public class StudentServiceImpl implements IStudentService {
     }
 
     @Override
-    public StudentDetailsDto updateStudent(String email, StudentDetailsDto StudentDetailsDto) {
+    public StudentDetailsDto updateStudentByEmail(String email, StudentDetailsDto studentDetailsDto) {
         Student student = studentRepository.findByEmail(email).orElse(null);
+        return this.updateStudent(student, studentDetailsDto);
+    }
+
+    @Override
+    public List<StudentListDto> getAllStudents() {
+        return studentMapper.convertToDtoList(studentRepository.findAll());
+    }
+
+    @Override
+    public StudentDetailsDto getStudentById(Long studentId) {
+        return studentMapper.convertToDto(studentRepository.findById(studentId).orElseThrow());
+    }
+
+    @Override
+    public StudentDetailsDto updateStudentById(Long studentId, StudentDetailsDto studentDetailsDto) {
+        Student student = studentRepository.findById(studentId).orElseThrow();
+        return this.updateStudent(student, studentDetailsDto);
+    }
+
+    @Override
+    public void addExamToStudent(Long studentId, Long examId) {
+        var student = studentRepository.findById(studentId).orElseThrow();
+        var exam = examRepository.findById(examId).orElseThrow();
+        exam.setStudent(student);
+        student.addExam(exam);
+        examRepository.save(exam);
+        studentRepository.save(student);
+    }
+
+    @Override
+    public void addPaymentToStudent(Long studentId, Long paymentId) {
+        var student = studentRepository.findById(studentId).orElseThrow();
+        var payment = paymentRepository.findById(paymentId).orElseThrow();
+        payment.setStudent(student);
+        student.addPayment(payment);
+        paymentRepository.save(payment);
+        studentRepository.save(student);
+    }
+
+    @Override
+    public void deleteStudent(Long studentId) {
+        studentRepository.deleteById(studentId);
+    }
+
+    private StudentDetailsDto updateStudent(Student student, StudentDetailsDto StudentDetailsDto) {
 
         if (student != null) {
             if (StudentDetailsDto.getFirstName() != null) {
@@ -75,40 +120,5 @@ public class StudentServiceImpl implements IStudentService {
         }
 
         return studentMapper.convertToDto(studentRepository.save(student));
-    }
-
-    @Override
-    public List<StudentListDto> getAllStudents() {
-        return studentMapper.convertToDtoList(studentRepository.findAll());
-    }
-
-    @Override
-    public StudentDetailsDto getStudentById(Long studentId) {
-        return studentMapper.convertToDto(studentRepository.findById(studentId).orElseThrow());
-    }
-
-    @Override
-    public void addExamToStudent(Long studentId, Long examId) {
-        var student = studentRepository.findById(studentId).orElseThrow();
-        var exam = examRepository.findById(examId).orElseThrow();
-        exam.setStudent(student);
-        student.addExam(exam);
-        examRepository.save(exam);
-        studentRepository.save(student);
-    }
-
-    @Override
-    public void addPaymentToStudent(Long studentId, Long paymentId) {
-        var student = studentRepository.findById(studentId).orElseThrow();
-        var payment = paymentRepository.findById(paymentId).orElseThrow();
-        payment.setStudent(student);
-        student.addPayment(payment);
-        paymentRepository.save(payment);
-        studentRepository.save(student);
-    }
-
-    @Override
-    public void deleteStudent(Long studentId) {
-        studentRepository.deleteById(studentId);
     }
 }

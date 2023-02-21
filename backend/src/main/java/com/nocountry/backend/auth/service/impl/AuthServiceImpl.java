@@ -41,7 +41,7 @@ public class AuthServiceImpl implements IAuthService {
                 var user = User.builder()
                                 .username(request.getUsername())
                                 .password(passwordEncoder.encode(request.getPassword()))
-                                .role(Role.USER.name())
+                                .role(Role.STUDENT.name())
                                 .build();
 
                 var student = Student.builder()

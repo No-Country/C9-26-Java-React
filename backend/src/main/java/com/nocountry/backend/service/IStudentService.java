@@ -9,11 +9,13 @@ public interface IStudentService {
 
     StudentDetailsDto getStudentByEmail(String email);
 
-    StudentDetailsDto updateStudent(String email, StudentDetailsDto studentDetailsDto);
+    StudentDetailsDto updateStudentByEmail(String email, StudentDetailsDto studentDetailsDto);
 
     List<StudentListDto> getAllStudents();
 
     StudentDetailsDto getStudentById(Long studentId);
+
+    StudentDetailsDto updateStudentById(Long studentId, StudentDetailsDto studentDetailsDto);
 
     void addExamToStudent(Long studentId, Long examId);
 
