@@ -52,6 +52,9 @@ public class AppointmentServiceImpl implements IAppointmentService {
         if (appointmentDto.getSchedule() != null) {
             appointment.setSchedule(appointmentDto.getSchedule());
         }
+        if (appointmentDto.getDescription() != null) {
+            appointment.setDescription(appointmentDto.getDescription());
+        }
 
         if (appointmentDto.getEmail() != null) {
             appointment.setEmail(appointmentDto.getEmail());
@@ -67,7 +70,7 @@ public class AppointmentServiceImpl implements IAppointmentService {
 
         String to = appointmentDto.getEmail();
         String subject = "Nuevo turno programado";
-        String body = "<html><body>"
+        String text = "<html><body>"
                 + "<p>Estimado/a " + appointmentDto.getFullName() + ",</p>"
                 + "<p>Le informamos que se ha programado un nuevo turno para el día " + appointmentDto.getDate()
                 + " a las " + appointmentDto.getSchedule() + ".</p>"
@@ -77,7 +80,7 @@ public class AppointmentServiceImpl implements IAppointmentService {
                 + "</body></html>";
 
         try {
-            mailSender.sendEmail(to, subject, body);
+            mailSender.sendEmail(to, subject, text);
         } catch (MessagingException e) {
             e.printStackTrace();
         }

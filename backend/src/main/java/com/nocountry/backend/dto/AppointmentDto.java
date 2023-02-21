@@ -17,6 +17,8 @@ public class AppointmentDto {
 
     private String schedule;
 
+    private String description;
+
     private String email;
 
     private String fullName;
