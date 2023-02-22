@@ -1,3 +1,7 @@
+.clases_padding {
+    padding: 100px;
+}
+
 .clases_margin {
     margin-top: 2.37rem;
     display: flex;
@@ -10,13 +14,16 @@
 }
 
 .clases_text {
-    width: 500px;
+    width: 100%;
+    max-width: 500px;
     margin-top: 1.75rem;
     color: #FFFFFF;
 }
 
 .form_section {
-    margin-left: 7rem;
+    margin-left: 5rem;
+    width: 100%;
+    max-width: 464px;
 }
 
 .form_container {
@@ -27,18 +34,18 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
 }
 
 .input_container {
-    margin-bottom: 24px!important;
+    margin-bottom: 24px;
 }
 
 .input_container input {
-    width: 27rem!important;
-    height: 2.62rem!important;
-    border-radius: 20px!important;
-    padding-left: 20px!important;
+    width: 100%;
+    max-width: 27rem;
+    height: 2.62rem;
+    border-radius: 20px;
+    padding-left: 20px;
     border: none;
 }
 
@@ -46,14 +53,14 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     padding: 0 20px;
 }
 
-
 .submit_container {
     display: flex;
     justify-content: center;
 }
 
 .submit_container input {
-    width: 9.87rem;
+    width: 100%!important;
+    max-width: 9.87rem!important;
     height: 2.25rem;
     border-radius: 40px;
     border: none;
@@ -61,3 +68,50 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     background-color: #222221;
     font-weight: 700;
 }
+
+/* Media Queries */
+
+@media(max-width: 1200px) {
+    .form_section {
+        margin-left: 1rem;
+    }
+}
+
+@media(max-width: 900px) {
+    .form_section {
+        margin-left: 0;
+        margin-bottom: 20px;
+    }
+
+    .clases_margin {
+        margin-top: 2.37rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .clases_container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .clases_text {
+        text-align: center;
+        width: 100%;
+        max-width: 1000px;
+    }
+
+    .clases_padding {
+        padding: 10px;
+    }
+}
+
+
+@media(max-width: 700px) {
+    .clases_padding {
+        padding: 10px;
+    }
+}
+

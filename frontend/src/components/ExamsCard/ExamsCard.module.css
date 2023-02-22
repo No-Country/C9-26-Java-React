@@ -1,6 +1,7 @@
 .exam_card {
     color: #fff;
-    width: 23.75rem!important;
+    width: 100%;
+    max-width: 23.75rem!important;
     height: 8.12rem!important;
     justify-content: center;
 }

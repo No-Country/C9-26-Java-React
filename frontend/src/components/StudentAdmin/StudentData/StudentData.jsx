@@ -1,21 +1,28 @@
+import { useState } from "react";
 import { RiPencilFill } from 'react-icons/ri';
 import profilePhoto from "../../../assets/images/PerfilAlumno/profile.png";
 
 import styles from "./StudentData.module.css";
 
 const StudentData = ({ location }) => {
+    const [image, setImage] = useState(null);
     
     return (
         <section className={styles.profile_container}>
 
             <div className={styles.profile_container}>
                 
-                <div className={styles.profile_pictureContainter}>
-                    <picture>
-                        <img src={profilePhoto} alt="" />
+                <div >
+                    <picture className={styles.profile_pictureContainter}>
+                        <img src={profilePhoto} className="d-block" alt="" />
                         {
                             location === "/student" 
-                            && <RiPencilFill fontSize="1.5rem" color='black' className={styles.profile_icon} />
+                            && <>
+                                <label htmlFor="file" className={styles.profile_labelImg}>
+                                    <RiPencilFill fontSize="1.5rem" color='black' />
+                                </label>
+                                <input type="file" className={styles.profile_uploadImage} id="file" onChange={e => {setImage(e.target.files[0])}} />
+                            </>
                         }
                     </picture>
                     
