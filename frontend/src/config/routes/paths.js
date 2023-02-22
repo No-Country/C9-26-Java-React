@@ -9,4 +9,5 @@ export const CONSULTATION = '/consultation';
 export const STUDENT = '/student';
 export const ADD_STUDENT = '/add-student';
 export const LOGOUT = '/logout';
+export const CAMPUS = '/campus';
 export const NOT_FOUND = '*';
