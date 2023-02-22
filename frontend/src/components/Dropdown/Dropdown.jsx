@@ -7,6 +7,7 @@ const Dropdown = forwardRef((props, ref) => {
     const [toggle, setToggle] = useState(false);
     let [selectedOption, setSelectedOption] = useState(props.placeholder);
     let [selectedId, setSelectedId] = useState("");
+
     const dropdown = useRef(null)
     const containerOptions = useRef(null);
 

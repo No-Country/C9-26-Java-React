@@ -20,11 +20,7 @@ const Login = ({ show, handleClose }) => {
   const onSubmit = data => {
     dispatch(login(data))
     if (isAuthenticated) {
-      if (data.role === 'admin') {
-        navigate('/admin')
-      } else {
-        navigate('/student')
-      }
+      navigate('/student')
     }
   };
 

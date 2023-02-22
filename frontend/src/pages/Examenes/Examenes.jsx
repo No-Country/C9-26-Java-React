@@ -14,7 +14,7 @@ const Examenes = () => {
                 <div className={`${styles.examenes_container} container`}>
                     <h2 className={styles.examenes_title}>Exámenes Internacionales</h2>
 
-                    <section className="d-flex gap-5 mt-5">
+                    <section className={styles.examenes_cardCont}>
                         <div>
                             <h3 className={styles.examenes_subtitle}>CAMBRIDGE</h3>
                             <ExamsCard img={imgExam1}

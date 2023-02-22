@@ -1,9 +1,11 @@
-import { useEffect, createRef } from "react";
+import { useEffect, createRef, useState } from "react";
+import { useForm } from "react-hook-form";
 import imgClass1 from "../../assets/images/Clases/Clases1.png";
 import imgClass2 from "../../assets/images/Clases/Clases2.png";
 import imgClass3 from "../../assets/images/Clases/Clases3.png";
 import imgClass4 from "../../assets/images/Clases/Clases4.png";
 import Dropdown from '../../components/Dropdown/Dropdown';
+import Carousel from 'react-bootstrap/Carousel';
 
 import styles from './Clases.module.css';
 
@@ -12,6 +14,18 @@ const Clases = () => {
     const course = ["Niños", "Adolescentes", "Adultos", "Corporativo", "Apoyo escolar", "Conversación"];
     const states = [];
     const cities = [];
+
+    //Tamaño de pantalla para carrusel
+    const [width, setWidth] = useState(window.innerWidth);
+    const breakpoint = 900;
+
+    //Funcionalidad del formulario
+    const { register, handleSubmit, formState: { errors } } = useForm();
+
+    const onSubmit = (e) => {
+        alert(JSON.stringify(e));
+
+    }
 
     //Referencia del span en componente dropdown
     const ref = createRef();
@@ -54,35 +68,73 @@ const Clases = () => {
             mutations.forEach((mutation) => {
                 if (mutation.type === 'characterData') {
                     console.log('El contenido del span ha cambiado a:', mutation.target.textContent);
-                    /* console.log(parseInt(mutation.target.parentElement.id)); */
-                    console.log(mutation.target.parentElement);
                     localidades(mutation.target.parentElement.id);
                 }
             });
-        }); 
+        });
 
         observer.observe(ref.current, { characterData: true, subtree: true });
 
+        //Manejar tamaño de pantalla
+        const handleResizeWindow = () => setWidth(window.innerWidth);
+        // subscribe to window resize event "onComponentDidMount"
+        window.addEventListener("resize", handleResizeWindow);
+
         return () => {
             provincias();
-            console.log(states);
+            // unsubscribe "onComponentDestroy"
+            window.removeEventListener("resize", handleResizeWindow);
         }
     }, []);
 
     return (
         <>
-            <main className="background">
+            <main className={`${styles.clases_padding} background`}>
                 <div className={`${styles.clases_margin} container`}>
 
                     <section>
                         <h2 className='text-center text-white fw-bold'>Cursos para cada necesidad</h2>
 
-                        <div className={`${styles.clases_container} mt-3`}>
-                            <img src={imgClass1} alt="Teacher with students" />
-                            <img src={imgClass2} alt="Classmates" />
-                            <img src={imgClass3} alt="Professor with students" />
-                            <img src={imgClass4} alt="Exam" />
-                        </div>
+                        {width >= breakpoint
+                            ? <div className={`${styles.clases_container} mt-3`}>
+                                <img src={imgClass1} alt="Teacher with students" />
+                                <img src={imgClass2} alt="Classmates" />
+                                <img src={imgClass3} alt="Professor with students" />
+                                <img src={imgClass4} alt="Exam" />
+                            </div>
+
+                            : <Carousel>
+                                <Carousel.Item>
+                                    <img
+                                        className="d-block w-100"
+                                        src={imgClass1}
+                                        alt="First slide"
+                                    />
+                                </Carousel.Item>
+                                <Carousel.Item>
+                                    <img
+                                        className="d-block w-100"
+                                        src={imgClass2}
+                                        alt="Second slide"
+                                    />
+                                </Carousel.Item>
+                                <Carousel.Item>
+                                    <img
+                                        className="d-block w-100"
+                                        src={imgClass3}
+                                        alt="Third slide"
+                                    />
+                                </Carousel.Item>
+                                <Carousel.Item>
+                                    <img
+                                        className="d-block w-100"
+                                        src={imgClass4}
+                                        alt="Third slide"
+                                    />
+                                </Carousel.Item>
+                            </Carousel>
+                        }
+
                         <p className={styles.clases_text}>
                             Nuestros cursos están destinados a quienes quieran comunicarse efectivamente
                             en inglés ofreciendo distintas modalidades para cada necesidad. Brindamos clases individuales,
@@ -100,43 +152,51 @@ const Clases = () => {
                                 y nos pondremos en contacto para asesorarte y completar la inscripción
                             </p>
 
-                            <form action="">
+                            <form action="" onSubmit={handleSubmit(onSubmit)}>
                                 <div className={styles.input_container}>
-                                    <input type="text" name="" id="" placeholder="Nombre y apellido" />
+                                    <input type="text" placeholder="Nombre y apellido" {...register("nombre", { required: "Campo requerido" })} />
+                                    <p className="fw-bold text-black">{errors.nombre?.message}</p>
                                 </div>
 
                                 <div className={styles.input_container}>
-                                    <input type="text" name="" id="" placeholder="Tel. +54 9" />
+                                    <input type="text" name="" id="" placeholder="Tel. +54 9" {...register("tel", { required: "Campo requerido" })} />
+                                    <p className="fw-bold text-black">{errors.tel?.message}</p>
                                 </div>
 
                                 <div className={styles.input_container}>
-                                    <input type="text" name="" id="" placeholder="ingresa@tuemail.com" />
+                                    <input type="email" name="" id="" placeholder="ingresa@tuemail.com" {...register("mail", { required: "Campo requerido" })} />
+                                    <p className="fw-bold text-black">{errors.mail?.message}</p>
                                 </div>
 
                                 <div className={styles.input_container}>
-                                    <input type="text" placeholder="Fecha de nacimiento" onFocus={(e) => (e.target.type = "date")}/>
+                                    <input type="text" placeholder="Fecha de nacimiento" {...register("nacimiento", { required: "Campo requerido" })} onFocus={(e) => (e.target.type = "date")} />
+                                    <p className="fw-bold text-black">{errors.nacimiento?.message}</p>
                                 </div>
 
                                 <div className={styles.input_container}>
                                     <Dropdown array={states} placeholder="Provincia" provincia={true} ref={ref} />
+                                    <input type="text" className="d-none" {...register("provincia", { required: "Campo requerido" })} />
                                 </div>
 
                                 <div className={styles.input_container}>
                                     <Dropdown array={cities} placeholder="Localidad" localidad={true} />
+                                    <input type="text" className="d-none" {...register("localidad", { required: "Campo requerido" })} />
                                 </div>
 
                                 <div className={styles.input_container}>
                                     <Dropdown array={level} placeholder="Nivel" />
+                                    <input type="text" className="d-none" {...register("nivel", { required: "Campo requerido" })} />
                                 </div>
 
                                 <div className={styles.input_container}>
                                     <Dropdown array={course} placeholder="Curso de mi interés" />
+                                    <input type="text" className="d-none" {...register("cursos", { required: "Campo requerido" })} />
                                 </div>
 
                                 <div className={styles.submit_container}>
                                     <input type="submit" value="ENVIAR" />
                                 </div>
-                                
+
                             </form>
                         </div>
                     </section>
