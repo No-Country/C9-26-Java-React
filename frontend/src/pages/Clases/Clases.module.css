@@ -30,18 +30,22 @@
     align-items: center;
 }
 
-.input_container input, select{
+.input_container {
+    margin-bottom: 24px!important;
+}
+
+.input_container input {
     width: 27rem!important;
     height: 2.62rem!important;
     border-radius: 20px!important;
-    margin-bottom: 24px!important;
     padding-left: 20px!important;
     border: none;
 }
 
-.input_container select option{
-    border-radius: 20px!important;
+input[type="date"]::-webkit-calendar-picker-indicator {
+    padding: 0 20px;
 }
+
 
 .submit_container {
     display: flex;

@@ -1,13 +1,29 @@
-import Form from 'react-bootstrap/Form';
+import Dropdown from '../../components/Dropdown/Dropdown';
 import { FaWhatsapp, FaFacebookSquare, FaInstagram } from 'react-icons/fa';
 
 import styles from "./Consultas.module.css";
 
 const Consultas = () => {
+
+    const reasons = [
+        "Información sobre clases/precios",
+        "Inscripciones",
+        "Informar un pago",
+        "Exámenes internacionales",
+        "Fechas de exámenes",
+        "Consultar estado de cuenta",
+        "Solicitar enrtevista con coordinación",
+        "Solicitar visa",
+        "Consultar avances de trámite de mi visa",
+        "Viajes grupales",
+        "Trabajar con nosotros",
+        "Otros"
+    ]
+
     return (
         <main className='background'>
-            
-            <div className='mb-4'> 
+
+            <div className='mb-4'>
                 <h2 className="text-center text-white fw-bold mt-5">Elige cómo quieres contactarte con nosotros</h2>
 
                 <div className='d-flex justify-content-center gap-4'>
@@ -19,25 +35,33 @@ const Consultas = () => {
                             <div className={styles.consult_inputName}>
                                 <input type="text" name="" id="" placeholder="Nombre y apellido" />
                             </div>
+
                             <div>
                                 <input type="text" name="" id="" placeholder="Tel. +54 9" className={styles.consult_inputTel} />
                                 <input type="email" name="" id="" placeholder="ingresa@tuemail.com" className={styles.consult_inputEmail} />
                             </div>
+
                             <div className='d-flex align-items-center gap-2 mb-3'>
                                 <span className={styles.consult_checkboxText}>Quiero que me contacten a través de</span>
                                 <div className={styles.consult_checkboxEmail}>
-                                    <input type="checkbox" name="" id="" />
+                                    <input type="radio" name="radio_action" id="radio_email" />
                                     <span className='fs-5'>E-mail</span>
                                 </div>
                                 <div className={styles.consult_checkboxTel}>
-                                    <input type="checkbox" name="" id="" />
+                                    <input type="radio" name="radio_action" id="radio_tel" />
                                     <span className='fs-5'>Teléfono</span>
                                 </div>
                             </div>
-                            <Form.Select>
-                                <option>El motivo de mi consulta es</option>
-                            </Form.Select>
+
+                            <div className="mb-4 mt-4">
+                                <Dropdown array={reasons} placeholder="El motivo de mi consulta es" subtitle="Elije una opción" />
+                            </div>
+
                             <textarea name="" id="" cols="30" rows="10" placeholder='Escribe tus comentarios aquí'></textarea>
+
+                            <div className={styles.submit_container}>
+                                <input type="submit" value="ENVIAR" />
+                            </div>
                         </form>
                     </section>
 
@@ -53,7 +77,7 @@ const Consultas = () => {
                         <div className='d-flex flex-column align-items-center'>
                             <p className='text-center text-black fw-bold fs-5 mt-5'>Encontranos también en las redes</p>
                             <div className='d-flex gap-3 align-items-center justify-content-center mb-2'>
-                                <FaInstagram fontSize="1.25rem" color='black'/>
+                                <FaInstagram fontSize="1.25rem" color='black' />
                                 <span className={styles.consult_turnosText}>@nombredelinstituto</span>
                             </div>
                             <div className='d-flex gap-3 align-items-center mb-2'>
