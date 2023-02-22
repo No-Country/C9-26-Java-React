@@ -1,25 +1,87 @@
-import Form from 'react-bootstrap/Form';
+import { useEffect, createRef } from "react";
 import imgClass1 from "../../assets/images/Clases/Clases1.png";
 import imgClass2 from "../../assets/images/Clases/Clases2.png";
 import imgClass3 from "../../assets/images/Clases/Clases3.png";
 import imgClass4 from "../../assets/images/Clases/Clases4.png";
+import Dropdown from '../../components/Dropdown/Dropdown';
 
 import styles from './Clases.module.css';
 
 const Clases = () => {
+    const level = ["A1 BEGINNER", "A2 ELEMENTARY", "B1 PREINTERMEDIATE ", "B2 INTERMEDIATE", "C1 UPPER INTERMEDIATE", "C2 ADVANCED", "No sé cuál es mi nivel actual"];
+    const course = ["Niños", "Adolescentes", "Adultos", "Corporativo", "Apoyo escolar", "Conversación"];
+    const states = [];
+    const cities = [];
+
+    //Referencia del span en componente dropdown
+    const ref = createRef();
+
+    const provincias = () => {
+        fetch("https://apis.datos.gob.ar/georef/api/provincias")
+            .then(res => res.ok ? res.json() : Promise.reject(res))
+            .then(json => {
+                let obj;
+                json.provincias.map(elem => {
+                    obj = {
+                        id: elem.id,
+                        nombre: elem.nombre
+                    }
+                    states.push(obj)
+                });
+            })
+            .catch(() => {
+                states.push("Error al cargar las provincias");
+            })
+    }
+
+    const localidades = (provincia) => {
+        fetch(`https://apis.datos.gob.ar/georef/api/municipios?provincia=${provincia}`)
+            .then(res => res.ok ? res.json() : Promise.reject(res))
+            .then(json => {
+                cities.length = 0;
+                json.municipios.map(elem => {
+                    cities.push(elem.nombre);
+                });
+            })
+            .catch(() => {
+                cities.push("Error al cargar los municipios");
+            })
+    }
+
+    useEffect(() => {
+
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.type === 'characterData') {
+                    console.log('El contenido del span ha cambiado a:', mutation.target.textContent);
+                    /* console.log(parseInt(mutation.target.parentElement.id)); */
+                    console.log(mutation.target.parentElement);
+                    localidades(mutation.target.parentElement.id);
+                }
+            });
+        }); 
+
+        observer.observe(ref.current, { characterData: true, subtree: true });
+
+        return () => {
+            provincias();
+            console.log(states);
+        }
+    }, []);
+
     return (
         <>
             <main className="background">
                 <div className={`${styles.clases_margin} container`}>
-                    
+
                     <section>
                         <h2 className='text-center text-white fw-bold'>Cursos para cada necesidad</h2>
 
                         <div className={`${styles.clases_container} mt-3`}>
-                            <img src={imgClass1} alt="" />
-                            <img src={imgClass2} alt="" />
-                            <img src={imgClass3} alt="" />
-                            <img src={imgClass4} alt="" />
+                            <img src={imgClass1} alt="Teacher with students" />
+                            <img src={imgClass2} alt="Classmates" />
+                            <img src={imgClass3} alt="Professor with students" />
+                            <img src={imgClass4} alt="Exam" />
                         </div>
                         <p className={styles.clases_text}>
                             Nuestros cursos están destinados a quienes quieran comunicarse efectivamente
@@ -42,47 +104,39 @@ const Clases = () => {
                                 <div className={styles.input_container}>
                                     <input type="text" name="" id="" placeholder="Nombre y apellido" />
                                 </div>
+
                                 <div className={styles.input_container}>
                                     <input type="text" name="" id="" placeholder="Tel. +54 9" />
                                 </div>
+
                                 <div className={styles.input_container}>
                                     <input type="text" name="" id="" placeholder="ingresa@tuemail.com" />
                                 </div>
+
                                 <div className={styles.input_container}>
-                                    <Form.Select>
-                                        <option>Provincia</option>
-                                    </Form.Select>
+                                    <input type="text" placeholder="Fecha de nacimiento" onFocus={(e) => (e.target.type = "date")}/>
                                 </div>
+
                                 <div className={styles.input_container}>
-                                    <Form.Select >
-                                        <option>Localidad</option>
-                                    </Form.Select>
+                                    <Dropdown array={states} placeholder="Provincia" provincia={true} ref={ref} />
                                 </div>
+
                                 <div className={styles.input_container}>
-                                    <Form.Select >
-                                        <option>Nivel</option>
-                                        <option>A1 BEGINNER</option>
-                                        <option>A2 ELEMENTARY</option>
-                                        <option>B1 PRE INTERMEDIATE</option>
-                                        <option>B2 INTERMEDIATE</option>
-                                        <option>C1 UPPER INTERMEDIATE</option>
-                                        <option>C2 ADVANCED</option>
-                                        <option>No sé cuál es mi nivel actual</option>
-                                    </Form.Select>
+                                    <Dropdown array={cities} placeholder="Localidad" localidad={true} />
                                 </div>
+
                                 <div className={styles.input_container}>
-                                    <Form.Select>
-                                        <option>Fecha de nacimiento</option>
-                                    </Form.Select>
+                                    <Dropdown array={level} placeholder="Nivel" />
                                 </div>
+
                                 <div className={styles.input_container}>
-                                    <Form.Select>
-                                        <option>Curso de mi interés</option>
-                                    </Form.Select>
+                                    <Dropdown array={course} placeholder="Curso de mi interés" />
                                 </div>
+
                                 <div className={styles.submit_container}>
                                     <input type="submit" value="ENVIAR" />
                                 </div>
+                                
                             </form>
                         </div>
                     </section>
