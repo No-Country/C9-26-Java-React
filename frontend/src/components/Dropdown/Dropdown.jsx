@@ -12,8 +12,9 @@ const Dropdown = forwardRef((props, ref) => {
     const containerOptions = useRef(null);
 
     useEffect(() => {
+        document.addEventListener("click", handleClickOutside, true);
         return () => {
-            document.addEventListener("click", handleClickOutside, true);
+            document.removeEventListener("click", handleClickOutside)
             addContent();
         }
     }, []);

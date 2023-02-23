@@ -6,9 +6,13 @@ export const login = createAsyncThunk(
     async (data, { rejectWithValue }) => {
         try {
             const response = await apiCall.post('/auth/login', data);
-            console.log(response.data.token);
+            console.log(response.data);
             const token = response.data.token;
-            return token;
+            const role = response.data.role
+            return ({
+                token,
+                role
+            });
         } catch (error) {
             console.log(error.message)
             return rejectWithValue(error.response.data);
