@@ -5,7 +5,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: ${DDL_CONFIG}
     show-sql: true
     database: mysql
     database-platform: org.hibernate.dialect.MySQLDialect
