@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import com.nocountry.backend.dto.PaymentDetailsDto;
 import com.nocountry.backend.mapper.PaymentMapper;
-import com.nocountry.backend.model.Payment;
 import com.nocountry.backend.repository.IPaymentRepository;
 import com.nocountry.backend.service.IPaymentService;
 
@@ -38,7 +37,7 @@ public class PaymentServiceImpl implements IPaymentService {
 
     @Override
     public PaymentDetailsDto updatePayment(Long paymentId, PaymentDetailsDto paymentDetailsDto) {
-        Payment payment = paymentRepository.findById(paymentId).orElseThrow();
+        var payment = paymentRepository.findById(paymentId).orElseThrow();
 
         if (paymentDetailsDto.getPaymentType() != null) {
             payment.setPaymentType(paymentDetailsDto.getPaymentType());
