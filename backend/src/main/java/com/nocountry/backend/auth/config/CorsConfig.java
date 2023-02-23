@@ -12,7 +12,7 @@ public class CorsConfig implements WebMvcConfigurer {
         registry.addMapping("/**")
                 .allowedOrigins("https://bright-english.vercel.app/", "http://127.0.0.1:5173/",
                         "http://localhost:5173/")
-                .allowedMethods("GET", "POST", "PUT", "DELETE")
+                .allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE")
                 .allowedHeaders("Content-Type")
                 .allowCredentials(true)
                 .maxAge(3600);
