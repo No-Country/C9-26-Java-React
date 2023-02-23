@@ -1,5 +1,6 @@
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import { NavLink } from 'react-router-dom';
 
 const ServiceCard = ({ data }) => {
     const { title, description, image } = data
@@ -12,11 +13,13 @@ const ServiceCard = ({ data }) => {
                 <Card.Text className='text-center'>
                     {description}
                 </Card.Text>
-                <Button variant="dark" className='mt-auto rounded-5'>
-                    Consulte aquí
-                </Button>
+                <NavLink to='/consultation' className='mt-auto' >
+                    <Button variant="dark" className='rounded-5'>
+                        Consulte aquí
+                    </Button>
+                </NavLink>
             </Card.Body>
-        </Card>
+        </Card >
     )
 }
 export default ServiceCard

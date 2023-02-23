@@ -1,6 +1,6 @@
 import { Col, Container, ProgressBar, Row } from "react-bootstrap"
-import UserInfo from "../../components/UserInfo/UserInfo"
-import styles from "../../pages/Campus/Campus.module.css"
+import UserInfo from "../UserInfo/UserInfo"
+import styles from "../../../pages/Campus/Campus.module.css"
 import { FaBook, FaGraduationCap, FaUserPlus } from "react-icons/fa"
 
 const CampusHeader = () => {

@@ -5,23 +5,30 @@ import { BsFillXCircleFill } from 'react-icons/bs'
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { login } from '../../store/actions/userActions';
-import { selectStatus } from '../../store/slices/userSlice';
+import { useEffect } from 'react';
+import { useAuth, useLoading } from '../../hooks/userHooks';
 import { useNavigate } from 'react-router-dom';
 
 const Login = ({ show, handleClose }) => {
+  const isAuthenticated = useAuth();
+  const isLoading = useLoading();
   const dispatch = useDispatch()
   const navigate = useNavigate();
-  const isAuthenticated = selectStatus === 'success';
   const { register, handleSubmit, formState: { errors } } = useForm({
     username: '',
     password: '',
   })
 
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/private/student')
+      handleClose()
+    }
+  }, [isAuthenticated])
+
+
   const onSubmit = data => {
     dispatch(login(data))
-    if (isAuthenticated) {
-      navigate('/student')
-    }
   };
 
 
@@ -49,7 +56,7 @@ const Login = ({ show, handleClose }) => {
           </Modal.Body>
           <Modal.Footer style={{ background: '#000000', border: 'none', display: 'flex', justifyContent: 'center' }}>
             <button className={style.button}>
-              INGRESAR
+              {isLoading ? 'VERIFICANDO...' : 'INGRESAR'}
             </button>
           </Modal.Footer>
         </form>
