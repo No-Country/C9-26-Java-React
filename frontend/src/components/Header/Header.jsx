@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
@@ -9,14 +10,19 @@ import { Login } from '../../pages';
 import logo from '../../assets/images/Logo.png'
 import SearchBar from "../SearchBar/SearchBar"
 import { useAuth } from '../../hooks/userHooks';
+import { studentInfo } from '../../store/actions/userActions';
+import { setToken } from '../../store/slices/userSlice';
 
 
 function Header() {
-    const isAuthenticated = useAuth();
+    const { isAuthenticated, token } = useAuth();
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => isAuthenticated ? navigate('/') : setShow(true)
+
+
 
 
     const location = useLocation();

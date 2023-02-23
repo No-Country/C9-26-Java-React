@@ -3,28 +3,35 @@ import Modal from 'react-bootstrap/Modal';
 import style from './Login.module.css'
 import { BsFillXCircleFill } from 'react-icons/bs'
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../store/actions/userActions';
 import { useEffect } from 'react';
-import { useAuth, useLoading } from '../../hooks/userHooks';
+import { useAuth, useLoading, useUserInfo } from '../../hooks/userHooks';
 import { useNavigate } from 'react-router-dom';
+import { studentInfo } from '../../store/actions/userActions';
 
 const Login = ({ show, handleClose }) => {
-  const isAuthenticated = useAuth();
+  const { isAuthenticated, token } = useAuth();
+  const userInfo = useUserInfo();
   const isLoading = useLoading();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { register, handleSubmit, formState: { errors } } = useForm({
     username: '',
     password: '',
   })
 
-  useEffect(() => {
-    if (isAuthenticated) {
-      navigate('/private/student')
-      handleClose()
-    }
-  }, [isAuthenticated])
+  // useEffect(() => {
+  //   if (isAuthenticated && userInfo === null) {
+  //     dispatch(studentInfo(token))
+  //   }
+  // }, [isAuthenticated, token])
+
+  // useEffect(() => {
+  //   if (userInfo) {
+  //     handleClose()
+  //   }
+  // }, [userInfo])
 
 
   const onSubmit = data => {
@@ -64,4 +71,5 @@ const Login = ({ show, handleClose }) => {
     </div >
   )
 }
+
 export default Login
