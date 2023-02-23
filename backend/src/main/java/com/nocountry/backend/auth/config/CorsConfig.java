@@ -10,7 +10,8 @@ public class CorsConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("https://bright-english.vercel.app/", "http://127.0.0.1:5173/",
+                .allowedOrigins("https://bright-english.vercel.app/", "https://bright-english.vercel.app/**",
+                        "http://127.0.0.1:5173/",
                         "http://localhost:5173/")
                 .allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE")
                 .allowedHeaders("Content-Type")
