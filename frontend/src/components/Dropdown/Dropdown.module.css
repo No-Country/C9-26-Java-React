@@ -1,5 +1,6 @@
 .dropdown_wrapper {
-    width: 27rem;
+    width: 100%;
+    max-width: 27rem;
     position: relative
 }
 

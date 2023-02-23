@@ -11,10 +11,14 @@ label {
     position: relative;
 }
 
-.profile_icon {
+.profile_labelImg {
     position: absolute;
-    bottom: 5%;
-    right: 25%;
+    bottom: 0;
+    right: 4rem;
+}
+
+.profile_uploadImage {
+    display: none;
 }
 
 .profile_title {
