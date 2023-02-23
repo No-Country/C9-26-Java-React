@@ -4,6 +4,7 @@ import { login } from '../actions/userActions'
 const initialState = {
     info: {},
     token: null,
+    role: null,
     status: 'idle', // idle, loading, success, failed
     error: null
 }
@@ -15,6 +16,7 @@ export const userSlice = createSlice({
         logout: (state) => {
             state.info = {}
             state.token = null
+            state.role = null
             state.status = 'idle'
             state.error = null
             localStorage.removeItem('token')
@@ -26,7 +28,8 @@ export const userSlice = createSlice({
                 state.status = 'loading'
             })
             .addCase(login.fulfilled, (state, action) => {
-                state.token = action.payload
+                state.token = action.payload.token
+                state.role = action.payload.role
                 state.status = 'success'
             })
             .addCase(login.rejected, (state, action) => {

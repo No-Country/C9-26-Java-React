@@ -21,14 +21,22 @@
 }
 
 .input {
-    background: none;
+    background: #ffff;
     border: none;
     height: 42px;
     width: 100%;
-    max-width: 433px;
+    max-width: 350px;
     border-radius: 20px;
     padding-left: 30px;
     background: #F5F5F5;
+}
+
+.input input{
+    background: none;
+    border: none;
+    width: 90%; 
+    height: 100%;   
+    outline: none;
 }
 
 .errors {
