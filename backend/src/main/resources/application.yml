@@ -14,7 +14,7 @@ spring:
     port: 587
     protocol: smtp
     username: ${EMAIL_USER}
-    password: ${EMAIL_PASSWORD}
+    password: #${EMAIL_PASSWORD}
     properties:
       mail:
         smtp:
@@ -22,3 +22,7 @@ spring:
           starttls:
             enable: true
     default-encoding: UTF-8
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
