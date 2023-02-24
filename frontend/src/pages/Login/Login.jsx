@@ -4,16 +4,18 @@ import style from './Login.module.css'
 import { BsFillXCircleFill } from 'react-icons/bs'
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../store/actions/userActions';
-import { useEffect, useState } from 'react';
-import { useAuth, useLoading } from '../../hooks/userHooks';
+import { useEffect } from 'react';
+import { useAuth, useLoading, useUserInfo } from '../../hooks/userHooks';
 import { useNavigate } from 'react-router-dom';
+import { studentInfo } from '../../store/actions/userActions';
 
 const Login = ({ show, handleClose }) => {
-  const isAuthenticated = useAuth();
+  const { isAuthenticated, token } = useAuth();
+  const userInfo = useUserInfo();
   const isLoading = useLoading();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { register, handleSubmit, formState: { errors } } = useForm({
     username: '',
@@ -27,7 +29,7 @@ const Login = ({ show, handleClose }) => {
       navigate('/private/student')
       handleClose()
     }
-  }, [isAuthenticated])
+  }, [])
 
 
   const onSubmit = data => {
@@ -67,4 +69,5 @@ const Login = ({ show, handleClose }) => {
     </div >
   )
 }
+
 export default Login

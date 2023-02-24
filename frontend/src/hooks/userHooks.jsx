@@ -2,11 +2,13 @@ import { useSelector } from "react-redux";
 
 export const useAuth = () => {
     const token = useSelector((state) => state.user.token);
-    return token === null ? false : true;
+    const isAuthenticated = token === null ? false : true;
+    return { isAuthenticated, token };
 }
 
 export const useUserInfo = () => {
-    const { info } = useSelector((state) => state.user);
+    const info = useSelector((state) => state.user.info);
+    console.log('info', info)
     return info;
 }
 

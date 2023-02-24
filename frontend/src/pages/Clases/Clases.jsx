@@ -1,4 +1,6 @@
 import { useEffect, createRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getCities, getProvinces } from "../../store/actions/locationActions";
 import { useForm } from "react-hook-form";
 import imgClass1 from "../../assets/images/Clases/Clases1.png";
 import imgClass2 from "../../assets/images/Clases/Clases2.png";
@@ -12,8 +14,18 @@ import styles from './Clases.module.css';
 const Clases = () => {
     const level = ["A1 BEGINNER", "A2 ELEMENTARY", "B1 PREINTERMEDIATE ", "B2 INTERMEDIATE", "C1 UPPER INTERMEDIATE", "C2 ADVANCED", "No sé cuál es mi nivel actual"];
     const course = ["Niños", "Adolescentes", "Adultos", "Corporativo", "Apoyo escolar", "Conversación"];
-    const states = [];
-    const cities = [];
+    const states = useSelector(state => state.location.states);
+    const cities = useSelector(state => state.location.cities);
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        if (states.length === 0) dispatch(getProvinces());
+    }, [dispatch]);
+
+    console.log('states', states);
+    console.log('cities', cities);
+
 
     //Tamaño de pantalla para carrusel
     const [width, setWidth] = useState(window.innerWidth);
@@ -30,37 +42,37 @@ const Clases = () => {
     //Referencia del span en componente dropdown
     const ref = createRef();
 
-    const provincias = () => {
-        fetch("https://apis.datos.gob.ar/georef/api/provincias")
-            .then(res => res.ok ? res.json() : Promise.reject(res))
-            .then(json => {
-                let obj;
-                json.provincias.map(elem => {
-                    obj = {
-                        id: elem.id,
-                        nombre: elem.nombre
-                    }
-                    states.push(obj)
-                });
-            })
-            .catch(() => {
-                states.push("Error al cargar las provincias");
-            })
-    }
+    // const provincias = () => {
+    //     fetch("https://apis.datos.gob.ar/georef/api/provincias")
+    //         .then(res => res.ok ? res.json() : Promise.reject(res))
+    //         .then(json => {
+    //             let obj;
+    //             json.provincias.map(elem => {
+    //                 obj = {
+    //                     id: elem.id,
+    //                     nombre: elem.nombre
+    //                 }
+    //                 states.push(obj)
+    //             });
+    //         })
+    //         .catch(() => {
+    //             states.push("Error al cargar las provincias");
+    //         })
+    // }
 
-    const localidades = (provincia) => {
-        fetch(`https://apis.datos.gob.ar/georef/api/municipios?provincia=${provincia}`)
-            .then(res => res.ok ? res.json() : Promise.reject(res))
-            .then(json => {
-                cities.length = 0;
-                json.municipios.map(elem => {
-                    cities.push(elem.nombre);
-                });
-            })
-            .catch(() => {
-                cities.push("Error al cargar los municipios");
-            })
-    }
+    // const localidades = (provincia) => {
+    //     fetch(`https://apis.datos.gob.ar/georef/api/municipios?provincia=${provincia}`)
+    //         .then(res => res.ok ? res.json() : Promise.reject(res))
+    //         .then(json => {
+    //             cities.length = 0;
+    //             json.municipios.map(elem => {
+    //                 cities.push(elem.nombre);
+    //             });
+    //         })
+    //         .catch(() => {
+    //             cities.push("Error al cargar los municipios");
+    //         })
+    // }
 
     useEffect(() => {
 
@@ -68,7 +80,8 @@ const Clases = () => {
             mutations.forEach((mutation) => {
                 if (mutation.type === 'characterData') {
                     console.log('El contenido del span ha cambiado a:', mutation.target.textContent);
-                    localidades(mutation.target.parentElement.id);
+                    console.log('El contenido del span ha cambiado a:', typeof mutation.target.parentElement.id);
+                    dispatch(getCities(mutation.target.parentElement.id));
                 }
             });
         });
@@ -81,7 +94,7 @@ const Clases = () => {
         window.addEventListener("resize", handleResizeWindow);
 
         return () => {
-            provincias();
+            // provincias();
             // unsubscribe "onComponentDestroy"
             window.removeEventListener("resize", handleResizeWindow);
         }
