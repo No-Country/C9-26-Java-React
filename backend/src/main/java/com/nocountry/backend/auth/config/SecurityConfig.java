@@ -39,7 +39,7 @@ public class SecurityConfig {
                 .requestMatchers("/api/exams/**").hasRole(Role.ADMIN.name())
                 .requestMatchers("/api/payments/**").hasRole(Role.ADMIN.name())
                 .requestMatchers("/api/students/admin/**").hasRole(Role.ADMIN.name())
-                .requestMatchers("/api/students/token/**").hasRole(Role.STUDENT.name())
+                .requestMatchers("/api/students/token/**").hasAnyRole(Role.ADMIN.name(), Role.STUDENT.name())
                 .requestMatchers("/api/teachers/**").hasRole(Role.ADMIN.name())
                 .anyRequest()
                 .authenticated()

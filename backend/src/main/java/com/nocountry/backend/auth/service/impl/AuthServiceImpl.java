@@ -99,15 +99,8 @@ public class AuthServiceImpl implements IAuthService {
                 var user = userRepository.findByUsername(request.getUsername()).orElseThrow();
                 var jwt = jwtProvider.generateToken(user);
 
-                if (user.getRole().equals("STUDENT")) {
-                        return AuthResponseDto.builder()
-                                        .studentId(user.getStudent().getId())
-                                        .role(user.getRole())
-                                        .token(jwt)
-                                        .build();
-                }
-
                 return AuthResponseDto.builder()
+                                .studentId(user.getStudent().getId())
                                 .role(user.getRole())
                                 .token(jwt)
                                 .build();

@@ -10,6 +10,8 @@ import org.springframework.stereotype.Component;
 import com.nocountry.backend.auth.model.User;
 import com.nocountry.backend.auth.repository.IUserRepository;
 import com.nocountry.backend.auth.utils.enums.Role;
+import com.nocountry.backend.model.Student;
+import com.nocountry.backend.repository.IStudentRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -20,6 +22,8 @@ public class DefaultAdminRunner implements ApplicationRunner {
 
     private final IUserRepository userRepository;
 
+    private final IStudentRepository studentRepository;
+
     private final PasswordEncoder passwordEncoder;
 
     @Override
@@ -28,10 +32,19 @@ public class DefaultAdminRunner implements ApplicationRunner {
                 .username("admin@brightenglish.com")
                 .password(passwordEncoder.encode("12345"))
                 .role(Role.ADMIN.name())
+                .student(null)
                 .build();
+
+        var student = Student.builder()
+                .email(admin.getUsername())
+                .build();
+
+        admin.setStudent(student);
+        student.setUser(admin);
 
         if (!userRepository.findByUsername(admin.getUsername()).isPresent()) {
             userRepository.save(admin);
+            studentRepository.save(student);
         }
     }
 }
