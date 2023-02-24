@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import { login, studentInfo } from '../actions/userActions'
 
 const initialState = {
-    info: null,
+    info: {},
     role: null,
     studentId: null,
     token: null,

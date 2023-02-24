@@ -2,14 +2,17 @@ import { Col, Container, ProgressBar, Row } from "react-bootstrap"
 import UserInfo from "../UserInfo/UserInfo"
 import styles from "../../../pages/Campus/Campus.module.css"
 import { FaBook, FaGraduationCap, FaUserPlus } from "react-icons/fa"
+import { useUserInfo } from "../../../hooks/userHooks"
 
 const CampusHeader = () => {
+    const user = useUserInfo()
+
     return (
         <Container fluid>
             <section className={styles.header}>
                 <Row>
                     <Col lg={3} >
-                        <UserInfo data={{}} />
+                        <UserInfo />
                     </Col>
                     <Col lg={9}>
                         <Row className="d-flex align-items-stretch">

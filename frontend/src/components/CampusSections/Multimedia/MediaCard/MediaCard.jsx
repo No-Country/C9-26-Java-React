@@ -3,7 +3,7 @@ import { Card } from 'react-bootstrap'
 
 const MediaCard = () => {
     return (
-        <Card style={{ width: '100%', minWidth: '300px', maxWidth: '380px' }} className='rounded-4 bg-dark'>
+        <Card style={{ width: '100%', minWidth: '280px', maxWidth: '380px' }} className='rounded-4 bg-dark'>
             <Card.Img variant="top" src="http://unsplash.it/300/180" className='rounded-4' />
             <Card.Body>
                 <Card.Title className='text-white fs-5'>Card Title</Card.Title>
