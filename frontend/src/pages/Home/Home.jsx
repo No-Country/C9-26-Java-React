@@ -58,7 +58,7 @@ const Home = () => {
                             </Col>
 
                         </Row>
-                        <Carousel.Caption className='relative' >
+                        <Carousel.Caption className='relative' style={{top:'1.7in'}}>
 
                             <h3 className='text-uppercase fs-1' style={{ fontWeight: 'bolder', textShadow: '0px 0px 10px black' }}>{image.title}</h3>
                             <p style={{ textShadow: '0px 0px 10px black' }}>{image.description}</p>
