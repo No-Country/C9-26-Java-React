@@ -12,25 +12,25 @@
     
 }
 
-ul{
+.programUl{
     width: 300px;
     border-right: 2px solid #D9D9D9;
 }
 
-li{
+.programLi{
     list-style: none;    
     padding-right: 10px;
 }
 
 
 @media (max-width: 1750px) {
-    ul{        
+    .programUl{        
         border-bottom: 3px solid #D9D9D9;
     }
   }
   
 @media (max-width: 670px) {
-    ul{        
+    .programUl{        
         border-right: none;        
     }
   }

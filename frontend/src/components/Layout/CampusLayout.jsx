@@ -10,7 +10,7 @@ import chat from "../../assets/chat.svg"
 import events from "../../assets/events.svg"
 import tasks from "../../assets/tasks.svg"
 
-import { MULTIMEDIA } from "../../config/routes/paths"
+import { MULTIMEDIA, PROGRAM, TASKS } from "../../config/routes/paths"
 
 
 const CampusLayout = ({ children }) => {
@@ -32,7 +32,7 @@ const CampusLayout = ({ children }) => {
                     {/* Menu del campus */}
                     <Col lg={3} className="d-flex">
                         <div className={`${styles.menu} flex-drow-1`} >
-                            <NavLink to='' className={styles.menu__item}>
+                            <NavLink to={PROGRAM} className={styles.menu__item}>
 
                                 <img src={program} alt="" />
                                 {show && <span className={styles.program}>Programa de estudio</span>}
@@ -49,7 +49,7 @@ const CampusLayout = ({ children }) => {
                                 <img src={events} alt="" />
                                 {show && <span className={styles.events}>Eventos y actividades</span>}
                             </NavLink>
-                            <NavLink to='' className={styles.menu__item}>
+                            <NavLink to={TASKS} className={styles.menu__item}>
                                 <img src={tasks} alt="" />
                                 {show && <span className={styles.tasks}>tareas asignadas</span>}
                             </NavLink>
