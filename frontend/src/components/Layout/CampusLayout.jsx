@@ -10,32 +10,33 @@ import chat from "../../assets/chat.svg"
 import events from "../../assets/events.svg"
 import tasks from "../../assets/tasks.svg"
 
+import { MULTIMEDIA } from "../../config/routes/paths"
+
 
 const CampusLayout = ({ children }) => {
     const [show, setShow] = useState(true)
 
-    const handleClick = () => {
-        setShow(!show)
-    }
+    // const handleClick = () => {
+    //     setShow(!show)
+    // }
 
 
     return (
-        <main className="background pb-3 d-flex flex-column grow">
+        <main className="background pb-3 d-flex flex-column flex-grow-1">
             {/* Encabezado del campus */}
             <CampusHeader />
 
             {/* Contenedor principal */}
-            <Container fluid>
-                <Row className="d-flex h-100">
-
+            <Container fluid className="d-flex flex-column flex-grow-1">
+                <Row className="d-flex flex-grow-1">
                     {/* Menu del campus */}
-                    <Col lg={3} className="align-self-stretch">
-                        <div className={styles.menu} onClick={handleClick}>
+                    <Col lg={3} className="d-flex">
+                        <div className={`${styles.menu} flex-drow-1`} >
                             <NavLink to='' className={styles.menu__item}>
                                 <img src={program} alt="" />
                                 {show && <span className={styles.program}>Programa de estudio</span>}
                             </NavLink>
-                            <NavLink to='' className={styles.menu__item}>
+                            <NavLink to={MULTIMEDIA} className={styles.menu__item}>
                                 <img src={multimedia} alt="" />
                                 {show && <span className={styles.multimedia}>Material multimedia</span>}
                             </NavLink>
@@ -55,7 +56,7 @@ const CampusLayout = ({ children }) => {
                     </Col>
 
                     {/* Contenido del campus */}
-                    <Col lg={9}>
+                    <Col lg={9} className="d-flex">
                         {children}
                     </Col>
                 </Row>
