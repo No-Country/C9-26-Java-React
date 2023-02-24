@@ -3,6 +3,8 @@ import { login, studentInfo } from '../actions/userActions'
 
 const initialState = {
     info: null,
+    role: null,
+    studentId: null,
     token: null,
     status: 'idle', // idle, loading, success, failed
     error: null
@@ -29,7 +31,9 @@ export const userSlice = createSlice({
                 state.status = 'loading'
             })
             .addCase(login.fulfilled, (state, action) => {
-                state.token = action.payload
+                state.token = action.payload.token
+                state.role = action.payload.role
+                state.studentId = action.payload.studentId
                 state.status = 'success'
             })
             .addCase(login.rejected, (state, action) => {
