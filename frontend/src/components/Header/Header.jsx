@@ -5,7 +5,8 @@ import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Button from 'react-bootstrap/Button';
-import { FaWhatsapp, FaGoogle, FaHome, FaUser } from 'react-icons/fa';
+import { FaWhatsapp, FaHome, FaUser } from 'react-icons/fa';
+import { TiMail } from 'react-icons/ti'
 import { Login } from '../../pages';
 import logo from '../../assets/images/Logo.png'
 import SearchBar from "../SearchBar/SearchBar"
@@ -40,7 +41,7 @@ function Header() {
                     </div>
                     <div className='py-2 d-flex'>
                         <Button variant="dark" className='p-1 d-flex justify-content-center align-items-center me-2'>
-                            <FaGoogle scale={2} className='m-0' />
+                            <TiMail scale={4} className='m-0'/>
                         </Button> <span className='text-white d-none d-md-block'>greenhills@email.com.ar</span>
                     </div>
                     <Button

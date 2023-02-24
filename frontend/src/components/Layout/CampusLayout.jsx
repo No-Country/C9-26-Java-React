@@ -33,6 +33,7 @@ const CampusLayout = ({ children }) => {
                     <Col lg={3} className="d-flex">
                         <div className={`${styles.menu} flex-drow-1`} >
                             <NavLink to='' className={styles.menu__item}>
+
                                 <img src={program} alt="" />
                                 {show && <span className={styles.program}>Programa de estudio</span>}
                             </NavLink>

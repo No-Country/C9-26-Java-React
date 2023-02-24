@@ -2,6 +2,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import style from './Login.module.css'
 import { BsFillXCircleFill } from 'react-icons/bs'
+import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../store/actions/userActions';
@@ -21,17 +22,14 @@ const Login = ({ show, handleClose }) => {
     password: '',
   })
 
-  // useEffect(() => {
-  //   if (isAuthenticated && userInfo === null) {
-  //     dispatch(studentInfo(token))
-  //   }
-  // }, [isAuthenticated, token])
+  const [ visible, setVisible ] = useState(false)
 
-  // useEffect(() => {
-  //   if (userInfo) {
-  //     handleClose()
-  //   }
-  // }, [userInfo])
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/private/student')
+      handleClose()
+    }
+  }, [])
 
 
   const onSubmit = data => {
@@ -56,7 +54,7 @@ const Login = ({ show, handleClose }) => {
             <div className={style.body}>
               <input type="email" placeholder='Username' className={style.input} {...register('username', { required: true })} />
               {errors.username && <span className={style.errors}>Se requiere un nombre de usuario</span>}
-              <input type="text" placeholder='Password' className={style.input} {...register('password', { required: true })} />
+              <div className={style.input}><input type={visible ? "text": "password"} placeholder='Password' {...register('password', { required: true })} /> {visible ? <AiFillEye onClick={() => setVisible(!visible)} /> : <AiFillEyeInvisible onClick={() => setVisible(!visible)} />}</div>
               {errors.password && <span className={style.errors}>Se requiere la contraseña</span>}
 
             </div>
