@@ -1,23 +1,24 @@
+import { useState } from 'react';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Button from 'react-bootstrap/Button';
-import { NavLink } from 'react-router-dom';
-import { FaWhatsapp, FaGoogle, FaHome, FaUser } from 'react-icons/fa';
-import { useState } from 'react';
+import { FaWhatsapp, FaHome, FaUser } from 'react-icons/fa';
+import { TiMail } from 'react-icons/ti'
 import { Login } from '../../pages';
 import logo from '../../assets/images/Logo.png'
-import { useLocation } from 'react-router-dom';
 import SearchBar from "../SearchBar/SearchBar"
-import { selectUser } from '../../store/slices/userSlice';
-import { selectStatus } from '../../store/slices/userSlice';
+import { useAuth } from '../../hooks/userHooks';
 
 
 function Header() {
-    const isAuthenticated = selectStatus === 'success';
+    const isAuthenticated = useAuth();
+    const navigate = useNavigate();
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleShow = () => isAuthenticated ? navigate('/') : setShow(true)
+
 
     const location = useLocation();
     const path = location.pathname;
@@ -34,7 +35,7 @@ function Header() {
                     </div>
                     <div className='py-2 d-flex'>
                         <Button variant="dark" className='p-1 d-flex justify-content-center align-items-center me-2'>
-                            <FaGoogle scale={2} className='m-0' />
+                            <TiMail scale={4} className='m-0'/>
                         </Button> <span className='text-white d-none d-md-block'>greenhills@email.com.ar</span>
                     </div>
                     <Button

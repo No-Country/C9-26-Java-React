@@ -18,7 +18,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class DefaultAdminRunner implements ApplicationRunner {
 
-    private final IUserRepository repository;
+    private final IUserRepository userRepository;
 
     private final PasswordEncoder passwordEncoder;
 
@@ -30,8 +30,8 @@ public class DefaultAdminRunner implements ApplicationRunner {
                 .role(Role.ADMIN.name())
                 .build();
 
-        if (!repository.findByUsername(admin.getUsername()).isPresent()) {
-            repository.save(admin);
+        if (!userRepository.findByUsername(admin.getUsername()).isPresent()) {
+            userRepository.save(admin);
         }
     }
 }

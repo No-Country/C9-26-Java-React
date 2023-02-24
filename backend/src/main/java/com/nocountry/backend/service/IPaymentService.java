@@ -2,17 +2,17 @@ package com.nocountry.backend.service;
 
 import java.util.List;
 
-import com.nocountry.backend.dto.PaymentDto;
+import com.nocountry.backend.dto.PaymentDetailsDto;
 
 public interface IPaymentService {
 
-    PaymentDto getPayment(Long paymentId);
+    List<PaymentDetailsDto> getAllPayments();
 
-    List<PaymentDto> getAllPayments();
+    PaymentDetailsDto getPaymentById(Long paymentId);
 
-    PaymentDto createPayment(PaymentDto paymentDto);
+    PaymentDetailsDto createPayment(PaymentDetailsDto paymentDetailsDto);
 
-    PaymentDto updatePayment(PaymentDto paymentDto, Long paymentId);
+    PaymentDetailsDto updatePayment(Long paymentId, PaymentDetailsDto paymentDetailsDto);
 
     void deletePayment(Long paymentId);
 }

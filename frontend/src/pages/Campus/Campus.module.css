@@ -1,0 +1,44 @@
+.header {
+    padding: 20px;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.card div {
+    display: flex;
+    gap: 1rem;
+}
+
+.card__content {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-grow: 1;
+    height: 100%;
+}
+
+.card__content h5 {
+    margin: 0
+}
+
+.percentage {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.percentage span {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #000;
+}

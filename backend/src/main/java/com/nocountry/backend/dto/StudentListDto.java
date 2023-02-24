@@ -9,9 +9,11 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AppointmentScheduleDto {
+public class StudentListDto {
 
-    private String email;
+    private Long id;
 
-    private String fullName;
+    private String firstName;
+
+    private String lastName;
 }

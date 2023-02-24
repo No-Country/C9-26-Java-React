@@ -4,59 +4,44 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.nocountry.backend.dto.ExamDto;
+import com.nocountry.backend.dto.ExamDetailsDto;
 import com.nocountry.backend.mapper.ExamMapper;
-import com.nocountry.backend.model.Exam;
 import com.nocountry.backend.repository.IExamRepository;
 import com.nocountry.backend.service.IExamService;
 
-import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
 public class ExamServiceImpl implements IExamService {
 
-    private final IExamRepository repository;
+    private final IExamRepository examRepository;
 
-    private final ExamMapper mapper;
+    private final ExamMapper examMapper;
 
-    private Exam findExamById(Long examId) {
-        return repository.findById(examId)
-                .orElseThrow(() -> new EntityNotFoundException("Exam not found"));
+    @Override
+    public List<ExamDetailsDto> getAllExams() {
+        return examMapper.convertToDetailsDtoList(examRepository.findAll());
     }
 
     @Override
-    public ExamDto getExam(Long examId) {
-        return mapper.convertToDto(this.findExamById(examId));
+    public ExamDetailsDto getExamById(Long examId) {
+        return examMapper.convertToDetailsDto(examRepository.findById(examId).orElseThrow());
     }
 
     @Override
-    public List<ExamDto> getAllExams() {
-        return mapper.convertToDtoList(repository.findAll());
+    public ExamDetailsDto createExam(ExamDetailsDto examDetailsDto) {
+        var exam = examMapper.convertToEntity(examDetailsDto);
+        return examMapper.convertToDetailsDto(examRepository.save(exam));
     }
 
     @Override
-    public ExamDto createExam(ExamDto examDto) {
-        return mapper.convertToDto(repository.save(mapper.convertToEntity(examDto)));
-    }
-
-    @Override
-    public ExamDto updateExam(ExamDto examDto, Long examId) {
-        Exam updatedExam = this.findExamById(examId);
-        updatedExam.setName(examDto.getName());
-        updatedExam.setExamDate(examDto.getExamDate());
-        updatedExam.setGrammar(examDto.getGrammar());
-        updatedExam.setListening(examDto.getListening());
-        updatedExam.setSpeaking(examDto.getSpeaking());
-        updatedExam.setWriting(examDto.getWriting());
-        updatedExam.setStatus(examDto.getStatus());
-        return mapper.convertToDto(repository.save(updatedExam));
-
+    public ExamDetailsDto updateExam(Long examId, ExamDetailsDto examDetailsDto) {
+        return null;
     }
 
     @Override
     public void deleteExam(Long examId) {
-        repository.deleteById(examId);
+        examRepository.deleteById(examId);
     }
 }

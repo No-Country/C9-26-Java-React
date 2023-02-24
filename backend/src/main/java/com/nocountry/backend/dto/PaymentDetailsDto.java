@@ -12,11 +12,17 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class PaymentDto {
+public class PaymentDetailsDto {
 
     private Long id;
 
     private PaymentType paymentType;
 
     private PaymentStatus paymentStatus;
+
+    private Long studentId;
+
+    private String studentFirstName;
+
+    private String studentLastName;
 }

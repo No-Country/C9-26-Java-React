@@ -3,13 +3,19 @@ import { apiCall } from '../../api';
 
 export const login = createAsyncThunk(
     'user/login',
-    async (data, { RejectWithValue }) => {
+    async (data, { rejectWithValue }) => {
         try {
             const response = await apiCall.post('/auth/login', data);
             console.log(response.data);
-            return response.data;
+            const token = response.data.token;
+            const role = response.data.role
+            return ({
+                token,
+                role
+            });
         } catch (error) {
-            return RejectWithValue(error.response.data);
+            console.log(error.message)
+            return rejectWithValue(error.response.data);
         }
     }
 );

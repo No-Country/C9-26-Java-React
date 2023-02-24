@@ -1,5 +1,7 @@
 package com.nocountry.backend.dto;
 
+import java.util.List;
+
 import com.nocountry.backend.utils.enums.Level;
 
 import lombok.AllArgsConstructor;
@@ -11,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class StudentDto {
+public class StudentDetailsDto {
 
     private Long id;
 
@@ -32,4 +34,10 @@ public class StudentDto {
     private String birthdate;
 
     private Level level;
+
+    private Long courseId;
+
+    private List<ExamListDto> exams;
+
+    private List<PaymentListDto> payments;
 }

@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ExamDto {
+public class ExamDetailsDto {
 
     private Long id;
 
@@ -26,4 +26,10 @@ public class ExamDto {
     private String listening;
 
     private Boolean status;
+
+    private Long studentId;
+
+    private String studentFirstName;
+
+    private String studentLastName;
 }

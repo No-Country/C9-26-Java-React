@@ -16,4 +16,10 @@ public class AppointmentDto {
     private String date;
 
     private String schedule;
+
+    private String email;
+
+    private String fullName;
+
+    private Boolean status;
 }

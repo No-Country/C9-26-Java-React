@@ -7,14 +7,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.nocountry.backend.dto.PaymentDto;
+import com.nocountry.backend.dto.PaymentDetailsDto;
 import com.nocountry.backend.service.IPaymentService;
 
 import lombok.RequiredArgsConstructor;
@@ -24,45 +24,37 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class PaymentController {
 
-    private final IPaymentService service;
+    private final IPaymentService paymentService;
 
+    @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping("/all")
+    public ResponseEntity<List<PaymentDetailsDto>> getAllPayments() {
+        return new ResponseEntity<>(paymentService.getAllPayments(), HttpStatus.OK);
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/{paymentId}")
-    @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<PaymentDto> getPayment(@PathVariable Long paymentId) {
-        PaymentDto paymentDto = service.getPayment(paymentId);
-        if (paymentDto != null) {
-            return new ResponseEntity<>(paymentDto, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+    public ResponseEntity<PaymentDetailsDto> getPaymentById(@PathVariable Long paymentId) {
+        return new ResponseEntity<>(paymentService.getPaymentById(paymentId), HttpStatus.OK);
     }
 
-    @GetMapping("/")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<List<PaymentDto>> getAllPayments() {
-        return new ResponseEntity<>(service.getAllPayments(), HttpStatus.OK);
-    }
-
     @PostMapping("/create")
-    @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<PaymentDto> createPayment(@RequestBody PaymentDto paymentDto) {
-        return new ResponseEntity<>(service.createPayment(paymentDto), HttpStatus.CREATED);
+    public ResponseEntity<PaymentDetailsDto> createPayment(@RequestBody PaymentDetailsDto paymentDetailsDto) {
+        return new ResponseEntity<>(paymentService.createPayment(paymentDetailsDto), HttpStatus.CREATED);
     }
 
-    @PutMapping("/update/{paymentId}")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<PaymentDto> updatePayment(@RequestBody PaymentDto paymentDto, @PathVariable Long paymentId) {
-        return new ResponseEntity<>(service.updatePayment(paymentDto, paymentId), HttpStatus.ACCEPTED);
+    @PatchMapping("/{paymentId}/update")
+    public ResponseEntity<PaymentDetailsDto> updatePayment(@PathVariable Long paymentId,
+            @RequestBody PaymentDetailsDto paymentDetailsDto) {
+        return new ResponseEntity<>(paymentService.updatePayment(paymentId, paymentDetailsDto), HttpStatus.ACCEPTED);
     }
 
-    @DeleteMapping("/delete/{paymentId}")
     @PreAuthorize("hasRole('ADMIN')")
+    @DeleteMapping("/{paymentId}/delete")
     public ResponseEntity<String> deletePayment(@PathVariable Long paymentId) {
-        if (service.getPayment(paymentId) != null) {
-            service.deletePayment(paymentId);
-            return new ResponseEntity<>("Payment successfully deleted", HttpStatus.ACCEPTED);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        paymentService.deletePayment(paymentId);
+        return new ResponseEntity<>("Payment successfully deleted", HttpStatus.ACCEPTED);
     }
 }
