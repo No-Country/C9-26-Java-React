@@ -24,7 +24,7 @@ const Login = ({ show, handleClose }) => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate('/private/student')
+      navigate('/private/campus')
       handleClose()
     }
   }, [isAuthenticated])

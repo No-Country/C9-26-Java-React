@@ -31,7 +31,7 @@ const CampusLayout = ({ children }) => {
                     {/* Menu del campus */}
                     <Col lg={3} className="align-self-stretch">
                         <div className={styles.menu} onClick={handleClick}>
-                            <NavLink to='/campus/program' className={styles.menu__item}>
+                            <NavLink to='/private/campus/program' className={styles.menu__item}>
                                 <img src={program} alt="" />
                                 {show && <span className={styles.program}>Programa de estudio</span>}
                             </NavLink>
