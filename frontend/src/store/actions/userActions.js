@@ -7,13 +7,13 @@ export const login = createAsyncThunk(
         try {
             const response = await apiCall.post('/auth/login', data);
 
-            const { token, role, studentId } = response.data;
+            const { token, role } = response.data;
 
-            localStorage.setItem('token', JSON.stringify(token));
+            localStorage.setItem('nc_be_session', JSON.stringify({ role, token }));
 
             dispatch(studentInfo(token));
 
-            return { token, role, studentId };
+            return { token, role };
         } catch (error) {
             return rejectWithValue(error.response.data);
         }
@@ -32,12 +32,25 @@ export const studentInfo = createAsyncThunk(
                 }
             });
 
-            console.log(response.data);
+            const info = response.data;
 
-            return response.data;
+            return info;
 
         } catch (error) {
             return rejectWithValue(error.response.data);
         }
     }
 );
+
+export const setSession = createAsyncThunk(
+    'user/setSession',
+    async (session, { dispatch, rejectWithValue }) => {
+        try {
+            const { token } = session
+            dispatch(studentInfo(token))
+            return session;
+        } catch (error) {
+            return rejectWithValue(error.response.data)
+        }
+    }
+)

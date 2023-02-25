@@ -2,18 +2,17 @@ import React from 'react'
 import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
-const MediaArticle = () => {
+const MediaArticle = ({ data }) => {
+    const { title, description, link } = data
     return (
         <Card style={{ width: '100%', minWidth: '300px', maxWidth: '380px' }} className='rounded-4'>
 
-            <Card.Body>
-                <Card.Title className='text-center fs-5'>Card Title</Card.Title>
+            <Card.Body className='d-flex flex-column justify-content-start p-4'>
+                <Card.Title className='text-center fs-4 text-uppercase'>{title}</Card.Title>
                 <Card.Text>
-                    Some quick example text to build on the card title and make up the bulk of
-                    the card's content. Some quick example text to build on the card title and make up the bulk of
-                    the card's content. Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    {description}
                 </Card.Text>
-                <Link to="/" className='btn btn-dark rounded-4 d-inline-block mx-auto'>Card Link</Link>
+                <Link to={link} target='_blank' className='btn btn-dark text-uppercase rounded-4 d-block mx-auto mt-auto'>Ir al sitio web</Link>
             </Card.Body>
         </Card>
     )

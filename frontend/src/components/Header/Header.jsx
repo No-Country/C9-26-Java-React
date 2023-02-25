@@ -24,16 +24,13 @@ function Header() {
     const path = location.pathname;
 
 
-    const handleShow = () => {
+    const handleClick = () => {
         if (!isAuthenticated) {
             navigate(LOGIN)
         } else {
             navigate(CAMPUS)
         }
     }
-
-
-
 
 
     return (
@@ -55,7 +52,7 @@ function Header() {
                         <Button
                             style={{ maxWidth: '180px', background: '#CB8DF1', color: '#000', border: 'none' }}
                             className='d-flex justify-content-center align-items-center text-uppercase rounded-5 px-4 w-4'
-                            onClick={handleShow}
+                            onClick={handleClick}
                         >
                             {isAuthenticated ? (<><FaBook scale={2} className='m-0' /> <span className='ms-2'>Campus</span></>) : (<><FaUser scale={2} className='m-0 me-md-2' /><span className='d-none d-md-block'>Ingresar</span></>)}
                         </Button>

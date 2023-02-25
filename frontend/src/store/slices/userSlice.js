@@ -1,10 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { login, studentInfo } from '../actions/userActions'
+import { login, studentInfo, setSession } from '../actions/userActions'
 
 const initialState = {
     info: {},
     role: null,
-    studentId: null,
     token: null,
     role: null,
     status: 'idle', // idle, loading, success, failed
@@ -15,34 +14,31 @@ export const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
-        setToken: (state, action) => { // from local storage
-            state.token = action.payload
-        },
         logout: (state) => {
             state.info = {}
             state.token = null
             state.role = null
             state.status = 'idle'
             state.error = null
-            localStorage.removeItem('token')
+            localStorage.removeItem('nc_be_session')
         }
     },
     extraReducers: (builder) => {
         builder
+            // Login
             .addCase(login.pending, (state) => {
                 state.status = 'loading'
             })
             .addCase(login.fulfilled, (state, action) => {
                 state.token = action.payload.token
                 state.role = action.payload.role
-
-                state.studentId = action.payload.studentId
                 state.status = 'success'
             })
             .addCase(login.rejected, (state, action) => {
                 state.error = action.payload
                 state.status = 'failed'
             })
+            // Student Info
             .addCase(studentInfo.pending, (state) => {
                 state.status = 'loading'
             })
@@ -51,6 +47,19 @@ export const userSlice = createSlice({
                 state.status = 'success'
             })
             .addCase(studentInfo.rejected, (state, action) => {
+                state.error = action.payload
+                state.status = 'failed'
+            })
+            // Set Session (from localStorage)
+            .addCase(setSession.pending, (state, action) => {
+                state.status = 'pending'
+            })
+            .addCase(setSession.fulfilled, (state, action) => {
+                state.token = action.payload.token
+                state.role = action.payload.role
+                state.status = 'success'
+            })
+            .addCase(setSession.rejected, (state, action) => {
                 state.error = action.payload
                 state.status = 'failed'
             })
