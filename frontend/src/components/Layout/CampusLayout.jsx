@@ -10,7 +10,7 @@ import chat from "../../assets/chat.svg"
 import events from "../../assets/events.svg"
 import tasks from "../../assets/tasks.svg"
 
-import { MULTIMEDIA, PROGRAM, TASKS } from "../../config/routes/paths"
+import { MULTIMEDIA, PROGRAM, CHAT, EVENTS, TASKS } from "../../config/routes/paths"
 
 
 const CampusLayout = ({ children }) => {
@@ -30,10 +30,9 @@ const CampusLayout = ({ children }) => {
             <Container fluid className="d-flex flex-column flex-grow-1">
                 <Row className="d-flex flex-grow-1">
                     {/* Menu del campus */}
-                    <Col lg={3} className="d-flex">
-                        <div className={`${styles.menu} flex-drow-1`} >
+                    <Col lg={3} className="d-flex position-relative flex-drow-1">
+                        <div className={`${styles.menu}`} >
                             <NavLink to={PROGRAM} className={styles.menu__item}>
-
                                 <img src={program} alt="" />
                                 {show && <span className={styles.program}>Programa de estudio</span>}
                             </NavLink>
@@ -41,11 +40,11 @@ const CampusLayout = ({ children }) => {
                                 <img src={multimedia} alt="" />
                                 {show && <span className={styles.multimedia}>Material multimedia</span>}
                             </NavLink>
-                            <NavLink to='' className={styles.menu__item}>
+                            <NavLink to={CHAT} className={styles.menu__item}>
                                 <img src={chat} alt="" />
                                 {show && <span className={styles.chat}>Chat</span>}
                             </NavLink>
-                            <NavLink to='' className={styles.menu__item}>
+                            <NavLink to={EVENTS} className={styles.menu__item}>
                                 <img src={events} alt="" />
                                 {show && <span className={styles.events}>Eventos y actividades</span>}
                             </NavLink>

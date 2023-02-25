@@ -44,24 +44,24 @@ const Home = () => {
                 className='d-flex grow overflow-hidden w-100'
             >
                 {images.map((image) => (
-                    <Carousel.Item key={image.id} className='grow relative '>
+                    <Carousel.Item key={image.id} className='relative'>
 
                         <Row className='d-flex flex-md-row-reverse relative h-100'>
 
-                            <Col md={6} className='d-flex justify-content-center align-items-center'>
+                            <Col xs={12} md={6} className='d-none d-md-flex justify-content-center align-items-center'>
                                 <div className='discount'>
                                     <img src={discount} alt={image.title} />
                                 </div>
                             </Col>
-                            <Col md={6} className='d-none d-md-flex justify-content-center align-items-end px-2 w-70 position-relative'>
-                                <img className='w-xl-100 d-block position-absolute bottom-0' src={image.imagen} alt={image.title} />
+                            <Col xs={12} md={6} className='d-flex justify-content-center align-items-end px-2 position-relative'>
+                                <img className='w-xl-100 position-absolute bottom-0 ' src={image.imagen} alt={image.title} />
                             </Col>
 
                         </Row>
-                        <Carousel.Caption className='relative' style={{top:'1.7in'}}>
+                        <Carousel.Caption className='relative' style={{ bottom: '0px' }}>
 
-                            <h3 className='text-uppercase fs-1' style={{ fontWeight: 'bolder', textShadow: '0px 0px 10px black' }}>{image.title}</h3>
-                            <p style={{ textShadow: '0px 0px 10px black' }}>{image.description}</p>
+                            <h3 className='text-uppercase fs-1 text-center mx-auto' style={{ fontWeight: 'bolder', textShadow: '0px 0px 10px black', maxWidth: '350px' }}>{image.title}</h3>
+                            <p style={{ textShadow: '0px 0px 15px black' }}>{image.description}</p>
                             <Link to='/consultation' className='mb-4 fs-md-3 button_home rounded-4'>Inscripción Abierta <br /> 2023</Link>
                         </Carousel.Caption>
                     </Carousel.Item>

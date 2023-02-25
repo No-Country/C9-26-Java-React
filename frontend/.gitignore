@@ -317,3 +317,4 @@ dist
 *.sw?
 
 # End of https://www.toptal.com/developers/gitignore/api/linux,macos,windows,intellij+all,node,java,visualstudiocode
+.vercel

@@ -19,7 +19,7 @@ export const userSlice = createSlice({
             state.token = action.payload
         },
         logout: (state) => {
-            state.info = null
+            state.info = {}
             state.token = null
             state.role = null
             state.status = 'idle'

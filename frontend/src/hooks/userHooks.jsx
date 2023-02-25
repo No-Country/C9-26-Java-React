@@ -8,7 +8,6 @@ export const useAuth = () => {
 
 export const useUserInfo = () => {
     const info = useSelector((state) => state.user.info);
-    console.log('info', info)
     return info;
 }
 
