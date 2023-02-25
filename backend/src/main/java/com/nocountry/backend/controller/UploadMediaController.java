@@ -4,7 +4,6 @@ import com.cloudinary.utils.ObjectUtils;
 import com.nocountry.backend.model.MediaResource;
 import com.nocountry.backend.repository.IMediaRepository;
 import com.nocountry.backend.service.ICloudinaryService;
-import com.nocountry.backend.service.IMediaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +19,6 @@ import java.util.Map;
 public class UploadMediaController {
     private final ICloudinaryService cloudinaryService;
     private final IMediaRepository mediaRepository;
-    private final IMediaService mediaService;
     @PostMapping("/images")
     public ResponseEntity<MediaResource>  uploadImage(@RequestParam("file") MultipartFile file, @RequestParam("title") String title) throws IOException {
         Map options = ObjectUtils.asMap(
@@ -48,9 +46,8 @@ public class UploadMediaController {
 
     @DeleteMapping("/delete")
     public ResponseEntity<Map> deleteMedia(@RequestParam Long id) throws IOException {
-
         MediaResource mediaToDelete= mediaRepository.getReferenceById(id);
-        mediaService.delete(id);
+        mediaRepository.delete(mediaToDelete);
         Map resultado = cloudinaryService.delete(mediaToDelete);
         return new ResponseEntity<>(resultado, HttpStatus.ACCEPTED);
     }
