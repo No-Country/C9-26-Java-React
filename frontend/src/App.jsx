@@ -2,10 +2,20 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { HOME, CAMPUS, PRIVATE, CLASS, EXAMS, SERVICES, CONSULTATION, STUDENT, ADD_STUDENT, PROGRAM, MULTIMEDIA, CHAT, EVENTS, TASKS, LOGIN } from './config/routes/paths'
 import { PrivateRoute, PublicRoute, Program, Multimedia, Chat, Events, Tasks } from './components'
 import { Home, Campus, Profile, Clases, Examenes, Servicios, Consultas, Alumno, Login } from './pages'
-
+import { useAuth } from './hooks/userHooks'
+import { setSession } from './store/actions/userActions'
+import { useDispatch } from 'react-redux'
 
 
 function App() {
+  const { token } = useAuth()
+  const session = JSON.parse(localStorage.getItem('nc_be_session')) || null
+  const dispatch = useDispatch()
+
+  if (token === null && session !== null) {
+    dispatch(setSession(session))
+  }
+
   return (
     <BrowserRouter>
       <Routes>
