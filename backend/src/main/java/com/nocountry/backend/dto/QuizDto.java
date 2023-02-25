@@ -1,7 +1,5 @@
 package com.nocountry.backend.dto;
 
-import java.util.Map;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,5 +19,5 @@ public class QuizDto {
 
     private String videoUrl;
 
-    private Map<String, String> questionsAndAnswers;
+    private String questionsAndAnswers;
 }

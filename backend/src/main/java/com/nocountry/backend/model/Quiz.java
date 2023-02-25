@@ -1,7 +1,5 @@
 package com.nocountry.backend.model;
 
-import java.util.Map;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -28,5 +26,5 @@ public class Quiz {
 
     private String videoUrl;
 
-    private Map<String, String> questionsAndAnswers;
+    private String questionsAndAnswers;
 }
