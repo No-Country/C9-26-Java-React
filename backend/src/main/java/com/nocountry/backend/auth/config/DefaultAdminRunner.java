@@ -32,7 +32,6 @@ public class DefaultAdminRunner implements ApplicationRunner {
                 .username("admin@brightenglish.com")
                 .password(passwordEncoder.encode("12345"))
                 .role(Role.ADMIN.name())
-                .student(null)
                 .build();
 
         var student = Student.builder()
