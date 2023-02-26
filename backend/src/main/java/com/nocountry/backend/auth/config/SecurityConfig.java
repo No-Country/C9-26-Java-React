@@ -32,6 +32,7 @@ public class SecurityConfig {
                 .csrf().disable()
                 .authorizeHttpRequests()
                 .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
+                .requestMatchers("/api/**").permitAll()
                 .requestMatchers("/api/appointments/**").permitAll()
                 .requestMatchers("/api/auth/**").permitAll()
                 .requestMatchers("/api/courses/**").hasRole(Role.ADMIN.name())
