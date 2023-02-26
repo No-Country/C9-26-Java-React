@@ -30,18 +30,18 @@ public class AppConfig implements WebMvcConfigurer {
     private final IUserRepository userRepository;
 
     @Value("${CLOUD_NAME}")
-    private final String CLOUD_NAME;
+    private String CLOUD_NAME;
 
     @Value("${API_KEY_CLOUD}")
-    private final String API_KEY_CLOUD;
+    private String API_KEY_CLOUD;
 
     @Value("${API_SECRET}")
-    private final String API_SECRET;
+    private String API_SECRET;
 
     @Bean
     public Cloudinary cloudinaryConfig() {
         Cloudinary cloudinary;
-        Map<String, String> config = new HashMap<>();
+        Map<String, String> config = new HashMap<String, String>();
         config.put("cloud_name", CLOUD_NAME);
         config.put("api_key", API_KEY_CLOUD);
         config.put("api_secret", API_SECRET);
