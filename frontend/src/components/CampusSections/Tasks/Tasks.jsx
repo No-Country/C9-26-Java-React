@@ -4,10 +4,11 @@ import tasks from './Tasks.json'
 
 const Tasks = () => {
 
-    const [posicion, setPosicion] = useState(0)
+    const [posicion, setPosicion] = useState(0)  
 
     const handleClick = (index) => {
         setPosicion(index)
+        
     }
     return (
         <div className={style.main}>
@@ -15,7 +16,11 @@ const Tasks = () => {
                 <h1>TAREA</h1>
                 <ul className={style.taskUl}>
                     {tasks.map((task, index) => (
-                        <li key={index} onClick={() => handleClick(tasks.indexOf(task))} ><h5>{task.title}</h5></li>
+                        <li
+                            key={index}
+                            onClick={() => handleClick(tasks.indexOf(task))}                            
+                            className={posicion == tasks.indexOf(task) ? style.activo : null}
+                        ><h5>{task.title}</h5></li>
                     ))}
                 </ul>
             </div>

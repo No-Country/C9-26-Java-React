@@ -6,8 +6,7 @@
     flex-grow: 1;
     color: #ffffff;
     border-radius: 20px;
-    padding: 3rem;
-    
+    padding: 3rem;    
     flex-wrap: wrap;  
 }
 
@@ -42,6 +41,10 @@
 
 .taskH4{
     text-align: justify;
+}
+
+.activo{
+    background: gray;
 }
 
 @media (max-width: 1850px) {

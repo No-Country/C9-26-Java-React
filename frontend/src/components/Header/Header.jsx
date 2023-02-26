@@ -13,7 +13,7 @@ import { Login } from '../../pages';
 import logo from '../../assets/images/Logo.png'
 import SearchBar from "../SearchBar/SearchBar"
 import { useAuth } from '../../hooks/userHooks';
-import { HOME, CLASS, EXAMS, SERVICES, CONSULTATION, CAMPUS, LOGIN } from '../../config/routes/paths';
+import { HOME, CLASS, EXAMS, SERVICES, CONSULTATION, CAMPUS, LOGIN, ADD_STUDENT } from '../../config/routes/paths';
 
 
 function Header() {
@@ -81,7 +81,7 @@ function Header() {
                     <NavLink to={HOME}><img src={logo} className='p-0' style={{ maxWidth: '150px', height: '70px' }} /></NavLink>
 
                     {
-                        path === "/add-student"
+                        path === ADD_STUDENT
                             ?
                             <>
                                 <SearchBar />
