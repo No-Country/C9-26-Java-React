@@ -1,6 +1,6 @@
-.clases_padding {
+/* .clases_padding {
     padding: 100px;
-}
+} */
 
 .clases_margin {
     margin-top: 2.37rem;
@@ -51,6 +51,23 @@
 
 input[type="date"]::-webkit-calendar-picker-indicator {
     padding: 0 20px;
+}
+
+.form_select {
+    width: 100%;
+    max-width: 27rem;
+    height: 2.62rem;
+    border-radius: 20px;
+    padding-left: 20px;
+    border: none;
+    margin-bottom: 15.68px;
+    border-right: 20px solid transparent;
+    margin-bottom: 24px;
+}
+
+.options_bg {
+    background-color: #222221;
+    color: #fff;
 }
 
 .submit_container {
@@ -110,8 +127,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 
 @media(max-width: 700px) {
-    .clases_padding {
+    /* .clases_padding {
         padding: 10px;
-    }
+    } */
 }
 

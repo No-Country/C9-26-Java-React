@@ -6,7 +6,6 @@ export { default as Program } from './CampusSections/Program/Program';
 export { default as Tasks } from './CampusSections/Tasks/Tasks';
 export { default as LevelProgress } from './CampusSections/UserInfo/LevelProgress';
 export { default as UserInfo } from './CampusSections/UserInfo/UserInfo';
-export { default as Dropdown } from './Dropdown/Dropdown';
 export { default as ExamsCard } from './ExamsCard/ExamsCard';
 export { default as Footer } from './Footer/Footer';
 export { default as Header } from './Header/Header';
