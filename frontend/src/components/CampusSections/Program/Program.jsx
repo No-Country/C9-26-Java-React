@@ -10,7 +10,7 @@ const Program = () => {
             {
                 programs.map((program) => {
                     return (
-                        <ul>
+                        <ul className={style.program_ul}>
                             <li key={program.title} >
                                 <h2>{program.title}</h2>
                                 {program.contents.map((content) => {
