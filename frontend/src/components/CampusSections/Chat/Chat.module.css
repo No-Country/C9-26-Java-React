@@ -1,0 +1,83 @@
+.main {
+    background: #0ececeb9;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    flex-grow: 1;
+    color: #ffffff;
+    border-radius: 20px;
+    padding: 3rem;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.inputBuscar {
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.divBuscar {
+    border-radius: 20px;
+    background: #ffffff;
+    height: 40px;
+    color: #9C9999;
+    padding-left: 25px;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.divBuscar:focus-within {
+    border: 2px solid black;
+}
+
+
+.divBody {
+    display: flex;
+    width: 100%;
+    border-top: 1px solid #FFFFFF;
+    margin-top: 15px;
+    height: 100%;
+}
+
+.dicContacto {
+    width: 20%;
+    border-right: 1px solid #FFFFFF;
+    text-align: center;
+}
+
+.divSms {
+    width: 80%;
+    text-align: center;
+
+}
+
+.divSmsInput {
+    position: absolute;
+    bottom: 20px;
+    width: 70%;
+}
+
+.inputSms {
+    width: 90%;
+    height: 1in;
+    border-radius: 20px;
+    outline: none;
+}
+
+.btnSms {
+    border: none;
+    background: #FFFFFF;
+    border-radius: 50px;
+    position: absolute;
+    bottom: 10px;
+    right: 0;   
+  }
+
+  @media screen {
+    
+  }

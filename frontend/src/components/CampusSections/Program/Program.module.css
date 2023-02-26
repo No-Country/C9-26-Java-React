@@ -12,25 +12,30 @@
     
 }
 
-.program_ul {
+
+.programUl{
+
     width: 300px;
     border-right: 2px solid #D9D9D9;
 }
 
-.program_ul li{
+.programLi{
     list-style: none;    
     padding-right: 10px;
 }
 
 
 @media (max-width: 1750px) {
-    .program_ul {        
+
+    .programUl{        
+
         border-bottom: 3px solid #D9D9D9;
     }
   }
   
 @media (max-width: 670px) {
-    .program_ul {        
+
+    .programUl{        
         border-right: none;        
     }
   }

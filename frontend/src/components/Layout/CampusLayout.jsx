@@ -10,52 +10,75 @@ import chat from "../../assets/chat.svg"
 import events from "../../assets/events.svg"
 import tasks from "../../assets/tasks.svg"
 
+import { MULTIMEDIA, PROGRAM, CHAT, EVENTS, TASKS } from "../../config/routes/paths"
+
 
 const CampusLayout = ({ children }) => {
     const [show, setShow] = useState(true)
 
-    const handleClick = () => {
-        setShow(!show)
-    }
+    // const handleClick = () => {
+    //     setShow(!show)
+    // }
 
+    let activeStyle = {
+        // textDecoration: "underline",
+        backgroundColor: '#D9D9D999',
+        borderRadius: '5px',
+        padding: '10px',
+        marginLeft: '0',
+        fontSize: '85%',
+        height: '40px',
+        fontWeight: 'bold'
+    };
 
     return (
-        <main className="background pb-3 d-flex flex-column grow">
+        <main className="background pb-3 d-flex flex-column flex-grow-1">
             {/* Encabezado del campus */}
             <CampusHeader />
 
             {/* Contenedor principal */}
-            <Container fluid>
-                <Row className="d-flex h-100">
-
+            <Container fluid className="d-flex flex-column flex-grow-1">
+                <Row className="d-flex flex-grow-1">
                     {/* Menu del campus */}
-                    <Col lg={3} className="align-self-stretch">
-                        <div className={styles.menu} onClick={handleClick}>
-                            <NavLink to='/campus/program' className={styles.menu__item}>
-                                <img src={program} alt="" />
-                                {show && <span className={styles.program}>Programa de estudio</span>}
-                            </NavLink>
-                            <NavLink to='' className={styles.menu__item}>
-                                <img src={multimedia} alt="" />
-                                {show && <span className={styles.multimedia}>Material multimedia</span>}
-                            </NavLink>
-                            <NavLink to='' className={styles.menu__item}>
-                                <img src={chat} alt="" />
-                                {show && <span className={styles.chat}>Chat</span>}
-                            </NavLink>
-                            <NavLink to='' className={styles.menu__item}>
-                                <img src={events} alt="" />
-                                {show && <span className={styles.events}>Eventos y actividades</span>}
-                            </NavLink>
-                            <NavLink to='' className={styles.menu__item}>
-                                <img src={tasks} alt="" />
-                                {show && <span className={styles.tasks}>tareas asignadas</span>}
-                            </NavLink>
+                    <Col lg={3} className="d-flex position-relative flex-drow-1">
+                        <div className={`${styles.menu}`} >
+                            <div className={styles.menu__container}>
+                                <NavLink to={PROGRAM} className={styles.menu__item} style={({ isActive }) =>
+                                    isActive ? activeStyle : undefined
+                                }>
+                                    <img src={program} alt="" />
+                                    {show && <span className={styles.program}>Programa de estudio</span>}
+                                </NavLink>
+                                <NavLink to={MULTIMEDIA} className={styles.menu__item} style={({ isActive }) =>
+                                    isActive ? activeStyle : undefined
+                                }>
+                                    <img src={multimedia} alt="" />
+                                    {show && <span className={styles.multimedia}>Material multimedia</span>}
+                                </NavLink>
+                                <NavLink to={CHAT} className={styles.menu__item} style={({ isActive }) =>
+                                    isActive ? activeStyle : undefined
+                                }>
+                                    <img src={chat} alt="" />
+                                    {show && <span className={styles.chat}>Chat</span>}
+                                </NavLink>
+                                <NavLink to={EVENTS} className={styles.menu__item} style={({ isActive }) =>
+                                    isActive ? activeStyle : undefined
+                                }>
+                                    <img src={events} alt="" />
+                                    {show && <span className={styles.events}>Eventos y actividades</span>}
+                                </NavLink>
+                                <NavLink to={TASKS} className={styles.menu__item} style={({ isActive }) =>
+                                    isActive ? activeStyle : undefined
+                                }>
+                                    <img src={tasks} alt="" />
+                                    {show && <span className={styles.tasks}>tareas asignadas</span>}
+                                </NavLink>
+                            </div>
                         </div>
                     </Col>
 
                     {/* Contenido del campus */}
-                    <Col lg={9}>
+                    <Col lg={9} className="d-flex">
                         {children}
                     </Col>
                 </Row>

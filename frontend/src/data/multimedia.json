@@ -1,0 +1,51 @@
+{
+  "material": [
+    {
+      "id": "1",
+      "title": "material1",
+      "description": "lambert",
+      "imgUrl": "http://www.example.com"
+    },
+    {
+      "id": "2",
+      "title": "material2",
+      "description": "phong",
+      "imgUrl": "http://www.example.com",
+      "link": "http://www.example.com"
+    },
+    {
+      "id": "3",
+      "title": "material3",
+      "description": "basic",
+      "imgUrl": "http://www.example.com",
+      "link": "http://www.example.com"
+    }
+  ],
+  "enlaces": [
+    {
+      "title": "British Council",
+      "description": "The most popular dictionary and thesaurus for learners of English. Meanings and definitions of words with pronunciations and translations.",
+      "link": "https://www.britishcouncil.org/"
+    },
+    {
+      "title": "BBC Learning",
+      "description": "Learn English, English videos, speak English, spoken English, grammar, vocabulary, pronunciation, tenses, English tenses, how to speak English, improve your grammar, learning English",
+      "link": "https://www.bbc.co.uk/learningenglish/"
+    },
+    {
+      "title": "Exam English",
+      "description": "Free top-quality practice for all the important international English language exams. All test questions are written by experienced teachers and examiners. No registration required.",
+      "link": "https://www.examenglish.com/"
+    },
+    {
+      "title": "Word Reference",
+      "description": "Free online dictionaries - Spanish, French, Italian, German and more. Conjugations, audio pronunciations and forums for your questions.",
+      "link": "https://www.wordreference.com/es/"
+    },
+    {
+      "title": "Cambridge Dictionary",
+      "description": "The most popular dictionary and thesaurus for learners of English. Meanings and definitions of words with pronunciations and translations.",
+      "link": "https://dictionary.cambridge.org/"
+    }
+  ]
+}

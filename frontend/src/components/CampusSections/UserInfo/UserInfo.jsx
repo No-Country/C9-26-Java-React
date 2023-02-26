@@ -1,9 +1,10 @@
 import styles from './UserInfo.module.css';
 import LevelProgress from './LevelProgress';
+import { useUserInfo } from '../../../hooks/userHooks';
 
-const UserInfo = ({ data }) => {
-    const { firstName, lastname, level } = data;
-    let avatar = data.avatar || 'https://www.w3schools.com/howto/img_avatar.png';
+const UserInfo = () => {
+    const { firstName, level } = useUserInfo();
+    let avatar = 'https://www.w3schools.com/howto/img_avatar.png';
     return (
         <>
             <div className={styles.user}>

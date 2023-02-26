@@ -8,10 +8,10 @@ const Program = () => {
         return (
         <div className={style.main}>
             {
-                programs.map((program) => {
+                programs.map((program, index) => {
                     return (
-                        <ul className={style.program_ul}>
-                            <li key={program.title} >
+                        <ul className={style.programUl} key={index}>
+                            <li className={style.programLi}>
                                 <h2>{program.title}</h2>
                                 {program.contents.map((content) => {
                                    return(                                           
