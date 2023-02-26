@@ -34,7 +34,7 @@ public class StudentServiceImpl implements IStudentService {
 
     @Override
     public StudentDetailsDto updateStudentByEmail(String email, StudentDetailsDto studentDetailsDto) {
-        Student student = studentRepository.findByEmail(email).orElse(null);
+        var student = studentRepository.findByEmail(email).orElseThrow();
         return this.updateStudent(student, studentDetailsDto);
     }
 
@@ -50,7 +50,7 @@ public class StudentServiceImpl implements IStudentService {
 
     @Override
     public StudentDetailsDto updateStudentById(Long studentId, StudentDetailsDto studentDetailsDto) {
-        Student student = studentRepository.findById(studentId).orElseThrow();
+        var student = studentRepository.findById(studentId).orElseThrow();
         return this.updateStudent(student, studentDetailsDto);
     }
 
@@ -81,42 +81,40 @@ public class StudentServiceImpl implements IStudentService {
 
     private StudentDetailsDto updateStudent(Student student, StudentDetailsDto StudentDetailsDto) {
 
-        if (student != null) {
-            if (StudentDetailsDto.getFirstName() != null) {
-                student.setFirstName(StudentDetailsDto.getFirstName());
-            }
+        if (StudentDetailsDto.getFirstName() != null) {
+            student.setFirstName(StudentDetailsDto.getFirstName());
+        }
 
-            if (StudentDetailsDto.getLastName() != null) {
-                student.setLastName(StudentDetailsDto.getLastName());
-            }
+        if (StudentDetailsDto.getLastName() != null) {
+            student.setLastName(StudentDetailsDto.getLastName());
+        }
 
-            if (StudentDetailsDto.getImageUrl() != null) {
-                student.setImageUrl(StudentDetailsDto.getImageUrl());
-            }
+        if (StudentDetailsDto.getImageUrl() != null) {
+            student.setImageUrl(StudentDetailsDto.getImageUrl());
+        }
 
-            if (StudentDetailsDto.getDni() != null) {
-                student.setDni(StudentDetailsDto.getDni());
-            }
+        if (StudentDetailsDto.getDni() != null) {
+            student.setDni(StudentDetailsDto.getDni());
+        }
 
-            if (StudentDetailsDto.getAddress() != null) {
-                student.setAddress(StudentDetailsDto.getAddress());
-            }
+        if (StudentDetailsDto.getAddress() != null) {
+            student.setAddress(StudentDetailsDto.getAddress());
+        }
 
-            if (StudentDetailsDto.getEmail() != null) {
-                student.setEmail(StudentDetailsDto.getEmail());
-            }
+        if (StudentDetailsDto.getEmail() != null) {
+            student.setEmail(StudentDetailsDto.getEmail());
+        }
 
-            if (StudentDetailsDto.getPhone() != null) {
-                student.setPhone(StudentDetailsDto.getPhone());
-            }
+        if (StudentDetailsDto.getPhone() != null) {
+            student.setPhone(StudentDetailsDto.getPhone());
+        }
 
-            if (StudentDetailsDto.getBirthdate() != null) {
-                student.setBirthdate(StudentDetailsDto.getBirthdate());
-            }
+        if (StudentDetailsDto.getBirthdate() != null) {
+            student.setBirthdate(StudentDetailsDto.getBirthdate());
+        }
 
-            if (StudentDetailsDto.getLevel() != null) {
-                student.setLevel(StudentDetailsDto.getLevel());
-            }
+        if (StudentDetailsDto.getLevel() != null) {
+            student.setLevel(StudentDetailsDto.getLevel());
         }
 
         return studentMapper.convertToDto(studentRepository.save(student));

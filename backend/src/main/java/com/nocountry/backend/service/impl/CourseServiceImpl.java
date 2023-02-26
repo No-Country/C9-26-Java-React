@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import com.nocountry.backend.dto.CourseDto;
 import com.nocountry.backend.mapper.CourseMapper;
-import com.nocountry.backend.model.Course;
 import com.nocountry.backend.repository.ICourseRepository;
 import com.nocountry.backend.repository.IStudentRepository;
 import com.nocountry.backend.repository.ITeacherRepository;
@@ -44,7 +43,7 @@ public class CourseServiceImpl implements ICourseService {
 
     @Override
     public CourseDto updateCourse(Long courseId, CourseDto courseDto) {
-        Course course = courseRepository.findById(courseId).orElseThrow();
+        var course = courseRepository.findById(courseId).orElseThrow();
 
         if (courseDto.getCategory() != null) {
             course.setCategory(courseDto.getCategory());

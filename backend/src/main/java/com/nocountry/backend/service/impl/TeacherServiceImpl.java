@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import com.nocountry.backend.dto.TeacherDto;
 import com.nocountry.backend.mapper.TeacherMapper;
-import com.nocountry.backend.model.Teacher;
 import com.nocountry.backend.repository.ITeacherRepository;
 import com.nocountry.backend.service.ITeacherService;
 
@@ -38,16 +37,14 @@ public class TeacherServiceImpl implements ITeacherService {
 
     @Override
     public TeacherDto updateTeacher(Long teacherId, TeacherDto teacherDto) {
-        Teacher teacher = teacherRepository.findById(teacherId).orElse(null);
+        var teacher = teacherRepository.findById(teacherId).orElseThrow();
 
-        if (teacher != null) {
-            if (teacherDto.getFirstName() != null) {
-                teacher.setFirstName(teacherDto.getFirstName());
-            }
+        if (teacherDto.getFirstName() != null) {
+            teacher.setFirstName(teacherDto.getFirstName());
+        }
 
-            if (teacherDto.getLastName() != null) {
-                teacher.setLastName(teacherDto.getLastName());
-            }
+        if (teacherDto.getLastName() != null) {
+            teacher.setLastName(teacherDto.getLastName());
         }
 
         return teacherMapper.convertToDto(teacherRepository.save(teacher));

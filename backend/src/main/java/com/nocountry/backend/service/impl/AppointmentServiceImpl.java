@@ -43,7 +43,7 @@ public class AppointmentServiceImpl implements IAppointmentService {
 
     @Override
     public AppointmentDto updateAppointment(Long appointmentId, AppointmentDto appointmentDto) {
-        Appointment appointment = appointmentRepository.findById(appointmentId).orElse(null);
+        Appointment appointment = appointmentRepository.findById(appointmentId).orElseThrow();
 
         if (appointmentDto.getDate() != null) {
             appointment.setDate(appointmentDto.getDate());
