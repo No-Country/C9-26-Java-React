@@ -1,35 +1,19 @@
 import { useState, useEffect } from "react";
-import Dropdown from "../../Dropdown/Dropdown.jsx";
 
 import styles from "./ClassicForm.module.css";
 
-const ClassicForm = ({ setInterviewOn }) => {
+const ClassicForm = ({ setInterviewOn, reasons }) => {
 
     //Tamaño de pantalla para carrusel
     const [width, setWidth] = useState(window.innerWidth);
     const breakpoint = 900;
-
-    const reasons = [
-        "Información sobre clases/precios",
-        "Inscripciones",
-        "Informar un pago",
-        "Exámenes internacionales",
-        "Fechas de exámenes",
-        "Consultar estado de cuenta",
-        "Solicitar enrtevista con coordinación",
-        "Solicitar visa",
-        "Consultar avances de trámite de mi visa",
-        "Viajes grupales",
-        "Trabajar con nosotros",
-        "Otros"
-    ]
 
     useEffect(() => {
 
         //Manejar tamaño de pantalla
         const handleResizeWindow = () => setWidth(window.innerWidth);
         window.addEventListener("resize", handleResizeWindow);
-        
+
         return () => {
             window.removeEventListener("resize", handleResizeWindow);
         }
@@ -38,11 +22,11 @@ const ClassicForm = ({ setInterviewOn }) => {
 
     return (
         <section className={styles.consult_container}>
-            
+
             {
-                width < breakpoint && 
+                width < breakpoint &&
                 <div className={styles.consult_interviewButton}>
-                    <input type="radio" name="radio_interview" id="radio_interview" onChange={() => setInterviewOn(true)}/>
+                    <input type="radio" name="radio_interview" id="radio_interview" onChange={() => setInterviewOn(true)} />
                     <span>Prefiero una entrevista online</span>
                 </div>
             }
@@ -73,7 +57,10 @@ const ClassicForm = ({ setInterviewOn }) => {
                 </div>
 
                 <div className="mb-4 mt-4">
-                    <Dropdown array={reasons} placeholder="El motivo de mi consulta es" subtitle="Elije una opción" />
+                    <select name="" id="" defaultValue="default" className={styles.consult_select}>
+                        <option value="default" disabled>El motivo de mi consulta es</option>
+                        {reasons.map(elem => <option key={elem} value={elem} className={styles.consult_optionsBg}>{elem}</option>)}
+                    </select>
                 </div>
 
                 <textarea name="" id="" cols="30" rows="10" placeholder='Escribe tus comentarios aquí'></textarea>

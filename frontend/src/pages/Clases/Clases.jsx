@@ -1,12 +1,9 @@
-import { useEffect, createRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getCities, getProvinces } from "../../store/actions/locationActions";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import imgClass1 from "../../assets/images/Clases/Clases1.png";
 import imgClass2 from "../../assets/images/Clases/Clases2.png";
 import imgClass3 from "../../assets/images/Clases/Clases3.png";
 import imgClass4 from "../../assets/images/Clases/Clases4.png";
-import Dropdown from '../../components/Dropdown/Dropdown';
 import Carousel from 'react-bootstrap/Carousel';
 
 import styles from './Clases.module.css';
@@ -14,17 +11,9 @@ import styles from './Clases.module.css';
 const Clases = () => {
     const level = ["A1 BEGINNER", "A2 ELEMENTARY", "B1 PREINTERMEDIATE ", "B2 INTERMEDIATE", "C1 UPPER INTERMEDIATE", "C2 ADVANCED", "No sé cuál es mi nivel actual"];
     const course = ["Niños", "Adolescentes", "Adultos", "Corporativo", "Apoyo escolar", "Conversación"];
-    const states = useSelector(state => state.location.states);
-    const cities = useSelector(state => state.location.cities);
-
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        if (states.length === 0) dispatch(getProvinces());
-    }, [dispatch]);
-
-    console.log('states', states);
-    console.log('cities', cities);
+    const states = ["Buenos Aires", "Catamarca", "Chaco", "Chubut", "Ciudad Autónoma de Buenos Aires", 
+    "Córdoba", "Corrientes", "Entre Ríos", "Formosa", "Jujuy", "La Pampa", "La Rioja", "Mendoza", "Misiones", "Neuquén", "Río Negro", 
+    "Salta", "San Juan", "San Luis", "Santa Cruz", "Santa Fe", "Santiago del Estero", "Tierra del Fuego", "Tucumán"];
 
 
     //Tamaño de pantalla para carrusel
@@ -39,65 +28,16 @@ const Clases = () => {
 
     }
 
-    //Referencia del span en componente dropdown
-    const ref = createRef();
-
-    // const provincias = () => {
-    //     fetch("https://apis.datos.gob.ar/georef/api/provincias")
-    //         .then(res => res.ok ? res.json() : Promise.reject(res))
-    //         .then(json => {
-    //             let obj;
-    //             json.provincias.map(elem => {
-    //                 obj = {
-    //                     id: elem.id,
-    //                     nombre: elem.nombre
-    //                 }
-    //                 states.push(obj)
-    //             });
-    //         })
-    //         .catch(() => {
-    //             states.push("Error al cargar las provincias");
-    //         })
-    // }
-
-    // const localidades = (provincia) => {
-    //     fetch(`https://apis.datos.gob.ar/georef/api/municipios?provincia=${provincia}`)
-    //         .then(res => res.ok ? res.json() : Promise.reject(res))
-    //         .then(json => {
-    //             cities.length = 0;
-    //             json.municipios.map(elem => {
-    //                 cities.push(elem.nombre);
-    //             });
-    //         })
-    //         .catch(() => {
-    //             cities.push("Error al cargar los municipios");
-    //         })
-    // }
-
     useEffect(() => {
-
-        const observer = new MutationObserver((mutations) => {
-            mutations.forEach((mutation) => {
-                if (mutation.type === 'characterData') {
-                    console.log('El contenido del span ha cambiado a:', mutation.target.textContent);
-                    console.log('El contenido del span ha cambiado a:', typeof mutation.target.parentElement.id);
-                    dispatch(getCities(mutation.target.parentElement.id));
-                }
-            });
-        });
-
-        observer.observe(ref.current, { characterData: true, subtree: true });
-
+    
         //Manejar tamaño de pantalla
         const handleResizeWindow = () => setWidth(window.innerWidth);
-        // subscribe to window resize event "onComponentDidMount"
         window.addEventListener("resize", handleResizeWindow);
 
         return () => {
-            // provincias();
-            // unsubscribe "onComponentDestroy"
             window.removeEventListener("resize", handleResizeWindow);
         }
+
     }, []);
 
     return (
@@ -186,24 +126,25 @@ const Clases = () => {
                                     <p className="fw-bold text-black">{errors.nacimiento?.message}</p>
                                 </div>
 
-                                <div className={styles.input_container}>
-                                    <Dropdown array={states} placeholder="Provincia" provincia={true} ref={ref} />
-                                    <input type="text" className="d-none" {...register("provincia", { required: "Campo requerido" })} />
+                                <div>
+                                    <select name="" id="" defaultValue="default" className={styles.form_select}>
+                                        <option value="default" disabled>Provincia</option>
+                                        {states.map(elem => <option key={elem} value={elem} className={styles.options_bg}>{elem}</option>)}
+                                    </select>
                                 </div>
 
-                                <div className={styles.input_container}>
-                                    <Dropdown array={cities} placeholder="Localidad" localidad={true} />
-                                    <input type="text" className="d-none" {...register("localidad", { required: "Campo requerido" })} />
+                                <div>
+                                    <select name="" id="" defaultValue="default" className={styles.form_select}>
+                                        <option value="default" disabled>Nivel</option>
+                                        {level.map(elem => <option key={elem} value={elem} className={styles.options_bg}>{elem}</option>)}
+                                    </select>
                                 </div>
 
-                                <div className={styles.input_container}>
-                                    <Dropdown array={level} placeholder="Nivel" />
-                                    <input type="text" className="d-none" {...register("nivel", { required: "Campo requerido" })} />
-                                </div>
-
-                                <div className={styles.input_container}>
-                                    <Dropdown array={course} placeholder="Curso de mi interés" />
-                                    <input type="text" className="d-none" {...register("cursos", { required: "Campo requerido" })} />
+                                <div>
+                                    <select name="" id="" defaultValue="default" className={styles.form_select}>
+                                        <option value="default" disabled>Curso de mi interés</option>
+                                        {course.map(elem => <option key={elem} value={elem} className={styles.options_bg}>{elem}</option>)}
+                                    </select>
                                 </div>
 
                                 <div className={styles.submit_container}>
