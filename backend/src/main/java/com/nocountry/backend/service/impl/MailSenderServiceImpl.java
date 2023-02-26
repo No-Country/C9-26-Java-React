@@ -17,12 +17,12 @@ public class MailSenderServiceImpl implements IMailSenderService {
     private final JavaMailSender mailSender;
 
     @Override
-    public void sendEmail(String to, String subject, String body) throws MessagingException {
+    public void sendEmail(String to, String subject, String text) throws MessagingException {
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message);
         helper.setTo(to);
         helper.setSubject(subject);
-        helper.setText(body, true);
+        helper.setText(text, true);
         mailSender.send(message);
     }
 }

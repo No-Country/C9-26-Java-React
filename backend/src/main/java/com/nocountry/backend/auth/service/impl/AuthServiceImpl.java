@@ -65,7 +65,7 @@ public class AuthServiceImpl implements IAuthService {
 
                 String to = request.getUsername();
                 String subject = "Acceso al Campus Virtual";
-                String body = "<html><body>"
+                String text = "<html><body>"
                                 + "<p>Estimado/a estudiante,</p>"
                                 + "<p>Le informamos que ya cuenta con acceso al Campus Virtual.</p>"
                                 + "<p>A continuación, encontrará los detalles de inicio de sesión:</p>"
@@ -78,12 +78,13 @@ public class AuthServiceImpl implements IAuthService {
                                 + "</body></html>";
 
                 try {
-                        mailSender.sendEmail(to, subject, body);
+                        mailSender.sendEmail(to, subject, text);
                 } catch (MessagingException e) {
                         e.printStackTrace();
                 }
 
                 return AuthResponseDto.builder()
+                                .studentId(student.getId())
                                 .role(user.getRole())
                                 .token(jwt)
                                 .build();
@@ -99,6 +100,7 @@ public class AuthServiceImpl implements IAuthService {
                 var jwt = jwtProvider.generateToken(user);
 
                 return AuthResponseDto.builder()
+                                .studentId(user.getStudent().getId())
                                 .role(user.getRole())
                                 .token(jwt)
                                 .build();

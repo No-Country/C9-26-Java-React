@@ -53,6 +53,10 @@ public class AppointmentServiceImpl implements IAppointmentService {
             appointment.setSchedule(appointmentDto.getSchedule());
         }
 
+        if (appointmentDto.getDescription() != null) {
+            appointment.setDescription(appointmentDto.getDescription());
+        }
+
         if (appointmentDto.getEmail() != null) {
             appointment.setEmail(appointmentDto.getEmail());
         }
@@ -65,19 +69,20 @@ public class AppointmentServiceImpl implements IAppointmentService {
 
         var scheduledAppointment = appointmentRepository.save(appointment);
 
-        String to = appointmentDto.getEmail();
-        String subject = "Nuevo turno programado";
-        String body = "<html><body>"
-                + "<p>Estimado/a " + appointmentDto.getFullName() + ",</p>"
-                + "<p>Le informamos que se ha programado un nuevo turno para el día " + appointmentDto.getDate()
-                + " a las " + appointmentDto.getSchedule() + ".</p>"
-                + "<p>Por favor, asegúrese de estar disponible en el día y horario indicados.</p>"
+        String to = scheduledAppointment.getEmail();
+        String subject = "Información sobre " + scheduledAppointment.getDescription();
+        String text = "<html><body>"
+                + "<p>Estimado/a " + scheduledAppointment.getFullName() + ",</p>"
+                + "<p>Le informamos que se ha programado un nuevo turno para el día " + scheduledAppointment.getDate()
+                + " a las " + scheduledAppointment.getSchedule() + ".</p>"
+                + "<p>Por favor, asegúrese de estar disponible en el día y horario indicados y tenga en cuenta que la entrevista se realizará de manera online.</p>"
+                + "<p>Para garantizar una buena experiencia de entrevista, es importante disponer de un dispositivo con conexión estable a internet, cámara y micrófono.</p>"
                 + "<p>Cualquier consulta, no dude en ponerse en contacto con nosotros.</p>"
                 + "<p>Atentamente,<br>Bright English</p>"
                 + "</body></html>";
 
         try {
-            mailSender.sendEmail(to, subject, body);
+            mailSender.sendEmail(to, subject, text);
         } catch (MessagingException e) {
             e.printStackTrace();
         }
