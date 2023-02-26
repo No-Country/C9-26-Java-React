@@ -57,7 +57,7 @@ public class UploadMediaController {
     public ResponseEntity<Map> deleteMedia(@RequestParam Long id) throws IOException {
         MediaResource mediaToDelete = mediaRepository.getReferenceById(id);
         mediaRepository.delete(mediaToDelete);
-        Map resultado = cloudinaryService.delete(mediaToDelete);
-        return new ResponseEntity<>(resultado, HttpStatus.ACCEPTED);
+        Map response = cloudinaryService.delete(mediaToDelete);
+        return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
     }
 }

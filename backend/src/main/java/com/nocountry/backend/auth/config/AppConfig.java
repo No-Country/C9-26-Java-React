@@ -1,5 +1,9 @@
 package com.nocountry.backend.auth.config;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -14,6 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import com.cloudinary.Cloudinary;
 import com.nocountry.backend.auth.repository.IUserRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -23,6 +28,26 @@ import lombok.RequiredArgsConstructor;
 public class AppConfig implements WebMvcConfigurer {
 
     private final IUserRepository userRepository;
+
+    @Value("${CLOUD_NAME}")
+    private final String CLOUD_NAME;
+
+    @Value("${API_KEY_CLOUD}")
+    private final String API_KEY_CLOUD;
+
+    @Value("${API_SECRET}")
+    private final String API_SECRET;
+
+    @Bean
+    public Cloudinary cloudinaryConfig() {
+        Cloudinary cloudinary;
+        Map<String, String> config = new HashMap<>();
+        config.put("cloud_name", CLOUD_NAME);
+        config.put("api_key", API_KEY_CLOUD);
+        config.put("api_secret", API_SECRET);
+        cloudinary = new Cloudinary(config);
+        return cloudinary;
+    }
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
