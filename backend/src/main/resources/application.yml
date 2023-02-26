@@ -6,6 +6,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: ${DDL_CONFIG}
+    show-sql: true
     database: mysql
     database-platform: org.hibernate.dialect.MySQLDialect
   mail:
