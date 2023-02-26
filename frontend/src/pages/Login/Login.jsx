@@ -9,12 +9,13 @@ import { login } from '../../store/actions/userActions';
 import { useEffect, useState } from 'react';
 import { useAuth, useLoading, useUserInfo } from '../../hooks/userHooks';
 import { useNavigate } from 'react-router-dom';
-import { CAMPUS, HOME } from '../../config/routes/paths';
+import { ADD_STUDENT, CAMPUS, HOME } from '../../config/routes/paths';
 
 import Home from '../Home/Home';
 
 const Login = () => {
   const { isAuthenticated } = useAuth();
+  const role = useSelector(state=>state.user.role);
   const isLoading = useLoading();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -27,7 +28,11 @@ const Login = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate(CAMPUS)
+      if(role == 'ADMIN'){
+      navigate(ADD_STUDENT)
+      }else{
+        navigate(CAMPUS)
+      }
     }
   }, [isAuthenticated])
 
