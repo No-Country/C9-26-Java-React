@@ -4,9 +4,8 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
-   hibernate:
+    hibernate:
       ddl-auto: ${DDL_CONFIG}
-    show-sql: true
     database: mysql
     database-platform: org.hibernate.dialect.MySQLDialect
   mail:
@@ -14,7 +13,7 @@ spring:
     port: 587
     protocol: smtp
     username: ${EMAIL_USER}
-    password: #${EMAIL_PASSWORD}
+    password: ${EMAIL_PASSWORD}
     properties:
       mail:
         smtp:
