@@ -2,6 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     students: [],
+    courses: [],
+    teachers: [],
     status: "idle",
     error: null,
 };
