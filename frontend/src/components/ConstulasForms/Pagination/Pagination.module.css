@@ -1,0 +1,35 @@
+.turnero_iconLeft {
+    border: none!important;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    padding: 8px;
+}
+
+.turnero_iconRight {
+    border: none!important;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 8px;
+}
+
+.turnero_pagination {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border: 1px solid #F5F5F5;
+    border-radius: 17px;
+    padding: 10px;
+}
+
+.turnero_pagSelect {
+    padding: 5px;
+    border-radius: 8px;
+    background-color: #D9D9D9;
+    color: black!important;
+    font-weight: bold;
+}
+
+.turnero_pagUnselect {
+    color: #ffffff;
+    font-weight: bold;
+}

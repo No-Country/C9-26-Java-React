@@ -12,7 +12,9 @@
     
 }
 
+
 .programUl{
+
     width: 300px;
     border-right: 2px solid #D9D9D9;
 }
@@ -24,12 +26,15 @@
 
 
 @media (max-width: 1750px) {
+
     .programUl{        
+
         border-bottom: 3px solid #D9D9D9;
     }
   }
   
 @media (max-width: 670px) {
+
     .programUl{        
         border-right: none;        
     }

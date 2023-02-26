@@ -1,0 +1,135 @@
+/* Horario Turnero */
+
+.turnero_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+}
+
+.turnero_container {
+    width: 55.75rem;
+    height: 43.62rem;
+    border-radius: 20px;
+    background-color: #0ECECEB2;
+    padding: 40px;
+    margin-top: 2rem;
+    margin-left: 10rem;
+}
+
+.turnero_title {
+    color: #FFFFFF;
+    font-weight: bold;
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.turnero_radio {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.turnero_radio input {
+    width: 26px;
+    height: 26px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.turnero_radioCont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 14.75rem;
+    height: 2.62rem;
+    border: none;
+    background-color: #F5F5F5;
+    margin-bottom: 20px;
+}
+
+.turnero_submit {
+    display: flex;
+    justify-content: center;
+}
+
+.turnero_submit input {
+    width: 100%;
+    max-width: 9.87rem;
+    height: 2.25rem;
+    border-radius: 40px;
+    border: none;
+    color: #fff;
+    background-color: #222221;
+    font-weight: 700;
+}
+
+.turnero_announce {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 18.37rem;
+    height: 19.62rem;
+    background-color: #0ECECEB2;
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 40px;
+}
+
+.turnero_announceContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    align-self: end;
+    margin-right: 10rem;
+}
+
+/* Media Queries */
+
+@media (max-width: 1200px) {
+    .turnero_container {
+        width: 37.75rem;
+    }
+
+    .turnero_title {
+        margin-left: 80px;
+    }
+
+    .turnero_radioCont span {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 950px) {
+    .turnero_container {
+        width: 100%;
+        max-width: 37.75rem;
+        margin-left: 0;
+    }
+
+    .turnero_announceContainer {
+        display: none;
+    }
+}
+
+@media (max-width: 620px) { 
+    .turnero_title {
+        margin-left: 0;
+    }
+
+    .turnero_radio {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        margin-top: 30px;
+    }
+}
