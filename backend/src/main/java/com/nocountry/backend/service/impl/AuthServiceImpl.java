@@ -1,21 +1,21 @@
-package com.nocountry.backend.auth.service.impl;
+package com.nocountry.backend.service.impl;
 
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.nocountry.backend.auth.config.jwt.JwtProvider;
-import com.nocountry.backend.auth.dto.AuthRequestDto;
-import com.nocountry.backend.auth.dto.AuthResponseDto;
-import com.nocountry.backend.auth.dto.RegisterRequestDto;
-import com.nocountry.backend.auth.model.User;
-import com.nocountry.backend.auth.repository.IUserRepository;
-import com.nocountry.backend.auth.service.IAuthService;
-import com.nocountry.backend.auth.utils.enums.Role;
+import com.nocountry.backend.config.jwt.JwtProvider;
+import com.nocountry.backend.dto.AuthRequestDto;
+import com.nocountry.backend.dto.AuthResponseDto;
+import com.nocountry.backend.dto.RegisterRequestDto;
 import com.nocountry.backend.model.Student;
+import com.nocountry.backend.model.User;
 import com.nocountry.backend.repository.IStudentRepository;
+import com.nocountry.backend.repository.IUserRepository;
+import com.nocountry.backend.service.IAuthService;
 import com.nocountry.backend.service.IMailSenderService;
+import com.nocountry.backend.utils.enums.Role;
 
 import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;

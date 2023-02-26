@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.nocountry.backend.auth.model.User;
 import com.nocountry.backend.utils.enums.Level;
 
 import jakarta.persistence.CascadeType;

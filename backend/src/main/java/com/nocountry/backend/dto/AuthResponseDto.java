@@ -1,4 +1,4 @@
-package com.nocountry.backend.auth.dto;
+package com.nocountry.backend.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,9 +9,11 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthRequestDto {
+public class AuthResponseDto {
 
-    private String username;
+    private Long studentId;
 
-    private String password;
+    private String role;
+
+    private String token;
 }

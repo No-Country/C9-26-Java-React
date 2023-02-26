@@ -1,4 +1,4 @@
-package com.nocountry.backend.auth.dto;
+package com.nocountry.backend.dto;
 
 import com.nocountry.backend.utils.enums.Level;
 

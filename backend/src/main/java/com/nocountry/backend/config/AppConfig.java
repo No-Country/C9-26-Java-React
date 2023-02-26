@@ -1,4 +1,4 @@
-package com.nocountry.backend.auth.config;
+package com.nocountry.backend.config;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,7 +19,7 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.cloudinary.Cloudinary;
-import com.nocountry.backend.auth.repository.IUserRepository;
+import com.nocountry.backend.repository.IUserRepository;
 
 import lombok.RequiredArgsConstructor;
 

@@ -1,4 +1,4 @@
-package com.nocountry.backend.auth.controller;
+package com.nocountry.backend.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.nocountry.backend.auth.dto.AuthRequestDto;
-import com.nocountry.backend.auth.dto.AuthResponseDto;
-import com.nocountry.backend.auth.dto.RegisterRequestDto;
-import com.nocountry.backend.auth.service.IAuthService;
+import com.nocountry.backend.dto.AuthRequestDto;
+import com.nocountry.backend.dto.AuthResponseDto;
+import com.nocountry.backend.dto.RegisterRequestDto;
+import com.nocountry.backend.service.IAuthService;
 
 import lombok.RequiredArgsConstructor;
 

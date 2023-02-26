@@ -1,4 +1,4 @@
-package com.nocountry.backend.auth.model;
+package com.nocountry.backend.model;
 
 import java.util.Collection;
 import java.util.List;
@@ -8,7 +8,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.nocountry.backend.model.Student;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;

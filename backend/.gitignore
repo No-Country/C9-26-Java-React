@@ -9,6 +9,7 @@
 target/
 .vercel/
 pnpm-lock.yaml
+src/main/resources/application.properties
 
 # User-specific stuff
 .idea/**/workspace.xml
@@ -353,6 +354,3 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/linux,macos,windows,intellij+all,node,java,visualstudiocode
-
-
-src/main/resources/application.properties

@@ -1,4 +1,4 @@
-package com.nocountry.backend.auth.config;
+package com.nocountry.backend.config;
 
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -7,11 +7,11 @@ import org.springframework.core.annotation.Order;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import com.nocountry.backend.auth.model.User;
-import com.nocountry.backend.auth.repository.IUserRepository;
-import com.nocountry.backend.auth.utils.enums.Role;
 import com.nocountry.backend.model.Student;
+import com.nocountry.backend.model.User;
 import com.nocountry.backend.repository.IStudentRepository;
+import com.nocountry.backend.repository.IUserRepository;
+import com.nocountry.backend.utils.enums.Role;
 
 import lombok.RequiredArgsConstructor;
 

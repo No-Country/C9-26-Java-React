@@ -1,4 +1,4 @@
-package com.nocountry.backend.auth.config.jwt;
+package com.nocountry.backend.config.jwt;
 
 import java.security.Key;
 import java.util.Date;
