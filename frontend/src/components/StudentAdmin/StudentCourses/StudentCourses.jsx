@@ -1,9 +1,14 @@
 import { NavLink } from "react-router-dom";
 import { RiPencilFill } from 'react-icons/ri';
+import { CAMPUS } from "../../../config/routes/paths";
 
 import styles from "./StudentCourses.module.css";
 
 const StudentCourses = ({ location }) => {
+
+    const scrollToTop = () => {
+        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+    }
 
     return (
         <section className={styles.courses_bg}>
@@ -53,8 +58,8 @@ const StudentCourses = ({ location }) => {
             </div>
 
             {
-                location === "/student" &&
-                <NavLink to="#">
+                location === "/private/student" &&
+                <NavLink to={CAMPUS} onClick={() => scrollToTop()}>
                     <button className={styles.courses_button}>IR AL CAMPUS</button>
                 </NavLink>
             }

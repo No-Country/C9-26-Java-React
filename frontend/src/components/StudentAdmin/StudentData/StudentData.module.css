@@ -1,6 +1,10 @@
 .profile_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    max-width: 20rem;
+    max-width: 21.75rem;
 }
 
 label {
@@ -14,7 +18,7 @@ label {
 .profile_labelImg {
     position: absolute;
     bottom: 0;
-    right: 4rem;
+    right: 0.7rem;
 }
 
 .profile_uploadImage {
@@ -53,10 +57,24 @@ label {
     .profile_pictureContainer img {
         width: 200px;
     }
+
+    .profile_labelImg {
+        position: absolute;
+        bottom: 0;
+        right: 1.8rem;
+    }
 }
 
 @media(max-width: 1130px) {
     .profile_container {
         margin-bottom: 20px;
+    }
+}
+
+@media(max-width: 700px) {
+    .profile_container {
+        background-color: #0ECECEB2;
+        border-radius: 20px;
+        padding: 20px;
     }
 }
