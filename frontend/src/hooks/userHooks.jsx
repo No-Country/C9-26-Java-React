@@ -1,17 +1,32 @@
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { setSession } from "../store/actions/userActions";
+import { useNavigate } from "react-router-dom";
+import { ADD_STUDENT, CAMPUS } from "../config/routes/paths";
+
 
 export const useAuth = () => {
-    const [token, setToken] = useState(null);
-    const userToken = useSelector((state) => state.user.token);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const token = useSelector((state) => state.user.token);
+
+    if (token === null) {
+        var session = JSON.parse(localStorage.getItem("nc_be_session"));
+    }
 
     useEffect(() => {
-        if (userToken) {
-            setToken(userToken);
+        if (session) {
+            dispatch(setSession(session));
+            if (session.role === "ADMIN") {
+                navigate(ADD_STUDENT);
+            } else if (session.role === "STUDENT") {
+                navigate(CAMPUS);
+            }
         }
-    }, [userToken]);
+    }, [dispatch, navigate, session])
 
-    const isAuthenticated = token === null ? false : true;
+
+    const isAuthenticated = token !== null
 
     return { isAuthenticated, token };
 }
