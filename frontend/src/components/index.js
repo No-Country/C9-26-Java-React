@@ -1,6 +1,9 @@
 export { default as CampusHeader } from './CampusSections/CampusHeader/CampusHeader';
+export { default as CampusMenu } from './CampusSections/CampusMenu/CampusMenu';
 export { default as Chat } from './CampusSections/Chat/Chat';
 export { default as Events } from './CampusSections/Events/Events';
+export { default as MediaArticle } from './CampusSections/Multimedia/MediaArticle/MediaArticle';
+export { default as MediaCard } from './CampusSections/Multimedia/MediaCard/MediaCard';
 export { default as Multimedia } from './CampusSections/Multimedia/Multimedia';
 export { default as Program } from './CampusSections/Program/Program';
 export { default as Tasks } from './CampusSections/Tasks/Tasks';
