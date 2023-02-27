@@ -63,3 +63,11 @@
 .payment_input:disabled {
     background-color: #FFFFFF;
 }
+
+/* Media Queries */
+
+@media(max-width: 1130px) { 
+    .payment_container {
+        padding: 20px;
+    }
+}

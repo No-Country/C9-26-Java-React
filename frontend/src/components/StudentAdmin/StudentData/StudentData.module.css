@@ -7,7 +7,7 @@ label {
     color: #FFFFFF;
 }
 
-.profile_pictureContainter {
+.profile_pictureContainer {
     position: relative;
 }
 
@@ -44,4 +44,19 @@ label {
 
 .profile_input:disabled {
     background-color: #FFFFFF;
+}
+
+
+/* Media Queries */
+
+@media(max-width: 1200px) {
+    .profile_pictureContainer img {
+        width: 200px;
+    }
+}
+
+@media(max-width: 1130px) {
+    .profile_container {
+        margin-bottom: 20px;
+    }
 }
