@@ -75,3 +75,21 @@
     margin-top: -0.8rem;
     z-index: 1;
 }
+
+.user__link {
+    color: #a9a9a9;
+    font-size: 0.85rem;
+    text-decoration: none;
+}
+
+.user__link:hover {
+    text-decoration: underline;
+}
+
+.user__link:visited {
+    color: #a9a9a9;
+}
+
+.user__link:active {
+    color: #CB8DF1;
+}

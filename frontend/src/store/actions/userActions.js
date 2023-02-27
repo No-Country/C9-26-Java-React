@@ -37,6 +37,9 @@ export const studentInfo = createAsyncThunk(
             return info;
 
         } catch (error) {
+            if (error.response.status === 403) {
+                localStorage.removeItem('nc_be_session');
+            }
             return rejectWithValue(error.response.data);
         }
     }
@@ -47,7 +50,9 @@ export const setSession = createAsyncThunk(
     async (session, { dispatch, rejectWithValue }) => {
         try {
             const { token } = session
+
             dispatch(studentInfo(token))
+
             return session;
         } catch (error) {
             return rejectWithValue(error.response.data)
