@@ -45,6 +45,7 @@ function App() {
           <Route path={EXAMS} element={<Examenes />} />
           <Route path={SERVICES} element={<Servicios />} />
           <Route path={CONSULTATION} element={<Consultas />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
         <Route path={PRIVATE} element={<PrivateRoute />}>
           <Route index element={<Profile />} />
@@ -57,9 +58,10 @@ function App() {
             <Route path={CHAT} element={<Chat />} />
             <Route path={EVENTS} element={<Events />} />
             <Route path={TASKS} element={<Tasks />} />
+            <Route path="*" element={<NotFound />} />
           </Route>
+          <Route path="*" element={<NotFound />} />
         </Route>
-        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
