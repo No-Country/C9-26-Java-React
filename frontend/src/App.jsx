@@ -29,7 +29,7 @@ import {
   Consultas,
   Alumno,
   Login,
-  /* NotFound */
+  NotFound
 } from './pages';
 import { Navigate } from 'react-router-dom';
 
@@ -59,7 +59,7 @@ function App() {
             <Route path={TASKS} element={<Tasks />} />
           </Route>
         </Route>
-        {/* <Route path="*" element={<NotFound />} /> */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
