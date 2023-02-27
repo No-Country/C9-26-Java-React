@@ -2,6 +2,7 @@ package com.nocountry.backend.dto;
 
 import java.util.List;
 
+import com.nocountry.backend.model.MediaResource;
 import com.nocountry.backend.utils.enums.Level;
 
 import lombok.AllArgsConstructor;
@@ -21,7 +22,7 @@ public class StudentDetailsDto {
 
     private String lastName;
 
-    private String imageUrl;
+    private MediaResource imageResource;
 
     private Long dni;
 

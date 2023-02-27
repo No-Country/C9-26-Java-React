@@ -1,10 +1,6 @@
 package com.nocountry.backend.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,7 +20,9 @@ public class Quiz {
 
     private String description;
 
-    private String videoUrl;
+    @OneToOne
+    @JoinColumn(name = "video_resource_id")
+    private MediaResource videoResource;
 
     private String questionsAndAnswers;
 }

@@ -42,7 +42,9 @@ public class Student {
 
     private String lastName;
 
-    private String imageUrl;
+    @OneToOne
+    @JoinColumn(name = "image_resource_id")
+    private MediaResource imageResource;
 
     private Long dni;
 

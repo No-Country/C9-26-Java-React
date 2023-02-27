@@ -89,8 +89,8 @@ public class StudentServiceImpl implements IStudentService {
             student.setLastName(StudentDetailsDto.getLastName());
         }
 
-        if (StudentDetailsDto.getImageUrl() != null) {
-            student.setImageUrl(StudentDetailsDto.getImageUrl());
+        if (StudentDetailsDto.getImageResource() != null) {
+            student.setImageResource(StudentDetailsDto.getImageResource());
         }
 
         if (StudentDetailsDto.getDni() != null) {
