@@ -1,8 +1,18 @@
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 export const useAuth = () => {
-    const token = useSelector((state) => state.user.token);
+    const [token, setToken] = useState(null);
+    const userToken = useSelector((state) => state.user.token);
+
+    useEffect(() => {
+        if (userToken) {
+            setToken(userToken);
+        }
+    }, [userToken]);
+
     const isAuthenticated = token === null ? false : true;
+
     return { isAuthenticated, token };
 }
 
