@@ -12,24 +12,17 @@ import { MULTIMEDIA, PROGRAM, CHAT, EVENTS, TASKS } from "../../../config/routes
 import styles from "./CampusMenu.module.css"
 
 const CampusMenu = () => {
-    const [show, setShow] = useState(false)
+    const [show, setShow] = useState(true)
 
-    const getStyle = useCallback(
-        (isActive) =>
-            useMemo(
-                () => ({
-                    backgroundColor: "#D9D9D999",
-                    borderRadius: "5px",
-                    padding: "10px",
-                    marginLeft: "0",
-                    fontSize: "85%",
-                    height: "40px",
-                    fontWeight: "bold",
-                }),
-                [isActive]
-            ),
-        []
-    )
+    const getStyle =
+        ({ isActive }) => isActive ? {
+            backgroundColor: "#D9D9D999",
+            borderRadius: "5px",
+            padding: "10px",
+            fontSize: "85%",
+            height: "40px",
+            fontWeight: "bold",
+        } : undefined
 
     return (
         <div className={`${styles.menu}`} >

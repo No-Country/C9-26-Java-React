@@ -1,6 +1,8 @@
+import { Link } from 'react-router-dom';
+import { useUserInfo } from '../../../hooks/userHooks';
+import { STUDENT } from '../../../config/routes/paths';
 import styles from './UserInfo.module.css';
 import LevelProgress from './LevelProgress';
-import { useUserInfo } from '../../../hooks/userHooks';
 
 const UserInfo = () => {
     const { firstName, level } = useUserInfo();
@@ -13,7 +15,7 @@ const UserInfo = () => {
                 </div>
                 <div className={styles.user__name}>
                     <h2>¡Hola, {firstName || 'usuario'}!</h2>
-                    <p>Student</p>
+                    <Link to={STUDENT} className={styles.user__link}>Mi Perfil</Link>
                 </div>
             </div>
             <LevelProgress level={level} />

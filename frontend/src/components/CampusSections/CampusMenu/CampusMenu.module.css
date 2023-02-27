@@ -27,17 +27,18 @@
     display: flex;
     align-items: center;
     margin: 10px;
+    padding: 10px;
     font-size: 85%;
     text-transform: uppercase;
     color: white;
     height: 40px;
     text-decoration: none;
+    box-sizing: border-box;
 }
 
 .menu__item img {
     width: 20px;
     height: 20px;
-
     vertical-align: middle;
 }
 
@@ -49,8 +50,6 @@
     color: white;
     background-color: #D9D9D933;
     border-radius: 5px;
-    padding: 10px;
-    margin-left: 0px;
     height: 40px
 }
 
