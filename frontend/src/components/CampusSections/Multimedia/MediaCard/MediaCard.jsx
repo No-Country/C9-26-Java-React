@@ -13,7 +13,7 @@ const CardOptions = ({ link }) => {
     const toggleShow = () => setDisplay(!display)
 
     const show = {
-        display: display ? 'inline-flex' : 'none'
+        display: display ? 'inline-flex' : 'none',
     }
 
     return (
@@ -39,18 +39,26 @@ const MediaCard = ({ data }) => {
     const avatarStyle = {
         backgroundColor: `#${Math.floor(Math.random() * 16777215).toString(16)}`,
         color: 'white',
+        width: '50px',
+        height: '50px',
+        borderRadius: '50%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
     }
 
     return (
         // <Link to={link} target='_blank' className='text-decoration-none'>
-        <Card style={{ width: '100%', minWidth: '280px', maxWidth: '340px' }} className='rounded-4 bg-dark'>
+        <Card style={{ width: '100%', minWidth: '300px', maxWidth: '380px' }} className='rounded-4 bg-dark'>
             <Card.Img variant="top" src={image} className='rounded-4' />
 
             <Card.Body>
-                <Card.Title className='text-white fs-5 d-flex'>
-                    <span className={styles.title__avatar} style={avatarStyle}>
-                        {titleAvatar}
-                    </span>
+                <Card.Title className='text-white fs-5 d-flex align-items-center'>
+                    <div className={styles.title__avatar} >
+                        <span style={avatarStyle}>
+                            {titleAvatar}
+                        </span>
+                    </div>
                     <span className='ms-3'>{title}</span>
                     <div className='ms-auto'>
                         <CardOptions link={link} />

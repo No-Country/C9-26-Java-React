@@ -3,27 +3,27 @@
     {
       "id": "1",
       "title": "How to write an English love letter.",
-      "description": "lorem ipsum dolorem sit amet",
+      "description": "Learn useful English words and phrases for writing love letters to the people you care about!",
       "imgUrl": "http://unsplash.it/300/200?image=1"
     },
     {
       "id": "2",
-      "title": "material2",
-      "description": "dolorem sit amet and more",
+      "title": "Everyday English - Slang English Vocabulary",
+      "description": "Learn British English slang phrases in context in this listening and vocabulary lesson and quiz!",
       "imgUrl": "http://unsplash.it/300/200?image=2",
       "link": "http://www.example.com"
     },
     {
       "id": "3",
-      "title": "material3",
-      "description": "ipsum dolorem sit amet and more and more ",
+      "title": "Expressions for everyday life",
+      "description": "English Words and Expressions for Everyday Life",
       "imgUrl": "http://unsplash.it/300/200?image=3",
       "link": "http://www.example.com"
     },
     {
       "id": "4",
-      "title": "material3",
-      "description": "ipsum dolorem sit amet and more and more ",
+      "title": "Kids explain: What is love? ",
+      "description": "Love is difficult to put into words. So with Valentine’s Day approaching, we thought it would be fun to go out on the street to ask kids to explain love.",
       "imgUrl": "http://unsplash.it/300/200?image=4",
       "link": "http://www.example.com"
     },
