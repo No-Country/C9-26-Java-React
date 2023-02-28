@@ -23,7 +23,7 @@ import {
 } from '../../config/routes/paths';
 
 function Header() {
-    const { isAuthenticated } = useAuth();
+    const { isAuthenticated, role } = useAuth();
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const location = useLocation();
@@ -59,21 +59,22 @@ function Header() {
                         <span className="text-white d-none d-md-block">bright.english@email.com.ar</span>
                     </div>
                     <div className="py-2 d-flex gap-2 ms-auto">
-                        <Button
-                            style={{ maxWidth: '180px', background: '#CB8DF1', color: '#000', border: 'none' }}
-                            className="d-flex justify-content-center align-items-center text-uppercase rounded-5 px-4 w-4"
-                            onClick={() => handleClick(isAuthenticated)}>
-                            {isAuthenticated ? (
-                                <>
-                                    <FaBook scale={2} className="m-0" /> <span className="ms-2">Campus</span>
-                                </>
-                            ) : (
-                                <>
-                                    <FaUser scale={2} className="m-0 me-md-2" />
-                                    <span className="d-none d-md-block">Ingresar</span>
-                                </>
-                            )}
-                        </Button>
+                        {role !== 'ADMIN' && (
+                            <Button
+                                style={{ maxWidth: '180px', background: '#CB8DF1', color: '#000', border: 'none' }}
+                                className="d-flex justify-content-center align-items-center text-uppercase rounded-5 px-4 w-4"
+                                onClick={() => handleClick(isAuthenticated)}>
+                                {isAuthenticated ? (
+                                    <>
+                                        <FaBook scale={2} className="m-0" /> <span className="ms-2">Campus</span>
+                                    </>
+                                ) : (
+                                    <>
+                                        <FaUser scale={2} className="m-0 me-md-2" />
+                                        <span className="d-none d-md-block">Ingresar</span>
+                                    </>
+                                )}
+                            </Button>)}
                         {isAuthenticated && (
                             <OverlayTrigger
                                 placement={'bottom'}
@@ -96,7 +97,7 @@ function Header() {
             <Navbar
                 collapseOnSelect
                 expand="lg"
-                style={{ background: '#212121' }}
+                style={{ background: '#3F3D3D' }}
                 className="sticky-top shadow-sm">
                 <Container fluid className="d-flex">
                     <NavLink to={HOME}>
