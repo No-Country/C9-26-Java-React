@@ -15,11 +15,7 @@ public class QuizDto {
 
     private String title;
 
-    private Boolean completed;
+    private Boolean status;
 
     private Long studentId;
-
-    private String studentFirstName;
-
-    private String studentLastName;
 }

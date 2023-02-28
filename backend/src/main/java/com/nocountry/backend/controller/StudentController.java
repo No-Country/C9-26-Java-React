@@ -83,13 +83,6 @@ public class StudentController {
     }
 
     @PreAuthorize("hasRole('ADMIN')")
-    @PatchMapping("/admin/{studentId}/add/quizzes/{quizId}")
-    public ResponseEntity<String> addQuizToStudent(@PathVariable Long studentId, @PathVariable Long quizId) {
-        studentService.addQuizToStudent(studentId, quizId);
-        return new ResponseEntity<>("Quiz successfully added to student", HttpStatus.OK);
-    }
-
-    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/admin/{studentId}/delete")
     public ResponseEntity<String> deleteStudent(@PathVariable Long studentId) {
         studentService.deleteStudent(studentId);

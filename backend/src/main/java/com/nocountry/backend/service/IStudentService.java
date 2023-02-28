@@ -21,7 +21,5 @@ public interface IStudentService {
 
     void addPaymentToStudent(Long studentId, Long paymentId);
 
-    void addQuizToStudent(Long studentId, Long paymentId);
-
     void deleteStudent(Long studentId);
 }
