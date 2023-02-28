@@ -37,7 +37,25 @@ public class AppointmentServiceImpl implements IAppointmentService {
     @Override
     public AppointmentDto createAppointment(AppointmentDto appointmentDto) {
         var appointment = appointmentMapper.convertToEntity(appointmentDto);
-        appointment.setAvailable(true);
+
+        String to = appointment.getEmail();
+        String subject = "Información sobre " + appointment.getDescription();
+        String text = "<html><body>"
+                + "<p>Estimado/a " + appointment.getFullName() + ",</p>"
+                + "<p>Le informamos que se ha programado un nuevo turno para el día " + appointment.getDate()
+                + " a las " + appointment.getSchedule() + ".</p>"
+                + "<p>Por favor, asegúrese de estar disponible en el día y horario indicados y tenga en cuenta que la entrevista se realizará de manera online.</p>"
+                + "<p>Para garantizar una buena experiencia de entrevista, es importante disponer de un dispositivo con conexión estable a internet, cámara y micrófono.</p>"
+                + "<p>Cualquier consulta, no dude en ponerse en contacto con nosotros.</p>"
+                + "<p>Atentamente,<br>Bright English</p>"
+                + "</body></html>";
+
+        try {
+            mailSender.sendEmail(to, subject, text);
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+
         return appointmentMapper.convertToDto(appointmentRepository.save(appointment));
     }
 
@@ -65,27 +83,7 @@ public class AppointmentServiceImpl implements IAppointmentService {
             appointment.setFullName(appointmentDto.getFullName());
         }
 
-        appointment.setAvailable(false);
-
         var scheduledAppointment = appointmentRepository.save(appointment);
-
-        String to = scheduledAppointment.getEmail();
-        String subject = "Información sobre " + scheduledAppointment.getDescription();
-        String text = "<html><body>"
-                + "<p>Estimado/a " + scheduledAppointment.getFullName() + ",</p>"
-                + "<p>Le informamos que se ha programado un nuevo turno para el día " + scheduledAppointment.getDate()
-                + " a las " + scheduledAppointment.getSchedule() + ".</p>"
-                + "<p>Por favor, asegúrese de estar disponible en el día y horario indicados y tenga en cuenta que la entrevista se realizará de manera online.</p>"
-                + "<p>Para garantizar una buena experiencia de entrevista, es importante disponer de un dispositivo con conexión estable a internet, cámara y micrófono.</p>"
-                + "<p>Cualquier consulta, no dude en ponerse en contacto con nosotros.</p>"
-                + "<p>Atentamente,<br>Bright English</p>"
-                + "</body></html>";
-
-        try {
-            mailSender.sendEmail(to, subject, text);
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        }
 
         return appointmentMapper.convertToDto(scheduledAppointment);
     }

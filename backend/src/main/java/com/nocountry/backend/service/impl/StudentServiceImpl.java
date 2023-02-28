@@ -10,6 +10,7 @@ import com.nocountry.backend.mapper.StudentMapper;
 import com.nocountry.backend.model.Student;
 import com.nocountry.backend.repository.IExamRepository;
 import com.nocountry.backend.repository.IPaymentRepository;
+import com.nocountry.backend.repository.IQuizRepository;
 import com.nocountry.backend.repository.IStudentRepository;
 import com.nocountry.backend.service.IStudentService;
 
@@ -26,6 +27,8 @@ public class StudentServiceImpl implements IStudentService {
     private final IExamRepository examRepository;
 
     private final IPaymentRepository paymentRepository;
+
+    private final IQuizRepository quizRepository;
 
     @Override
     public StudentDetailsDto getStudentByEmail(String email) {
@@ -71,6 +74,16 @@ public class StudentServiceImpl implements IStudentService {
         payment.setStudent(student);
         student.addPayment(payment);
         paymentRepository.save(payment);
+        studentRepository.save(student);
+    }
+
+    @Override
+    public void addQuizToStudent(Long studentId, Long quizId) {
+        var student = studentRepository.findById(studentId).orElseThrow();
+        var quiz = quizRepository.findById(quizId).orElseThrow();
+        quiz.setStudent(student);
+        student.addQuiz(quiz);
+        quizRepository.save(quiz);
         studentRepository.save(student);
     }
 

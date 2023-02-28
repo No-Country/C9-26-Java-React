@@ -33,6 +33,4 @@ public class Appointment {
     private String email;
 
     private String fullName;
-
-    private Boolean available;
 }

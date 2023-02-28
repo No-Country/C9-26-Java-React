@@ -1,5 +1,7 @@
 package com.nocountry.backend.dto;
 
+import com.nocountry.backend.utils.enums.Rating;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,11 +19,11 @@ public class ExamListDto {
 
     private String examDate;
 
-    private String grammar;
+    private Rating grammar;
 
-    private String speaking;
+    private Rating speaking;
 
-    private String writing;
+    private Rating writing;
 
-    private String listening;
+    private Rating listening;
 }

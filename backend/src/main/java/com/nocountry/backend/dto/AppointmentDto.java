@@ -22,6 +22,4 @@ public class AppointmentDto {
     private String email;
 
     private String fullName;
-
-    private Boolean available;
 }

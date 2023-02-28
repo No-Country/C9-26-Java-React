@@ -8,6 +8,7 @@ import com.nocountry.backend.dto.PaymentDetailsDto;
 import com.nocountry.backend.mapper.PaymentMapper;
 import com.nocountry.backend.repository.IPaymentRepository;
 import com.nocountry.backend.service.IPaymentService;
+import com.nocountry.backend.utils.enums.PaymentStatus;
 
 import lombok.RequiredArgsConstructor;
 
@@ -32,6 +33,7 @@ public class PaymentServiceImpl implements IPaymentService {
     @Override
     public PaymentDetailsDto createPayment(PaymentDetailsDto paymentDetailsDto) {
         var payment = paymentMapper.convertToEntity(paymentDetailsDto);
+        payment.setPaymentStatus(PaymentStatus.PENDING);
         return paymentMapper.convertToDetailsDto(paymentRepository.save(payment));
     }
 

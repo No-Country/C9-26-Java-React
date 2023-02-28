@@ -77,6 +77,11 @@ public class Student {
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Payment> payments = new ArrayList<>();
 
+    @JsonManagedReference
+    @Default
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Quiz> quizzes = new ArrayList<>();
+
     public void setCourse(Course course) {
         if (this.course == course) {
             return;
@@ -95,6 +100,13 @@ public class Student {
         if (!this.payments.contains(payment)) {
             this.payments.add(payment);
             payment.setStudent(this);
+        }
+    }
+
+    public void addQuiz(Quiz quiz) {
+        if (!this.quizzes.contains(quiz)) {
+            this.quizzes.add(quiz);
+            quiz.setStudent(this);
         }
     }
 }

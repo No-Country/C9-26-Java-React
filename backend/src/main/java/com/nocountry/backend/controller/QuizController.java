@@ -28,7 +28,7 @@ public class QuizController {
     private final IQuizService quizService;
 
     @GetMapping("/all")
-    public ResponseEntity<List<QuizDto>> getAllQuizs() {
+    public ResponseEntity<List<QuizDto>> getAllQuizzes() {
         return new ResponseEntity<>(quizService.getAllQuizzes(), HttpStatus.OK);
     }
 

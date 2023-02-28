@@ -32,12 +32,21 @@ public class QuizServiceImpl implements IQuizService {
     @Override
     public QuizDto createQuiz(QuizDto quizDto) {
         var quiz = quizMapper.convertToEntity(quizDto);
+        quiz.setCompleted(false);
         return quizMapper.convertToDto(quizRepository.save(quiz));
     }
 
     @Override
     public QuizDto updateQuiz(Long quizId, QuizDto quizDto) {
         var quiz = quizRepository.findById(quizId).orElseThrow();
+
+        if (quizDto.getTitle() != null) {
+            quiz.setTitle(quizDto.getTitle());
+        }
+
+        if (quizDto.getCompleted() != null) {
+            quiz.setCompleted(quizDto.getCompleted());
+        }
 
         return quizMapper.convertToDto(quizRepository.save(quiz));
     }
