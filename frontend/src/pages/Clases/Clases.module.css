@@ -1,10 +1,8 @@
-/* .clases_padding {
-    padding: 100px;
-} */
-
 .clases_margin {
     margin-top: 2.37rem;
     display: flex;
+    justify-content: center;
+    gap: 50px;
 }
 
 .clases_container {
@@ -21,7 +19,6 @@
 }
 
 .form_section {
-    margin-left: 5rem;
     width: 100%;
     max-width: 464px;
 }
