@@ -1,6 +1,7 @@
 package com.nocountry.backend.exception;
 
-public class ApiRequestException extends RuntimeException{
+public class ApiRequestException extends RuntimeException {
+
     public ApiRequestException(String message) {
         super(message);
     }

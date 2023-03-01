@@ -76,14 +76,16 @@ public class StudentServiceImpl implements IStudentService {
             MultipartFile file) throws IOException {
 
         var student = studentRepository.findById(studentId).orElseThrow();
-        String fileName = (studentDetailsDto.getFirstName()!=null && studentDetailsDto.getLastName()!=null)?studentDetailsDto.getFirstName()+"_"+studentDetailsDto.getLastName():student.getFirstName()+"_"+student.getLastName();
+        String fileName = (studentDetailsDto.getFirstName() != null && studentDetailsDto.getLastName() != null)
+                ? studentDetailsDto.getFirstName() + "_" + studentDetailsDto.getLastName()
+                : student.getFirstName() + "_" + student.getLastName();
 
         Map options = ObjectUtils.asMap(
                 "folder", "images/",
                 "overwrite", true,
                 "resource_type", "image",
                 "original_filename", fileName);
-        MediaResource response = cloudinaryService.getMediaResource(file,fileName, options);
+        MediaResource response = cloudinaryService.getMediaResource(file, fileName, options);
         studentDetailsDto.setImageResource(response);
 
         return this.updateStudent(student, studentDetailsDto);
