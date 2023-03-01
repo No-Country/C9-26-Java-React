@@ -1,9 +1,11 @@
 package com.nocountry.backend.service;
 
+import java.io.IOException;
 import java.util.List;
 
 import com.nocountry.backend.dto.StudentDetailsDto;
 import com.nocountry.backend.dto.StudentListDto;
+import org.springframework.web.multipart.MultipartFile;
 
 public interface IStudentService {
 
@@ -18,6 +20,11 @@ public interface IStudentService {
     StudentDetailsDto getStudentById(Long studentId);
 
     StudentDetailsDto updateStudentById(Long studentId, StudentDetailsDto studentDetailsDto);
+
+    StudentDetailsDto updateStudentByIdWithImage(
+            Long studentId,
+            StudentDetailsDto studentDetailsDto,
+            MultipartFile file) throws IOException;
 
     void addExamToStudent(Long studentId, Long examId);
 

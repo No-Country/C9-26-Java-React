@@ -1,7 +1,12 @@
 package com.nocountry.backend.service.impl;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
+import com.cloudinary.utils.ObjectUtils;
+import com.nocountry.backend.model.MediaResource;
+import com.nocountry.backend.service.ICloudinaryService;
 import org.springframework.stereotype.Service;
 
 import com.nocountry.backend.dto.StudentDetailsDto;
@@ -14,6 +19,7 @@ import com.nocountry.backend.repository.IStudentRepository;
 import com.nocountry.backend.service.IStudentService;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 @RequiredArgsConstructor
@@ -26,6 +32,8 @@ public class StudentServiceImpl implements IStudentService {
     private final IExamRepository examRepository;
 
     private final IPaymentRepository paymentRepository;
+
+    private final ICloudinaryService cloudinaryService;
 
     @Override
     public StudentDetailsDto getStudentByEmail(String email) {
@@ -58,6 +66,26 @@ public class StudentServiceImpl implements IStudentService {
     @Override
     public StudentDetailsDto updateStudentById(Long studentId, StudentDetailsDto studentDetailsDto) {
         var student = studentRepository.findById(studentId).orElseThrow();
+        return this.updateStudent(student, studentDetailsDto);
+    }
+
+    @Override
+    public StudentDetailsDto updateStudentByIdWithImage(
+            Long studentId,
+            StudentDetailsDto studentDetailsDto,
+            MultipartFile file) throws IOException {
+
+        var student = studentRepository.findById(studentId).orElseThrow();
+        String fileName = (studentDetailsDto.getFirstName()!=null && studentDetailsDto.getLastName()!=null)?studentDetailsDto.getFirstName()+"_"+studentDetailsDto.getLastName():student.getFirstName()+"_"+student.getLastName();
+
+        Map options = ObjectUtils.asMap(
+                "folder", "images/",
+                "overwrite", true,
+                "resource_type", "image",
+                "original_filename", fileName);
+        MediaResource response = cloudinaryService.getMediaResource(file,fileName, options);
+        studentDetailsDto.setImageResource(response);
+
         return this.updateStudent(student, studentDetailsDto);
     }
 

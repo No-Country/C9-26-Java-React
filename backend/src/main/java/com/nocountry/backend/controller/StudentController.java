@@ -1,18 +1,13 @@
 package com.nocountry.backend.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.nocountry.backend.config.jwt.JwtProvider;
 import com.nocountry.backend.dto.StudentDetailsDto;
@@ -20,6 +15,7 @@ import com.nocountry.backend.dto.StudentListDto;
 import com.nocountry.backend.service.IStudentService;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("api/students")
@@ -76,6 +72,19 @@ public class StudentController {
             @RequestBody StudentDetailsDto studentDetailsDto) {
         return new ResponseEntity<>(studentService.updateStudentById(studentId, studentDetailsDto), HttpStatus.OK);
     }
+
+    @PreAuthorize("hasAnyRole('ADMIN','STUDENT')")
+    @PatchMapping(value = "/admin/{studentId}/updateImageProfile",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<StudentDetailsDto> updateUserImage(
+            @PathVariable(value = "studentId") Long studentId,
+            @ModelAttribute StudentDetailsDto studentDetailsDto,
+            @RequestParam(name = "file",required = false) MultipartFile file) throws IOException {
+
+            return new ResponseEntity<>(studentService.updateStudentByIdWithImage(studentId, studentDetailsDto,file), HttpStatus.OK);
+
+
+    }
+
 
     @PreAuthorize("hasRole('ADMIN')")
     @PatchMapping("/admin/{studentId}/add/exams/{examId}")
