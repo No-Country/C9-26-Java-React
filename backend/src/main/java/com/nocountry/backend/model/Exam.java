@@ -1,8 +1,11 @@
 package com.nocountry.backend.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.nocountry.backend.utils.enums.Rating;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -29,13 +32,17 @@ public class Exam {
 
     private String examDate;
 
-    private String grammar;
+    @Enumerated(EnumType.STRING)
+    private Rating grammar;
 
-    private String speaking;
+    @Enumerated(EnumType.STRING)
+    private Rating speaking;
 
-    private String writing;
+    @Enumerated(EnumType.STRING)
+    private Rating writing;
 
-    private String listening;
+    @Enumerated(EnumType.STRING)
+    private Rating listening;
 
     @JsonBackReference
     @ManyToOne(fetch = FetchType.EAGER)

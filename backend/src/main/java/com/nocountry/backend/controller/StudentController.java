@@ -26,6 +26,8 @@ public class StudentController {
 
     private final JwtProvider jwtProvider;
 
+    // FOR STUDENTS
+
     @PreAuthorize("hasAnyRole('ADMIN','STUDENT')")
     @GetMapping("/token/")
     public ResponseEntity<StudentDetailsDto> getStudentByToken(@RequestHeader("Authorization") String token) {
@@ -40,6 +42,8 @@ public class StudentController {
         String email = jwtProvider.extractUsername(token.substring(7));
         return new ResponseEntity<>(studentService.updateStudentByEmail(email, studentDetailsDto), HttpStatus.ACCEPTED);
     }
+
+    // FOR ADMIN
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin/all")

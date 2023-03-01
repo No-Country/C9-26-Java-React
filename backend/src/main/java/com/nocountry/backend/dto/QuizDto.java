@@ -1,6 +1,5 @@
 package com.nocountry.backend.dto;
 
-import com.nocountry.backend.model.MediaResource;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,9 +15,7 @@ public class QuizDto {
 
     private String title;
 
-    private String description;
+    private Boolean status;
 
-    private MediaResource videoResource;
-
-    private String questionsAndAnswers;
+    private Long studentId;
 }
