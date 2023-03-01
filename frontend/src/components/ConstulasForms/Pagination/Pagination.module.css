@@ -33,3 +33,19 @@
     color: #ffffff;
     font-weight: bold;
 }
+
+/* Media Queries  */
+
+@media(max-width: 420px) {
+    .turnero_pagination {
+        padding: 6px;
+    }
+
+    .turnero_iconLeft {
+        padding: 3px;
+    }
+    
+    .turnero_iconRight {
+        padding: 3px;
+    }
+}

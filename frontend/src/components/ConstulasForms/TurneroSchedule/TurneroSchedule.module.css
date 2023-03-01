@@ -53,6 +53,18 @@
     margin-bottom: 20px;
 }
 
+.turnero_radioCont input {
+    width: 20px;
+    height: 20px;
+}
+
+.turnero_radioHours {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 30px;
+}
+
 .turnero_submit {
     display: flex;
     justify-content: center;
@@ -91,6 +103,33 @@
     margin-right: 10rem;
 }
 
+.modal_container div {
+    border-radius: 20px!important;
+    border: none!important;;
+}
+
+.modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px!important;
+    background: #222221;
+    border: none!important;
+}
+
+.modal_button {
+    width: 100%;
+    max-width: 158px;
+    height: 36px;
+    border-radius: 20px;
+    background-color: #CB8DF1;
+    color: black;
+    font-weight: bold;
+    margin-top: 20px;
+    border: none;
+}
+
 /* Media Queries */
 
 @media (max-width: 1200px) {
@@ -120,6 +159,14 @@
 }
 
 @media (max-width: 620px) { 
+    .turnero_wrapper {
+        margin: 0 20px;
+    }
+
+    .turnero_container {
+        height: 49.62rem;
+    }
+
     .turnero_title {
         margin-left: 0;
     }
@@ -131,5 +178,49 @@
         align-items: center;
         gap: 10px;
         margin-top: 30px;
+    }
+
+    .turnero_radioHours {
+        display: flex;
+        justify-content: center!important;
+        align-items: center;
+        flex-direction: column!important;
+        gap: 2px;
+    }
+
+    .hoursContainer {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        width: 300px;
+    }
+}
+
+@media (max-width: 420px) { 
+    .turnero_wrapper {
+        margin: 0 20px 0 30px;
+    }
+
+    .turnero_container {
+        width: 100%;
+        max-width: 21rem;
+    }
+}
+
+@media (max-width: 365px) { 
+    .turnero_wrapper {
+        margin: 0 20px 0 28px;
+    }
+
+    .turnero_container {
+        width: 100%;
+        max-width: 18rem;
+    }
+
+    .hoursContainer {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        width: 250px;
     }
 }

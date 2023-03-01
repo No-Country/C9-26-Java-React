@@ -30,6 +30,15 @@
     margin-bottom: 4rem;
 }
 
+.consult_iconContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+    width: 170px;
+}
+
 .consult_turnosText {
     width: 100%;
     max-width: 9.50rem;

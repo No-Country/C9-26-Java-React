@@ -16,6 +16,9 @@
     max-width: 500px;
     margin-top: 1.75rem;
     color: #FFFFFF;
+    background-color: #222221;
+    padding: 25px;
+    border-radius: 20px;
 }
 
 /* Media Queries */
