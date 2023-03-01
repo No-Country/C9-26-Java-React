@@ -19,12 +19,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.consult_interviewButton button {
     gap: 11px;
     width: 100%;
     max-width: 300px;
     height: 42px;
     border-radius: 20px;
-    background-color: #f5f5f5;
+    border: none;
+    background-color: #222221;
+    color: #fff;
+    font-weight: bold;
     margin-bottom: 20px;
 }
 
@@ -60,8 +66,22 @@
     margin-right: 13px;
 }
 
+.consult_checkboxContainer {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    margin-bottom: 1rem;
+}
+
 .consult_checkboxText {
     font-size: 1.27rem;
+    color: #000000;
+    font-weight: 600;
+}
+
+.checkEmail_text,
+.checkTel_text {
+    font-size: 1.25rem;
 }
 
 .consult_checkboxEmail {
@@ -70,7 +90,7 @@
     justify-content: center;
     gap: 11px;
     width: 100%;
-    max-width: 215px;
+    max-width: 200px;
     height: 42px;
     border-radius: 20px;
     background-color: #f5f5f5;
@@ -82,7 +102,7 @@
     justify-content: center;
     gap: 11px;
     width: 100%;
-    max-width: 215px;
+    max-width: 200px;
     height: 42px;
     border-radius: 20px;
     background-color: #f5f5f5;
@@ -137,4 +157,32 @@ textarea {
     color: #fff;
     background-color: #222221;
     font-weight: 700;
+}
+
+
+/* Media Queries */
+
+@media(max-width: 1320px) {
+    .consult_inputTel {
+        max-width: 50.12rem;
+    }
+    
+    .consult_inputEmail {
+        max-width: 50.12rem;
+    }
+}
+
+@media(max-width: 700px) {
+    .consult_checkboxContainer {
+        flex-direction: column;
+    }
+
+    .consult_checkboxText {
+        font-size: 1.2rem;
+    }
+
+    .checkEmail_text,
+    .checkTel_text {
+    font-size: 1rem;
+    }
 }

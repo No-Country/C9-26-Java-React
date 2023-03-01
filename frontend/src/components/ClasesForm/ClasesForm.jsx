@@ -78,8 +78,8 @@ const ClasesForm = () => {
                     <Modal className={styles.modal_container} show={true} centered="true">
                         <Modal.Body className={styles.modal}>
                             <p className="text-white text-center fw-bold">¡Gracias por tu consulta!
-                                Verificá tu casilla de correo para ver confirmación de tu pedido. En breve nos
-                                comunicaremos para completar la solicitud de inscripción.
+                                Tu mensaje ya ha llegado a nuestra casilla de correo, pronto nos estaremos comunicando
+                                contigo.
                             </p>
                             <button className={styles.modal_button} onClick={handleClose}>CERRAR</button>
                         </Modal.Body>

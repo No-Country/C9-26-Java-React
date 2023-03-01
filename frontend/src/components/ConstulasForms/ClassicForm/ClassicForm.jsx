@@ -26,8 +26,7 @@ const ClassicForm = ({ setInterviewOn, reasons }) => {
             {
                 width < breakpoint &&
                 <div className={styles.consult_interviewButton}>
-                    <input type="radio" name="radio_interview" id="radio_interview" onChange={() => setInterviewOn(true)} />
-                    <span>Prefiero una entrevista online</span>
+                    <button onClick={() => setInterviewOn(true)}>Prefiero una entrevista online</button>
                 </div>
             }
 
@@ -36,34 +35,38 @@ const ClassicForm = ({ setInterviewOn, reasons }) => {
 
             <form action="">
                 <div className={styles.consult_inputName}>
-                    <input type="text" name="" id="" placeholder="Nombre y apellido" />
+                    <input type="text" name="" id="" placeholder="Nombre y apellido" required />
                 </div>
 
                 <div>
-                    <input type="text" name="" id="" placeholder="Tel. +54 9" className={styles.consult_inputTel} />
-                    <input type="email" name="" id="" placeholder="ingresa@tuemail.com" className={styles.consult_inputEmail} />
+                    <input type="number" name="" id="" placeholder="Tel. +54 9" className={styles.consult_inputTel} required />
+                    <input type="email" name="" id="" placeholder="ingresa@tuemail.com" className={styles.consult_inputEmail} required />
                 </div>
 
-                <div className='d-flex align-items-center gap-2 mb-3'>
+                <div className={styles.consult_checkboxContainer}>
+                    
                     <span className={styles.consult_checkboxText}>Quiero que me contacten a través de</span>
+                    
                     <div className={styles.consult_checkboxEmail}>
-                        <input type="radio" name="radio_action" id="radio_email" />
-                        <span className='fs-5'>E-mail</span>
+                        <input type="radio" name="radio_action" id="radio_email" required />
+                        <span className={styles.checkEmail_text}>E-mail</span>
                     </div>
+                    
                     <div className={styles.consult_checkboxTel}>
-                        <input type="radio" name="radio_action" id="radio_tel" />
-                        <span className='fs-5'>Teléfono</span>
+                        <input type="radio" name="radio_action" id="radio_tel" required />
+                        <span className={styles.checkTel_text}>Teléfono</span>
                     </div>
+
                 </div>
 
                 <div className="mb-4 mt-4">
-                    <select name="" id="" defaultValue="default" className={styles.consult_select}>
-                        <option value="default" disabled>El motivo de mi consulta es</option>
+                    <select name="" id="" defaultValue="" className={styles.consult_select} required>
+                        <option value="" disabled>El motivo de mi consulta es</option>
                         {reasons.map(elem => <option key={elem} value={elem} className={styles.consult_optionsBg}>{elem}</option>)}
                     </select>
                 </div>
 
-                <textarea name="" id="" cols="30" rows="10" placeholder='Escribe tus comentarios aquí'></textarea>
+                <textarea name="" id="" cols="30" rows="10" placeholder='Escribe tus comentarios aquí' required></textarea>
 
                 <div className={styles.submit_container}>
                     <input type="submit" value="ENVIAR" />
