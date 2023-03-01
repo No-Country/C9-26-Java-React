@@ -1,6 +1,7 @@
 package com.nocountry.backend.dto;
 
 import java.util.List;
+import java.util.Map;
 
 import com.nocountry.backend.model.MediaResource;
 import com.nocountry.backend.utils.enums.Level;
@@ -35,6 +36,8 @@ public class StudentDetailsDto {
     private String birthdate;
 
     private Level level;
+
+    private Map<String, Boolean> quizzesStatus;
 
     private Long courseId;
 

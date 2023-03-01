@@ -1,13 +1,16 @@
 package com.nocountry.backend.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.nocountry.backend.utils.enums.Level;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -58,6 +61,10 @@ public class Student {
 
     @Enumerated(EnumType.STRING)
     private Level level;
+
+    @ElementCollection
+    @Default
+    private Map<String, Boolean> quizzesStatus = new HashMap<>();
 
     @OneToOne(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private User user;

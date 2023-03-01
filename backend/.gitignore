@@ -10,6 +10,7 @@ target/
 .vercel/
 pnpm-lock.yaml
 src/main/resources/application.properties
+backend.iml
 
 # User-specific stuff
 .idea/**/workspace.xml

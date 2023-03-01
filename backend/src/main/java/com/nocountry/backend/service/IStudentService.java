@@ -11,6 +11,8 @@ public interface IStudentService {
 
     StudentDetailsDto updateStudentByEmail(String email, StudentDetailsDto studentDetailsDto);
 
+    void updateQuizStatusByEmail(String email, Boolean status);
+
     List<StudentListDto> getAllStudents();
 
     StudentDetailsDto getStudentById(Long studentId);

@@ -34,17 +34,26 @@ public class StudentController {
 
     @PreAuthorize("hasAnyRole('ADMIN','STUDENT')")
     @GetMapping("/token/")
-    public ResponseEntity<StudentDetailsDto> getStudentByToken(@RequestHeader("Authorization") String token) {
+    public ResponseEntity<StudentDetailsDto> getStudentByEmail(@RequestHeader("Authorization") String token) {
         String email = jwtProvider.extractUsername(token.substring(7));
         return new ResponseEntity<>(studentService.getStudentByEmail(email), HttpStatus.OK);
     }
 
     @PreAuthorize("hasAnyRole('ADMIN','STUDENT')")
     @PatchMapping("/token/update")
-    public ResponseEntity<StudentDetailsDto> updateStudentByToken(@RequestHeader("Authorization") String token,
+    public ResponseEntity<StudentDetailsDto> updateStudentByEmail(@RequestHeader("Authorization") String token,
             @RequestBody StudentDetailsDto studentDetailsDto) {
         String email = jwtProvider.extractUsername(token.substring(7));
         return new ResponseEntity<>(studentService.updateStudentByEmail(email, studentDetailsDto), HttpStatus.ACCEPTED);
+    }
+
+    @PreAuthorize("hasAnyRole('ADMIN','STUDENT')")
+    @PatchMapping("/token/quizzes")
+    public ResponseEntity<String> updateQuizStatusByEmail(@RequestHeader("Authorization") String token,
+            Boolean status) {
+        String email = jwtProvider.extractUsername(token.substring(7));
+        studentService.updateQuizStatusByEmail(email, status);
+        return new ResponseEntity<>("Quiz status has been updated to completed (true)", HttpStatus.ACCEPTED);
     }
 
     // FOR ADMIN

@@ -39,6 +39,13 @@ public class StudentServiceImpl implements IStudentService {
     }
 
     @Override
+    public void updateQuizStatusByEmail(String email, Boolean status) {
+        var student = studentRepository.findByEmail(email).orElseThrow();
+        student.getQuizzesStatus().put("BBC Learning English", status);
+        studentRepository.save(student);
+    }
+
+    @Override
     public List<StudentListDto> getAllStudents() {
         return studentMapper.convertToDtoList(studentRepository.findAll());
     }
@@ -79,42 +86,42 @@ public class StudentServiceImpl implements IStudentService {
         studentRepository.deleteById(studentId);
     }
 
-    private StudentDetailsDto updateStudent(Student student, StudentDetailsDto StudentDetailsDto) {
+    private StudentDetailsDto updateStudent(Student student, StudentDetailsDto studentDetailsDto) {
 
-        if (StudentDetailsDto.getFirstName() != null) {
-            student.setFirstName(StudentDetailsDto.getFirstName());
+        if (studentDetailsDto.getFirstName() != null) {
+            student.setFirstName(studentDetailsDto.getFirstName());
         }
 
-        if (StudentDetailsDto.getLastName() != null) {
-            student.setLastName(StudentDetailsDto.getLastName());
+        if (studentDetailsDto.getLastName() != null) {
+            student.setLastName(studentDetailsDto.getLastName());
         }
 
-        if (StudentDetailsDto.getImageResource() != null) {
-            student.setImageResource(StudentDetailsDto.getImageResource());
+        if (studentDetailsDto.getImageResource() != null) {
+            student.setImageResource(studentDetailsDto.getImageResource());
         }
 
-        if (StudentDetailsDto.getDni() != null) {
-            student.setDni(StudentDetailsDto.getDni());
+        if (studentDetailsDto.getDni() != null) {
+            student.setDni(studentDetailsDto.getDni());
         }
 
-        if (StudentDetailsDto.getAddress() != null) {
-            student.setAddress(StudentDetailsDto.getAddress());
+        if (studentDetailsDto.getAddress() != null) {
+            student.setAddress(studentDetailsDto.getAddress());
         }
 
-        if (StudentDetailsDto.getEmail() != null) {
-            student.setEmail(StudentDetailsDto.getEmail());
+        if (studentDetailsDto.getEmail() != null) {
+            student.setEmail(studentDetailsDto.getEmail());
         }
 
-        if (StudentDetailsDto.getPhone() != null) {
-            student.setPhone(StudentDetailsDto.getPhone());
+        if (studentDetailsDto.getPhone() != null) {
+            student.setPhone(studentDetailsDto.getPhone());
         }
 
-        if (StudentDetailsDto.getBirthdate() != null) {
-            student.setBirthdate(StudentDetailsDto.getBirthdate());
+        if (studentDetailsDto.getBirthdate() != null) {
+            student.setBirthdate(studentDetailsDto.getBirthdate());
         }
 
-        if (StudentDetailsDto.getLevel() != null) {
-            student.setLevel(StudentDetailsDto.getLevel());
+        if (studentDetailsDto.getLevel() != null) {
+            student.setLevel(studentDetailsDto.getLevel());
         }
 
         return studentMapper.convertToDto(studentRepository.save(student));
