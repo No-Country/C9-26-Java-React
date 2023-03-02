@@ -10,6 +10,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import com.nocountry.backend.config.jwt.JwtProvider;
+import com.nocountry.backend.dto.QuizRequestDto;
 import com.nocountry.backend.dto.StudentDetailsDto;
 import com.nocountry.backend.dto.StudentListDto;
 import com.nocountry.backend.service.IStudentService;
@@ -57,9 +58,9 @@ public class StudentController {
     @PreAuthorize("hasAnyRole('ADMIN','STUDENT')")
     @PatchMapping("/token/quizzes")
     public ResponseEntity<String> updateQuizStatusByEmail(@RequestHeader("Authorization") String token,
-            Boolean status) {
+            @RequestBody QuizRequestDto quizName) {
         String email = jwtProvider.extractUsername(token.substring(7));
-        studentService.updateQuizStatusByEmail(email, status);
+        studentService.updateQuizStatusByEmail(email, quizName);
         return new ResponseEntity<>("Quiz has been successfully updated", HttpStatus.ACCEPTED);
     }
 

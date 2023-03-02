@@ -37,7 +37,7 @@ public class StudentDetailsDto {
 
     private Level level;
 
-    private Map<String, Boolean> quizzesStatus;
+    private Map<String, String> quizzesStatus;
 
     private Long courseId;
 

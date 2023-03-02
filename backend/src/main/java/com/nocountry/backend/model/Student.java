@@ -64,9 +64,9 @@ public class Student {
     private Level level;
 
     @ElementCollection
-    @CollectionTable(name = "student_quizzes_status")
+    @CollectionTable(name = "quizzes_status")
     @Default
-    private Map<String, Boolean> quizzesStatus = new HashMap<>();
+    private Map<String, String> quizzesStatus = new HashMap<>();
 
     @OneToOne(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private User user;

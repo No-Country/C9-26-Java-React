@@ -9,6 +9,7 @@ import com.nocountry.backend.model.MediaResource;
 import com.nocountry.backend.service.ICloudinaryService;
 import org.springframework.stereotype.Service;
 
+import com.nocountry.backend.dto.QuizRequestDto;
 import com.nocountry.backend.dto.StudentDetailsDto;
 import com.nocountry.backend.dto.StudentListDto;
 import com.nocountry.backend.mapper.StudentMapper;
@@ -72,14 +73,17 @@ public class StudentServiceImpl implements IStudentService {
     }
 
     @Override
-    public void updateQuizStatusByEmail(String email, Boolean status) {
+    public void updateQuizStatusByEmail(String email, QuizRequestDto quizName) {
         var student = studentRepository.findByEmail(email).orElseThrow();
         var quizzesStatus = student.getQuizzesStatus();
+        var key = quizName.getKey();
 
-        if (quizzesStatus.containsKey("BBC Learning English")) {
-            quizzesStatus.put("BBC Learning English", status);
+        if (quizzesStatus.containsKey(key)) {
+            System.out.println("entre al if carajo");
+            quizzesStatus.put(key, "Completed");
         }
 
+        student.setQuizzesStatus(quizzesStatus);
         studentRepository.save(student);
     }
 

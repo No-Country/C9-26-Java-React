@@ -3,6 +3,7 @@ package com.nocountry.backend.service;
 import java.io.IOException;
 import java.util.List;
 
+import com.nocountry.backend.dto.QuizRequestDto;
 import com.nocountry.backend.dto.StudentDetailsDto;
 import com.nocountry.backend.dto.StudentListDto;
 import org.springframework.web.multipart.MultipartFile;
@@ -18,7 +19,7 @@ public interface IStudentService {
             StudentDetailsDto studentDetailsDto,
             MultipartFile file) throws IOException;
 
-    void updateQuizStatusByEmail(String email, Boolean status);
+    void updateQuizStatusByEmail(String email, QuizRequestDto quizName);
 
     List<StudentListDto> getAllStudents();
 

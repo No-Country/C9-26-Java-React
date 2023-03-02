@@ -63,7 +63,7 @@ public class AuthServiceImpl implements IAuthService {
                                 .level(request.getLevel())
                                 .build();
 
-                student.getQuizzesStatus().put("BBC Learning English", false);
+                student.getQuizzesStatus().put("BBC Learning English", "Unfinished");
 
                 user.setStudent(student);
                 student.setUser(user);
