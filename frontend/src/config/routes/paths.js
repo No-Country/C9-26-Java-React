@@ -12,6 +12,7 @@ export const LOGOUT = '/logout';
 export const CAMPUS = '/private/campus';
 export const PROGRAM = '/private/campus/program';
 export const MULTIMEDIA = '/private/campus/multimedia';
+export const QUIZ = '/private/campus/multimedia/quiz/:id';
 export const CHAT = '/private/campus/chat';
 export const EVENTS = '/private/campus/events';
 export const TASKS = '/private/campus/tasks';

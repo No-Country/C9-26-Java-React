@@ -1373,9 +1373,6 @@ a.fc-more:hover {
 .fc-dayGridMonth-button.fc-button.fc-button-primary,
 .fc-dayGridWeek-button.fc-button.fc-button-primary,
 .fc-dayGridDay-button.fc-button.fc-button-primary {
-    background-color: rgb(203, 141, 241) !important;
-    color: #fff;
-    border: 1px solid rgb(203, 141, 241) !important;
     border-radius: 5px;
     padding: 5px 10px;
     font-size: 1rem;
@@ -1391,9 +1388,6 @@ a.fc-more:hover {
 .fc-dayGridMonth-button.fc-button.fc-button-primary:hover,
 .fc-dayGridWeek-button.fc-button.fc-button-primary:hover,
 .fc-dayGridDay-button.fc-button.fc-button-primary:hover {
-    background-color: rgba(203, 141, 241, 0.75) !important;
-    color: #fff;
-    border: 1px solid rgba(203, 141, 241, 0.75) !important;
     border-radius: 5px;
     padding: 5px 10px;
     font-size: 1rem;
@@ -1407,6 +1401,7 @@ a.fc-more:hover {
 .fc-dayGridWeek-button.fc-button.fc-button-primary.fc-button-active,
 .fc-dayGridDay-button.fc-button.fc-button-primary.fc-button-active {
     background-color: rgba(250, 104, 209, 0.75) !important;
+    color: #000;
     transition: all .3s ease;
 }
 
