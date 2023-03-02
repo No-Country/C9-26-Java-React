@@ -48,7 +48,7 @@ public class StudentController {
     public ResponseEntity<StudentDetailsDto> updateStudentImageByEmail(
             @RequestHeader("Authorization") String token,
             @ModelAttribute StudentDetailsDto studentDetailsDto,
-            @RequestParam(name = "file", required = false) MultipartFile file) throws IOException {
+            @RequestParam(name = "file") MultipartFile file) throws IOException {
         String email = jwtProvider.extractUsername(token.substring(7));
         return new ResponseEntity<>(studentService.updateStudentImageByEmail(email, studentDetailsDto, file),
                 HttpStatus.OK);
