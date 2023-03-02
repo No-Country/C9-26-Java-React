@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import style from './Chat.module.css'
 import { BsSearch } from "react-icons/bs";
 import { AiOutlineSend } from "react-icons/ai";
 
 
 const Chat = () => {
+
+    const [sms, setSms] = useState('')
 
     const handleSubmit = (e)=>{
         e.preventDefault()
@@ -31,9 +33,15 @@ const Chat = () => {
 
                     </div>
                     <form onSubmit={handleSubmit}>
-                        <div className={style.divForm}></div>
+                        <div className={style.divForm}>
+                            <label>{}</label>
+                        </div>
                         <div className={style.divSmsInput}>
-                            <textarea className={style.inputSms}></textarea>
+                            <input 
+                                className = {style.inputSms}
+                                onChange = { e=> setSms(e.target.value)}
+                                value= {sms}
+                            />
                             <button className={style.btnSms}>
                                 <AiOutlineSend />
                             </button>

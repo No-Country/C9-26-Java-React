@@ -21,6 +21,8 @@ import {
     LOGIN,
     ADD_STUDENT
 } from '../../config/routes/paths';
+import Register from '../RegisterStudent/RegisterStuden.jsx';
+import { useState } from 'react';
 
 function Header() {
     const { isAuthenticated } = useAuth();
@@ -28,6 +30,10 @@ function Header() {
     const dispatch = useDispatch();
     const location = useLocation();
     const path = location.pathname;
+    //Modal de Registro
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     // top navbar button
     const handleClick = (isAuthenticated) => {
@@ -108,6 +114,12 @@ function Header() {
                             <SearchBar />
                             <Button
                                 style={{ width: '256px', background: '#CB8DF1', color: '#FFF', border: 'none' }}
+                                className="text-black fw-bolder rounded-5"
+                                onClick={ handleShow }>
+                                REGISTRAR ESTUDIANTE
+                            </Button>
+                            <Button
+                                style={{ width: '256px', background: '#CB8DF1', color: '#FFF', border: 'none' }}
                                 className="text-black fw-bolder rounded-5">
                                 GUARDAR CAMBIOS
                             </Button>
@@ -145,6 +157,10 @@ function Header() {
                     )}
                 </Container>
             </Navbar>
+            <Register 
+                show = { show }
+                handleClose = { handleClose }
+            />
         </>
     );
 }
