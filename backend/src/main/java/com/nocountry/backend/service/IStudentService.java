@@ -13,6 +13,11 @@ public interface IStudentService {
 
     StudentDetailsDto updateStudentByEmail(String email, StudentDetailsDto studentDetailsDto);
 
+    StudentDetailsDto updateStudentImageByEmail(
+            String email,
+            StudentDetailsDto studentDetailsDto,
+            MultipartFile file) throws IOException;
+
     void updateQuizStatusByEmail(String email, Boolean status);
 
     List<StudentListDto> getAllStudents();
@@ -20,11 +25,6 @@ public interface IStudentService {
     StudentDetailsDto getStudentById(Long studentId);
 
     StudentDetailsDto updateStudentById(Long studentId, StudentDetailsDto studentDetailsDto);
-
-    StudentDetailsDto updateStudentByIdWithImage(
-            Long studentId,
-            StudentDetailsDto studentDetailsDto,
-            MultipartFile file) throws IOException;
 
     void addExamToStudent(Long studentId, Long examId);
 

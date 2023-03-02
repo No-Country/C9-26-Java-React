@@ -44,6 +44,17 @@ public class StudentController {
     }
 
     @PreAuthorize("hasAnyRole('ADMIN','STUDENT')")
+    @PatchMapping(value = "/token/update/image", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<StudentDetailsDto> updateStudentImageByEmail(
+            @RequestHeader("Authorization") String token,
+            @ModelAttribute StudentDetailsDto studentDetailsDto,
+            @RequestParam(name = "file", required = false) MultipartFile file) throws IOException {
+        String email = jwtProvider.extractUsername(token.substring(7));
+        return new ResponseEntity<>(studentService.updateStudentImageByEmail(email, studentDetailsDto, file),
+                HttpStatus.OK);
+    }
+
+    @PreAuthorize("hasAnyRole('ADMIN','STUDENT')")
     @PatchMapping("/token/quizzes")
     public ResponseEntity<String> updateQuizStatusByEmail(@RequestHeader("Authorization") String token,
             Boolean status) {
@@ -52,15 +63,6 @@ public class StudentController {
         return new ResponseEntity<>("Quiz has been successfully updated", HttpStatus.ACCEPTED);
     }
 
-    @PreAuthorize("hasAnyRole('ADMIN','STUDENT')")
-    @PatchMapping(value = "/admin/{studentId}/updateImageProfile", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<StudentDetailsDto> updateUserImage(
-            @PathVariable(value = "studentId") Long studentId,
-            @ModelAttribute StudentDetailsDto studentDetailsDto,
-            @RequestParam(name = "file", required = false) MultipartFile file) throws IOException {
-        return new ResponseEntity<>(studentService.updateStudentByIdWithImage(studentId, studentDetailsDto, file),
-                HttpStatus.OK);
-    }
     // FOR ADMIN
 
     @PreAuthorize("hasRole('ADMIN')")

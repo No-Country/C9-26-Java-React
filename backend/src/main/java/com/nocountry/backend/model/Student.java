@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.nocountry.backend.utils.enums.Level;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.CollectionTable;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -63,6 +64,7 @@ public class Student {
     private Level level;
 
     @ElementCollection
+    @CollectionTable(name = "student_quizzes_status")
     @Default
     private Map<String, Boolean> quizzesStatus = new HashMap<>();
 

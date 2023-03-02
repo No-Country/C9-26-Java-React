@@ -2,6 +2,7 @@ package com.nocountry.backend.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,14 +23,22 @@ public class AuthController {
     private final IAuthService authService;
 
     @PostMapping("/register")
-    public ResponseEntity<AuthResponseDto> register(
-            @RequestBody RegisterRequestDto request) {
-        return new ResponseEntity<>(authService.register(request), HttpStatus.CREATED);
+    public ResponseEntity<?> register(@RequestBody RegisterRequestDto request) {
+        try {
+            AuthResponseDto response = authService.register(request);
+            return new ResponseEntity<>(response, HttpStatus.CREATED);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
+        }
     }
 
     @PostMapping("/login")
-    public ResponseEntity<AuthResponseDto> login(
-            @RequestBody AuthRequestDto request) {
-        return new ResponseEntity<>(authService.login(request), HttpStatus.ACCEPTED);
+    public ResponseEntity<?> login(@RequestBody AuthRequestDto request) {
+        try {
+            AuthResponseDto response = authService.login(request);
+            return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
+        } catch (BadCredentialsException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.UNAUTHORIZED);
+        }
     }
 }

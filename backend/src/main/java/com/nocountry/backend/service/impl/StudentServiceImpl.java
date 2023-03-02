@@ -19,6 +19,8 @@ import com.nocountry.backend.repository.IStudentRepository;
 import com.nocountry.backend.service.IStudentService;
 
 import lombok.RequiredArgsConstructor;
+import lombok.var;
+
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
@@ -47,9 +49,38 @@ public class StudentServiceImpl implements IStudentService {
     }
 
     @Override
+    public StudentDetailsDto updateStudentImageByEmail(
+            String email,
+            StudentDetailsDto studentDetailsDto,
+            MultipartFile file) throws IOException {
+
+        var student = studentRepository.findByEmail(email).orElseThrow();
+
+        String fileName = (studentDetailsDto.getFirstName() != null && studentDetailsDto.getLastName() != null)
+                ? studentDetailsDto.getFirstName() + "_" + studentDetailsDto.getLastName()
+                : student.getFirstName() + "_" + student.getLastName();
+
+        Map options = ObjectUtils.asMap(
+                "folder", "images/",
+                "overwrite", true,
+                "resource_type", "image",
+                "original_filename", fileName);
+
+        MediaResource response = cloudinaryService.getMediaResource(file, fileName, options);
+        studentDetailsDto.setImageResource(response);
+
+        return this.updateStudent(student, studentDetailsDto);
+    }
+
+    @Override
     public void updateQuizStatusByEmail(String email, Boolean status) {
         var student = studentRepository.findByEmail(email).orElseThrow();
-        student.getQuizzesStatus().put("BBC Learning English", status);
+        var quizzesStatus = student.getQuizzesStatus();
+
+        if (quizzesStatus.containsKey("BBC Learning English")) {
+            quizzesStatus.put("BBC Learning English", status);
+        }
+
         studentRepository.save(student);
     }
 
@@ -66,28 +97,6 @@ public class StudentServiceImpl implements IStudentService {
     @Override
     public StudentDetailsDto updateStudentById(Long studentId, StudentDetailsDto studentDetailsDto) {
         var student = studentRepository.findById(studentId).orElseThrow();
-        return this.updateStudent(student, studentDetailsDto);
-    }
-
-    @Override
-    public StudentDetailsDto updateStudentByIdWithImage(
-            Long studentId,
-            StudentDetailsDto studentDetailsDto,
-            MultipartFile file) throws IOException {
-
-        var student = studentRepository.findById(studentId).orElseThrow();
-        String fileName = (studentDetailsDto.getFirstName() != null && studentDetailsDto.getLastName() != null)
-                ? studentDetailsDto.getFirstName() + "_" + studentDetailsDto.getLastName()
-                : student.getFirstName() + "_" + student.getLastName();
-
-        Map options = ObjectUtils.asMap(
-                "folder", "images/",
-                "overwrite", true,
-                "resource_type", "image",
-                "original_filename", fileName);
-        MediaResource response = cloudinaryService.getMediaResource(file, fileName, options);
-        studentDetailsDto.setImageResource(response);
-
         return this.updateStudent(student, studentDetailsDto);
     }
 

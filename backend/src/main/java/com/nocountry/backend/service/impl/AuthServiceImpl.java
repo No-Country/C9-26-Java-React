@@ -1,7 +1,9 @@
 package com.nocountry.backend.service.impl;
 
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -38,6 +40,12 @@ public class AuthServiceImpl implements IAuthService {
 
         @Override
         public AuthResponseDto register(RegisterRequestDto request) {
+
+                var userOptional = userRepository.findByUsername(request.getUsername());
+                if (userOptional.isPresent()) {
+                        throw new RuntimeException("Username already in use");
+                }
+
                 var user = User.builder()
                                 .username(request.getUsername())
                                 .password(passwordEncoder.encode(request.getPassword()))
@@ -94,9 +102,14 @@ public class AuthServiceImpl implements IAuthService {
 
         @Override
         public AuthResponseDto login(AuthRequestDto request) {
-                authenticationManager
-                                .authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(),
-                                                request.getPassword()));
+
+                try {
+                        authenticationManager
+                                        .authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(),
+                                                        request.getPassword()));
+                } catch (AuthenticationException e) {
+                        throw new BadCredentialsException("Incorrect username or password", e);
+                }
 
                 var user = userRepository.findByUsername(request.getUsername()).orElseThrow();
                 var jwt = jwtProvider.generateToken(user);
