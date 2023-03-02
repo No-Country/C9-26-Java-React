@@ -64,7 +64,7 @@ public class Student {
     private Level level;
 
     @ElementCollection
-    @CollectionTable(name = "quizzes_status")
+    @CollectionTable(name = "quizzes")
     @Default
     private Map<String, String> quizzesStatus = new HashMap<>();
 

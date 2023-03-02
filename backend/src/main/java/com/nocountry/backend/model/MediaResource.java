@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 public class MediaResource {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String urlSecure;
