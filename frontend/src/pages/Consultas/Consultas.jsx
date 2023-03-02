@@ -48,6 +48,7 @@ const Consultas = () => {
                                         name={setName}
                                         email={setEmail}
                                         description={setDescription} 
+                                        setInterviewOn={setInterviewOn}
                                         />
                                     
                                     : <>
@@ -58,6 +59,7 @@ const Consultas = () => {
                                             name={setName}
                                             email={setEmail}
                                             description={setDescription} 
+                                            setInterviewOn={setInterviewOn}
                                             />
                                     </>
                             }

@@ -27,51 +27,51 @@ const StudentPayment = ({ location }) => {
                 </div>
 
                 <div className={styles.payment_inputContainer}>
-                    <label htmlFor="level" className='ms-3 text-black'>INSCRIPCION</label>
+                    <label htmlFor="level" className={styles.payment_label}>INSCRIPCION</label>
                     <input type="text" id="level" className={styles.payment_input} disabled={location === "/private/student" && "disabled"} />
                 </div>
                 <div className={styles.payment_inputContainer}>
-                    <label htmlFor="level" className='ms-3 text-black'>CUOTA 1</label>
+                    <label htmlFor="level" className={styles.payment_label}>CUOTA 1</label>
                     <input type="text" id="level" className={styles.payment_input} disabled={location === "/private/student" && "disabled"} />
                 </div>
                 <div className={styles.payment_inputContainer}>
-                    <label htmlFor="level" className='ms-3 text-black'>CUOTA 2</label>
+                    <label htmlFor="level" className={styles.payment_label}>CUOTA 2</label>
                     <input type="text" id="level" className={styles.payment_input} disabled={location === "/private/student" && "disabled"} />
                 </div>
                 <div className={styles.payment_inputContainer}>
-                    <label htmlFor="level" className='ms-3 text-black'>CUOTA 3</label>
+                    <label htmlFor="level" className={styles.payment_label}>CUOTA 3</label>
                     <input type="text" id="level" className={styles.payment_input} disabled={location === "/private/student" && "disabled"} />
                 </div>
                 <div className={styles.payment_inputContainer}>
-                    <label htmlFor="level" className='ms-3 text-black'>CUOTA 4</label>
+                    <label htmlFor="level" className={styles.payment_label}>CUOTA 4</label>
                     <input type="text" id="level" className={styles.payment_input} disabled={location === "/private/student" && "disabled"} />
                 </div>
                 <div className={styles.payment_inputContainer}>
-                    <label htmlFor="level" className='ms-3 text-black'>CUOTA 5</label>
+                    <label htmlFor="level" className={styles.payment_label}>CUOTA 5</label>
                     <input type="text" id="level" className={styles.payment_input} disabled={location === "/private/student" && "disabled"} />
                 </div>
                 <div className={styles.payment_inputContainer}>
-                    <label htmlFor="level" className='ms-3 text-black'>CUOTA 6</label>
+                    <label htmlFor="level" className={styles.payment_label}>CUOTA 6</label>
                     <input type="text" id="level" className={styles.payment_input} disabled={location === "/private/student" && "disabled"} />
                 </div>
                 <div className={styles.payment_inputContainer}>
-                    <label htmlFor="level" className='ms-3 text-black'>CUOTA 7</label>
+                    <label htmlFor="level" className={styles.payment_label}>CUOTA 7</label>
                     <input type="text" id="level" className={styles.payment_input} disabled={location === "/private/student" && "disabled"} />
                 </div>
                 <div className={styles.payment_inputContainer}>
-                    <label htmlFor="level" className='ms-3 text-black'>CUOTA 8</label>
+                    <label htmlFor="level" className={styles.payment_label}>CUOTA 8</label>
                     <input type="text" id="level" className={styles.payment_input} disabled={location === "/private/student" && "disabled"} />
                 </div>
                 <div className={styles.payment_inputContainer}>
-                    <label htmlFor="level" className='ms-3 text-black'>CUOTA 9</label>
+                    <label htmlFor="level" className={styles.payment_label}>CUOTA 9</label>
                     <input type="text" id="level" className={styles.payment_input} disabled={location === "/private/student" && "disabled"} />
                 </div>
                 <div className={styles.payment_inputContainer}>
-                    <label htmlFor="level" className='ms-3 text-black'>CUOTA 10</label>
+                    <label htmlFor="level" className={styles.payment_label}>CUOTA 10</label>
                     <input type="text" id="level" className={styles.payment_input} disabled={location === "/private/student" && "disabled"} />
                 </div>
                 <div className={styles.payment_inputContainer}>
-                    <label htmlFor="level" className='ms-3 text-black'>EXAMENES</label>
+                    <label htmlFor="level" className={styles.payment_label}>EXAMENES</label>
                     <input type="text" id="level" className={styles.payment_input} disabled={location === "/private/student" && "disabled"} />
                 </div>
             </div>
