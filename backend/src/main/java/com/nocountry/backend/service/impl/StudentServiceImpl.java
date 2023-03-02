@@ -19,7 +19,6 @@ import com.nocountry.backend.repository.IStudentRepository;
 import com.nocountry.backend.service.IStudentService;
 
 import lombok.RequiredArgsConstructor;
-import lombok.var;
 
 import org.springframework.web.multipart.MultipartFile;
 
