@@ -76,7 +76,7 @@ public class StudentServiceImpl implements IStudentService {
     public void updateQuizStatusByEmail(String email, QuizRequestDto quizName) {
         var student = studentRepository.findByEmail(email).orElseThrow();
         var quizzesStatus = student.getQuizzesStatus();
-        var key = quizName.getKey();
+        var key = quizName.getQuizName();
 
         if (quizzesStatus.containsKey(key)) {
             System.out.println("entre al if carajo");
