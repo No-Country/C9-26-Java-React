@@ -40,7 +40,7 @@ const Home = () => {
             < Carousel
                 activeIndex={index}
                 onSelect={handleSelect}
-                interval={2000}
+                interval={3500}
                 className='d-flex grow overflow-hidden w-100'
             >
                 {images.map((image) => (

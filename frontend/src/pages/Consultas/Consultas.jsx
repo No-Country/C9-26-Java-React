@@ -10,6 +10,10 @@ const Consultas = () => {
     const [nextPage, setNextPage] = useState(false);
     const [interviewOn, setInterviewOn] = useState(false);
 
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [description, setDescription] = useState('');
+
     const reasons = [
         "Información sobre clases/precios",
         "Inscripciones",
@@ -38,18 +42,32 @@ const Consultas = () => {
                         <div className={styles.consult_wrapper}>
                             {
                                 interviewOn
-                                    ? <TurneroForm interviewOn={interviewOn} setNextPage={setNextPage} reasons={reasons} />
+                                    ? <TurneroForm interviewOn={interviewOn} 
+                                        setNextPage={setNextPage} 
+                                        reasons={reasons} 
+                                        name={setName}
+                                        email={setEmail}
+                                        description={setDescription} 
+                                        setInterviewOn={setInterviewOn}
+                                        />
+                                    
                                     : <>
                                         <ClassicForm setInterviewOn={setInterviewOn} reasons={reasons}/>
 
-                                        <TurneroForm setNextPage={setNextPage} reasons={reasons}/>
+                                        <TurneroForm setNextPage={setNextPage} 
+                                            reasons={reasons}
+                                            name={setName}
+                                            email={setEmail}
+                                            description={setDescription} 
+                                            setInterviewOn={setInterviewOn}
+                                            />
                                     </>
                             }
 
                         </div>
                     </div>
 
-                    : <TurneroSchedule />
+                    : <TurneroSchedule name={name} email={email} description={description} />
             }
 
 

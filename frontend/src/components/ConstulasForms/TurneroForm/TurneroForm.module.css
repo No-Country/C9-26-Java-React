@@ -22,12 +22,41 @@
     border-radius: 20px;
 }
 
+.consult_interviewButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.consult_interviewButton button {
+    gap: 11px;
+    width: 100%;
+    max-width: 300px;
+    height: 42px;
+    border-radius: 20px;
+    border: none;
+    background-color: #222221;
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding: 0 20px;
+}
+
 .consult_turnosSub {
     font-size: 20px;
     font-weight: 400;
     text-align: center;
     color: #000000;
     margin-bottom: 4rem;
+}
+
+.consult_iconContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+    width: 170px;
 }
 
 .consult_turnosText {

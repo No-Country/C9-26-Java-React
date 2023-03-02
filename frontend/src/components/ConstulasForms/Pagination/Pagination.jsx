@@ -8,12 +8,14 @@ const Pagination = ({ page, setPage }) => {
         if (page > 1) {
             setPage(page - 1);
         }   
+        return;
     }
 
     const nextPage = () => {
         if (page < 6) {
             setPage(page + 1);
         }
+        return;
     }
 
     return (

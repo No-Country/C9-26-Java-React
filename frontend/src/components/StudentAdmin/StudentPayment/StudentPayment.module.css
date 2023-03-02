@@ -63,3 +63,37 @@
 .payment_input:disabled {
     background-color: #FFFFFF;
 }
+
+.payment_label {
+    margin-left: 1rem;
+    color: #000000;
+}
+
+/* Media Queries */
+
+@media(max-width: 1130px) { 
+    .payment_container {
+        padding: 20px;
+    }
+}
+
+@media(max-width: 350px) { 
+    .payment_inputContainer {
+        align-items: center;
+        gap: 0.4rem;
+        margin-bottom: 0px;
+        flex-direction: column;
+    }
+
+    .payment_container {
+        max-height: 52.80rem;
+    }
+
+    .payment_status {
+        display: none;
+    }
+
+    .payment_label {
+        margin-left: 0;
+    }
+}

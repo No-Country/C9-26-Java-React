@@ -9,6 +9,7 @@ export const useAuth = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const token = useSelector((state) => state.user.token);
+    const role = useSelector((state) => state.user.role);
 
     if (token === null) {
         var session = JSON.parse(localStorage.getItem("nc_be_session"));
@@ -28,7 +29,7 @@ export const useAuth = () => {
 
     const isAuthenticated = token !== null
 
-    return { isAuthenticated, token };
+    return { isAuthenticated, token, role };
 }
 
 export const useUserInfo = () => {

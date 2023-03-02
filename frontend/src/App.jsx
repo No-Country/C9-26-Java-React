@@ -13,6 +13,7 @@ import {
   ADD_STUDENT,
   PROGRAM,
   MULTIMEDIA,
+  QUIZ,
   CHAT,
   EVENTS,
   TASKS,
@@ -23,6 +24,7 @@ import {
   Home,
   Campus,
   Profile,
+  Quiz,
   Clases,
   Examenes,
   Servicios,
@@ -45,6 +47,7 @@ function App() {
           <Route path={EXAMS} element={<Examenes />} />
           <Route path={SERVICES} element={<Servicios />} />
           <Route path={CONSULTATION} element={<Consultas />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
         <Route path={PRIVATE} element={<PrivateRoute />}>
           <Route index element={<Profile />} />
@@ -53,13 +56,17 @@ function App() {
           <Route path={CAMPUS} element={<Campus />}>
             <Route index element={<Navigate replace to={PROGRAM} />} />
             <Route path={PROGRAM} element={<Program />} />
-            <Route path={MULTIMEDIA} element={<Multimedia />} />
+            <Route path={MULTIMEDIA} element={<Multimedia />}>
+              <Route path={QUIZ} element={<Quiz />} />
+              <Route path="*" element={<NotFound />} />
+            </Route>
             <Route path={CHAT} element={<Chat />} />
             <Route path={EVENTS} element={<Events />} />
             <Route path={TASKS} element={<Tasks />} />
+            <Route path="*" element={<NotFound />} />
           </Route>
+          <Route path="*" element={<NotFound />} />
         </Route>
-        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
