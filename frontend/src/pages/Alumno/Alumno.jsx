@@ -3,8 +3,10 @@ import StudentCourses from '../../components/StudentAdmin/StudentCourses/Student
 import StudentGrades from '../../components/StudentAdmin/StudentGrades/StudentGrades';
 import StudentExams from '../../components/StudentAdmin/StudentExams/StudentExams';
 import StudentPayment from '../../components/StudentAdmin/StudentPayment/StudentPayment';
-
+import { apiCall } from '../../api/index';
+import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom"; 
+import { getStudents } from '../../store/actions/adminActions';
 
 import styles from "./Alumno.module.css";
 

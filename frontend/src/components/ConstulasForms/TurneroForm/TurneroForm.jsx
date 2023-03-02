@@ -1,16 +1,40 @@
+import { useState, useEffect } from 'react';
 import { FaWhatsapp, FaFacebookSquare, FaInstagram } from 'react-icons/fa';
 
 import styles from "./TurneroForm.module.css";
 
-const TurneroForm = ({ interviewOn, setNextPage, reasons, name, email, description }) => {
+const TurneroForm = ({ interviewOn, setNextPage, reasons, name, email, description, setInterviewOn }) => {
 
     const handleSubmit = () => {
         setNextPage(true);
         window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     }
 
+    const [width, setWidth] = useState(window.innerWidth);
+    const breakpoint = 900;
+
+    useEffect(() => {
+
+        //Manejar tamaño de pantalla
+        const handleResizeWindow = () => setWidth(window.innerWidth);
+        window.addEventListener("resize", handleResizeWindow);
+
+        return () => {
+            window.removeEventListener("resize", handleResizeWindow);
+        }
+
+    }, []);
+
     return (
         <section className={`${styles.consult_turnos} ${interviewOn && styles.consult_show}`}>
+            
+            {
+                width < breakpoint &&
+                <div className={styles.consult_interviewButton}>
+                    <button onClick={() => setInterviewOn(false)}>Prefiero que me contacten</button>
+                </div>
+            }
+
             <p className={styles.consult_turnosSub}>¿Querés hacer una <b>entrevista en vivo</b> con nosotros para evacuar todas tus dudas? <b>Elegí día y hora aquí.</b></p>
 
             <div className={styles.consult_turnosBox}>

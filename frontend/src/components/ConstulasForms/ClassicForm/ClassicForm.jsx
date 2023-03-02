@@ -4,7 +4,6 @@ import styles from "./ClassicForm.module.css";
 
 const ClassicForm = ({ setInterviewOn, reasons }) => {
 
-    //Tamaño de pantalla para carrusel
     const [width, setWidth] = useState(window.innerWidth);
     const breakpoint = 900;
 
