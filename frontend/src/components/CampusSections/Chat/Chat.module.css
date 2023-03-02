@@ -67,6 +67,7 @@
     height: 1in;
     border-radius: 20px;
     outline: none;
+    padding: 0;
 }
 
 .btnSms {
@@ -78,6 +79,8 @@
     right: 0;   
   }
 
-  @media screen {
-    
+  @media (max-width: 700px) {
+    .dicContacto{
+        display: none;
+    }
   }

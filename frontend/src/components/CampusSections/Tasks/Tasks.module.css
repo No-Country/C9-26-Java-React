@@ -11,25 +11,23 @@
 }
 
 .taskUl{
-    border: none;
+    list-style: none;  
     display: flex;
     flex-direction: column;
-    padding: 1rem;
+    
     gap: 3rem;
     flex-wrap: wrap;    
+     
 }
 
 .taskUl li{
-    cursor: pointer;
-    list-style: none;    
+    cursor: pointer; 
+         
 }
 
 .taskUl li:hover{
     background-color: #D9D9D933;
-    border-radius: 5px;
-    padding: 10px;
-    margin-left: 0px;
-    height: 40px
+             
 }
 
 .content{
@@ -65,8 +63,7 @@
         padding: 1rem;
     }
 
-    .taskUl{        
-        width: 100%;
+    .taskUl{                
         flex-direction: row;        
     }
   }

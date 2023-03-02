@@ -1,0 +1,50 @@
+.body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-direction: column;
+}
+
+.input {
+    display: 'flex';
+    align-Items: 'center';
+    background: #ffff;
+    border: none;
+    height: 42px;
+    width: 100%;    
+    border-radius: 20px;
+    padding-left: 30px;
+    background: #F5F5F5;
+}
+
+.input input{
+    background: none;
+    border: none;
+    width: 90%; 
+    height: 100%;   
+    outline: none;
+}
+
+.input input[type = number]::-webkit-inner-spin-button,
+       input[type = number]::-webkit-outer-spin-button{
+        -webkit-appearance: none;
+        margin: 0;
+}
+
+.errors {
+    color: red;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: -10px;
+}
+
+.button {
+    color: #000000;
+    background: #CB8DF1;
+    border: none;
+    font-weight: bold;
+    width: 158px;
+    height: 36px;
+    border-radius: 20px;
+}
