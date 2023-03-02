@@ -1,0 +1,27 @@
+.quiz_video {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 15px;
+
+}
+
+.quiz_text {
+    width: 100%;
+    border-radius: 15px;
+    background-color: #F8EBF0;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: 500;
+    color: #000000;
+}
+
+.questions {
+    list-style-type: lower-latin;
+    margin-left: 20px;
+
+}
+
+.questions li {
+    margin-bottom: 10px;
+}
