@@ -50,10 +50,48 @@
     text-align: center;
 }
 
+.liConatct{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 1rem;
+    font-weight: bold;
+    color: #474747;
+    cursor: pointer;
+}
+
+.activo{
+    background: #D9D9D999;
+    border-radius: 5px;
+    width: 182px;    
+}
+
+.divLiConatct{
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+}
+
 .divSms {
     width: 80%;
     text-align: center;
+}
 
+.divForm{
+    min-height: 150px;
+    display: flex;
+    justify-content: end;
+    margin-right: 1rem;
+    align-items: start;
+}
+
+.divFormSpan{
+    background: #FFFFFF;
+    color: black;
+    padding: 5px;
+    border-radius: 5px;
+    
 }
 
 .divSmsInput {
@@ -62,12 +100,13 @@
     width: 70%;
 }
 
-.inputSms {
-    width: 90%;
-    height: 1in;
+.inputSms {    
+    max-height: .7in;
+    min-height: .7in;  
+    width: 90%;  
     border-radius: 20px;
     outline: none;
-    padding: 0;
+    padding: 20px;
 }
 
 .btnSms {
@@ -83,4 +122,14 @@
     .dicContacto{
         display: none;
     }
+
+    .divSms{ 
+        width: 100%; 
+        justify-content: center;
+    }
+
+    .inputSms{
+        width: 100%;
+    }
+    
   }

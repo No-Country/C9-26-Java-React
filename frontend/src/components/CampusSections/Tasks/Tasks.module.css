@@ -1,69 +1,59 @@
-.main{
-    background:#0ececeb9;
-    display: flex;   
-    justify-content: space-around;
-    width: 100%;
-    flex-grow: 1;
+.contTalsk{
+    background: #0ececeb9;
     color: #ffffff;
     border-radius: 20px;
-    padding: 3rem;    
-    flex-wrap: wrap;  
+    padding: 20px;
 }
 
-.taskUl{
-    list-style: none;  
+.contSesion{
+    display: flex;   
+    gap: 1rem; 
+}
+
+.divUnidad{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    list-style: none; 
+    text-align: center;   
+    cursor: pointer;     
+    gap: 1.5rem;
+    border: none; 
+    border: 2px solid transparent;       
+    width: 20%; 
+}
+
+.divUnidad span{
+    width: 150px;
     
-    gap: 3rem;
-    flex-wrap: wrap;    
-     
 }
 
-.taskUl li{
-    cursor: pointer; 
-         
-}
-
-.taskUl li:hover{
-    background-color: #D9D9D933;
-             
-}
-
-.content{
-    max-width: 1000px;
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
-    gap: 1rem;
-}
-
-.content .taskUl {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.taskH4{
-    text-align: justify;
+.divCont{
+    width:80%;
 }
 
 .activo{
-
     background-color: #D9D9D999;
     border-radius: 5px;
     padding: 10px;
     margin-left: 0px;
-    height: 40px
+    height: 40px;
+    border: none;
 }
 
 @media (max-width: 1850px) {
-    .main{
-        padding: 1rem;
+    .contSesion{
+        flex-direction: column;        
     }
 
-    .taskUl{                
-        flex-direction: row;        
+    .divUnidad{
+        flex-direction: row;  
+        flex-wrap: wrap;
+        width: 100%; 
     }
+
+    .divCont{
+        width: 100%;
+    }
+
   }
