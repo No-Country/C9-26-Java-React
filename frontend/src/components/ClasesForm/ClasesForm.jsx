@@ -29,7 +29,7 @@ const ClasesForm = () => {
                     y nos pondremos en contacto para asesorarte y completar la inscripción
                 </p>
 
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={(e) => handleSubmit(e)}>
                     <div className={styles.input_container}>
                         <input type="text" name="nombre" placeholder="Nombre y apellido" required />
                     </div>

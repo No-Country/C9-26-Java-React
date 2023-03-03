@@ -23,7 +23,7 @@ export const login = createAsyncThunk(
 
 export const studentInfo = createAsyncThunk(
     'user/studentInfo',
-    async (token, { rejectWithValue }) => {
+    async (token, { dispatch, rejectWithValue }) => {
         try {
 
             const response = await apiCall.get('/students/token/', {
@@ -33,6 +33,9 @@ export const studentInfo = createAsyncThunk(
             });
 
             const info = response.data;
+            const { id } = info;
+
+            dispatch(getCourse({id, token}));
 
             return info;
 
@@ -54,6 +57,27 @@ export const setSession = createAsyncThunk(
             dispatch(studentInfo(token))
 
             return session;
+        } catch (error) {
+            return rejectWithValue(error.response.data)
+        }
+    }
+)
+
+export const getCourse = createAsyncThunk(
+    'user/getCourse',
+    async ({id, token}, { rejectWithValue }) => {
+        try {
+            const response = await apiCall.get(`/courses/1`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                }
+            });
+            console.log(response);
+
+            const course = response.data;
+
+            return course;
+
         } catch (error) {
             return rejectWithValue(error.response.data)
         }

@@ -1,9 +1,17 @@
 import { RiPencilFill } from 'react-icons/ri';
+import { useForm } from 'react-hook-form';
 
 import styles from "./StudentExams.module.css";
 
 const StudentExams = ({ location }) => {
-    
+
+    const { register, handleSubmit } = useForm({
+        defaultValues: {
+            mid_exam: "-",
+            final_exam: "-",
+        }
+    });
+
     return (
         <div className={styles.myExam_container}>
 
@@ -20,15 +28,22 @@ const StudentExams = ({ location }) => {
                 }
             </div>
 
-            <div className='d-flex flex-column'>
-                <label htmlFor="level" className='ms-3 text-black'>MID-TERM EXAM</label>
-                <input type="text" id="level" className={styles.myExam_input} disabled={location === "/private/student" && "disabled"} />
-            </div>
+            <form action="">
+                
+                <div className='d-flex flex-column'>
+                    <label htmlFor="mid_exam" className='ms-3 text-black'>MID-TERM EXAM</label>
+                    <input type="text" id="mid_exam" className={styles.myExam_input}
+                        disabled={location === "/private/student" && "disabled"} {...register('mid_exam', { required: true })} />
+                </div>
 
-            <div className='d-flex flex-column'>
-                <label htmlFor="level" className='ms-3 text-black'>FINAL EXAM</label>
-                <input type="text" id="level" className={styles.myExam_input} disabled={location === "/private/student" && "disabled"} />
-            </div>
+                <div className='d-flex flex-column'>
+                    <label htmlFor="final_exam" className='ms-3 text-black'>FINAL EXAM</label>
+                    <input type="text" id="final_exam" className={styles.myExam_input}
+                        disabled={location === "/private/student" && "disabled"} {...register('final_exam', { required: true })} />
+                </div>
+                
+            </form>
+
         </div>
     )
 }

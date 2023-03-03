@@ -17,7 +17,7 @@ function ModalResponse({ fn }) {
         <Modal className={styles.modal_container} show={true} centered="true">
             <Modal.Body className={styles.modal}>
                 <p className="text-white text-center fw-bold">¡Gracias por tu consulta!
-                    Verificá tu casilla de correo para ver confirmación de tu pedido y link para ingresar a 
+                    Verificá tu casilla de correo para ver confirmación de tu pedido y link para ingresar a
                     la entrevista en el día y hora seleccionados.
                 </p>
                 <button className={styles.modal_button} onClick={handleClose}>CERRAR</button>
@@ -72,8 +72,12 @@ const TurneroSchedule = ({ name, email, description }) => {
             "fullName": nameForm
         }
 
-        const response = await apiCall.post('/appointments/create', data)
-        response.status === 201 && setStatus(true);
+        try {
+            const response = await apiCall.post('/appointments/create', data)
+            response.status === 201 && setStatus(true);
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     useEffect(() => {
