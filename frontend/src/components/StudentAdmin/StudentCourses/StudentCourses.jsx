@@ -9,12 +9,12 @@ const StudentCourses = ({ location }) => {
 
     const { register, handleSubmit } = useForm({
         defaultValues: {
-            course: "Business English",
-            professor: "Manuel Pérez",
-            day: "Martes y Jueves",
-            hour: "14:30 a 16:30",
-            modality: "Grupo presencial",
-            level: "B1",
+            course: location === "/private/student" ? "Business English" : "",
+            professor: location === "/private/student" ? "Manuel Pérez" : "",
+            day: location === "/private/student" ? "Martes y Jueves" : "",
+            hour: location === "/private/student" ? "14:30 a 16:30" : "",
+            modality: location === "/private/student" ? "Grupo presencial" : "",
+            level: location === "/private/student" ? "B1" : "",
         }
     });
 

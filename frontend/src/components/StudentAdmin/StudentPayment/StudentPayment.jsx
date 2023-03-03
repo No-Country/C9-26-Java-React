@@ -7,18 +7,18 @@ const StudentPayment = ({ location }) => {
 
     const { register, handleSubmit } = useForm({
         defaultValues: {
-            inscription: "PAGADA",
-            cuota1: "PAGADA",
-            cuota2: "PENDIENTE",
-            cuota3: "PENDIENTE",
-            cuota4: "PENDIENTE",
-            cuota5: "PENDIENTE",
-            cuota6: "PENDIENTE",
-            cuota7: "PENDIENTE",
-            cuota8: "PENDIENTE",
-            cuota9: "PENDIENTE",
-            cuota10: "PENDIENTE",
-            exam: "PENDIENTE",
+            inscription: location === "/private/student" ? "PAGADA" : "",
+            cuota1: location === "/private/student" ? "PAGADA" : "",
+            cuota2: location === "/private/student" ? "PENDIENTE" : "",
+            cuota3: location === "/private/student" ? "PENDIENTE" : "",
+            cuota4: location === "/private/student" ? "PENDIENTE" : "",
+            cuota5: location === "/private/student" ? "PENDIENTE" : "",
+            cuota6: location === "/private/student" ? "PENDIENTE" : "",
+            cuota7: location === "/private/student" ? "PENDIENTE" : "",
+            cuota8: location === "/private/student" ? "PENDIENTE" : "",
+            cuota9: location === "/private/student" ? "PENDIENTE" : "",
+            cuota10: location === "/private/student" ? "PENDIENTE" : "",
+            exam: location === "/private/student" ? "PENDIENTE" : "",
         }
     });
     

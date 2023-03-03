@@ -7,8 +7,8 @@ const StudentExams = ({ location }) => {
 
     const { register, handleSubmit } = useForm({
         defaultValues: {
-            mid_exam: "-",
-            final_exam: "-",
+            mid_exam: location === "/private/student" ? "-" : "",
+            final_exam: location === "/private/student" ? "-" : "",
         }
     });
 

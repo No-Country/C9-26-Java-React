@@ -15,12 +15,12 @@ const StudentData = ({ location }) => {
 
     const { register, handleSubmit } = useForm({
         defaultValues: {
-            name: `${info.firstName} ${info.lastName}`,
-            date: info.birthdate,
-            dni: info.dni,
-            address: info.address,
-            phone: info.phone,
-            email: info.email
+            name: location === "/private/student" ? `${info.firstName} ${info.lastName}` : "",
+            date: location === "/private/student" ? info.birthdate : "",
+            dni: location === "/private/student" ? info.dni : "",
+            address: location === "/private/student" ? info.address : "",
+            phone: location === "/private/student" ? info.phone : "",
+            email: location === "/private/student" ? info.email : ""
         }
     });
 

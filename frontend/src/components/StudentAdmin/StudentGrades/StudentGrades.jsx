@@ -7,14 +7,14 @@ const StudentGrades = ({ location }) => {
 
     const { register, handleSubmit } = useForm({
         defaultValues: {
-            mid_oral: "-",
-            mid_grammar: "-",
-            mid_reading: "-",
-            mid_listen: "-",
-            final_oral: "-",
-            final_grammar: "-",
-            final_reading: "-",
-            final_listen: "-",
+            mid_oral: location === "/private/student" ? "-" : "",
+            mid_grammar: location === "/private/student" ? "-" : "",
+            mid_reading: location === "/private/student" ? "-" : "",
+            mid_listen: location === "/private/student" ? "-" : "",
+            final_oral: location === "/private/student" ? "-" : "",
+            final_grammar: location === "/private/student" ? "-" : "",
+            final_reading: location === "/private/student" ? "-" : "",
+            final_listen: location === "/private/student" ? "-" : "",
         }
     });
     
