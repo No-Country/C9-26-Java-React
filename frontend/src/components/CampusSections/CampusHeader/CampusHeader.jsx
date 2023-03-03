@@ -52,7 +52,7 @@ const CampusHeader = () => {
                                         </div>
                                         <h5 className="fs-5">Examen final</h5>
                                     </div>
-                                    <span style={{ fontSize: '19px' }}>Aprobado</span>
+                                    <span style={{ fontSize: '19px' }}>Pendiente</span>
                                 </div>
                             </Col>
                         </Row>

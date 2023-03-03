@@ -3,6 +3,7 @@ import { Col, Container, Row } from "react-bootstrap"
 import { CampusHeader, CampusMenu } from "../"
 import { useLocation } from "react-router-dom"
 import Quizes from "../CampusSections/Multimedia/Quizes/Quizes"
+import QuizContextProvider from "../../context/QuizContext"
 
 
 const CampusLayout = ({ children }) => {
@@ -17,7 +18,9 @@ const CampusLayout = ({ children }) => {
             <CampusHeader />
             {pathSection[4] === "quiz" ? (<>
                 {/* Contenedor de quizes */}
-                <Quizes />
+                <QuizContextProvider>
+                    <Quizes />
+                </QuizContextProvider>
             </>) : (<>
 
                 {/* Contenedor principal */}

@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo } from "react"
+import React, { useState, useEffect, useMemo } from "react"
 import { NavLink } from "react-router-dom"
 
 import program from "../../../assets/program.svg"
@@ -7,12 +7,56 @@ import chat from "../../../assets/chat.svg"
 import events from "../../../assets/events.svg"
 import tasks from "../../../assets/tasks.svg"
 
-import { MULTIMEDIA, PROGRAM, CHAT, EVENTS, TASKS } from "../../../config/routes/paths"
+import { MULTIMEDIA, PROGRAM, CHAT, EVENTS, TASKS, QUIZ } from "../../../config/routes/paths"
 
 import styles from "./CampusMenu.module.css"
+import { useLocation } from "react-router-dom"
 
 const CampusMenu = () => {
     const [show, setShow] = useState(true)
+    const location = useLocation()
+    const path = location.pathname
+
+    const pathSection = path.split('/')[4]
+
+    useEffect(() => {
+        if (pathSection === 'quiz') {
+            setShow(false)
+        }
+    }, [path])
+
+    const menuStyle = useMemo(() => {
+        if (pathSection === 'quiz') {
+            return {
+                borderRadius: '20px',
+                padding: '15px',
+                marginBottom: '20px',
+                background: 'rgba(14, 206, 206, 0.75)',
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                width: '100%',
+                position: 'relative',
+                height: '90px'
+            }
+        }
+        return undefined
+    }, [path])
+
+    const menuContainerStyle = useMemo(() => {
+        if (pathSection === 'quiz') {
+            return {
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                width: '100%',
+            }
+        }
+        return undefined
+    }, [path])
+
 
     const getStyle =
         ({ isActive }) => isActive ? {
@@ -25,8 +69,8 @@ const CampusMenu = () => {
         } : undefined
 
     return (
-        <div className={`${styles.menu}`} >
-            <div className={styles.menu__container}>
+        <div className={pathSection !== 'quiz' && styles.menu} style={menuStyle} >
+            <div className={pathSection !== 'quiz' && styles.menu__container} style={menuContainerStyle}>
                 <NavLink to={PROGRAM} className={styles.menu__item} style={getStyle}>
                     <img src={program} alt="" />
                     {show && <span className={styles.program}>Programa de estudio</span>}

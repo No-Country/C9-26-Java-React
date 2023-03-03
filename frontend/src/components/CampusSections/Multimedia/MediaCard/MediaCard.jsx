@@ -5,7 +5,6 @@ import styles from './MediaCard.module.css'
 import { FaEllipsisV, FaFacebook, FaTwitter, FaLinkedin } from 'react-icons/fa'
 
 
-
 const CardOptions = ({ link, title, description }) => {
     const [display, setDisplay] = React.useState(false)
 
@@ -41,11 +40,8 @@ const CardOptions = ({ link, title, description }) => {
 }
 
 const MediaCard = ({ data }) => {
-    const { id, title, imgUrl, description, link } = data
+    const { id, title, img, description, link } = data
 
-    console.log('link', link);
-
-    const image = imgUrl || 'https://picsum.photos/200/300'
     const titleAvatar = title.match(/\b(\w)/g).join('').substring(0, 2).toUpperCase()
 
     const avatarStyle = {
@@ -63,7 +59,7 @@ const MediaCard = ({ data }) => {
         // <Link to={link} target='_blank' className='text-decoration-none'>
         <Card style={{ width: '100%', minWidth: '300px', maxWidth: '360px' }} className='rounded-4 bg-dark'>
             <Link to={`/private/campus/multimedia/quiz/${id}`} className='text-decoration-none'>
-                <Card.Img variant="top" src={image} className='rounded-4' />
+                <Card.Img variant="top" src={img} className='rounded-4' />
             </Link>
             <Card.Body>
                 <Card.Title className='text-white fs-5 d-flex align-items-center'>
