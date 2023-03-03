@@ -15,10 +15,21 @@ label {
     position: relative;
 }
 
+.profile_pictureContainer img {
+    width: 251px;
+    height: 202px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
 .profile_labelImg {
     position: absolute;
     bottom: 0;
     right: 0.7rem;
+    background-color: #FFFFFF;
+    padding: 6px;
+    border-radius: 50px;
+    cursor: pointer;
 }
 
 .profile_uploadImage {
