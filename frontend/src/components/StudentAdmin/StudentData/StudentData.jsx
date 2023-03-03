@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { RiPencilFill } from 'react-icons/ri';
-/* import profilePhoto from "../../../assets/images/PerfilAlumno/profile.png"; */
 import profilePhoto from "../../../assets/images/PerfilAlumno/papu.jpeg";
+import profilePhotoAdmin from "../../../assets/images/PerfilAlumno/perfil.jpg";
 import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 
@@ -50,7 +50,9 @@ const StudentData = ({ location }) => {
 
                 <div >
                     <picture className={styles.profile_pictureContainer}>
-                        <img src={profilePhoto} className="d-block" alt="" />
+                        <img src={location === "/private/student" 
+                                    ? profilePhoto
+                                    : profilePhotoAdmin } className="d-block" alt="" />
                         {
                             location === "/private/student"
                             && <>
