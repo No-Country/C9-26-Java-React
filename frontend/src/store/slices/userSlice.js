@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { login, studentInfo, setSession } from '../actions/userActions'
+import { login, studentInfo, setSession, getCourse } from '../actions/userActions'
 
 const initialState = {
     info: {},
@@ -7,7 +7,8 @@ const initialState = {
     token: null,
     role: null,
     status: 'idle', // idle, loading, success, failed
-    error: null
+    error: null,
+    course: null
 }
 
 export const userSlice = createSlice({
@@ -60,6 +61,18 @@ export const userSlice = createSlice({
                 state.status = 'success'
             })
             .addCase(setSession.rejected, (state, action) => {
+                state.error = action.payload
+                state.status = 'failed'
+            })
+            // Get course
+            .addCase(getCourse.pending, (state) => {
+                state.status = 'pending'
+            })
+            .addCase(getCourse.fulfilled, (state, action) => {
+                state.course = action.payload
+                state.status = 'success'
+            })
+            .addCase(getCourse.rejected, (state, action) => {
                 state.error = action.payload
                 state.status = 'failed'
             })

@@ -159,6 +159,33 @@ textarea {
     font-weight: 700;
 }
 
+.modal_container div {
+    border-radius: 20px!important;
+    border: none!important;;
+}
+
+.modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px!important;
+    background: #222221;
+    border: none!important;
+}
+
+.modal_button {
+    width: 100%;
+    max-width: 158px;
+    height: 36px;
+    border-radius: 20px;
+    background-color: #CB8DF1;
+    color: black;
+    font-weight: bold;
+    margin-top: 20px;
+    border: none;
+}
+
 
 /* Media Queries */
 
