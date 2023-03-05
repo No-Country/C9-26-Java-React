@@ -63,8 +63,6 @@ Abrir [http://localhost:5173](http://localhost:5173) para verlo en navegador.
 
 ## Back - End 🚀
 
-### Gonza Rolo : [LinkedIn](#) | [GitHub](#) | [Portfolio]()
-
 ### Francisco Pulido [LinkedIn](https://www.linkedin.com/in/pulidodev/) | [GitHub](https://github.com/pulidodev) | [Portfolio]()
 
 ### Armando Ruiz : [LinkedIn](#) | [GitHub](#) | [Portfolio]()
