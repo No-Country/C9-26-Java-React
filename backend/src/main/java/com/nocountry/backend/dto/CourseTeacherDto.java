@@ -1,7 +1,5 @@
 package com.nocountry.backend.dto;
 
-import java.util.List;
-
 import com.nocountry.backend.utils.enums.Level;
 
 import lombok.AllArgsConstructor;
@@ -13,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class CourseDto {
+public class CourseTeacherDto {
 
     private Long id;
 
@@ -26,8 +24,4 @@ public class CourseDto {
     private String courseDays;
 
     private String schedule;
-
-    private Long teacherId;
-
-    private List<StudentListDto> students;
 }

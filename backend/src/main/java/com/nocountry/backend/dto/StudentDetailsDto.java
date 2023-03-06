@@ -39,7 +39,7 @@ public class StudentDetailsDto {
 
     private Map<String, String> quizzesStatus;
 
-    private Long courseId;
+    private CourseStudentDto course;
 
     private List<ExamListDto> exams;
 

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.nocountry.backend.dto.CourseDto;
+import com.nocountry.backend.dto.CourseDetailsDto;
 import com.nocountry.backend.service.ICourseService;
 
 import lombok.RequiredArgsConstructor;
@@ -28,23 +28,23 @@ public class CourseController {
     private final ICourseService courseService;
 
     @GetMapping("/all")
-    public ResponseEntity<List<CourseDto>> getAllCourses() {
+    public ResponseEntity<List<CourseDetailsDto>> getAllCourses() {
         return new ResponseEntity<>(courseService.getAllCourses(), HttpStatus.OK);
     }
 
     @GetMapping("/{courseId}")
-    public ResponseEntity<CourseDto> getCourseById(@PathVariable Long courseId) {
+    public ResponseEntity<CourseDetailsDto> getCourseById(@PathVariable Long courseId) {
         return new ResponseEntity<>(courseService.getCourseById(courseId), HttpStatus.OK);
     }
 
     @PostMapping("/create")
-    public ResponseEntity<CourseDto> createCourse(@RequestBody CourseDto courseDto) {
+    public ResponseEntity<CourseDetailsDto> createCourse(@RequestBody CourseDetailsDto courseDto) {
         return new ResponseEntity<>(courseService.createCourse(courseDto), HttpStatus.CREATED);
     }
 
     @PatchMapping("/{courseId}/update")
-    public ResponseEntity<CourseDto> updateCourse(@PathVariable Long courseId,
-            @RequestBody CourseDto courseDto) {
+    public ResponseEntity<CourseDetailsDto> updateCourse(@PathVariable Long courseId,
+            @RequestBody CourseDetailsDto courseDto) {
         return new ResponseEntity<>(courseService.updateCourse(courseId, courseDto), HttpStatus.ACCEPTED);
     }
 

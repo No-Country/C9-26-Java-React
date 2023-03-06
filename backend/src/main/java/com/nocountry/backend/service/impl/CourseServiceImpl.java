@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.nocountry.backend.dto.CourseDto;
+import com.nocountry.backend.dto.CourseDetailsDto;
 import com.nocountry.backend.mapper.CourseMapper;
 import com.nocountry.backend.repository.ICourseRepository;
 import com.nocountry.backend.repository.IStudentRepository;
@@ -26,23 +26,23 @@ public class CourseServiceImpl implements ICourseService {
     private final CourseMapper courseMapper;
 
     @Override
-    public List<CourseDto> getAllCourses() {
+    public List<CourseDetailsDto> getAllCourses() {
         return courseMapper.convertToDtoList(courseRepository.findAll());
     }
 
     @Override
-    public CourseDto getCourseById(Long courseId) {
+    public CourseDetailsDto getCourseById(Long courseId) {
         return courseMapper.convertToDto(courseRepository.findById(courseId).orElseThrow());
     }
 
     @Override
-    public CourseDto createCourse(CourseDto courseDto) {
+    public CourseDetailsDto createCourse(CourseDetailsDto courseDto) {
         var course = courseMapper.convertToEntity(courseDto);
         return courseMapper.convertToDto(courseRepository.save(course));
     }
 
     @Override
-    public CourseDto updateCourse(Long courseId, CourseDto courseDto) {
+    public CourseDetailsDto updateCourse(Long courseId, CourseDetailsDto courseDto) {
         var course = courseRepository.findById(courseId).orElseThrow();
 
         if (courseDto.getCategory() != null) {

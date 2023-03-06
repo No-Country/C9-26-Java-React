@@ -11,7 +11,6 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -46,12 +45,12 @@ public class Course {
     private String schedule;
 
     @JsonBackReference
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "teacher_id")
     private Teacher teacher;
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
     private List<Student> students = new ArrayList<>();
 
     public void setTeacher(Teacher teacher) {

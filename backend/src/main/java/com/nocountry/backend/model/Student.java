@@ -72,18 +72,18 @@ public class Student {
     private User user;
 
     @JsonBackReference
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "course_id")
     private Course course;
 
     @JsonManagedReference
     @Default
-    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
     private List<Exam> exams = new ArrayList<>();
 
     @JsonManagedReference
     @Default
-    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
     private List<Payment> payments = new ArrayList<>();
 
     public void setCourse(Course course) {
