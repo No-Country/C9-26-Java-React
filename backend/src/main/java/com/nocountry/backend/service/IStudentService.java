@@ -3,10 +3,11 @@ package com.nocountry.backend.service;
 import java.io.IOException;
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.nocountry.backend.dto.QuizRequestDto;
 import com.nocountry.backend.dto.StudentDetailsDto;
 import com.nocountry.backend.dto.StudentListDto;
-import org.springframework.web.multipart.MultipartFile;
 
 public interface IStudentService {
 
@@ -14,10 +15,7 @@ public interface IStudentService {
 
     StudentDetailsDto updateStudentByEmail(String email, StudentDetailsDto studentDetailsDto);
 
-    StudentDetailsDto updateStudentImageByEmail(
-            String email,
-            StudentDetailsDto studentDetailsDto,
-            MultipartFile file) throws IOException;
+    void updateStudentImageByEmail(String email, MultipartFile file) throws IOException;
 
     void updateQuizStatusByEmail(String email, QuizRequestDto quizName);
 
