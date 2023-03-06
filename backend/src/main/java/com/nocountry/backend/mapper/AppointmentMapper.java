@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 import com.nocountry.backend.dto.AppointmentDto;
 import com.nocountry.backend.model.Appointment;
-import com.nocountry.backend.utils.MapperUtil;
+import com.nocountry.backend.util.MapperUtil;
 
 @Component
 public class AppointmentMapper {

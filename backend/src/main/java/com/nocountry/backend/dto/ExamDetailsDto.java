@@ -1,6 +1,6 @@
 package com.nocountry.backend.dto;
 
-import com.nocountry.backend.utils.enums.Rating;
+import com.nocountry.backend.util.enums.Rating;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

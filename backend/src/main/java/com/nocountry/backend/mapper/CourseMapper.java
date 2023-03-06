@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 import com.nocountry.backend.dto.CourseDetailsDto;
 import com.nocountry.backend.model.Course;
-import com.nocountry.backend.utils.MapperUtil;
+import com.nocountry.backend.util.MapperUtil;
 
 @Component
 public class CourseMapper {

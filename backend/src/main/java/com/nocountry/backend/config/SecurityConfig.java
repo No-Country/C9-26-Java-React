@@ -11,7 +11,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.cors.CorsUtils;
 
 import com.nocountry.backend.config.jwt.JwtAuthFilter;
-import com.nocountry.backend.utils.enums.Role;
+import com.nocountry.backend.util.enums.Role;
 
 import lombok.RequiredArgsConstructor;
 

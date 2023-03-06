@@ -1,6 +1,6 @@
 package com.nocountry.backend.dto;
 
-import com.nocountry.backend.utils.enums.Level;
+import com.nocountry.backend.util.enums.Level;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

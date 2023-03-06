@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import com.nocountry.backend.dto.StudentDetailsDto;
 import com.nocountry.backend.dto.StudentListDto;
 import com.nocountry.backend.model.Student;
-import com.nocountry.backend.utils.MapperUtil;
+import com.nocountry.backend.util.MapperUtil;
 
 @Component
 public class StudentMapper {

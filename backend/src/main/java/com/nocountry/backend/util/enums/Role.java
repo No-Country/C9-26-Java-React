@@ -1,4 +1,4 @@
-package com.nocountry.backend.utils.enums;
+package com.nocountry.backend.util.enums;
 
 public enum Role {
 

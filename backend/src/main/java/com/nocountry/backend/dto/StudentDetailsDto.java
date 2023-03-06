@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.nocountry.backend.model.MediaResource;
-import com.nocountry.backend.utils.enums.Level;
+import com.nocountry.backend.util.enums.Level;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

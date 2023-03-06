@@ -2,7 +2,7 @@ package com.nocountry.backend.dto;
 
 import java.util.List;
 
-import com.nocountry.backend.utils.enums.Level;
+import com.nocountry.backend.util.enums.Level;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

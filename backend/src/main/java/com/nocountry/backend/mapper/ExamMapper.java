@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import com.nocountry.backend.dto.ExamDetailsDto;
 import com.nocountry.backend.dto.ExamListDto;
 import com.nocountry.backend.model.Exam;
-import com.nocountry.backend.utils.MapperUtil;
+import com.nocountry.backend.util.MapperUtil;
 
 @Component
 public class ExamMapper {

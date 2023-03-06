@@ -8,7 +8,7 @@ import com.nocountry.backend.dto.PaymentDetailsDto;
 import com.nocountry.backend.mapper.PaymentMapper;
 import com.nocountry.backend.repository.IPaymentRepository;
 import com.nocountry.backend.service.IPaymentService;
-import com.nocountry.backend.utils.enums.PaymentStatus;
+import com.nocountry.backend.util.enums.PaymentStatus;
 
 import lombok.RequiredArgsConstructor;
 

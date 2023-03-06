@@ -7,7 +7,7 @@ import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.nocountry.backend.utils.enums.Level;
+import com.nocountry.backend.util.enums.Level;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.CollectionTable;

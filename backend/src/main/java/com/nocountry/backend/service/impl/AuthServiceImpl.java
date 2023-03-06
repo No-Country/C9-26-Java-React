@@ -17,7 +17,7 @@ import com.nocountry.backend.repository.IStudentRepository;
 import com.nocountry.backend.repository.IUserRepository;
 import com.nocountry.backend.service.IAuthService;
 import com.nocountry.backend.service.IMailSenderService;
-import com.nocountry.backend.utils.enums.Role;
+import com.nocountry.backend.util.enums.Role;
 
 import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;

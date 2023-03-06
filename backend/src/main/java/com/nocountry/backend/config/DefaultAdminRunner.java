@@ -11,7 +11,7 @@ import com.nocountry.backend.model.Student;
 import com.nocountry.backend.model.User;
 import com.nocountry.backend.repository.IStudentRepository;
 import com.nocountry.backend.repository.IUserRepository;
-import com.nocountry.backend.utils.enums.Role;
+import com.nocountry.backend.util.enums.Role;
 
 import lombok.RequiredArgsConstructor;
 
