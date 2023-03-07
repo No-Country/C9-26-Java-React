@@ -1,20 +1,25 @@
 import { RiPencilFill } from 'react-icons/ri';
 import { useForm } from 'react-hook-form';
+import { useSelector } from "react-redux";
 
 import styles from "./StudentGrades.module.css";
 
 const StudentGrades = ({ location }) => {
 
+    const info = useSelector(state => state.user.info);
+    const role = useSelector(state => state.user.role);
+    console.log(role);
+
     const { register, handleSubmit } = useForm({
         defaultValues: {
-            mid_oral: location === "/private/student" ? "-" : "",
-            mid_grammar: location === "/private/student" ? "-" : "",
-            mid_reading: location === "/private/student" ? "-" : "",
-            mid_listen: location === "/private/student" ? "-" : "",
-            final_oral: location === "/private/student" ? "-" : "",
-            final_grammar: location === "/private/student" ? "-" : "",
-            final_reading: location === "/private/student" ? "-" : "",
-            final_listen: location === "/private/student" ? "-" : "",
+            mid_oral: role === "STUDENT" ? info.exams[0].speaking : "",
+            mid_grammar: role === "STUDENT" ? info.exams[0].grammar : "",
+            mid_reading: role === "STUDENT" ? info.exams[0].writing : "",
+            mid_listen: role === "STUDENT" ? info.exams[0].listening : "",
+            final_oral: role === "STUDENT" ?  info.exams[1].speaking : "",
+            final_grammar: role === "STUDENT" ? info.exams[1].grammar : "",
+            final_reading: role === "STUDENT" ? info.exams[1].writing : "",
+            final_listen: role === "STUDENT" ? info.exams[1].listening : "",
         }
     });
     

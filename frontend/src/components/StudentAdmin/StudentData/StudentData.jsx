@@ -1,17 +1,24 @@
 import { useState } from "react";
 import { RiPencilFill } from 'react-icons/ri';
-import profilePhoto from "../../../assets/images/PerfilAlumno/papu.jpeg";
 import profilePhotoAdmin from "../../../assets/images/PerfilAlumno/perfil.jpg";
 import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
+import { apiCall } from "../../../api/index";
+import swal from "sweetalert";
 
 import styles from "./StudentData.module.css";
 
 const StudentData = ({ location }) => {
-    const [image, setImage] = useState(null);
-
     const info = useSelector(state => state.user.info);
-    console.log(info);
+    const token = useSelector(state => state.user.token);
+
+    const [imageUpload, setImageUpload] = useState("");
+
+    const [profilePhoto, setProfilePhoto] = useState(
+        location === "/private/student"
+            ? info.imageResource.urlSecure
+            : profilePhotoAdmin
+    );
 
     const { register, handleSubmit } = useForm({
         defaultValues: {
@@ -24,13 +31,10 @@ const StudentData = ({ location }) => {
         }
     });
 
-    /* const uploadImage = async () => {
-        //if (image === null) return;
-
-        console.log(image);
+    const uploadImage = async () => {
 
         const form = new FormData();
-        form.append("file", image);
+        form.append("file", imageUpload);
 
         const headers = {
             headers: {
@@ -39,9 +43,20 @@ const StudentData = ({ location }) => {
             }
         }
 
-        const response = await apiCall.put("/students/token/update/image", headers);
-        console.log(response);
-    } */
+        try {
+            const response = await apiCall.patch("/students/token/update/image", form, headers);
+            if (response.status === 200) {
+                swal({
+                    text: 'Foto cargada con éxito, recargue la página para visualizar los cambios',
+                    icon: 'success',
+                    buttons: 'Aceptar'
+                })
+            }
+        } catch (error) {
+            console.log(error);
+        }
+
+    }
 
     return (
         <section className={styles.profile_container}>
@@ -50,20 +65,30 @@ const StudentData = ({ location }) => {
 
                 <div >
                     <picture className={styles.profile_pictureContainer}>
-                        <img src={location === "/private/student" 
-                                    ? profilePhoto
-                                    : profilePhotoAdmin } className="d-block" alt="" />
+                        <img src={
+                            imageUpload 
+                            ? URL.createObjectURL(imageUpload)
+                            : profilePhoto
+                        } className="d-block" alt="" />
                         {
                             location === "/private/student"
                             && <>
-                                <label htmlFor="file" className={styles.profile_labelImg} /* onClick={uploadImage} */ >
+
+                                <label htmlFor="file" className={styles.profile_labelImg} >
                                     <RiPencilFill fontSize="1.5rem" color='black' className="bg" />
                                 </label>
-                                <input type="file" className={styles.profile_uploadImage} id="file" onChange={e => { setImage(e.target.files[0]); uploadImage() }} />
+                                <input type="file" className={styles.profile_uploadImage} id="file" onChange={e => setImageUpload(e.target.files[0])} />
+
                             </>
                         }
                     </picture>
 
+                </div>
+
+                <div className={styles.profile_confirmImg}>
+                    {
+                        imageUpload && <button onClick={uploadImage}>Guardar</button>
+                    }
                 </div>
 
                 <div className={styles.profile_title}>

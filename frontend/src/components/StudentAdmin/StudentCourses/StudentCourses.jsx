@@ -2,19 +2,22 @@ import { NavLink } from "react-router-dom";
 import { RiPencilFill } from 'react-icons/ri';
 import { CAMPUS } from "../../../config/routes/paths";
 import { useForm } from 'react-hook-form';
+import { useSelector } from "react-redux";
 
 import styles from "./StudentCourses.module.css";
 
 const StudentCourses = ({ location }) => {
 
+    const info = useSelector(state => state.user.info);
+
     const { register, handleSubmit } = useForm({
         defaultValues: {
-            course: location === "/private/student" ? "Business English" : "",
-            professor: location === "/private/student" ? "Manuel Pérez" : "",
-            day: location === "/private/student" ? "Martes y Jueves" : "",
-            hour: location === "/private/student" ? "14:30 a 16:30" : "",
-            modality: location === "/private/student" ? "Grupo presencial" : "",
-            level: location === "/private/student" ? "B1" : "",
+            course: location === "/private/student" ? info.course.category : "",
+            professor: location === "/private/student" ? `${info.course.teacher.firstName} ${info.course.teacher.lastName}` : "",
+            day: location === "/private/student" ? info.course.courseDays : "",
+            hour: location === "/private/student" ? info.course.schedule : "",
+            modality: location === "/private/student" ? info.course.mode : "",
+            level: location === "/private/student" ? info.course.level : "",
         }
     });
 

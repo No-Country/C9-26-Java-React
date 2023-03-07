@@ -36,6 +36,20 @@ label {
     display: none;
 }
 
+.profile_confirmImg {
+    display: flex;
+    justify-content: end;
+}
+
+.profile_confirmImg button {
+    border: none;
+    border-radius: 20px;
+    background-color: rgb(203, 141, 241);
+    font-weight: bold;
+    padding: 4px 20px;
+    margin-top: 6px;
+}
+
 .profile_title {
     display: flex;
     align-items: center;
