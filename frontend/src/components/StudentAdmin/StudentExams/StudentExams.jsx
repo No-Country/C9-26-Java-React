@@ -1,17 +1,14 @@
 import { RiPencilFill } from 'react-icons/ri';
 import { useForm } from 'react-hook-form';
-import { useSelector } from "react-redux";
 
 import styles from "./StudentExams.module.css";
 
-const StudentExams = ({ location }) => {
-
-    const info = useSelector(state => state.user.info);
+const StudentExams = ({ location, info, role }) => {
 
     const { register, handleSubmit } = useForm({
         defaultValues: {
-            mid_exam: location === "/private/student" ? info.exams[0].examDate : "",
-            final_exam: location === "/private/student" ? info.exams[1].examDate : "",
+            mid_exam: role === "STUDENT" ? info.exams[0].examDate : "",
+            final_exam: role === "STUDENT" ? info.exams[1].examDate : "",
         }
     });
 

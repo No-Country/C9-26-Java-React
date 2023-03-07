@@ -1,14 +1,9 @@
 import { RiPencilFill } from 'react-icons/ri';
 import { useForm } from 'react-hook-form';
-import { useSelector } from "react-redux";
 
 import styles from "./StudentGrades.module.css";
 
-const StudentGrades = ({ location }) => {
-
-    const info = useSelector(state => state.user.info);
-    const role = useSelector(state => state.user.role);
-    console.log(role);
+const StudentGrades = ({ location, info, role }) => {
 
     const { register, handleSubmit } = useForm({
         defaultValues: {

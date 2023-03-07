@@ -3,22 +3,22 @@ import { useForm } from 'react-hook-form';
 
 import styles from "./StudentPayment.module.css";
 
-const StudentPayment = ({ location }) => {
+const StudentPayment = ({ location, role }) => {
 
     const { register, handleSubmit } = useForm({
         defaultValues: {
-            inscription: location === "/private/student" ? "PAGADA" : "",
-            cuota1: location === "/private/student" ? "PAGADA" : "",
-            cuota2: location === "/private/student" ? "PENDIENTE" : "",
-            cuota3: location === "/private/student" ? "PENDIENTE" : "",
-            cuota4: location === "/private/student" ? "PENDIENTE" : "",
-            cuota5: location === "/private/student" ? "PENDIENTE" : "",
-            cuota6: location === "/private/student" ? "PENDIENTE" : "",
-            cuota7: location === "/private/student" ? "PENDIENTE" : "",
-            cuota8: location === "/private/student" ? "PENDIENTE" : "",
-            cuota9: location === "/private/student" ? "PENDIENTE" : "",
-            cuota10: location === "/private/student" ? "PENDIENTE" : "",
-            exam: location === "/private/student" ? "PENDIENTE" : "",
+            inscription: role === "STUDENT" ? "PAGADA" : "",
+            cuota1: role === "STUDENT" ? "PAGADA" : "",
+            cuota2: role === "STUDENT" ? "PENDIENTE" : "",
+            cuota3: role === "STUDENT" ? "PENDIENTE" : "",
+            cuota4: role === "STUDENT" ? "PENDIENTE" : "",
+            cuota5: role === "STUDENT" ? "PENDIENTE" : "",
+            cuota6: role === "STUDENT" ? "PENDIENTE" : "",
+            cuota7: role === "STUDENT" ? "PENDIENTE" : "",
+            cuota8: role === "STUDENT" ? "PENDIENTE" : "",
+            cuota9: role === "STUDENT" ? "PENDIENTE" : "",
+            cuota10: role === "STUDENT" ? "PENDIENTE" : "",
+            exam: role === "STUDENT" ? "PENDIENTE" : "",
         }
     });
     

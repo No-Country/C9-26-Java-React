@@ -14,15 +14,19 @@ const Alumno = () => {
     const location = useLocation();
     const path = location.pathname;
 
+    const info = useSelector(state => state.user.info);
+    const token = useSelector(state => state.user.token);
+    const role = useSelector(state => state.user.role);
+
     return (
         <main className="background">
             <div className={styles.alumno_container}>
-                <StudentData location={path} />
-                <StudentCourses location={path} />
-                <StudentGrades location={path} />
+                <StudentData location={path} role={role} info={info} token={token} />
+                <StudentCourses location={path} role={role} info={info} />
+                <StudentGrades location={path} role={role} info={info} />
                 <section>
-                    <StudentExams location={path} />
-                    <StudentPayment location={path} />
+                    <StudentExams location={path} role={role} info={info} />
+                    <StudentPayment location={path} role={role} info={info} token={token} />
                 </section>
             </div>
         </main>

@@ -88,6 +88,10 @@ label {
         bottom: 0;
         right: 1.8rem;
     }
+
+    .profile_confirmImg {
+        justify-content: center;
+    }
 }
 
 @media(max-width: 1130px) {

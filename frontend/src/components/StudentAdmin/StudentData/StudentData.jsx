@@ -1,16 +1,13 @@
 import { useState } from "react";
 import { RiPencilFill } from 'react-icons/ri';
 import profilePhotoAdmin from "../../../assets/images/PerfilAlumno/perfil.jpg";
-import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { apiCall } from "../../../api/index";
 import swal from "sweetalert";
 
 import styles from "./StudentData.module.css";
 
-const StudentData = ({ location }) => {
-    const info = useSelector(state => state.user.info);
-    const token = useSelector(state => state.user.token);
+const StudentData = ({ location, info, token, role }) => {
 
     const [imageUpload, setImageUpload] = useState("");
 
@@ -22,12 +19,12 @@ const StudentData = ({ location }) => {
 
     const { register, handleSubmit } = useForm({
         defaultValues: {
-            name: location === "/private/student" ? `${info.firstName} ${info.lastName}` : "",
-            date: location === "/private/student" ? info.birthdate : "",
-            dni: location === "/private/student" ? info.dni : "",
-            address: location === "/private/student" ? info.address : "",
-            phone: location === "/private/student" ? info.phone : "",
-            email: location === "/private/student" ? info.email : ""
+            name: role === "STUDENT" ? `${info.firstName} ${info.lastName}` : "",
+            date: role === "STUDENT" ? info.birthdate : "",
+            dni: role === "STUDENT" ? info.dni : "",
+            address: role === "STUDENT" ? info.address : "",
+            phone: role === "STUDENT" ? info.phone : "",
+            email: role === "STUDENT" ? info.email : ""
         }
     });
 

@@ -2,22 +2,19 @@ import { NavLink } from "react-router-dom";
 import { RiPencilFill } from 'react-icons/ri';
 import { CAMPUS } from "../../../config/routes/paths";
 import { useForm } from 'react-hook-form';
-import { useSelector } from "react-redux";
 
 import styles from "./StudentCourses.module.css";
 
-const StudentCourses = ({ location }) => {
-
-    const info = useSelector(state => state.user.info);
+const StudentCourses = ({ location, info, role }) => {
 
     const { register, handleSubmit } = useForm({
         defaultValues: {
-            course: location === "/private/student" ? info.course.category : "",
-            professor: location === "/private/student" ? `${info.course.teacher.firstName} ${info.course.teacher.lastName}` : "",
-            day: location === "/private/student" ? info.course.courseDays : "",
-            hour: location === "/private/student" ? info.course.schedule : "",
-            modality: location === "/private/student" ? info.course.mode : "",
-            level: location === "/private/student" ? info.course.level : "",
+            course: role === "STUDENT" ? info.course.category : "",
+            professor: role === "STUDENT" ? `${info.course.teacher.firstName} ${info.course.teacher.lastName}` : "",
+            day: role === "STUDENT" ? info.course.courseDays : "",
+            hour: role === "STUDENT" ? info.course.schedule : "",
+            modality: role === "STUDENT" ? info.course.mode : "",
+            level: role === "STUDENT" ? info.course.level : "",
         }
     });
 
