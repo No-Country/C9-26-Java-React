@@ -19,7 +19,6 @@ const StudentData = ({ location, info, token, role }) => {
         return;
     }
 
-    let imageUrlModified = info.imageResource.urlSecure.replace("http", "https");
     
     const [profilePhoto, setProfilePhoto] = useState(
         location === "/private/student"
