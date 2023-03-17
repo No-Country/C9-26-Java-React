@@ -72,7 +72,6 @@ export const getCourse = createAsyncThunk(
                     Authorization: `Bearer ${token}`,
                 }
             });
-            console.log(response);
 
             const course = response.data;
 

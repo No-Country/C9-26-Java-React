@@ -10,14 +10,19 @@ const UserInfo = () => {
 
     const info = useSelector(state => state.user.info);
 
-    let imageUrlModified = info.imageResource.urlSecure.replace("http", "https");
+    const imageUrlModified = () => {
+        if (info.imageResource) {
+            return info.imageResource.urlSecure.replace("http", "https");
+        }
+        return;
+    }
     let avatar = 'https://www.w3schools.com/howto/img_avatar.png';
     
     return (
         <>
             <div className={styles.user}>
                 <div className={styles.user__avatar}>
-                    <img src={imageUrlModified || avatar} alt="avatar" />
+                    <img src={imageUrlModified() || avatar} alt="avatar" />
                 </div>
                 <div className={styles.user__name}>
                     <h2>¡Hola, {firstName || 'usuario'}!</h2>

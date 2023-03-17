@@ -10,12 +10,20 @@ import styles from "./StudentData.module.css";
 const StudentData = ({ location, info, token, role }) => {
 
     const [imageUpload, setImageUpload] = useState("");
+    console.log(info);
+    
+    const imageUrlModified = () => {
+        if (info.imageResource) {
+            return info.imageResource.urlSecure.replace("http", "https");
+        }
+        return;
+    }
 
     let imageUrlModified = info.imageResource.urlSecure.replace("http", "https");
     
     const [profilePhoto, setProfilePhoto] = useState(
         location === "/private/student"
-            ? imageUrlModified
+            ? imageUrlModified()
             : profilePhotoAdmin
     );
 
