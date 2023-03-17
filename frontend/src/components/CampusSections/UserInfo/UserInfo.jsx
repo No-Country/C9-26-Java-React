@@ -16,7 +16,6 @@ const UserInfo = () => {
         }
         return;
     }
-
     let avatar = 'https://www.w3schools.com/howto/img_avatar.png';
     
     return (
