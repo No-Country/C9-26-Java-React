@@ -11,23 +11,23 @@ import com.nocountry.backend.dto.StudentListDto;
 
 public interface IStudentService {
 
-    StudentDetailsDto getStudentByEmail(String email);
+    public StudentDetailsDto getStudentByEmail(String email);
 
-    StudentDetailsDto updateStudentByEmail(String email, StudentDetailsDto studentDetailsDto);
+    public StudentDetailsDto updateStudentByEmail(String email, StudentDetailsDto studentDetailsDto);
 
-    void updateStudentImageByEmail(String email, MultipartFile file) throws IOException;
+    public void updateStudentImageByEmail(String email, MultipartFile file) throws IOException;
 
-    void updateQuizStatusByEmail(String email, QuizRequestDto quizName);
+    public void updateQuizStatusByEmail(String email, QuizRequestDto quizName);
 
-    List<StudentListDto> getAllStudents();
+    public List<StudentListDto> getAllStudents();
 
-    StudentDetailsDto getStudentById(Long studentId);
+    public StudentDetailsDto getStudentById(Long studentId);
 
-    StudentDetailsDto updateStudentById(Long studentId, StudentDetailsDto studentDetailsDto);
+    public StudentDetailsDto updateStudentById(Long studentId, StudentDetailsDto studentDetailsDto);
 
-    void addExamToStudent(Long studentId, Long examId);
+    public void addExamToStudent(Long studentId, Long examId);
 
-    void addPaymentToStudent(Long studentId, Long paymentId);
+    public void addPaymentToStudent(Long studentId, Long paymentId);
 
-    void deleteStudent(Long studentId);
+    public void deleteStudent(Long studentId);
 }

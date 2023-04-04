@@ -9,11 +9,9 @@ import com.nocountry.backend.model.MediaResource;
 
 public interface ICloudinaryService {
 
-    /* Map uploadFile(MultipartFile gifFile); */
-
-    MediaResource saveMedia(Map uploadResult, String title);
+    public MediaResource saveMedia(Map uploadResult, String title);
 
     public Map delete(MediaResource mediaToDelete) throws IOException;
 
-    MediaResource getMediaResource(MultipartFile file, String title, Map options) throws IOException;
+    public MediaResource getMediaResource(MultipartFile file, String title, Map options) throws IOException;
 }

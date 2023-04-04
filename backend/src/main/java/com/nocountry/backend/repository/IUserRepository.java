@@ -8,5 +8,5 @@ import com.nocountry.backend.model.User;
 
 public interface IUserRepository extends JpaRepository<User, Long> {
 
-    Optional<User> findByUsername(String username);
+    public Optional<User> findByUsername(String username);
 }

@@ -6,11 +6,11 @@ import com.nocountry.backend.dto.AppointmentDto;
 
 public interface IAppointmentService {
 
-    List<AppointmentDto> getAllAppointments();
+    public List<AppointmentDto> getAllAppointments();
 
-    AppointmentDto getAppointmentById(Long appointmentId);
+    public AppointmentDto getAppointmentById(Long appointmentId);
 
-    AppointmentDto createAppointment(AppointmentDto appointmentDto);
+    public AppointmentDto createAppointment(AppointmentDto appointmentDto);
 
-    void deleteAppointment(Long appointmentId);
+    public void deleteAppointment(Long appointmentId);
 }

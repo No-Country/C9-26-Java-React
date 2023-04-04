@@ -6,5 +6,5 @@ import com.nocountry.backend.model.MediaResource;
 
 public interface IMediaRepository extends JpaRepository<MediaResource, Long> {
 
-    void deleteById(Long id);
+    public void deleteById(Long id);
 }

@@ -6,17 +6,17 @@ import com.nocountry.backend.dto.CourseDetailsDto;
 
 public interface ICourseService {
 
-    List<CourseDetailsDto> getAllCourses();
+    public List<CourseDetailsDto> getAllCourses();
 
-    CourseDetailsDto getCourseById(Long courseId);
+    public CourseDetailsDto getCourseById(Long courseId);
 
-    CourseDetailsDto createCourse(CourseDetailsDto courseDto);
+    public CourseDetailsDto createCourse(CourseDetailsDto courseDto);
 
-    CourseDetailsDto updateCourse(Long courseId, CourseDetailsDto courseDto);
+    public CourseDetailsDto updateCourse(Long courseId, CourseDetailsDto courseDto);
 
-    void addStudentToCourse(Long courseId, Long studentId);
+    public void addStudentToCourse(Long courseId, Long studentId);
 
-    void addTeacherToCourse(Long courseId, Long teacherId);
+    public void addTeacherToCourse(Long courseId, Long teacherId);
 
-    void deleteCourse(Long courseId);
+    public void deleteCourse(Long courseId);
 }

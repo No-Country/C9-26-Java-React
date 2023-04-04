@@ -36,14 +36,14 @@ public class StudentController {
     private final JwtProvider jwtProvider;
 
     @PreAuthorize("hasAnyRole('ADMIN','STUDENT')")
-    @GetMapping("/token/")
+    @GetMapping("/profile")
     public ResponseEntity<StudentDetailsDto> getStudentByEmail(@RequestHeader("Authorization") String token) {
         String email = jwtProvider.extractUsername(token.substring(7));
         return new ResponseEntity<>(studentService.getStudentByEmail(email), HttpStatus.OK);
     }
 
     @PreAuthorize("hasAnyRole('ADMIN','STUDENT')")
-    @PatchMapping("/token/update")
+    @PatchMapping("/profile/update")
     public ResponseEntity<StudentDetailsDto> updateStudentByEmail(@RequestHeader("Authorization") String token,
             @RequestBody StudentDetailsDto studentDetailsDto) {
         String email = jwtProvider.extractUsername(token.substring(7));

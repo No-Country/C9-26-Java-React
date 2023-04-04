@@ -6,13 +6,13 @@ import com.nocountry.backend.dto.TeacherDto;
 
 public interface ITeacherService {
 
-    List<TeacherDto> getAllTeachers();
+    public List<TeacherDto> getAllTeachers();
 
-    TeacherDto getTeacherById(Long teacherId);
+    public TeacherDto getTeacherById(Long teacherId);
 
-    TeacherDto createTeacher(TeacherDto teacherDto);
+    public TeacherDto createTeacher(TeacherDto teacherDto);
 
-    TeacherDto updateTeacher(Long teacherId, TeacherDto teacherDto);
+    public TeacherDto updateTeacher(Long teacherId, TeacherDto teacherDto);
 
-    void deleteTeacher(Long teacherId);
+    public void deleteTeacher(Long teacherId);
 }
