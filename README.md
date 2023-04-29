@@ -10,7 +10,7 @@
 
 ### ⚡ Links del proyecto:
 
-<h3><a href="https://www.figma.com"> <img src="https://img.shields.io/badge/Figma-%23F24E1E.svg?style=for-the-badge&logo=Figma&logoColor=white"/></a> <a href=""> <img src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=Postman&logoColor=white"/></a></h3>
+<h3><a href="https://www.figma.com/file/eDI7HAuNMbGwzJgMby2PkR/No-Country-C9-26?node-id=109-2&t=n5vk2BS8yKjb1tIk-0"> <img src="https://img.shields.io/badge/Figma-%23F24E1E.svg?style=for-the-badge&logo=Figma&logoColor=white"/></a> <a href="https://documenter.getpostman.com/view/25274758/2s93CHuaTn"> <img src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=Postman&logoColor=white"/></a></h3>
 
 <hr/>
 
