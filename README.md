@@ -8,9 +8,9 @@
 
 <hr/>
 
-### ✅ Links del proyecto:
+### ⚡ Links del proyecto:
 
-<h3><a href="https://www.figma.com/file/IJaAGjDDUNR84gAROEA4jd/Rent-a-truck?t=hQrFi5FS9AC1XlDR-6"> <img src="https://img.shields.io/badge/Figma-%23F24E1E.svg?style=for-the-badge&logo=Figma&logoColor=white"/></a> <a href=""> <img src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=Postman&logoColor=white"/></a></h3>
+<h3><a href="https://www.figma.com"> <img src="https://img.shields.io/badge/Figma-%23F24E1E.svg?style=for-the-badge&logo=Figma&logoColor=white"/></a> <a href=""> <img src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=Postman&logoColor=white"/></a></h3>
 
 <hr/>
 
@@ -29,7 +29,7 @@
 
 #### 🧑‍💻 Desarrolladores:
 
-| <img src="" width=50>| <img src="" width=50>| <img src="" width=50>|
+| <img src="https://avatars.githubusercontent.com/u/12972468?v=4" width=50>| <img src="https://avatars.githubusercontent.com/u/101360874?v=4" width=50>| <img src="https://avatars.githubusercontent.com/u/105551748?v=4" width=50>|
 |:-:|:-:|:-:|
 | **Alberto Gomez Juan**| **Fernando De Laurentis**| **Franco Buceta**|
 | <a href="https://github.com/agomezjuan"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/agomezjuan/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/Fdlaurentis/"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/fernando-de-laurentis"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/francobuceta"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/francobuceta"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
@@ -61,16 +61,16 @@
 
 ### 🎨 UX/UI:
 
-| <img src="" width=50>| <img src="" width=50>|
+| <img src="https://res.cloudinary.com/dqkkehztd/image/upload/v1682753805/readme/whcqj9rtnci4opbptd29.jpg" width=50>| <img src="https://res.cloudinary.com/dqkkehztd/image/upload/v1682753805/readme/gkmeoymptrjzbvbj2d3p.jpg" width=50>|
 |:-:|:-:|
 | **Maria Laura Cattaneo**| **Veronica Stanislavsky**|
-|<a href="https://www.linkedin.com/in/maria-laura-cattaneo/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://www.linkedin.com/in/veronica-mariela-stanislavsky/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
+|<a href="https://www.behance.net/marialcattane"><img src="https://img.shields.io/badge/Behance-1769ff?style=for-the-badge&logo=behance&logoColor=white"/></a>  <a href="https://www.linkedin.com/in/maria-laura-cattaneo/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://www.behance.net/phstanis"><img src="https://img.shields.io/badge/Behance-1769ff?style=for-the-badge&logo=behance&logoColor=white"/></a>  <a href="https://www.linkedin.com/in/veronica-mariela-stanislavsky/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
 
 <hr/>
 
 ### 🧪 QA:
 
-| <img src="" width=50>|
+| <img src="https://res.cloudinary.com/dqkkehztd/image/upload/v1682753805/readme/shteogxsz1zefdoebdt2.jpg" width=50>|
 |:-:|
 | **Gabriel Flores**|
 |<a href="https://www.linkedin.com/in/gabrielfloresc/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
@@ -79,7 +79,7 @@
 
 ### 👩‍💼 Project Manager:
 
-| <img src="" width=50>|
+| <img src="https://res.cloudinary.com/dqkkehztd/image/upload/v1682753805/readme/tzg0cph6zv0mlq5ezd3o.jpg" width=50>|
 |:-:|
 | **Camila Cataldi**|
 |<a href="https://www.linkedin.com/in/cami-cataldi/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
@@ -88,7 +88,7 @@
 
 ### 👨‍💼 Team Leader:
 
-| <img src="" width=50>|
+| <img src="https://res.cloudinary.com/dqkkehztd/image/upload/v1682753805/readme/ww6n192psz5zmbbpmhtu.jpg" width=50>|
 |:-:|
 | **Marlon Infante**|
 |<a href="https://www.linkedin.com/in/marlon-jose-infante-ramirez-8379ba127/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
