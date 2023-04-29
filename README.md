@@ -4,7 +4,7 @@
 
 <h3>👉🏻 <b>Visite nuestro sitio web en <a href="https://bright-english.vercel.app/">Bright English</a> 📚</b></h3>
 
-<h3><a href="https://www.youtube.com"> <img src="https://img.shields.io/badge/Video Preview%20-%23FF0000.svg?&style=for-the-badge&logo=YouTube&logoColor=white"/></h3>
+<h3><a href="https://www.canva.com/design/DAFbsKILg88/mCCl3MFdHaR6UWSZUtPZWw/watch"> <img src="https://img.shields.io/badge/Video Preview%20-%231A237E.svg?&style=for-the-badge&logo=Canva&logoColor=white"/></h3>
 
 <hr/>
 
