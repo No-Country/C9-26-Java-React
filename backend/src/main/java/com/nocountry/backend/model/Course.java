@@ -5,17 +5,12 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-<<<<<<< HEAD
-import com.nocountry.backend.utils.enums.Level;
-=======
 import com.nocountry.backend.util.enums.Level;
->>>>>>> backend-develop
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -50,20 +45,12 @@ public class Course {
     private String schedule;
 
     @JsonBackReference
-<<<<<<< HEAD
-    @ManyToOne(fetch = FetchType.EAGER)
-=======
     @ManyToOne
->>>>>>> backend-develop
     @JoinColumn(name = "teacher_id")
     private Teacher teacher;
 
     @JsonManagedReference
-<<<<<<< HEAD
-    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-=======
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
->>>>>>> backend-develop
     private List<Student> students = new ArrayList<>();
 
     public void setTeacher(Teacher teacher) {

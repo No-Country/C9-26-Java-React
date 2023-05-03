@@ -10,10 +10,7 @@ import com.nocountry.backend.repository.IAppointmentRepository;
 import com.nocountry.backend.service.IAppointmentService;
 import com.nocountry.backend.service.IMailSenderService;
 
-<<<<<<< HEAD
-=======
 import jakarta.mail.MessagingException;
->>>>>>> backend-develop
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -24,11 +21,8 @@ public class AppointmentServiceImpl implements IAppointmentService {
 
     private final AppointmentMapper appointmentMapper;
 
-<<<<<<< HEAD
-=======
     private final IMailSenderService mailSender;
 
->>>>>>> backend-develop
     @Override
     public List<AppointmentDto> getAllAppointments() {
         return appointmentMapper.convertToDtoList(appointmentRepository.findAll());
@@ -42,14 +36,6 @@ public class AppointmentServiceImpl implements IAppointmentService {
     @Override
     public AppointmentDto createAppointment(AppointmentDto appointmentDto) {
         var appointment = appointmentMapper.convertToEntity(appointmentDto);
-<<<<<<< HEAD
-        return appointmentMapper.convertToDto(appointmentRepository.save(appointment));
-    }
-
-    @Override
-    public AppointmentDto scheduleAppointment(Long appointmentId, AppointmentDto appointmentDto) {
-        return null;
-=======
 
         var existingAppointment = appointmentRepository.findByDateAndSchedule(appointment.getDate(),
                 appointment.getSchedule());
@@ -77,15 +63,10 @@ public class AppointmentServiceImpl implements IAppointmentService {
         }
 
         return appointmentMapper.convertToDto(appointmentRepository.save(appointment));
->>>>>>> backend-develop
     }
 
     @Override
     public void deleteAppointment(Long id) {
         appointmentRepository.deleteById(id);
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> backend-develop

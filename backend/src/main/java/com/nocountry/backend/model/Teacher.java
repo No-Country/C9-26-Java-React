@@ -7,7 +7,6 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -33,11 +32,7 @@ public class Teacher {
     private String lastName;
 
     @JsonManagedReference
-<<<<<<< HEAD
-    @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-=======
     @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL)
->>>>>>> backend-develop
     private List<Course> courses = new ArrayList<>();
 
     public void addCourse(Course course) {

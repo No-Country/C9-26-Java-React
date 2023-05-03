@@ -27,21 +27,6 @@ public class PaymentController {
 
     private final IPaymentService paymentService;
 
-<<<<<<< HEAD
-    @PreAuthorize("hasRole('ADMIN')")
-    @GetMapping("/all")
-    public ResponseEntity<List<PaymentDetailsDto>> getAllPayments() {
-        return new ResponseEntity<>(paymentService.getAllPayments(), HttpStatus.OK);
-    }
-
-    @PreAuthorize("hasRole('ADMIN')")
-    @GetMapping("/{paymentId}")
-    public ResponseEntity<PaymentDetailsDto> getPaymentById(@PathVariable Long paymentId) {
-        return new ResponseEntity<>(paymentService.getPaymentById(paymentId), HttpStatus.OK);
-    }
-
-    @PreAuthorize("hasRole('ADMIN')")
-=======
     @GetMapping("/all")
     public ResponseEntity<List<PaymentDetailsDto>> getAllPayments() {
         return new ResponseEntity<>(paymentService.getAllPayments(), HttpStatus.OK);
@@ -52,26 +37,17 @@ public class PaymentController {
         return new ResponseEntity<>(paymentService.getPaymentById(paymentId), HttpStatus.OK);
     }
 
->>>>>>> backend-develop
     @PostMapping("/create")
     public ResponseEntity<PaymentDetailsDto> createPayment(@RequestBody PaymentDetailsDto paymentDetailsDto) {
         return new ResponseEntity<>(paymentService.createPayment(paymentDetailsDto), HttpStatus.CREATED);
     }
 
-<<<<<<< HEAD
-    @PreAuthorize("hasRole('ADMIN')")
-=======
->>>>>>> backend-develop
     @PatchMapping("/{paymentId}/update")
     public ResponseEntity<PaymentDetailsDto> updatePayment(@PathVariable Long paymentId,
             @RequestBody PaymentDetailsDto paymentDetailsDto) {
         return new ResponseEntity<>(paymentService.updatePayment(paymentId, paymentDetailsDto), HttpStatus.ACCEPTED);
     }
 
-<<<<<<< HEAD
-    @PreAuthorize("hasRole('ADMIN')")
-=======
->>>>>>> backend-develop
     @DeleteMapping("/{paymentId}/delete")
     public ResponseEntity<String> deletePayment(@PathVariable Long paymentId) {
         paymentService.deletePayment(paymentId);

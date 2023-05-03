@@ -24,21 +24,6 @@ public class AppointmentController {
 
     private final IAppointmentService appointmentService;
 
-<<<<<<< HEAD
-    @PreAuthorize("hasRole('ADMIN')")
-    @GetMapping("/all")
-    public ResponseEntity<List<AppointmentDto>> getAllAppointments() {
-        return new ResponseEntity<>(appointmentService.getAllAppointments(), HttpStatus.OK);
-    }
-
-    @PreAuthorize("hasRole('ADMIN')")
-    @GetMapping("/{appointmentId}")
-    public ResponseEntity<AppointmentDto> getAppointmentById(@PathVariable Long appointmentId) {
-        return new ResponseEntity<>(appointmentService.getAppointmentById(appointmentId), HttpStatus.OK);
-    }
-
-    @PreAuthorize("hasRole('ADMIN')")
-=======
     @GetMapping("/all")
     public ResponseEntity<List<AppointmentDto>> getAllAppointments() {
         return new ResponseEntity<>(appointmentService.getAllAppointments(), HttpStatus.OK);
@@ -49,23 +34,11 @@ public class AppointmentController {
         return new ResponseEntity<>(appointmentService.getAppointmentById(appointmentId), HttpStatus.OK);
     }
 
->>>>>>> backend-develop
     @PostMapping("/create")
     public ResponseEntity<AppointmentDto> createAppointment(@RequestBody AppointmentDto appointmentDto) {
         return new ResponseEntity<>(appointmentService.createAppointment(appointmentDto), HttpStatus.CREATED);
     }
 
-<<<<<<< HEAD
-    @PatchMapping("/{appointmentId}/schedule")
-    public ResponseEntity<AppointmentDto> scheduleAppointment(@PathVariable Long appointmentId,
-            @RequestBody AppointmentDto appointmentDto) {
-        return new ResponseEntity<>(appointmentService.scheduleAppointment(appointmentId, appointmentDto),
-                HttpStatus.ACCEPTED);
-    }
-
-    @PreAuthorize("hasRole('ADMIN')")
-=======
->>>>>>> backend-develop
     @DeleteMapping("/{appointmentId}/delete")
     public ResponseEntity<String> deleteAppointment(@PathVariable Long appointmentId) {
         appointmentService.deleteAppointment(appointmentId);

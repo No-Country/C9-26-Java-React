@@ -7,11 +7,6 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-<<<<<<< HEAD
-import com.nocountry.backend.dto.StudentDetailsDto;
-import com.nocountry.backend.dto.StudentListDto;
-import com.nocountry.backend.mapper.StudentMapper;
-=======
 import com.cloudinary.utils.ObjectUtils;
 import com.nocountry.backend.dto.QuizRequestDto;
 import com.nocountry.backend.dto.StudentDetailsDto;
@@ -19,7 +14,6 @@ import com.nocountry.backend.dto.StudentListDto;
 import com.nocountry.backend.mapper.StudentMapper;
 import com.nocountry.backend.model.MediaResource;
 import com.nocountry.backend.model.Student;
->>>>>>> backend-develop
 import com.nocountry.backend.repository.IExamRepository;
 import com.nocountry.backend.repository.IPaymentRepository;
 import com.nocountry.backend.repository.IStudentRepository;
@@ -40,9 +34,6 @@ public class StudentServiceImpl implements IStudentService {
 
     private final IPaymentRepository paymentRepository;
 
-<<<<<<< HEAD
-    @Override
-=======
     private final ICloudinaryService cloudinaryService;
 
     @Override
@@ -86,22 +77,11 @@ public class StudentServiceImpl implements IStudentService {
     }
 
     @Override
->>>>>>> backend-develop
     public List<StudentListDto> getAllStudents() {
         return studentMapper.convertToDtoList(studentRepository.findAll());
     }
 
     @Override
-<<<<<<< HEAD
-    public StudentDetailsDto getStudentByEmail(String email) {
-        return studentMapper.convertToDto(studentRepository.findByEmail(email).orElseThrow());
-    }
-
-    @Override
-    public StudentDetailsDto updateStudent(String email, StudentDetailsDto studentDetailsDto) {
-        var student = studentRepository.findByEmail(email).orElseThrow();
-        return null;
-=======
     public StudentDetailsDto getStudentById(Long studentId) {
         return studentMapper.convertToDto(studentRepository.findById(studentId).orElseThrow());
     }
@@ -110,7 +90,6 @@ public class StudentServiceImpl implements IStudentService {
     public StudentDetailsDto updateStudentById(Long studentId, StudentDetailsDto studentDetailsDto) {
         var student = studentRepository.findById(studentId).orElseThrow();
         return this.updateStudent(student, studentDetailsDto);
->>>>>>> backend-develop
     }
 
     @Override
@@ -137,8 +116,6 @@ public class StudentServiceImpl implements IStudentService {
     public void deleteStudent(Long studentId) {
         studentRepository.deleteById(studentId);
     }
-<<<<<<< HEAD
-=======
 
     private StudentDetailsDto updateStudent(Student student, StudentDetailsDto studentDetailsDto) {
 
@@ -180,5 +157,4 @@ public class StudentServiceImpl implements IStudentService {
 
         return studentMapper.convertToDto(studentRepository.save(student));
     }
->>>>>>> backend-develop
 }

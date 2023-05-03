@@ -7,11 +7,7 @@ import org.springframework.stereotype.Component;
 import com.nocountry.backend.dto.PaymentDetailsDto;
 import com.nocountry.backend.dto.PaymentListDto;
 import com.nocountry.backend.model.Payment;
-<<<<<<< HEAD
-import com.nocountry.backend.utils.MapperUtil;
-=======
 import com.nocountry.backend.util.MapperUtil;
->>>>>>> backend-develop
 
 @Component
 public class PaymentMapper {

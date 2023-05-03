@@ -27,21 +27,6 @@ public class ExamController {
 
     private final IExamService examService;
 
-<<<<<<< HEAD
-    @PreAuthorize("hasRole('ADMIN')")
-    @GetMapping("/all")
-    public ResponseEntity<List<ExamDetailsDto>> getAllExams() {
-        return new ResponseEntity<>(examService.getAllExams(), HttpStatus.OK);
-    }
-
-    @PreAuthorize("hasRole('ADMIN')")
-    @GetMapping("/{examId}")
-    public ResponseEntity<ExamDetailsDto> getExamById(@PathVariable Long examId) {
-        return new ResponseEntity<>(examService.getExamById(examId), HttpStatus.OK);
-    }
-
-    @PreAuthorize("hasRole('ADMIN')")
-=======
     @GetMapping("/all")
     public ResponseEntity<List<ExamDetailsDto>> getAllExams() {
         return new ResponseEntity<>(examService.getAllExams(), HttpStatus.OK);
@@ -52,16 +37,11 @@ public class ExamController {
         return new ResponseEntity<>(examService.getExamById(examId), HttpStatus.OK);
     }
 
->>>>>>> backend-develop
     @PostMapping("/create")
     public ResponseEntity<ExamDetailsDto> createExam(@RequestBody ExamDetailsDto examDetailsDto) {
         return new ResponseEntity<>(examService.createExam(examDetailsDto), HttpStatus.CREATED);
     }
 
-<<<<<<< HEAD
-    @PreAuthorize("hasRole('ADMIN')")
-=======
->>>>>>> backend-develop
     @PatchMapping("/{examId}/update")
     public ResponseEntity<ExamDetailsDto> updateExam(@PathVariable Long examId,
             @RequestBody ExamDetailsDto examDetailsDto) {

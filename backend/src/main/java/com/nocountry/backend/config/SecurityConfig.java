@@ -31,18 +31,6 @@ public class SecurityConfig {
                 .and()
                 .csrf().disable()
                 .authorizeHttpRequests()
-<<<<<<< HEAD:backend/src/main/java/com/nocountry/backend/auth/config/SecurityConfig.java
-                .requestMatchers("/api/**").permitAll()
-                // .requestMatchers("/api/auth/**").permitAll()
-                // .requestMatchers("/api/appointments/**").permitAll()
-                // .requestMatchers("/api/courses/**").hasRole(Role.ADMIN.name())
-                // .requestMatchers("/api/exams/**").hasRole(Role.ADMIN.name())
-                // .requestMatchers("/api/payments/**").hasRole(Role.ADMIN.name())
-                // .requestMatchers("/api/students/admin/**").hasRole(Role.ADMIN.name())
-                // .requestMatchers("/api/teachers/**").hasRole(Role.ADMIN.name())
-                // .anyRequest()
-                // .authenticated()
-=======
                 .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
                 .requestMatchers("/api/appointments/**").permitAll()
                 .requestMatchers("/api/auth/**").permitAll()
@@ -54,7 +42,6 @@ public class SecurityConfig {
                 .requestMatchers("/api/teachers/**").hasRole(Role.ADMIN.name())
                 .anyRequest()
                 .authenticated()
->>>>>>> backend-develop:backend/src/main/java/com/nocountry/backend/config/SecurityConfig.java
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)

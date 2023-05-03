@@ -28,8 +28,6 @@ import lombok.RequiredArgsConstructor;
 public class AppConfig implements WebMvcConfigurer {
 
     private final IUserRepository userRepository;
-<<<<<<< HEAD:backend/src/main/java/com/nocountry/backend/auth/config/AppConfig.java
-=======
 
     @Value("${CLOUD_NAME}")
     private String CLOUD_NAME;
@@ -61,7 +59,6 @@ public class AppConfig implements WebMvcConfigurer {
                 .allowCredentials(true)
                 .maxAge(3600);
     }
->>>>>>> backend-develop:backend/src/main/java/com/nocountry/backend/config/AppConfig.java
 
     @Bean
     public UserDetailsService userDetailsService() {

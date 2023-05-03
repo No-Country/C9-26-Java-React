@@ -37,9 +37,6 @@ public class ExamServiceImpl implements IExamService {
 
     @Override
     public ExamDetailsDto updateExam(Long examId, ExamDetailsDto examDetailsDto) {
-<<<<<<< HEAD
-        return null;
-=======
         var exam = examRepository.findById(examId).orElseThrow();
 
         if (examDetailsDto.getName() != null) {
@@ -67,7 +64,6 @@ public class ExamServiceImpl implements IExamService {
         }
 
         return examMapper.convertToDetailsDto(examRepository.save(exam));
->>>>>>> backend-develop
     }
 
     @Override

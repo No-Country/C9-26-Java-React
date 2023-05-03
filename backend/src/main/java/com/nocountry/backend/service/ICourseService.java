@@ -2,25 +2,6 @@ package com.nocountry.backend.service;
 
 import java.util.List;
 
-<<<<<<< HEAD
-import com.nocountry.backend.dto.CourseDto;
-
-public interface ICourseService {
-
-    List<CourseDto> getAllCourses();
-
-    CourseDto getCourseById(Long courseId);
-
-    CourseDto createCourse(CourseDto courseDto);
-
-    CourseDto updateCourse(Long courseId, CourseDto courseDto);
-
-    void addStudentToCourse(Long courseId, Long studentId);
-
-    void addTeacherToCourse(Long courseId, Long teacherId);
-
-    void deleteCourse(Long courseId);
-=======
 import com.nocountry.backend.dto.CourseDetailsDto;
 
 public interface ICourseService {
@@ -38,5 +19,4 @@ public interface ICourseService {
     public void addTeacherToCourse(Long courseId, Long teacherId);
 
     public void deleteCourse(Long courseId);
->>>>>>> backend-develop
 }

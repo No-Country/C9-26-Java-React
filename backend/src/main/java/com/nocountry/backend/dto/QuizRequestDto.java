@@ -9,17 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-<<<<<<<< HEAD:backend/src/main/java/com/nocountry/backend/dto/StudentListDto.java
-public class StudentListDto {
-
-    private Long id;
-
-    private String firstName;
-
-    private String lastName;
-========
 public class QuizRequestDto {
 
     private String quizName;
->>>>>>>> backend-develop:backend/src/main/java/com/nocountry/backend/dto/QuizRequestDto.java
 }

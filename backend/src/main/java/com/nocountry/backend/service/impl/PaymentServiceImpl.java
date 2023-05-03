@@ -33,18 +33,12 @@ public class PaymentServiceImpl implements IPaymentService {
     @Override
     public PaymentDetailsDto createPayment(PaymentDetailsDto paymentDetailsDto) {
         var payment = paymentMapper.convertToEntity(paymentDetailsDto);
-<<<<<<< HEAD
-=======
         payment.setPaymentStatus(PaymentStatus.PENDING);
->>>>>>> backend-develop
         return paymentMapper.convertToDetailsDto(paymentRepository.save(payment));
     }
 
     @Override
     public PaymentDetailsDto updatePayment(Long paymentId, PaymentDetailsDto paymentDetailsDto) {
-<<<<<<< HEAD
-        return null;
-=======
         var payment = paymentRepository.findById(paymentId).orElseThrow();
 
         if (paymentDetailsDto.getPaymentType() != null) {
@@ -56,7 +50,6 @@ public class PaymentServiceImpl implements IPaymentService {
         }
 
         return paymentMapper.convertToDetailsDto(paymentRepository.save(payment));
->>>>>>> backend-develop
     }
 
     @Override

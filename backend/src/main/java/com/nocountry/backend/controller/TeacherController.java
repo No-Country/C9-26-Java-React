@@ -27,21 +27,9 @@ public class TeacherController {
 
     private final ITeacherService teacherService;
 
-<<<<<<< HEAD
-    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/all")
     public ResponseEntity<List<TeacherDto>> getAllTeachers() {
         return new ResponseEntity<>(teacherService.getAllTeachers(), HttpStatus.OK);
-=======
-    @GetMapping("/all")
-    public ResponseEntity<List<TeacherDto>> getAllTeachers() {
-        return new ResponseEntity<>(teacherService.getAllTeachers(), HttpStatus.OK);
-    }
-
-    @GetMapping("/{teacherId}")
-    public ResponseEntity<TeacherDto> getTeacherById(@PathVariable Long teacherId) {
-        return new ResponseEntity<>(teacherService.getTeacherById(teacherId), HttpStatus.OK);
->>>>>>> backend-develop
     }
 
     @PreAuthorize("hasRole('ADMIN')")
@@ -56,20 +44,12 @@ public class TeacherController {
         return new ResponseEntity<>(teacherService.createTeacher(teacherDto), HttpStatus.CREATED);
     }
 
-<<<<<<< HEAD
-    @PreAuthorize("hasRole('ADMIN')")
-=======
->>>>>>> backend-develop
     @PatchMapping("/{teacherId}/update")
     public ResponseEntity<TeacherDto> updateTeacher(@PathVariable Long teacherId,
             @RequestBody TeacherDto teacherDto) {
         return new ResponseEntity<>(teacherService.updateTeacher(teacherId, teacherDto), HttpStatus.ACCEPTED);
     }
 
-<<<<<<< HEAD
-    @PreAuthorize("hasRole('ADMIN')")
-=======
->>>>>>> backend-develop
     @DeleteMapping("/{teacherId}/delete")
     public ResponseEntity<String> deleteTeacher(@PathVariable Long teacherId) {
         teacherService.deleteTeacher(teacherId);

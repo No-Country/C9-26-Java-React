@@ -18,12 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-<<<<<<< HEAD
-import com.nocountry.backend.auth.config.jwt.JwtProvider;
-=======
 import com.nocountry.backend.config.jwt.JwtProvider;
 import com.nocountry.backend.dto.QuizRequestDto;
->>>>>>> backend-develop
 import com.nocountry.backend.dto.StudentDetailsDto;
 import com.nocountry.backend.dto.StudentListDto;
 import com.nocountry.backend.service.IStudentService;
@@ -39,28 +35,6 @@ public class StudentController {
 
     private final JwtProvider jwtProvider;
 
-<<<<<<< HEAD
-    @PreAuthorize("hasRole('ADMIN')")
-    @GetMapping("/admin/all")
-    public ResponseEntity<List<StudentListDto>> getAllStudents() {
-        return new ResponseEntity<>(studentService.getAllStudents(), HttpStatus.OK);
-    }
-
-    @GetMapping("/")
-    public ResponseEntity<StudentDetailsDto> getStudentByEmail(@RequestHeader("Authorization") String token) {
-        String email = jwtProvider.extractUsername(token.substring(7));
-        return new ResponseEntity<>(studentService.getStudentByEmail(email), HttpStatus.OK);
-    }
-
-    @PatchMapping("/update")
-    public ResponseEntity<StudentDetailsDto> updateStudent(@RequestHeader("Authorization") String token,
-            @RequestBody StudentDetailsDto studentDetailsDto) {
-        String email = jwtProvider.extractUsername(token.substring(7));
-        return new ResponseEntity<>(studentService.updateStudent(email, studentDetailsDto), HttpStatus.ACCEPTED);
-    }
-
-    @PreAuthorize("hasRole('ADMIN')")
-=======
     @PreAuthorize("hasAnyRole('ADMIN','STUDENT')")
     @GetMapping("/profile")
     public ResponseEntity<StudentDetailsDto> getStudentByEmail(@RequestHeader("Authorization") String token) {
@@ -115,7 +89,6 @@ public class StudentController {
     }
 
     @PreAuthorize("hasRole('ADMIN')")
->>>>>>> backend-develop
     @PatchMapping("/admin/{studentId}/add/exams/{examId}")
     public ResponseEntity<String> addExamToStudent(@PathVariable Long studentId, @PathVariable Long examId) {
         studentService.addExamToStudent(studentId, examId);
