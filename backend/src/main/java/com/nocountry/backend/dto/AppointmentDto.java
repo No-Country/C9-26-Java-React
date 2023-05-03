@@ -17,9 +17,17 @@ public class AppointmentDto {
 
     private String schedule;
 
+<<<<<<< HEAD
     private String email;
 
     private String fullName;
 
     private Boolean status;
+=======
+    private String description;
+
+    private String email;
+
+    private String fullName;
+>>>>>>> backend-develop
 }

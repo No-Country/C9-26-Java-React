@@ -12,9 +12,15 @@ const StudentData = ({ location }) => {
 
             <div className={styles.profile_container}>
                 
+<<<<<<< HEAD
                 <div >
                     <picture className={styles.profile_pictureContainter}>
                         <img src={profilePhoto} className="d-block" alt="" />
+=======
+                <div className={styles.profile_pictureContainter}>
+                    <picture>
+                        <img src={profilePhoto} alt="" />
+>>>>>>> backend-develop
                         {
                             location === "/student" 
                             && <>

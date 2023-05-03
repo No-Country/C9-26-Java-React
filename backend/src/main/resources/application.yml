@@ -5,7 +5,31 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
+<<<<<<< HEAD
       ddl-auto: create-drop
     show-sql: true
     database: mysql
     database-platform: org.hibernate.dialect.MySQLDialect
+=======
+      ddl-auto: ${DDL_CONFIG}
+    show-sql: true
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQLDialect
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    protocol: smtp
+    username: ${EMAIL_USER}
+    password: ${EMAIL_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+    default-encoding: UTF-8
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+>>>>>>> backend-develop

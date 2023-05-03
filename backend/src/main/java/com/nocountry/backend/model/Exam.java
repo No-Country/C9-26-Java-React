@@ -1,9 +1,17 @@
 package com.nocountry.backend.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+<<<<<<< HEAD
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+=======
+import com.nocountry.backend.util.enums.Rating;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+>>>>>>> backend-develop
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -29,18 +37,27 @@ public class Exam {
 
     private String examDate;
 
-    private String grammar;
+    @Enumerated(EnumType.STRING)
+    private Rating grammar;
 
-    private String speaking;
+    @Enumerated(EnumType.STRING)
+    private Rating speaking;
 
-    private String writing;
+    @Enumerated(EnumType.STRING)
+    private Rating writing;
 
-    private String listening;
+    @Enumerated(EnumType.STRING)
+    private Rating listening;
 
+<<<<<<< HEAD
     private Boolean status;
 
     @JsonBackReference
     @ManyToOne(fetch = FetchType.EAGER)
+=======
+    @JsonBackReference
+    @ManyToOne
+>>>>>>> backend-develop
     @JoinColumn(name = "student_id")
     private Student student;
 

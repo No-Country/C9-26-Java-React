@@ -1,14 +1,22 @@
 package com.nocountry.backend.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+<<<<<<< HEAD
 import com.nocountry.backend.auth.model.User;
 import com.nocountry.backend.utils.enums.Level;
+=======
+import com.nocountry.backend.util.enums.Level;
+>>>>>>> backend-develop
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -43,7 +51,9 @@ public class Student {
 
     private String lastName;
 
-    private String imageUrl;
+    @OneToOne
+    @JoinColumn(name = "image_resource_id")
+    private MediaResource imageResource;
 
     private Long dni;
 
@@ -58,11 +68,23 @@ public class Student {
     @Enumerated(EnumType.STRING)
     private Level level;
 
+<<<<<<< HEAD
+=======
+    @ElementCollection
+    @CollectionTable(name = "quizzes")
+    @Default
+    private Map<String, String> quizzesStatus = new HashMap<>();
+
+>>>>>>> backend-develop
     @OneToOne(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private User user;
 
     @JsonBackReference
+<<<<<<< HEAD
     @ManyToOne(fetch = FetchType.EAGER)
+=======
+    @ManyToOne
+>>>>>>> backend-develop
     @JoinColumn(name = "course_id")
     private Course course;
 

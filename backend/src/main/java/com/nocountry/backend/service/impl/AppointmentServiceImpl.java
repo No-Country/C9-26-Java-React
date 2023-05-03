@@ -8,7 +8,12 @@ import com.nocountry.backend.dto.AppointmentDto;
 import com.nocountry.backend.mapper.AppointmentMapper;
 import com.nocountry.backend.repository.IAppointmentRepository;
 import com.nocountry.backend.service.IAppointmentService;
+import com.nocountry.backend.service.IMailSenderService;
 
+<<<<<<< HEAD
+=======
+import jakarta.mail.MessagingException;
+>>>>>>> backend-develop
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -19,6 +24,11 @@ public class AppointmentServiceImpl implements IAppointmentService {
 
     private final AppointmentMapper appointmentMapper;
 
+<<<<<<< HEAD
+=======
+    private final IMailSenderService mailSender;
+
+>>>>>>> backend-develop
     @Override
     public List<AppointmentDto> getAllAppointments() {
         return appointmentMapper.convertToDtoList(appointmentRepository.findAll());
@@ -32,16 +42,50 @@ public class AppointmentServiceImpl implements IAppointmentService {
     @Override
     public AppointmentDto createAppointment(AppointmentDto appointmentDto) {
         var appointment = appointmentMapper.convertToEntity(appointmentDto);
+<<<<<<< HEAD
         return appointmentMapper.convertToDto(appointmentRepository.save(appointment));
     }
 
     @Override
     public AppointmentDto scheduleAppointment(Long appointmentId, AppointmentDto appointmentDto) {
         return null;
+=======
+
+        var existingAppointment = appointmentRepository.findByDateAndSchedule(appointment.getDate(),
+                appointment.getSchedule());
+
+        if (existingAppointment != null) {
+            throw new RuntimeException("There is already an appointment scheduled at the same date and time.");
+        }
+
+        String to = appointment.getEmail();
+        String subject = "Información sobre " + appointment.getDescription();
+        String text = "<html><body>"
+                + "<p>Estimado/a " + appointment.getFullName() + ",</p>"
+                + "<p>Le informamos que se ha programado un nuevo turno para el día " + appointment.getDate()
+                + " a las " + appointment.getSchedule() + ".</p>"
+                + "<p>Por favor, asegúrese de estar disponible en el día y horario indicados y tenga en cuenta que la entrevista se realizará de manera online.</p>"
+                + "<p>Para garantizar una buena experiencia de entrevista, es importante disponer de un dispositivo con conexión estable a internet, cámara y micrófono.</p>"
+                + "<p>Cualquier consulta, no dude en ponerse en contacto con nosotros.</p>"
+                + "<p>Atentamente,<br>Bright English</p>"
+                + "</body></html>";
+
+        try {
+            mailSender.sendEmail(to, subject, text);
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+
+        return appointmentMapper.convertToDto(appointmentRepository.save(appointment));
+>>>>>>> backend-develop
     }
 
     @Override
     public void deleteAppointment(Long id) {
         appointmentRepository.deleteById(id);
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> backend-develop

@@ -37,7 +37,37 @@ public class ExamServiceImpl implements IExamService {
 
     @Override
     public ExamDetailsDto updateExam(Long examId, ExamDetailsDto examDetailsDto) {
+<<<<<<< HEAD
         return null;
+=======
+        var exam = examRepository.findById(examId).orElseThrow();
+
+        if (examDetailsDto.getName() != null) {
+            exam.setName(examDetailsDto.getName());
+        }
+
+        if (examDetailsDto.getExamDate() != null) {
+            exam.setExamDate(examDetailsDto.getExamDate());
+        }
+
+        if (examDetailsDto.getGrammar() != null) {
+            exam.setGrammar(examDetailsDto.getGrammar());
+        }
+
+        if (examDetailsDto.getSpeaking() != null) {
+            exam.setSpeaking(examDetailsDto.getSpeaking());
+        }
+
+        if (examDetailsDto.getWriting() != null) {
+            exam.setWriting(examDetailsDto.getWriting());
+        }
+
+        if (examDetailsDto.getListening() != null) {
+            exam.setListening(examDetailsDto.getListening());
+        }
+
+        return examMapper.convertToDetailsDto(examRepository.save(exam));
+>>>>>>> backend-develop
     }
 
     @Override

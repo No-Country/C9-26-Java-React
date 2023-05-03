@@ -4,10 +4,8 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,6 +24,7 @@ public class AppointmentController {
 
     private final IAppointmentService appointmentService;
 
+<<<<<<< HEAD
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/all")
     public ResponseEntity<List<AppointmentDto>> getAllAppointments() {
@@ -39,11 +38,24 @@ public class AppointmentController {
     }
 
     @PreAuthorize("hasRole('ADMIN')")
+=======
+    @GetMapping("/all")
+    public ResponseEntity<List<AppointmentDto>> getAllAppointments() {
+        return new ResponseEntity<>(appointmentService.getAllAppointments(), HttpStatus.OK);
+    }
+
+    @GetMapping("/{appointmentId}")
+    public ResponseEntity<AppointmentDto> getAppointmentById(@PathVariable Long appointmentId) {
+        return new ResponseEntity<>(appointmentService.getAppointmentById(appointmentId), HttpStatus.OK);
+    }
+
+>>>>>>> backend-develop
     @PostMapping("/create")
     public ResponseEntity<AppointmentDto> createAppointment(@RequestBody AppointmentDto appointmentDto) {
         return new ResponseEntity<>(appointmentService.createAppointment(appointmentDto), HttpStatus.CREATED);
     }
 
+<<<<<<< HEAD
     @PatchMapping("/{appointmentId}/schedule")
     public ResponseEntity<AppointmentDto> scheduleAppointment(@PathVariable Long appointmentId,
             @RequestBody AppointmentDto appointmentDto) {
@@ -52,6 +64,8 @@ public class AppointmentController {
     }
 
     @PreAuthorize("hasRole('ADMIN')")
+=======
+>>>>>>> backend-develop
     @DeleteMapping("/{appointmentId}/delete")
     public ResponseEntity<String> deleteAppointment(@PathVariable Long appointmentId) {
         appointmentService.deleteAppointment(appointmentId);

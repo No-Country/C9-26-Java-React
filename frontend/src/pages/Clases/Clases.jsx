@@ -1,11 +1,18 @@
+<<<<<<< HEAD
 import { useEffect, createRef, useState } from "react";
 import { useForm } from "react-hook-form";
+=======
+import Form from 'react-bootstrap/Form';
+>>>>>>> backend-develop
 import imgClass1 from "../../assets/images/Clases/Clases1.png";
 import imgClass2 from "../../assets/images/Clases/Clases2.png";
 import imgClass3 from "../../assets/images/Clases/Clases3.png";
 import imgClass4 from "../../assets/images/Clases/Clases4.png";
+<<<<<<< HEAD
 import Dropdown from '../../components/Dropdown/Dropdown';
 import Carousel from 'react-bootstrap/Carousel';
+=======
+>>>>>>> backend-develop
 
 import styles from './Clases.module.css';
 
@@ -95,6 +102,7 @@ const Clases = () => {
                     <section>
                         <h2 className='text-center text-white fw-bold'>Cursos para cada necesidad</h2>
 
+<<<<<<< HEAD
                         {width >= breakpoint
                             ? <div className={`${styles.clases_container} mt-3`}>
                                 <img src={imgClass1} alt="Teacher with students" />
@@ -135,6 +143,14 @@ const Clases = () => {
                             </Carousel>
                         }
 
+=======
+                        <div className={`${styles.clases_container} mt-3`}>
+                            <img src={imgClass1} alt="" />
+                            <img src={imgClass2} alt="" />
+                            <img src={imgClass3} alt="" />
+                            <img src={imgClass4} alt="" />
+                        </div>
+>>>>>>> backend-develop
                         <p className={styles.clases_text}>
                             Nuestros cursos están destinados a quienes quieran comunicarse efectivamente
                             en inglés ofreciendo distintas modalidades para cada necesidad. Brindamos clases individuales,

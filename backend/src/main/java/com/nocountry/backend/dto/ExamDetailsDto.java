@@ -1,5 +1,10 @@
 package com.nocountry.backend.dto;
 
+<<<<<<< HEAD
+=======
+import com.nocountry.backend.util.enums.Rating;
+
+>>>>>>> backend-develop
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,6 +22,7 @@ public class ExamDetailsDto {
 
     private String examDate;
 
+<<<<<<< HEAD
     private String grammar;
 
     private String speaking;
@@ -26,6 +32,15 @@ public class ExamDetailsDto {
     private String listening;
 
     private Boolean status;
+=======
+    private Rating grammar;
+
+    private Rating speaking;
+
+    private Rating writing;
+
+    private Rating listening;
+>>>>>>> backend-develop
 
     private Long studentId;
 

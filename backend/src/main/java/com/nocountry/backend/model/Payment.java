@@ -1,8 +1,13 @@
 package com.nocountry.backend.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+<<<<<<< HEAD
 import com.nocountry.backend.utils.enums.PaymentStatus;
 import com.nocountry.backend.utils.enums.PaymentType;
+=======
+import com.nocountry.backend.util.enums.PaymentStatus;
+import com.nocountry.backend.util.enums.PaymentType;
+>>>>>>> backend-develop
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -36,7 +41,11 @@ public class Payment {
     private PaymentStatus paymentStatus;
 
     @JsonBackReference
+<<<<<<< HEAD
     @ManyToOne(fetch = FetchType.EAGER)
+=======
+    @ManyToOne
+>>>>>>> backend-develop
     @JoinColumn(name = "student_id")
     private Student student;
 

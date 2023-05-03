@@ -27,9 +27,10 @@ public class Appointment {
     @Column(nullable = false)
     private String schedule;
 
+    @Column(nullable = false)
+    private String description;
+
     private String email;
 
     private String fullName;
-
-    private Boolean status;
 }

@@ -6,4 +6,5 @@ import com.nocountry.backend.model.Appointment;
 
 public interface IAppointmentRepository extends JpaRepository<Appointment, Long> {
 
+    public Appointment findByDateAndSchedule(String date, String schedule);
 }

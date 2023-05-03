@@ -1,68 +1,85 @@
-<h1 align = "center"> C9 - 26 Java / React </h1>
-<p align = "center">Proyecto Equipo 26 - Cohorte 9 No Country</p>
+<img align="center" src="https://res.cloudinary.com/dqkkehztd/image/upload/v1682751696/readme/imxge16pjcsecjrn7pst.png">
 
-<br/>
+<h3>👉🏻 Learn English easily with Bright English. We offer fast customer support, online interviews, streamlined data loading, and an interactive methodology for a fun and effective learning experience.</h3>
 
-## Desarrollada con: 🛠️
+<h3>👉🏻 <b>Visit our website at <a href="https://bright-english.vercel.app/">Bright English</a> 📚</b></h3>
 
-![JavaScript](https://img.shields.io/badge/JavaScript-%23323330.svg?style=flat&logo=Javascript&logoColor=%23F7DF1E) ![React](https://img.shields.io/badge/React-%2320232a.svg?style=flat&logo=React&logoColor=%2361DAFB) <!--![Redux](https://img.shields.io/badge/Redux-%23593d88.svg?style=flat&logo=redux&logoColor=white) -->![HTML5](https://img.shields.io/badge/HTML5-%23E34F26.svg?style=flat&logo=HTML5&logoColor=white) ![CSS3](https://img.shields.io/badge/CSS3-%231572B6.svg?style=flat&logo=CSS3&logoColor=white) <!--![Sass](https://img.shields.io/badge/Sass-CC6699?style=flat&logo=sass&logoColor=white)--> ![Java](https://img.shields.io/badge/Java-ED8B00.svg?style=flat&logo=java&logoColor=white) ![spring](https://img.shields.io/badge/Spring%20Boot-6DB33F?style=flat&logo=spring&logoColor=white) <!--![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=flat&logo=postgresql&logoColor=white)-->![GitHub](https://img.shields.io/badge/GitHub-%23121011.svg?style=flat&logo=github&logoColor=white) <!--![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=flat&logo=Heroku&logoColor=white)--> ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=flat&logo=VS-Code&logoColor=white)
+<h3><a href="https://www.canva.com/design/DAFbsKILg88/mCCl3MFdHaR6UWSZUtPZWw/watch"> <img src="https://img.shields.io/badge/Video Preview%20-%231A237E.svg?&style=for-the-badge&logo=Canva&logoColor=white"/></h3>
 
-<br/><br/>
+<hr/>
 
-# Cómo inicializar el proyecto 📋
+### ⚡ Project links:
 
-### Backend
+<h3><a href="https://www.figma.com/file/eDI7HAuNMbGwzJgMby2PkR/No-Country-C9-26?node-id=109-2&t=n5vk2BS8yKjb1tIk-0"> <img src="https://img.shields.io/badge/Figma-%23F24E1E.svg?style=for-the-badge&logo=Figma&logoColor=white"/></a> <a href="https://documenter.getpostman.com/view/25274758/2s93CHuaTn"> <img src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=Postman&logoColor=white"/></a></h3>
 
-En el directorio del proyecto ingresar a la carpeta `/backend` y ejecutar la aplicación principal `BackendApplication.java`.
+<hr/>
 
-<br/>
+### ⚛️ Front End:
 
-### Frontend
+#### 🛠️ Tech Stack:
 
-En el directorio del proyecto ingresar a la carpeta `/frontend` y ejecutar el siguiente comando en una Terminal:
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=black) 
+![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white) 
+![Redux](https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=Redux&logoColor=white)
+![Axios](https://img.shields.io/badge/Axios-000000?style=for-the-badge&logo=axios&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)
+![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=HTML5&logoColor=white) 
+![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=CSS3&logoColor=white) 
+![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=Vercel&logoColor=white)
 
-`npm run dev`
+#### 🧑‍💻 Developers:
 
-Abrir [http://localhost:5173](http://localhost:5173) para verlo en navegador.
+| <img src="https://avatars.githubusercontent.com/u/12972468?v=4" width=50>| <img src="https://avatars.githubusercontent.com/u/101360874?v=4" width=50>| <img src="https://avatars.githubusercontent.com/u/105551748?v=4" width=50>|
+|:-:|:-:|:-:|
+| **Alberto Gomez Juan**| **Fernando De Laurentis**| **Franco Buceta**|
+| <a href="https://github.com/agomezjuan"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/agomezjuan/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/Fdlaurentis/"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/fernando-de-laurentis"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/francobuceta"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/francobuceta"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
+<hr/>
 
-<br/><br/>
+### ☕ Back End:
 
-# Equipo
+#### 🛠️ Tech Stack:
 
-</br>
+![Java](https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=java&logoColor=white)
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=Spring%20Boot&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=MySQL&logoColor=white)
+![Hibernate](https://img.shields.io/badge/Hibernate-59666C?style=for-the-badge&logo=Hibernate&logoColor=white)
+![Maven](https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=Apache%20Maven&logoColor=white)
+![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=Postman&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=json-web-tokens&logoColor=white)
+![Cloudinary](https://img.shields.io/badge/Cloudinary-7E57C2?style=for-the-badge&logo=Cloudinary&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=Docker&logoColor=white)
+![AWS](https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=Amazon-AWS&logoColor=white)
 
-## Team Leader 🚀
+#### 🧑‍💻 Developers:
 
-### Marlon Infante : [LinkedIn](#) | [GitHub](#) | [Portfolio](#)
+| <img src="https://res.cloudinary.com/dqkkehztd/image/upload/v1681943770/readme/thm4sniemmlxs0mdqzd8.png" width=50>| <img src="https://res.cloudinary.com/dqkkehztd/image/upload/v1681946601/readme/ggb8cgny4tlty884hdnr.jpg" width=50>|
+|:-:|:-:|
+| **Francisco Pulido**| **Armando Ruiz**|
+| <a href="https://github.com/pulidodev"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/pulidodev/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/ArielRzz"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/ruizarmandoariel/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
 
-</br>
+<hr/>
 
-## Project Manager 🚀
+### 🎨 UX/UI:
 
-### Camila Cataldi : [LinkedIn](#)
+| <img src="https://res.cloudinary.com/dqkkehztd/image/upload/v1682753805/readme/whcqj9rtnci4opbptd29.jpg" width=50>| <img src="https://res.cloudinary.com/dqkkehztd/image/upload/v1682753805/readme/gkmeoymptrjzbvbj2d3p.jpg" width=50>|
+|:-:|:-:|
+| **Maria Laura Cattaneo**| **Veronica Stanislavsky**|
+|<a href="https://www.behance.net/marialcattane"><img src="https://img.shields.io/badge/Behance-1769ff?style=for-the-badge&logo=behance&logoColor=white"/></a>  <a href="https://www.linkedin.com/in/maria-laura-cattaneo/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://www.behance.net/phstanis"><img src="https://img.shields.io/badge/Behance-1769ff?style=for-the-badge&logo=behance&logoColor=white"/></a>  <a href="https://www.linkedin.com/in/veronica-mariela-stanislavsky/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
 
-</br>
+<hr/>
 
-## UX Designer 🎨
+### 🧪 QA:
 
-### Maria Laura Cattaneo : [LinkedIn](#) | [Portfolio](#)
+| <img src="https://res.cloudinary.com/dqkkehztd/image/upload/v1682753805/readme/shteogxsz1zefdoebdt2.jpg" width=50>|
+|:-:|
+| **Gabriel Flores**|
+|<a href="https://www.linkedin.com/in/gabrielfloresc/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
 
-### Vero Stanislavsky : [LinkedIn](#) | [Portfolio]()
+<hr/>
 
-<br/>
+### 👩‍💼 Project Manager:
 
-## Front - End 🚀
-
-### Alberto Gomez Juan : [LinkedIn](https://www.linkedin.com/in/agomezjuan/) | [GitHub](https://github.com/agomezjuan) | [Portfolio]()
-
-### Fernando De Laurentis : [LinkedIn](https://www.linkedin.com/in/fernando-de-laurentis/) | [GitHub](https://github.com/Fdlaurentis) | [Portfolio](https://fdlaurentis.netlify.app/)
-
-### Franco Buceta : [LinkedIn](https://www.linkedin.com/in/francobuceta) | [GitHub](https://github.com/francobuceta) | [Portfolio](https://francobuceta.netlify.app/)
-
-<br/>
-
-## Back - End 🚀
-
-### Francisco Pulido [LinkedIn](https://www.linkedin.com/in/pulidodev/) | [GitHub](https://github.com/pulidodev) | [Portfolio](https://github.com/pulidodev)
-
-### Armando Ruiz : [LinkedIn](#) | [GitHub](#) | [Portfolio]()
+| <img src="https://res.cloudinary.com/dqkkehztd/image/upload/v1682753805/readme/tzg0cph6zv0mlq5ezd3o.jpg" width=50>|
+|:-:|
+| **Camila Cataldi**|
+|<a href="https://www.linkedin.com/in/cami-cataldi/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |

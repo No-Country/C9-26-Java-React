@@ -6,6 +6,7 @@ import com.nocountry.backend.dto.TeacherDto;
 
 public interface ITeacherService {
 
+<<<<<<< HEAD
     List<TeacherDto> getAllTeachers();
 
     TeacherDto getTeacherById(Long teacherId);
@@ -13,6 +14,15 @@ public interface ITeacherService {
     TeacherDto createTeacher(TeacherDto teacherDto);
 
     TeacherDto updateTeacher(Long teacherId, TeacherDto teacherDto);
+=======
+    public List<TeacherDto> getAllTeachers();
 
-    void deleteTeacher(Long teacherId);
+    public TeacherDto getTeacherById(Long teacherId);
+
+    public TeacherDto createTeacher(TeacherDto teacherDto);
+
+    public TeacherDto updateTeacher(Long teacherId, TeacherDto teacherDto);
+>>>>>>> backend-develop
+
+    public void deleteTeacher(Long teacherId);
 }
