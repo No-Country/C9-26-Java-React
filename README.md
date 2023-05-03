@@ -1,14 +1,14 @@
 <img align="center" src="https://res.cloudinary.com/dqkkehztd/image/upload/v1682751696/readme/imxge16pjcsecjrn7pst.png">
 
-<h3>👉🏻 Aprende inglés fácilmente con Bright English. Ofrecemos atención al cliente rápida, entrevistas en línea, carga de datos agilizada y una metodología interactiva para una experiencia de aprendizaje divertida y efectiva. </h3>
+<h3>👉🏻 Learn English easily with Bright English. We offer fast customer support, online interviews, streamlined data loading, and an interactive methodology for a fun and effective learning experience.</h3>
 
-<h3>👉🏻 <b>Visite nuestro sitio web en <a href="https://bright-english.vercel.app/">Bright English</a> 📚</b></h3>
+<h3>👉🏻 <b>Visit our website at <a href="https://bright-english.vercel.app/">Bright English</a> 📚</b></h3>
 
 <h3><a href="https://www.canva.com/design/DAFbsKILg88/mCCl3MFdHaR6UWSZUtPZWw/watch"> <img src="https://img.shields.io/badge/Video Preview%20-%231A237E.svg?&style=for-the-badge&logo=Canva&logoColor=white"/></h3>
 
 <hr/>
 
-### ⚡ Links del proyecto:
+### ⚡ Project links:
 
 <h3><a href="https://www.figma.com/file/eDI7HAuNMbGwzJgMby2PkR/No-Country-C9-26?node-id=109-2&t=n5vk2BS8yKjb1tIk-0"> <img src="https://img.shields.io/badge/Figma-%23F24E1E.svg?style=for-the-badge&logo=Figma&logoColor=white"/></a> <a href="https://documenter.getpostman.com/view/25274758/2s93CHuaTn"> <img src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=Postman&logoColor=white"/></a></h3>
 
@@ -27,7 +27,7 @@
 ![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=CSS3&logoColor=white) 
 ![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=Vercel&logoColor=white)
 
-#### 🧑‍💻 Desarrolladores:
+#### 🧑‍💻 Developers:
 
 | <img src="https://avatars.githubusercontent.com/u/12972468?v=4" width=50>| <img src="https://avatars.githubusercontent.com/u/101360874?v=4" width=50>| <img src="https://avatars.githubusercontent.com/u/105551748?v=4" width=50>|
 |:-:|:-:|:-:|
@@ -50,7 +50,7 @@
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=Docker&logoColor=white)
 ![AWS](https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=Amazon-AWS&logoColor=white)
 
-#### 🧑‍💻 Desarrolladores:
+#### 🧑‍💻 Developers:
 
 | <img src="https://res.cloudinary.com/dqkkehztd/image/upload/v1681943770/readme/thm4sniemmlxs0mdqzd8.png" width=50>| <img src="https://res.cloudinary.com/dqkkehztd/image/upload/v1681946601/readme/ggb8cgny4tlty884hdnr.jpg" width=50>|
 |:-:|:-:|
