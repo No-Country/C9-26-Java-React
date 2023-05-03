@@ -83,12 +83,3 @@
 |:-:|
 | **Camila Cataldi**|
 |<a href="https://www.linkedin.com/in/cami-cataldi/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
-
-<hr/>
-
-### 👨‍💼 Team Leader:
-
-| <img src="https://res.cloudinary.com/dqkkehztd/image/upload/v1682753805/readme/ww6n192psz5zmbbpmhtu.jpg" width=50>|
-|:-:|
-| **Marlon Infante**|
-|<a href="https://www.linkedin.com/in/marlon-jose-infante-ramirez-8379ba127/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
