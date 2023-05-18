@@ -5,13 +5,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
-<<<<<<< HEAD
       ddl-auto: create-drop
-    show-sql: true
-    database: mysql
-    database-platform: org.hibernate.dialect.MySQLDialect
-=======
-      ddl-auto: ${DDL_CONFIG}
     show-sql: true
     database: mysql
     database-platform: org.hibernate.dialect.MySQLDialect
@@ -32,4 +26,3 @@ spring:
     multipart:
       max-file-size: 50MB
       max-request-size: 50MB
->>>>>>> backend-develop
