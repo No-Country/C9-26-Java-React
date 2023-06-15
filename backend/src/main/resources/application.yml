@@ -1,7 +1,8 @@
 spring:
-  profiles:
-    active: ${SPRING_PROFILES_ACTIVE}
   datasource:
+    url: jdbc:${DB_URL}?createDatabaseIfNotExist=true&useSSL=false&allowMultiQueries=true&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
